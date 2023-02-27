@@ -19,3 +19,63 @@ body {
     color: rgb(138, 118, 4);
   }
 }
+
+.proOpenTo {
+border-radius: 30px!important;
+padding: 5px 15px!important;
+}
+
+.proOpenTo:hover {
+  background-color: #004182!important;
+}
+
+.proModProfile {
+  border-radius: 30px!important;
+  padding: 5px 15px!important;
+  }
+  
+  .proModProfile:hover {
+    box-sizing: border-box;
+    color: #0A66C2!important;
+    outline: #0A66C2 1px solid!important;
+    background-color: #E2F0FE!important;
+  }
+
+  .proGrey {
+    color: rgb(138, 138, 138);
+    font-weight: 300;
+  }
+
+  .proGreyHBlue:hover {
+    color: #0A66C2!important;
+    text-decoration: underline;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .proBlue {
+    color: #0A77D2;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .proBlue:hover {    
+    text-decoration: none;
+  }
+
+  .proMore {
+    border-radius: 30px!important;
+    padding: 5px 15px!important;
+    color: rgb(138, 138, 138)!important;
+    border: rgb(138, 138, 138) solid 1px!important;
+
+    }
+    
+    .proMore:hover {
+      box-sizing: border-box;
+      color: #5E5E5E!important;
+      outline: #5E5E5E 1px solid!important;
+      background-color: #EBEBEB!important;
+    }
