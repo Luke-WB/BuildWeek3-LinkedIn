@@ -1,6 +1,13 @@
+import { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { fetchProfile } from "../redux/actions"
 
 const Profile = () => {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(fetchProfile())
+    }, [])
     return (
         <>
         <div className="d-flex flex-column align-items-start">
