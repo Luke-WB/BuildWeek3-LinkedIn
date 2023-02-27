@@ -1,8 +1,4 @@
 body {
-  background-color: lightgray;
-}
-
-body {
   background-color: #f3f2ef;
 }
 // NAVCUSTOM
@@ -11,9 +7,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    .icon {
-      font-size: 30px;
-    }
+  }
+  .icon {
+    font-size: 300px;
   }
   .gold {
     color: rgb(138, 118, 4);
