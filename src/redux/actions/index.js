@@ -1,5 +1,3 @@
-import { useState } from "react"
-
 export const CARICA_FETCH = "CARICA_FETCH"
 
 export const fetchProfile = (token) => {
