@@ -1,7 +1,7 @@
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import logo from "../assets/Linkedin-Logo-2003.png";
-import { BsFillQuestionCircleFill } from "react-icons/bs";
-import { AiFillSetting } from "react-icons/ai";
+import { Button, Col, Container, Form, Row } from "react-bootstrap"
+import logo from "../assets/Linkedin-Logo-2003.png"
+import { BsFillQuestionCircleFill } from "react-icons/bs"
+import { AiFillSetting } from "react-icons/ai"
 
 export default function FooterProfilePage() {
   return (
@@ -112,10 +112,10 @@ export default function FooterProfilePage() {
                 <p>Select Language</p>
                 <div className="d-flex flex-column flex-sm-row w-100 gap-2">
                   <Form.Select aria-label="Default select example">
-                    <option>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option>Select languages</option>
+                    <option value="1">English</option>
+                    <option value="2">Español</option>
+                    <option value="3">Italiano</option>
                   </Form.Select>
                 </div>
               </Form>
@@ -139,5 +139,5 @@ export default function FooterProfilePage() {
         </footer>
       </Container>
     </>
-  );
+  )
 }
