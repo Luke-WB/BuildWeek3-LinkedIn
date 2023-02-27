@@ -2,7 +2,7 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { encryptTransform } from "redux-persist-transform-encrypt";
-import mainReducer from "../reducers";
+/* import mainReducer from "../reducers"; */
 
 const persistConfig = {
   key: "root",
@@ -14,9 +14,7 @@ const persistConfig = {
   ],
 };
 
-const rootReducer = combineReducers({
-  redu: mainReducer,
-});
+const rootReducer = combineReducers({});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
