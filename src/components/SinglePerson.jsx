@@ -6,7 +6,7 @@ export default function SinglePerson({personInfo}) {
       <img
         src={personInfo.image}
         className="rounded-circle overflow-hidden my-3"
-        style={{ width: "75px" }}
+        style={{ width:"75px"}}
       />
       <Col className="mx-4">
         <a>
