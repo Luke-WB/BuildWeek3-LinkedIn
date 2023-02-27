@@ -112,7 +112,7 @@ function OffCanvasExample({ name, ...props }, prop) {
                       <ListGroup.Item>
                         <strong>Visit More LinkedIn Products</strong>
                       </ListGroup.Item>
-                      <ListGroup.Item className="d-flex justify-content-between flex-wrap">
+                      <ListGroup.Item className="d-flex justify-content-start ms-2 flex-wrap">
                         <div className="d-flex flex-column align-items-center ms-2 mia">
                           <div className="icone" id="banana">
                             <BsPlayBtnFill />
