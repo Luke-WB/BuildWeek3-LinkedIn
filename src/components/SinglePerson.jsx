@@ -1,4 +1,4 @@
-import { Col } from "react-bootstrap"
+import { Col, Row } from "react-bootstrap"
 
 export default function SinglePerson({personInfo}) {
   return (
@@ -6,7 +6,7 @@ export default function SinglePerson({personInfo}) {
       <img
         src={personInfo.image}
         className="rounded-circle overflow-hidden my-3"
-        style={{ width: 75 }}
+        style={{ width: "75px" }}
       />
       <Col className="mx-4">
         <a>

@@ -34,10 +34,10 @@ export default function People() {
 
     <Col sm={2}>
         <h3>People you may know</h3>
-        <Col>
+        <Row>
             {peopleToRender.map(el => <SinglePerson personInfo={el}/>)}
-        </Col>
-            <Row><Button className="bg-secondary" onClick={() => {isTrue ? setIsTrue(false) : setIsTrue(true)}}> Show More</Button></Row >
+        </Row>
+            <Row><Button className="bg-secondary" onClick={() => {isTrue ? setIsTrue(false) : setIsTrue(true)}}> Show {isTrue ? "less" : "more"}</Button></Row >
     </Col>
     </>
 }
