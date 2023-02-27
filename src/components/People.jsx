@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { Button, Row } from "react-bootstrap";
+import { Button, Col, Row } from "react-bootstrap";
 import SinglePerson from "./SinglePerson";
 import Spinner from 'react-bootstrap/Spinner';
+import { BsChevronCompactDown, BsChevronCompactUp } from "react-icons/bs";
+
 
 export default function People() {
   const [isTrue, setIsTrue] = useState(false);
@@ -45,24 +47,21 @@ export default function People() {
   }, [peopleFetched])
 
   return (
-    <>
-      <h3>People you may know</h3>
-      <Row>
+    <div className="bg-light rounded-4d-flex flex-column align-items-center my-4 rounded-4" style={{border: "solid 1px rgba(176, 176, 176, 0.5)"}}>
+      <h5 className="m-4"><b>People you may know</b></h5>
+      <Col className="mx-4">
         {loading? <Spinner animation="border" variant="primary" className="m-auto my-5"/> : peopleToRender.map((el) => (
           <SinglePerson personInfo={el} />
         ))}
-      </Row>
+      </Col>
       <Row>
-        <Button
-          className="bg-secondary"
-          onClick={() => {
+        <div
+        className="my-1"
+        style={{width: "100%", textAlign:"center", cursor: "pointer"}}
+        onClick={() => {
             isTrue ? setIsTrue(false) : setIsTrue(true);
-          }}
-        >
-          {" "}
-          Show {isTrue ? "less" : "more"}
-        </Button>
+          }}><b>{" "}{isTrue ? <p> Show less <BsChevronCompactUp/></p> : <p> Show more <BsChevronCompactDown/></p>}</b></div>
       </Row>
-    </>
+    </div>
   );
 }
