@@ -18,4 +18,16 @@ body {
   .gold {
     color: rgb(138, 118, 4);
   }
+  #bottoncino {
+    border: 2px solid #88b5e1;
+  }
+  #bottoncino:hover {
+    background-color: #88b5e1;
+    border: 2px solid #0080ff;
+  }
+}
+a#navbarScrollingDropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

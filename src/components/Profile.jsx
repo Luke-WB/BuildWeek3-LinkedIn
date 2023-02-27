@@ -1,16 +1,17 @@
-import { useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProfile } from "../redux/actions";
+import { useEffect } from "react"
+import { Container, Row, Col } from "react-bootstrap"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchProfile } from "../redux/actions"
+import NavCustom from "./NavCustom"
 
 const Profile = () => {
-  const token = useSelector((state) => state.profile.token);
-  const myProfile = useSelector((state) => state.profile.profile);
-  const dispatch = useDispatch();
+  const token = useSelector((state) => state.profile.token)
+  const myProfile = useSelector((state) => state.profile.profile)
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchProfile(token));
-  }, []);
-  console.log(myProfile);
+    dispatch(fetchProfile(token))
+  }, [])
+  console.log(myProfile)
   return (
     <>
       <div
@@ -118,7 +119,7 @@ const Profile = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Profile;
+export default Profile

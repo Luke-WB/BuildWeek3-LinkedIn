@@ -1,26 +1,31 @@
-import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas, Card, ListGroup } from "react-bootstrap";
-import logo from "../assets/LinkedIn_logo_initials.png";
-import { FaSearch, FaHome, FaUserFriends, FaBell } from "react-icons/fa";
-import { BsBriefcaseFill, BsGrid3X3GapFill, BsPlayBtnFill } from "react-icons/bs";
-import { RiMessage3Line } from "react-icons/ri";
-import React, { useState } from "react";
+import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas, Card, ListGroup } from "react-bootstrap"
+import logo from "../assets/LinkedIn_logo_initials.png"
+import { FaSearch, FaHome, FaUserFriends, FaBell } from "react-icons/fa"
+import { BsBriefcaseFill, BsGrid3X3GapFill, BsPlayBtnFill } from "react-icons/bs"
+import { RiMessage3Line } from "react-icons/ri"
+import React, { useState } from "react"
+import { useSelector } from "react-redux"
 
-function OffCanvasExample({ name, ...props }) {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+function OffCanvasExample({ name, ...props }, prop) {
+  const myProfile = useSelector((state) => state.profile.profile)
+
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   return (
     <Navbar bg="white" expand="lg">
-      <Container className="container d-flex justofy-content-between">
+      <Container className="container d-flex justify-content-between align-items-baseline" style={{ padding: "12px" }}>
         <div className="d-flex ">
           <Navbar.Brand href="#home">
             <img src={logo} width="35" height="35" className="d-inline-block align-top" alt="React Bootstrap logo" />
           </Navbar.Brand>
-          <FaSearch />
-          <Form className="d-flex">
-            <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" />
-          </Form>
+          <div className="d-flex">
+            <FaSearch className="position-relative" style={{ right: "-183px", top: "15px", color: "#006699" }} />
+            <Form className="d-flex">
+              <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" />
+            </Form>
+          </div>
         </div>
         <div>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -48,33 +53,48 @@ function OffCanvasExample({ name, ...props }) {
 
               <NavDropdown
                 title={
-                  <div className="d-flex flex-column">
-                    <BsGrid3X3GapFill />
+                  <div className="icon-word ">
+                    <img src={myProfile.image} className="rounded-circle" alt="pic-user" style={{ width: "35px" }} />
                     Me
                   </div>
                 }
                 id="navbarScrollingDropdown"
                 className="icon-word"
               >
-                <Button>View Profile</Button>
+                <div className="text-center d-flex justify-content-center">
+                  <Button variant="green w-100 py-0" id="bottoncino">
+                    View Profile
+                  </Button>
+                </div>
+
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action3">Account</NavDropdown.Item>
+                <NavDropdown.Item href="#action3">
+                  <strong>Account</strong>{" "}
+                </NavDropdown.Item>
                 <NavDropdown.Item href="#action3">Try Premium for free</NavDropdown.Item>
                 <NavDropdown.Item href="#action3">Settings & Privacy</NavDropdown.Item>
                 <NavDropdown.Item href="#action4">Help</NavDropdown.Item>
                 <NavDropdown.Item href="#action3">Language</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">Manage</NavDropdown.Item>
+                <NavDropdown.Item href="#action5">
+                  <strong>Manage</strong>
+                </NavDropdown.Item>
                 <NavDropdown.Item href="#action5">Posts & Activity</NavDropdown.Item>
                 <NavDropdown.Item href="#action5">Job Posting Account</NavDropdown.Item>
+                <NavDropdown.Divider />
                 <NavDropdown.Item href="#action5"> Sign Out</NavDropdown.Item>
               </NavDropdown>
 
               <NavDropdown
-                title="Work"
+                title={
+                  <div className="icon-word">
+                    <BsGrid3X3GapFill className="icon" />
+                    Work
+                  </div>
+                }
                 id="navbarScrollingDropdown"
                 style={{ borderLeft: "1px solid lightgray" }}
-                className="icon-word"
+                className="icon-word "
                 onClick={handleShow}
               />
               <Offcanvas show={show} onHide={handleClose} {...props}>
@@ -109,7 +129,7 @@ function OffCanvasExample({ name, ...props }) {
               </Offcanvas>
             </Nav>
             <Navbar.Text>
-              <a href="#login" className="gold">
+              <a href="#login" className="gold ms-5 d-flex flex-nowrap">
                 Try Premium for free
               </a>
             </Navbar.Text>
@@ -117,7 +137,7 @@ function OffCanvasExample({ name, ...props }) {
         </div>
       </Container>
     </Navbar>
-  );
+  )
 }
 function Example() {
   return (
@@ -126,7 +146,7 @@ function Example() {
         <OffCanvasExample key={idx} placement={placement} name={placement} />
       ))}
     </>
-  );
+  )
 }
 
-export default Example;
+export default Example
