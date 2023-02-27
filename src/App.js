@@ -8,6 +8,8 @@ import NavCustom from "./components/NavCustom";
 function App() {
   return (
     <>
+      {" "}
+      <NavCustom />
       <Container>
         <Row>
           <Col xs={9}>
@@ -15,7 +17,6 @@ function App() {
           </Col>
         </Row>
       </Container>
-      <NavCustom />
     </>
   );
 }

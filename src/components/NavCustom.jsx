@@ -46,7 +46,16 @@ function OffCanvasExample({ name, ...props }) {
                 Notifications
               </Nav.Link>
 
-              <NavDropdown title="Me" id="navbarScrollingDropdown" className="icon-word">
+              <NavDropdown
+                title={
+                  <div className="d-flex flex-column">
+                    <BsGrid3X3GapFill />
+                    Me
+                  </div>
+                }
+                id="navbarScrollingDropdown"
+                className="icon-word"
+              >
                 <Button>View Profile</Button>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action3">Account</NavDropdown.Item>
@@ -60,7 +69,7 @@ function OffCanvasExample({ name, ...props }) {
                 <NavDropdown.Item href="#action5">Job Posting Account</NavDropdown.Item>
                 <NavDropdown.Item href="#action5"> Sign Out</NavDropdown.Item>
               </NavDropdown>
-              <BsGrid3X3GapFill />
+
               <NavDropdown
                 title="Work"
                 id="navbarScrollingDropdown"
