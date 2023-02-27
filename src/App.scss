@@ -7,17 +7,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    .icon {
-      font-size: 30px;
-    }
+  }
+  .icon {
+    font-size: 300px;
   }
   .gold {
     color: rgb(138, 118, 4);
-  }
-  .icon-word-off {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 8px;
   }
 }
