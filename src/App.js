@@ -14,10 +14,10 @@ function App() {
       <NavCustom />
       <Container>
         <Row>
-          <Col xs={9}>
+          <Col xs={12} md={9}>
             <Profile />
           </Col>
-          <Col xs={3}>
+          <Col xs={12} lg={3}>
             <People />
           </Col>
         </Row>
