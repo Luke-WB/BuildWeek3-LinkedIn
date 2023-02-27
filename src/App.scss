@@ -1,1 +1,18 @@
+body {
+  background-color: lightgray;
+}
 
+// NAVCUSTOM
+.container {
+  .icon-word {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .icon {
+      font-size: 30px;
+    }
+  }
+  .gold {
+    color: rgb(138, 118, 4);
+  }
+}
