@@ -12,40 +12,96 @@ export default function FooterProfilePage() {
             <Col xs={6} md={2} className="mb-3">
               <img src={logo} width={"90px"} alt="linkedLogo" />
               <ul className="nav flex-column">
-                <li className="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-                <li className="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Community Guidelines</a></li>
-                <li className="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Privacy & Terms</a></li>
-                <li className="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Sales Solutions</a></li>
-                <li className="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Safety Center</a></li>
-              </ul>
-            </Col>
-
-            <Col xs={6} md={2} className="mb-3 mt-5">
-              <ul className="nav flex-column">
-                <li className="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Accessibility</a></li>
-                <li className="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Careers</a></li>
-                <li className="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Ad Choices</a></li>
-                <li className="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Mobile</a></li>
-              </ul>
-            </Col>
-
-            <Col xs={6} md={2} className="mb-3 mt-5">
-              <ul className="nav flex-column">
-                <li className="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Talent Solutions</a></li>
-                <li className="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Marketing Solutions</a></li>
-                <li className="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Advertising</a></li>
-                <li className="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Small Business</a></li>
+                <li className="nav-item mb-2">
+                  <a href="#" className="nav-link p-0 text-muted">
+                    About
+                  </a>
+                </li>
+                <li className="nav-item mb-2">
+                  <a href="#" className="nav-link p-0 text-muted">
+                    Community Guidelines
+                  </a>
+                </li>
+                <li className="nav-item mb-2">
+                  <a href="#" className="nav-link p-0 text-muted">
+                    Privacy & Terms
+                  </a>
+                </li>
+                <li className="nav-item mb-2">
+                  <a href="#" className="nav-link p-0 text-muted">
+                    Sales Solutions
+                  </a>
+                </li>
+                <li className="nav-item mb-2">
+                  <a href="#" className="nav-link p-0 text-muted">
+                    Safety Center
+                  </a>
+                </li>
               </ul>
             </Col>
 
             <Col xs={6} md={2} className="mb-3 mt-5">
               <ul className="nav flex-column">
                 <li className="nav-item mb-2">
-                  <h5><BsFillQuestionCircleFill />  Questions?</h5>
+                  <a href="#" className="nav-link p-0 text-muted">
+                    Accessibility
+                  </a>
+                </li>
+                <li className="nav-item mb-2">
+                  <a href="#" className="nav-link p-0 text-muted">
+                    Careers
+                  </a>
+                </li>
+                <li className="nav-item mb-2">
+                  <a href="#" className="nav-link p-0 text-muted">
+                    Ad Choices
+                  </a>
+                </li>
+                <li className="nav-item mb-2">
+                  <a href="#" className="nav-link p-0 text-muted">
+                    Mobile
+                  </a>
+                </li>
+              </ul>
+            </Col>
+
+            <Col xs={6} md={2} className="mb-3 mt-5">
+              <ul className="nav flex-column">
+                <li className="nav-item mb-2">
+                  <a href="#" className="nav-link p-0 text-muted">
+                    Talent Solutions
+                  </a>
+                </li>
+                <li className="nav-item mb-2">
+                  <a href="#" className="nav-link p-0 text-muted">
+                    Marketing Solutions
+                  </a>
+                </li>
+                <li className="nav-item mb-2">
+                  <a href="#" className="nav-link p-0 text-muted">
+                    Advertising
+                  </a>
+                </li>
+                <li className="nav-item mb-2">
+                  <a href="#" className="nav-link p-0 text-muted">
+                    Small Business
+                  </a>
+                </li>
+              </ul>
+            </Col>
+
+            <Col xs={6} md={2} className="mb-3 mt-5">
+              <ul className="nav flex-column">
+                <li className="nav-item mb-2">
+                  <h5>
+                    <BsFillQuestionCircleFill /> Questions?
+                  </h5>
                   <p>Visit our Help Center.</p>
                 </li>
                 <li className="nav-item mb-2">
-                  <h5><AiFillSetting /> Manage your account and privacy</h5>
+                  <h5>
+                    <AiFillSetting /> Manage your account and privacy
+                  </h5>
                   <p>Go to your Settings.</p>
                 </li>
               </ul>
