@@ -2,7 +2,7 @@ export const CARICA_FETCH = "CARICA_FETCH";
 
 export const fetchProfile = (token) => {
   return async (dispatch, getState) => {
-    const urlToFetch = "https://striveschool-api.herokuapp.com/api/profile/";
+    const urlToFetch = "https://striveschool-api.herokuapp.com/api/profile/me";
     try {
       // let res = await fetch(urlToFetch, {
       //   headers: {'Authorization': `Berear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjN2Y3MWYxOTNlNjAwMTM4MDdmNjAiLCJpYXQiOjE2Nzc0OTIwODEsImV4cCI6MTY3ODcwMTY4MX0.VsSZ2d0tCDoaQSZpm1CGnM4ctkdFFFZhAu36PvkG-hU

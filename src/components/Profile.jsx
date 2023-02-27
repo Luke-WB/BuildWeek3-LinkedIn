@@ -10,13 +10,13 @@ const Profile = () => {
     useEffect(() => {
         dispatch(fetchProfile(token))
     }, [])
-
+    console.log(myProfile)
     return (
         <>
         <div className="d-flex flex-column align-items-start">
         <img src="qualcosa" alt="react rompe"/>
         <div>
-            <h1>Nome Profilo</h1>
+            <h1>{myProfile.name}{myProfile.surname}</h1>
             <p>Lavoro che fai</p>
             <p>mail</p>
         </div>
