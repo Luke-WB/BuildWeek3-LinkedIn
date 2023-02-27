@@ -1,4 +1,4 @@
-import { Col, Container, Row } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.scss";
 import Profile from "./components/Profile";
 
