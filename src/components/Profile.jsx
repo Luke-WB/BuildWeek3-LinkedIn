@@ -42,22 +42,11 @@ const Profile = () => {
             alt="immagine profilo"
           />
         </a>
-      </div>
-      <img
-        className="rounded-circle position-absolute "
-        style={{
-          width: 100,
-          top: "100px",
-          left: "25px",
-          border: "solid 5px white",
-        }}
-        src={myProfile.image}
-        alt="immagine profilo"
-      />
-      <div className="mt-5 mx-4 my-4">
-        <h1 className="mt-2">
+        <div className="mt-5 mx-4">
+        
+        <h2 className="mt-2 mb-0">
           {myProfile.name} {myProfile.surname}
-        </h1>
+        </h2>
         <div className="proBlack proMedium proLight">{myProfile.title}</div>
         <a href="#">
           <div className="proGrey proLight proGreyHBlue mt-2">{myProfile.email}</div>
@@ -180,7 +169,8 @@ const Profile = () => {
             </Button>
           </Modal.Footer>
         </Modal>
-      </div>
+        </div>
+        </div>
 
       <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
         <div className="my-2 mx-4">
