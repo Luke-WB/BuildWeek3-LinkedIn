@@ -61,6 +61,6 @@ export default function People() {
             isTrue ? setIsTrue(false) : setIsTrue(true);
           }}><b>{" "}{isTrue ? <p> Show less <BsChevronCompactUp/></p> : <p> Show more <BsChevronCompactDown/></p>}</b></div>
       </Row>
-    </div>
+    </>
   );
 }
