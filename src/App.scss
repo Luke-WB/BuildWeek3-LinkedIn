@@ -20,93 +20,98 @@ body {
   }
 }
 
+// profile component Section
+
+.proCard {
+  overflow: hidden;
+  border: solid 1px #e0dfdc;
+}
+
+.proIcon {
+  font-size: 25px !important;
+  font-weight: 500 !important;
+}
+
+// button setting profile component
+
 .proOpenTo {
-border-radius: 30px!important;
-padding: 5px 15px!important;
+  border-radius: 30px !important;
+  padding: 5px 15px !important;
 }
 
 .proOpenTo:hover {
-  background-color: #004182!important;
+  background-color: #004182 !important;
 }
 
 .proModProfile {
-  border-radius: 30px!important;
-  padding: 5px 15px!important;
-  }
-  
-  .proModProfile:hover {
-    box-sizing: border-box;
-    color: #0A66C2!important;
-    outline: #0A66C2 1px solid!important;
-    background-color: #E2F0FE!important;
-  }
+  border-radius: 30px !important;
+  padding: 5px 15px !important;
+}
 
-  .proBlack {
-    color: black;
-  }
+.proModProfile:hover {
+  box-sizing: border-box;
+  color: #0a66c2 !important;
+  outline: #0a66c2 1px solid !important;
+  background-color: #e2f0fe !important;
+}
 
-  .proGrey {
-    color: rgb(138, 138, 138);
-  }
+.proMore {
+  border-radius: 30px !important;
+  padding: 5px 15px !important;
+  color: rgb(138, 138, 138) !important;
+  border: rgb(138, 138, 138) solid 1px !important;
+}
 
-  .proLight {
-    font-weight: 300;
-  }
+.proMore:hover {
+  box-sizing: border-box;
+  color: #5e5e5e !important;
+  outline: #5e5e5e 1px solid !important;
+  background-color: #ebebeb !important;
+}
 
-  .proSmall {
-    font-size: 15px;
-  }
+// font setting profile component
 
-  .proMedium {
-    font-size: 17px;
-    font-weight: 400;
-  }
+.proBlack {
+  color: black;
+}
 
-  .proNormal {
-    font-size: 17px;
-    font-weight: 500;
-  }
+.proGrey {
+  color: rgb(138, 138, 138);
+}
 
-  .proGreyHBlue:hover {
-    color: #0A66C2!important;
-    text-decoration: underline;
-  }
+.proLight {
+  font-weight: 300;
+}
 
-  a {
-    text-decoration: none;
-  }
+.proSmall {
+  font-size: 15px;
+}
 
-  .proCard {
-    overflow: hidden;
-    border: solid 1px #E0DFDC;
-  }
+.proMedium {
+  font-size: 17px;
+  font-weight: 400;
+}
 
-  .proBlue {
-    color: #0A77D2;
-    font-weight: 600;
-    text-decoration: none;
-  }
+.proNormal {
+  font-size: 17px;
+  font-weight: 500;
+}
 
-  .proBlue:hover {    
-    text-decoration: underline;
-  }
+.proGreyHBlue:hover {
+  color: #0a66c2 !important;
+  text-decoration: underline;
+}
 
-  .proMore {
-    border-radius: 30px!important;
-    padding: 5px 15px!important;
-    color: rgb(138, 138, 138)!important;
-    border: rgb(138, 138, 138) solid 1px!important;
+a {
+  text-decoration: none;
+}
 
-    }
-    
-    .proMore:hover {
-      box-sizing: border-box;
-      color: #5E5E5E!important;
-      outline: #5E5E5E 1px solid!important;
-      background-color: #EBEBEB!important;
-    }
+.proBlue {
+  color: #0a77d2;
+  font-weight: 600;
+  text-decoration: none;
+}
 
-    .proIcon {
-      font-size: 25px!important;
-      font-weight: 500!important;
-    }
+.proBlue:hover {
+  text-decoration: underline;
+}
