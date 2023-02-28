@@ -1,46 +1,53 @@
-import { useEffect, useState } from "react"
-import { Button, Form } from "react-bootstrap"
-import Modal from "react-bootstrap/Modal"
+import { useEffect, useState } from "react";
+import { Button, Form } from "react-bootstrap";
+import Modal from "react-bootstrap/Modal";
 
 function ModaleAdd(props) {
   const addExperience = {
     role: "",
     company: "",
     startDate: "",
-    endDate: "",
+    endDate: null,
     description: "",
     area: "",
-  }
+  };
+  /*   const experiences = {
+    role: "POSTMAN",
+    company: "POST",
+    startDate: "1700-06-16",
+    endDate: null,
+    description: "TOP secret",
+    area: "Berlin",
+  }; */
 
-  const [objExp, setObjExp] = useState(addExperience)
+  const [objExp, setObjExp] = useState(addExperience);
 
   const handleChange = (field, value) => {
-    setObjExp((prev) => ({ ...prev, [field]: value }))
-  }
-
-  useEffect(() => {
-    async function ipipipip(id, expid) {
-      const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences/63fe5220579c6300137cf956`
-      try {
-        const res = await fetch(urlToFetch, {
-          method: "PUT",
-          headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(objExp),
-        })
-        if (res.ok) {
-          console.log(res)
-          let profile = await res.json()
-          console.log("testPUT", profile)
-        } else {
-        }
-      } catch (error) {
-        alert(error)
+    setObjExp((prev) => ({ ...prev, [field]: value }));
+  };
+  console.log(objExp);
+  async function ipipipip() {
+    const urlToFetch = "https://striveschool-api.herokuapp.com/api/profile/63fe5220579c6300137cf956npm /experiences";
+    try {
+      const res = await fetch(urlToFetch, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(objExp),
+      });
+      if (res.ok) {
+        console.log(res);
+        let profile = await res.json();
+        console.log("testPOST", profile);
+      } else {
+        console.log("error");
       }
+    } catch (error) {
+      alert(error);
     }
-  }, [objExp])
+  }
 
   return (
     <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
@@ -55,12 +62,11 @@ function ModaleAdd(props) {
             <Form.Control
               type="email"
               placeholder="Ex: Retails Sales Manager"
-              required
               onChange={(e) => handleChange("role", e.target.value)}
             />
           </Form.Group>
           <Form.Text className="text-muted">Employment type</Form.Text>
-          <Form.Select aria-label="Default select example" onChange={(e) => handleChange("contract", e.target.value)}>
+          <Form.Select aria-label="Default select example">
             <option>Please select</option>
             <option value="1">Full-time</option>
             <option value="2">Part-time</option>
@@ -91,10 +97,7 @@ function ModaleAdd(props) {
             />
           </Form.Group>
           <Form.Text className="text-muted">Location type</Form.Text>
-          <Form.Select
-            aria-label="Default select example"
-            onChange={(e) => handleChange("locationType", e.target.value)}
-          >
+          <Form.Select aria-label="Default select example">
             <option>Please select</option>
             <option value="1">One-site</option>
             <option value="2">Hybrid</option>
@@ -109,18 +112,27 @@ function ModaleAdd(props) {
           <div className="d-flex gap-2 mb-4">
             <Form.Select aria-label="Mounth" onChange={(e) => handleChange("startDate", e.target.value)}>
               <option>Mounth</option>
-              <option value="1">One-site</option>
-              <option value="2">Hybrid</option>
-              <option value="3">Remote</option>
+              <option value="1">Gennaio</option>
+              <option value="2">Febbraio</option>
+              <option value="3">Marzo</option>
+              <option value="4">Aprile</option>
+              <option value="5">Maggio</option>
+              <option value="6">Giugno</option>
+              <option value="7">Luglio</option>
+              <option value="8">Agosto</option>
+              <option value="9">Settembre</option>
+              <option value="10">Ottobre</option>
+              <option value="11">Novembre</option>
+              <option value="12">Dicembre</option>
             </Form.Select>
             <Form.Select
               aria-label="Default select example"
               onChange={(e) => handleChange("startDate", e.target.value)}
             >
               <option>Year</option>
-              <option value="1">2023</option>
-              <option value="2">2022</option>
-              <option value="3">2021</option>
+              <option value="2023">2023</option>
+              <option value="2022">2022</option>
+              <option value="2021">2021</option>
             </Form.Select>
           </div>
           <Form.Text className="text-muted">End date*</Form.Text>
@@ -162,12 +174,12 @@ function ModaleAdd(props) {
         </div>
       </Modal.Body>
       <Modal.Footer className="d-flex justify-content-end">
-        <Button className="proOpenTo" onClick={() => setObjExp()}>
+        <Button className="proOpenTo" onClick={() => ipipipip()}>
           Save
         </Button>
       </Modal.Footer>
     </Modal>
-  )
+  );
 }
 
-export default ModaleAdd
+export default ModaleAdd;
