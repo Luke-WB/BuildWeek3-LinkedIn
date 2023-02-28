@@ -18,7 +18,7 @@ const Profile = (props) => {
       <div
         style={{
           overflow: "hidden",
-          height: "400px",
+          // height: "400px",
           border: "solid 1px grey",
         }}
         className="d-flex flex-column align-items-start bg-light rounded-4 my-4 position-relative"
@@ -41,7 +41,7 @@ const Profile = (props) => {
           src={myProfile.image}
           alt="immagine profilo"
         />
-        <div className="mt-5 mx-4">
+        <div className="mt-5 mx-4 my-4">
           <h1 className="mt-2">
             {myProfile.name} {myProfile.surname}
           </h1>
@@ -106,7 +106,7 @@ const Profile = (props) => {
           <p className="text-secondary">{myProfile.bio}</p>
         </div>
       </div>
-      <Exprience Lavoros={props.lavoro} />
+      <Exprience />
       <div
         style={{
           overflow: "hidden",

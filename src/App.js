@@ -6,7 +6,6 @@ import "./App.scss"
 import NavCustom from "./components/NavCustom"
 import FooterProfilePage from "./components/FooterProfilePage"
 import People from "./components/People"
-import { logoLavoro } from "./assets/management-suitcase-icon-outline-work-job-vector.jpg"
 
 function App() {
   return (

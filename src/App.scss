@@ -48,3 +48,26 @@ a#navbarScrollingDropdown {
   font-size: 20px;
   font-weight: 500;
 }
+
+#bottoneModale {
+  color: black;
+  background-color: transparent;
+  border: 0;
+}
+
+#bottoneModale:hover {
+  border: 1px solid black;
+}
+
+.matita {
+  left: 92%;
+  font-size: 30px;
+}
+.plus {
+  left: 85%;
+  font-size: 25px;
+}
+
+#bottoneModale:focus {
+  box-shadow: 2px 2px 2px 2px black;
+}

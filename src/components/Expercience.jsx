@@ -1,25 +1,38 @@
 import { useState } from "react"
-import { Button, Modal, Row, Col } from "react-bootstrap"
+import { Button, Modal, Row, Col, Form } from "react-bootstrap"
+import { BiPencil } from "react-icons/bi"
+import { BsPlusLg } from "react-icons/bs"
 import logo from "../assets/management-suitcase-icon-outline-work-job-vector.jpg"
+import Modale from "./Modale"
+import ModaleAdd from "./ModaleAdd"
 
 const Exprience = (props) => {
-  const [show, setShow] = useState(false)
-
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+  const [modalShow, setModalShow] = useState(false)
+  const [modalShowPlus, setModalShowPlus] = useState(false)
   return (
     <>
       <div
         style={{
           overflow: "hidden",
-          //   height: "300px",
           border: "solid 1px grey",
         }}
-        className="d-flex flex-column align-items-start bg-light rounded-4 my-4 position-relative"
+        className="d-flex flex-column align-items-start bg-light rounded-4 my-4 position-relative py-4"
       >
         <div className="mt-5 mx-4">
-          <h1 className="mt-2">Experience</h1>
+          <div className="d-flex ">
+            <h1 className="mt-2">Experience</h1>
+            <Button className="position-absolute plus" id="bottoneModale" onClick={() => setModalShowPlus(true)}>
+              <BsPlusLg />
+            </Button>
 
+            <ModaleAdd show={modalShowPlus} onHide={() => setModalShowPlus(false)} />
+
+            <Button className="position-absolute matita" id="bottoneModale" onClick={() => setModalShow(true)}>
+              <BiPencil />
+            </Button>
+
+            <Modale show={modalShow} onHide={() => setModalShow(false)} />
+          </div>
           <Row>
             <Col ms={6} md={3}>
               <div className="parteUno ">
@@ -40,25 +53,6 @@ const Exprience = (props) => {
             </Col>
           </Row>
         </div>
-
-        <Button variant="primary" onClick={handleShow}>
-          Launch demo modal
-        </Button>
-
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Save Changes
-            </Button>
-          </Modal.Footer>
-        </Modal>
       </div>
     </>
   )
