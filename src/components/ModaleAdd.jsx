@@ -98,7 +98,9 @@ function ModaleAdd(props) {
         </div>
       </Modal.Body>
       <Modal.Footer className="d-flex justify-content-end">
-        <Button onClick={props.onHide}>Save</Button>
+        <Button className="" onClick={props.onHide}>
+          Save
+        </Button>
       </Modal.Footer>
     </Modal>
   )

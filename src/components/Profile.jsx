@@ -1,27 +1,27 @@
-import { useEffect, useState } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProfile } from "../redux/actions";
-import { HiUsers } from "react-icons/hi";
-import { AiOutlineArrowRight, AiFillEye } from "react-icons/ai";
-import { BiSearch } from "react-icons/bi";
-import { FaSatelliteDish } from "react-icons/fa";
+import { useEffect, useState } from "react"
+import { Button, Form, Modal } from "react-bootstrap"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchProfile } from "../redux/actions"
+import { HiUsers } from "react-icons/hi"
+import { AiOutlineArrowRight, AiFillEye } from "react-icons/ai"
+import { BiSearch } from "react-icons/bi"
+import { FaSatelliteDish } from "react-icons/fa"
 import Exprience from "./Expercience"
 
 const Profile = () => {
   /* MODALE*/
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
-  const token = useSelector((state) => state.profile.token);
-  const myProfile = useSelector((state) => state.profile.profile);
-  const dispatch = useDispatch();
+  const token = useSelector((state) => state.profile.token)
+  const myProfile = useSelector((state) => state.profile.profile)
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchProfile(token));
-  }, []);
+    dispatch(fetchProfile(token))
+  }, [])
   // console.log(myProfile);
-  console.log("random number");
+  console.log("random number")
   return (
     <>
       <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
@@ -41,50 +41,51 @@ const Profile = () => {
             src={"https://i.pinimg.com/736x/65/91/a0/6591a0cdc097b089c2b329d1feddee54.jpg"}
             alt="immagine profilo"
           />
-        </div>
-        <img
-          className="rounded-circle position-absolute "
-          style={{
-            width: 100,
-            top: "100px",
-            left: "25px",
-            border: "solid 5px white",
-          }}
-          src={myProfile.image}
-          alt="immagine profilo"
-        />
-        <div className="mt-5 mx-4 my-4">
-          <h1 className="mt-2">
-            {myProfile.name} {myProfile.surname}
-          </h2>
-          <div className="proBlack proMedium proLight">{myProfile.title}</div>
+        </a>
+      </div>
+      <img
+        className="rounded-circle position-absolute "
+        style={{
+          width: 100,
+          top: "100px",
+          left: "25px",
+          border: "solid 5px white",
+        }}
+        src={myProfile.image}
+        alt="immagine profilo"
+      />
+      <div className="mt-5 mx-4 my-4">
+        <h1 className="mt-2">
+          {myProfile.name} {myProfile.surname}
+        </h1>
+        <div className="proBlack proMedium proLight">{myProfile.title}</div>
+        <a href="#">
+          <div className="proGrey proLight proGreyHBlue mt-2">{myProfile.email}</div>
+        </a>
+        <div className="mt-2">
           <a href="#">
-            <div className="proGrey proLight proGreyHBlue mt-2">{myProfile.email}</div>
+            <span className="proGrey proLight proGreyHBlue">{myProfile.area}</span>
           </a>
-          <div className="mt-2">
-            <a href="#">
-              <span className="proGrey proLight proGreyHBlue">{myProfile.area}</span>
-            </a>{" "}
-            -{" "}
-            <a href="#">
-              <span className="proBlue">Contact info</span>
-            </a>
-          </div>
+
           <a href="#">
-            <div className="proBlue mt-2 mb-3">{Math.floor(Math.random() * 100)} connection</div>
+            <span className="proBlue">Contact info</span>
           </a>
-          <Form className="mb-4">
-            <Button className="proOpenTo me-3" variant="primary">
-              Open to
-            </Button>
-            <Button className="proModProfile me-3" variant="outline-primary">
-              Add profile section
-            </Button>
-            <Button className="proMore me-3" variant="outline-primary">
-              Add profile section
-            </Button>
-          </Form>
         </div>
+        <a href="#">
+          <div className="proBlue mt-2 mb-3">{Math.floor(Math.random() * 100)} connection</div>
+        </a>
+        <Form className="mb-4">
+          <Button className="proOpenTo me-3" variant="primary">
+            Open to
+          </Button>
+          <Button className="proModProfile me-3" variant="outline-primary">
+            Add profile section
+          </Button>
+          <Button className="proMore me-3" variant="outline-primary">
+            Add profile section
+          </Button>
+        </Form>
+
         {/*MODALE*/}
 
         <Button onClick={handleShow}>Launch demo modal</Button>
@@ -244,7 +245,6 @@ const Profile = () => {
         </div>
       </div>
 
-      {/* <div>Experience</div> <-------- da fare domani */}
       <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
         <div className="my-4 mx-4">
           <h2 className="my-0">interest</h2>
@@ -259,7 +259,7 @@ const Profile = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Profile;
+export default Profile
