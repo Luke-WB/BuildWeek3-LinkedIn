@@ -3,8 +3,9 @@ import { Container, Row, Col } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProfile } from "../redux/actions"
 import NavCustom from "./NavCustom"
+import Exprience from "./Expercience"
 
-const Profile = () => {
+const Profile = (props) => {
   const token = useSelector((state) => state.profile.token)
   const myProfile = useSelector((state) => state.profile.profile)
   const dispatch = useDispatch()
@@ -105,6 +106,7 @@ const Profile = () => {
           <p className="text-secondary">{myProfile.bio}</p>
         </div>
       </div>
+      <Exprience Lavoros={props.lavoro} />
       <div
         style={{
           overflow: "hidden",
