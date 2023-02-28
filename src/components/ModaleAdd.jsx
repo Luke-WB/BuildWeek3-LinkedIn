@@ -1,15 +1,13 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button, Form } from "react-bootstrap"
 import Modal from "react-bootstrap/Modal"
 
 function ModaleAdd(props) {
   const addExperience = {
     role: "",
-    contract: "",
     company: "",
     startDate: "",
     endDate: "",
-    locationType: "",
     description: "",
     area: "",
   }
@@ -20,9 +18,30 @@ function ModaleAdd(props) {
     setObjExp((prev) => ({ ...prev, [field]: value }))
   }
 
-  const banana = () => {
-    console.log(objExp)
-  }
+  useEffect(() => {
+    async function ipipipip(id, expid) {
+      const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences/63fe5220579c6300137cf956`
+      try {
+        const res = await fetch(urlToFetch, {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(objExp),
+        })
+        if (res.ok) {
+          console.log(res)
+          let profile = await res.json()
+          console.log("testPUT", profile)
+        } else {
+        }
+      } catch (error) {
+        alert(error)
+      }
+    }
+  }, [objExp])
+
   return (
     <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header closeButton>
@@ -143,7 +162,7 @@ function ModaleAdd(props) {
         </div>
       </Modal.Body>
       <Modal.Footer className="d-flex justify-content-end">
-        <Button className="proOpenTo" onClick={banana}>
+        <Button className="proOpenTo" onClick={() => setObjExp()}>
           Save
         </Button>
       </Modal.Footer>
