@@ -43,3 +43,111 @@ a#navbarScrollingDropdown {
 .mia {
   font-size: 12px;
 }
+
+// profile component Section
+
+.proCard {
+  overflow: hidden;
+  border: solid 1px #e0dfdc;
+}
+
+.proIcon {
+  font-size: 25px !important;
+  font-weight: 500 !important;
+}
+
+.proImgBarSetting {
+  height: 200px;
+  width: 100%;
+}
+
+.proAbsolute {
+  width: 150px;
+  top: 100px;
+  left: 25px;
+  border: solid 4px white;
+}
+
+// button setting profile component
+
+.proOpenTo {
+  border-radius: 30px !important;
+  padding: 5px 15px !important;
+}
+
+.proOpenTo:hover {
+  background-color: #004182 !important;
+}
+
+.proModProfile {
+  border-radius: 30px !important;
+  padding: 5px 15px !important;
+}
+
+.proModProfile:hover {
+  box-sizing: border-box;
+  color: #0a66c2 !important;
+  outline: #0a66c2 1px solid !important;
+  background-color: #e2f0fe !important;
+}
+
+.proMore {
+  border-radius: 30px !important;
+  padding: 5px 15px !important;
+  color: rgb(138, 138, 138) !important;
+  border: rgb(138, 138, 138) solid 1px !important;
+}
+
+.proMore:hover {
+  box-sizing: border-box;
+  color: #5e5e5e !important;
+  outline: #5e5e5e 1px solid !important;
+  background-color: #ebebeb !important;
+}
+
+// font setting profile component
+
+.proBlack {
+  color: black;
+}
+
+.proGrey {
+  color: rgb(138, 138, 138);
+}
+
+.proLight {
+  font-weight: 300;
+}
+
+.proSmall {
+  font-size: 15px;
+}
+
+.proMedium {
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.proNormal {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.proGreyHBlue:hover {
+  color: #0a66c2 !important;
+  text-decoration: underline;
+}
+
+a {
+  text-decoration: none;
+}
+
+.proBlue {
+  color: #0a77d2;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.proBlue:hover {
+  text-decoration: underline;
+}
