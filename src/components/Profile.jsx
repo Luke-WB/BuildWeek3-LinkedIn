@@ -6,6 +6,7 @@ import { HiUsers } from "react-icons/hi";
 import { AiOutlineArrowRight, AiFillEye } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 import { FaSatelliteDish } from "react-icons/fa";
+import Exprience from "./Expercience"
 
 const Profile = () => {
   /* MODALE*/
@@ -40,9 +41,20 @@ const Profile = () => {
             src={"https://i.pinimg.com/736x/65/91/a0/6591a0cdc097b089c2b329d1feddee54.jpg"}
             alt="immagine profilo"
           />
-        </a>
-        <div className="mt-5 mx-4">
-          <h2 className="mt-2 mb-0">
+        </div>
+        <img
+          className="rounded-circle position-absolute "
+          style={{
+            width: 100,
+            top: "100px",
+            left: "25px",
+            border: "solid 5px white",
+          }}
+          src={myProfile.image}
+          alt="immagine profilo"
+        />
+        <div className="mt-5 mx-4 my-4">
+          <h1 className="mt-2">
             {myProfile.name} {myProfile.surname}
           </h2>
           <div className="proBlack proMedium proLight">{myProfile.title}</div>
@@ -243,6 +255,7 @@ const Profile = () => {
         <div className="my-4 mx-4">
           <h2 className="my-0">Education</h2>
           <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
+          <Exprience />
         </div>
       </div>
     </>
