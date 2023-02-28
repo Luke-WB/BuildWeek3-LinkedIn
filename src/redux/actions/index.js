@@ -1,7 +1,9 @@
+import showExp from "../reducer/profileReducer"
 export const CARICA_FETCH = "CARICA_FETCH"
+export const SET_SHOW_EXP = "SET_SHOW_EXP"
 
 export const fetchProfile = (token) => {
-  return async (dispatch, getState) => {
+  return async (pippo, getState) => {
     const urlToFetch = "https://striveschool-api.herokuapp.com/api/profile/me"
     try {
       // let res = await fetch(urlToFetch, {
@@ -17,7 +19,7 @@ export const fetchProfile = (token) => {
       if (res.ok) {
         let profile = await res.json()
         console.log(profile)
-        dispatch({
+        pippo({
           type: CARICA_FETCH,
           payload: profile,
         })
@@ -37,3 +39,26 @@ export const fetchProfile = (token) => {
     }
   }
 }
+
+export const showModalExp = (toggleState) => {
+  return {
+    type: SET_SHOW_EXP,
+    payload: !toggleState
+  }
+}
+
+// export const showModalExp = () => {
+//   return (dispatch) => {
+//     constsomeActionCreator(dispatch({
+//       type: SET_SHOW_EXP,
+//       payload: !showExp,
+//     }));
+//   };
+// };
+
+// export const showModalExp = (dispatch) => {
+//   dispatch({
+//     type: SET_SHOW_EXP,
+//     payload: !showExp,
+//   })
+// }

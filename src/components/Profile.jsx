@@ -1,18 +1,15 @@
 import { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProfile } from "../redux/actions";
+import { fetchProfile, showModalExp } from "../redux/actions";
 import { HiUsers } from "react-icons/hi";
 import { AiOutlineArrowRight, AiFillEye } from "react-icons/ai";
-import { BiSearch } from "react-icons/bi";
+import { BiSearch, BiPencil } from "react-icons/bi";
 import { FaSatelliteDish } from "react-icons/fa";
+import ModalEsperience from "./ModalExperience";
 
 const Profile = () => {
-  /* MODALE*/
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+  /* profile component hook */
   const token = useSelector((state) => state.profile.token);
   const myProfile = useSelector((state) => state.profile.profile);
   const dispatch = useDispatch();
@@ -21,6 +18,18 @@ const Profile = () => {
   }, []);
   // console.log(myProfile);
   console.log("random number");
+
+  /* MODALE PROFILE*/
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  /* MODALE EXPERIENCE*/
+  const showExp = useSelector((state) => state.profile.showExp)
+  const toggleModal = (showExp) => {
+    dispatch(showModalExp(showExp))
+  }
+
   return (
     <>
       <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
@@ -220,6 +229,8 @@ const Profile = () => {
           </a>
           <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
         </div>
+        <BiPencil className="position-absolute top-0 end-0 m-4" onClick={() => toggleModal()}/>
+        <ModalEsperience/>
       </div>
 
       <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
