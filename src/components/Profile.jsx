@@ -19,15 +19,11 @@ const Profile = () => {
   return (
     <>
       <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
-        <div style={{ height: "200px", width: "100%" }}>
+        <div className="proImgBarSetting">
           <a href="#">
             <img
-              style={{
-                width: "100%",
-                height: "200px",
-                objectFit: "cover",
-                objectPosition: "top",
-              }}
+              className="proImgBarSetting"
+              style={{ objectFit: "cover", objectPosition: "top" }}
               src={
                 "https://www.media.inaf.it/wp-content/uploads/2020/03/meteorite-1280x720.jpg"
               }
@@ -37,13 +33,7 @@ const Profile = () => {
         </div>
         <a href="#">
           <img
-            className="rounded-circle position-absolute "
-            style={{
-              width: 150,
-              top: "100px",
-              left: "25px",
-              border: "solid 4px white",
-            }}
+            className="rounded-circle position-absolute proAbsolute"
             src={
               "https://i.pinimg.com/736x/65/91/a0/6591a0cdc097b089c2b329d1feddee54.jpg"
             }
@@ -140,7 +130,7 @@ const Profile = () => {
           <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
         </div>
       </div>
-      
+
       <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
         <div className="my-4 mx-4">
           <h2 className="my-0">Experience</h2>
