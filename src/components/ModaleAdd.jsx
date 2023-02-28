@@ -27,7 +27,7 @@ function ModaleAdd(props) {
   };
   console.log(objExp);
   async function ipipipip() {
-    const urlToFetch = "https://striveschool-api.herokuapp.com/api/profile/63fe5220579c6300137cf956npm /experiences";
+    const urlToFetch = "https://striveschool-api.herokuapp.com/api/profile/63fe5220579c6300137cf956npm/experiences";
     try {
       const res = await fetch(urlToFetch, {
         method: "POST",
