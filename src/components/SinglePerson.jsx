@@ -17,7 +17,7 @@ export default function SinglePerson({personInfo}) {
               </h5>
             </a>
             <p className="text-secondary m-1">{personInfo.title}</p>
-        <Button className="proMore mb-3 m-0"><BsPersonPlusFill/> Connect</Button>
+        <Button className="proMore mb-3 m-0" variant="outline"><BsPersonPlusFill/> Connect</Button>
           </Col>
         </div>
     </Col>
