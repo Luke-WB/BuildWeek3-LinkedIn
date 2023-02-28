@@ -86,7 +86,9 @@ function ModaleAdd(props) {
         <div>
           <h5>Skills</h5>
           <p> We recommend adding your top 5 used in this role. They’ll also appear in your Skills section.</p>
-          <Button>+ Add skill</Button>
+          <Button className="proModProfile" variant="outline-primary">
+            + Add skill
+          </Button>
         </div>
         <div>
           <h5>Media</h5>
@@ -94,11 +96,13 @@ function ModaleAdd(props) {
             Add or link to external documents, photos, sites, videos, and presentations. Learn more about{" "}
             <a href="#">media file types supported</a>
           </p>
-          <Button>+ Add media</Button>
+          <Button variant="outline-primary" className="proModProfile">
+            + Add media
+          </Button>
         </div>
       </Modal.Body>
       <Modal.Footer className="d-flex justify-content-end">
-        <Button className="" onClick={props.onHide}>
+        <Button className="proOpenTo" onClick={props.onHide}>
           Save
         </Button>
       </Modal.Footer>
