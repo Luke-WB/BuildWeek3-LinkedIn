@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { HiUsers } from "react-icons/hi";
 import { AiOutlineArrowRight, AiFillEye } from "react-icons/ai";
 import { BsFillInfoSquareFill } from "react-icons/bs";
-import { fetchProfile, showModalExp } from "../redux/actions"
-import { BiSearch, BiPencil } from "react-icons/bi"
-import { FaSatelliteDish } from "react-icons/fa"
-import Exprience from "./Expercience"
-import ModalEsperience from "../components/ModalExperience"
-import Home from "./Home"
+import { fetchProfile, showModalExp } from "../redux/actions";
+import { BiSearch, BiPencil } from "react-icons/bi";
+import { FaSatelliteDish } from "react-icons/fa";
+import Exprience from "./Expercience";
+import ModalEsperience from "../components/ModalExperience";
+import Home from "./Home";
 
 const Profile = () => {
   /* MODALE*/
@@ -70,12 +70,12 @@ const Profile = () => {
   useEffect(() => {
     dispatch(fetchProfile(token));
   }, [!fetched]);
-  console.log("random number")
+  console.log("random number");
 
   const showExp = useSelector((state) => state.profile.showExp);
   const toggleModal = (param) => {
     dispatch(showModalExp(param));
-  }
+  };
 
   return (
     <>
@@ -102,7 +102,8 @@ const Profile = () => {
             className="matita"
             style={{ position: "absolute", top: "-33px", left: "720px" }}
             id="bottoneModale"
-            onClick={handleShow}>
+            onClick={handleShow}
+          >
             <BiPencil />
           </Button>
 
@@ -258,7 +259,8 @@ const Profile = () => {
                 className="rounded-5"
                 onClick={() => {
                   return setModified(obj), fetchProfile(token);
-                }}>
+                }}
+              >
                 Salva
               </Button>
             </Modal.Footer>
@@ -309,7 +311,7 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
+      {/*  <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
           <h2 className="my-0">Experience</h2>
           <a href="#">
@@ -317,9 +319,9 @@ const Profile = () => {
           </a>
           <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
         </div>
-        <BiPencil className="position-absolute top-0 end-0 m-4" onClick={() => toggleModal(showExp)}/>
-        <ModalEsperience/>
-      </div>
+        <BiPencil className="position-absolute top-0 end-0 m-4" onClick={() => toggleModal(showExp)} />
+        <ModalEsperience />
+      </div> */}
 
       <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
@@ -345,7 +347,6 @@ const Profile = () => {
       </div>
       <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
-          
           <Exprience />
         </div>
       </div>
