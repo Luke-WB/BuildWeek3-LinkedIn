@@ -65,7 +65,7 @@ const Home = () => {
               </div>
             </div>
 
-            {post
+            {post && post
               .filter(
                 (postUnfilt, h) => h > 2800 && postUnfilt.text.length > 10
               )
