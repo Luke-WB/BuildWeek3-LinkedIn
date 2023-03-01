@@ -1,35 +1,27 @@
-import { useEffect, useState } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProfile, showModalExp } from "../redux/actions";
-import { HiUsers } from "react-icons/hi";
-import { AiOutlineArrowRight, AiFillEye } from "react-icons/ai";
-import { BiSearch, BiPencil } from "react-icons/bi";
-import { FaSatelliteDish } from "react-icons/fa";
-import ModalEsperience from "./ModalExperience";
+import { useEffect, useState } from "react"
+import { Button, Form, Modal } from "react-bootstrap"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchProfile } from "../redux/actions"
+import { HiUsers } from "react-icons/hi"
+import { AiOutlineArrowRight, AiFillEye } from "react-icons/ai"
+import { BiSearch } from "react-icons/bi"
+import { FaSatelliteDish } from "react-icons/fa"
+import Exprience from "./Expercience"
 
 const Profile = () => {
-  /* profile component hook */
-  const token = useSelector((state) => state.profile.token);
-  const myProfile = useSelector((state) => state.profile.profile);
-  const dispatch = useDispatch();
+  /* MODALE*/
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+
+  const token = useSelector((state) => state.profile.token)
+  const myProfile = useSelector((state) => state.profile.profile)
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchProfile(token));
-  }, []);
+    dispatch(fetchProfile(token))
+  }, [])
   // console.log(myProfile);
-  console.log("random number");
-
-  /* MODALE PROFILE*/
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  /* MODALE EXPERIENCE*/
-  const showExp = useSelector((state) => state.profile.showExp)
-  const toggleModal = (showExp) => {
-    dispatch(showModalExp(showExp))
-  }
-
+  console.log("random number")
   return (
     <>
       <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
@@ -51,37 +43,38 @@ const Profile = () => {
           />
         </a>
         <div className="mt-5 mx-4">
-          <h2 className="mt-2 mb-0">
-            {myProfile.name} {myProfile.surname}
-          </h2>
-          <div className="proBlack proMedium proLight">{myProfile.title}</div>
+        
+        <h2 className="mt-2 mb-0">
+          {myProfile.name} {myProfile.surname}
+        </h2>
+        <div className="proBlack proMedium proLight">{myProfile.title}</div>
+        <a href="#">
+          <div className="proGrey proLight proGreyHBlue mt-2">{myProfile.email}</div>
+        </a>
+        <div className="mt-2">
           <a href="#">
-            <div className="proGrey proLight proGreyHBlue mt-2">{myProfile.email}</div>
+            <span className="proGrey proLight proGreyHBlue">{myProfile.area}</span>
           </a>
-          <div className="mt-2">
-            <a href="#">
-              <span className="proGrey proLight proGreyHBlue">{myProfile.area}</span>
-            </a>{" "}
-            -{" "}
-            <a href="#">
-              <span className="proBlue">Contact info</span>
-            </a>
-          </div>
+
           <a href="#">
-            <div className="proBlue mt-2 mb-3">{Math.floor(Math.random() * 100)} connection</div>
+            <span className="proBlue">Contact info</span>
           </a>
-          <Form className="mb-4">
-            <Button className="proOpenTo me-3" variant="primary">
-              Open to
-            </Button>
-            <Button className="proModProfile me-3" variant="outline-primary">
-              Add profile section
-            </Button>
-            <Button className="proMore me-3" variant="outline-primary">
-              Add profile section
-            </Button>
-          </Form>
         </div>
+        <a href="#">
+          <div className="proBlue mt-2 mb-3">{Math.floor(Math.random() * 100)} connection</div>
+        </a>
+        <Form className="mb-4">
+          <Button className="proOpenTo me-3" variant="primary">
+            Open to
+          </Button>
+          <Button className="proModProfile me-3" variant="outline-primary">
+            Add profile section
+          </Button>
+          <Button className="proMore me-3" variant="outline-primary">
+            Add profile section
+          </Button>
+        </Form>
+
         {/*MODALE*/}
 
         <Button onClick={handleShow}>Launch demo modal</Button>
@@ -176,7 +169,8 @@ const Profile = () => {
             </Button>
           </Modal.Footer>
         </Modal>
-      </div>
+        </div>
+        </div>
 
       <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
         <div className="my-2 mx-4">
@@ -243,10 +237,9 @@ const Profile = () => {
         </div>
       </div>
 
-      {/* <div>Experience</div> <-------- da fare domani */}
       <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
         <div className="my-4 mx-4">
-          <h2 className="my-0">interest</h2>
+          <h2 className="my-0">Interest</h2>
           <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
         </div>
       </div>
@@ -256,8 +249,13 @@ const Profile = () => {
           <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
         </div>
       </div>
+      <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
+        <div className="my-4 mx-4">
+          <Exprience />
+        </div>
+      </div>
     </>
-  );
-};
+  )
+}
 
-export default Profile;
+export default Profile
