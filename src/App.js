@@ -7,34 +7,34 @@ import NavCustom from "./components/NavCustom";
 import FooterProfilePage from "./components/FooterProfilePage";
 import People from "./components/People";
 import TestFetch from "./components/TestFetch";
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NewPerson from "./components/NewPerson";
 import Home from "./components/Home";
 
 function App() {
   return (
     <>
-    <BrowserRouter>
-    <NavCustom />
-      <TestFetch/>
-      <Container>
-        <Row>
-          <Col xs={12} md={9}>
-      <Routes>
-            <Route path="/" element={<Profile />}/>
-            <Route path="user/:userID" element={<NewPerson />}/>
-            <Route path="/home" element={<Home/>}/>
-      </Routes>
-          </Col>
-          <Col xs={12} lg={3}>
-            <People/>
-          </Col>
-        </Row>
-        <FooterProfilePage />
-      </Container>
-    </BrowserRouter>
+      <BrowserRouter>
+        <NavCustom />
+        <TestFetch />
+        <Container>
+          <Row>
+            <Col xs={12} md={9}>
+              <Routes>
+                <Route path="/profile" element={<Profile />} />
+                <Route path="user/:userID" element={<NewPerson />} />
+                <Route path="/home" element={<Home />} />
+              </Routes>
+            </Col>
+            <Col xs={12} lg={3}>
+              <People />
+            </Col>
+          </Row>
+          <FooterProfilePage />
+        </Container>
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -8,6 +8,11 @@ import Modale from "./Modale";
 const Exprience = () => {
   const [modalShowPlus, setModalShowPlus] = useState(false);
   const [experiencesToRender, setExperiencesToRender] = useState([]);
+  const [rendered, setRendered] = useState(false)
+
+  function check() {
+    setRendered((prevState) => !prevState)
+  }
 
   async function getExp() {
     const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences`;
@@ -32,7 +37,7 @@ const Exprience = () => {
 
   useEffect(() => {
     getExp();
-  }, []);
+  }, [rendered]);
 
   return (
     <>
@@ -41,12 +46,11 @@ const Exprience = () => {
         <Button className="position-absolute plus" id="bottoneModale" onClick={() => setModalShowPlus(true)}>
           <BsPlusLg />
         </Button>
-        <ModaleAdd show={modalShowPlus} onHide={() => setModalShowPlus(false)} render={getExp} />
+        <ModaleAdd show={modalShowPlus} onHide={() => setModalShowPlus(false)} render={getExp} checking={check}/>
       </div>
       {experiencesToRender.map((el) => (
         <div key={el._id}>
-          <Modale id={el._id} render={getExp} />
-
+          <Modale id={el._id} render={getExp} checking={check}/>
           <Row>
             <Col ms={6} md={3}>
               <div className="parteUno ">
