@@ -11,7 +11,7 @@ export default function SinglePerson({personInfo}) {
   }
 
   return (
-    <Col style={{borderBottom: "solid 1px rgba(176, 176, 176, 0.5)"}} className="my-2">
+    <Col style={{borderBottom: "solid 0.5px rgba(176, 176, 176, 0.5)"}} className="mt-2 mb-0">
         <div className="d-flex mt-3">
           <img
             src={personInfo.image}

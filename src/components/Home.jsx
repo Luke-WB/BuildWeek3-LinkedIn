@@ -64,8 +64,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-
-            {post && post
+            {post
               .filter(
                 (postUnfilt, h) => h > 2800 && postUnfilt.text.length > 10
               )
@@ -80,11 +79,11 @@ const Home = () => {
                       <div className="my-2 mx-4">
                         <h3 className="proBlack my-2">
                           writted by{" "}
-                          <a href="#">
+                          <Link to={`/user/${singPost.user?._id}`}>
                             <span className="proBlack proGreyHBlue">
                               {singPost.user?.name}
                             </span>
-                          </a>
+                          </Link>
                         </h3>
                         <div className="my-2 me-5">
                           <span className="proGrey proBlack proLight proSmall proNormal">
