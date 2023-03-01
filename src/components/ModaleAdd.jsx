@@ -17,7 +17,6 @@ function ModaleAdd(props) {
   const handleChange = (field, value) => {
     setObjExp((prev) => ({ ...prev, [field]: value }));
   };
-  console.log(objExp);
 
   async function postExperience() {
     const urlToFetch = "https://striveschool-api.herokuapp.com/api/profile/63fe5220579c6300137cf956/experiences";
