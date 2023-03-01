@@ -1,45 +1,93 @@
-import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas, Card, ListGroup } from "react-bootstrap"
-import logo from "../assets/LinkedIn_logo_initials.png"
-import React, { useState } from "react"
-import { useSelector } from "react-redux"
+import {
+  Button,
+  Container,
+  Form,
+  Nav,
+  Navbar,
+  NavDropdown,
+  Offcanvas,
+  Card,
+  ListGroup,
+} from "react-bootstrap";
+import logo from "../assets/LinkedIn_logo_initials.png";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
-import { FaSearch, FaHome, FaUserFriends, FaBell, FaCompass } from "react-icons/fa"
-import { BsBriefcaseFill, BsGrid3X3GapFill, BsPlayBtnFill } from "react-icons/bs"
-import { CgInsights } from "react-icons/cg"
-import { RiSuitcaseFill, RiAdvertisementLine, RiMessage3Line } from "react-icons/ri"
-import { MdGroups } from "react-icons/md"
-import { TiTick } from "react-icons/ti"
-import { AiOutlinePlus } from "react-icons/ai"
+import {
+  FaSearch,
+  FaHome,
+  FaUserFriends,
+  FaBell,
+  FaCompass,
+} from "react-icons/fa";
+import {
+  BsBriefcaseFill,
+  BsGrid3X3GapFill,
+  BsPlayBtnFill,
+} from "react-icons/bs";
+import { CgInsights } from "react-icons/cg";
+import {
+  RiSuitcaseFill,
+  RiAdvertisementLine,
+  RiMessage3Line,
+} from "react-icons/ri";
+import { MdGroups } from "react-icons/md";
+import { TiTick } from "react-icons/ti";
+import { AiOutlinePlus } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 function OffCanvasExample({ name, ...props }, prop) {
-  const myProfile = useSelector((state) => state.profile.profile)
+  const myProfile = useSelector((state) => state.profile.profile);
 
-  const [show, setShow] = useState(false)
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <Navbar bg="white" expand="lg">
-      <Container className="container d-flex justify-content-between align-items-baseline" style={{ padding: "12px" }}>
+      <Container
+        className="container d-flex justify-content-between align-items-baseline"
+        style={{ padding: "12px" }}
+      >
         <div className="d-flex ">
-          <Navbar.Brand href="#home">
-            <img src={logo} width="35" height="35" className="d-inline-block align-top" alt="React Bootstrap logo" />
+          <Navbar.Brand>
+            <img
+              src={logo}
+              width="35"
+              height="35"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            />
           </Navbar.Brand>
           <div className="d-flex">
-            <FaSearch className="position-relative" style={{ right: "-183px", top: "15px", color: "#006699" }} />
+            <FaSearch
+              className="position-relative"
+              style={{ right: "-183px", top: "15px", color: "#006699" }}
+            />
             <Form className="d-flex">
-              <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" />
+              <Form.Control
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+              />
             </Form>
           </div>
         </div>
         <div>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-            <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
-              <Nav.Link href="#action1" className="icon-word">
-                <FaHome className="icon" />
-                Home
-              </Nav.Link>
+            <Nav
+              className="me-auto my-2 my-lg-0"
+              style={{ maxHeight: "100px" }}
+              navbarScroll
+            >
+              <Link to={"/home"}>
+                <Nav.Link href="#action1" className="icon-word">
+                  <FaHome className="icon" />
+                  Home
+                </Nav.Link>
+              </Link>
               <Nav.Link href="#action1" className="icon-word">
                 <FaUserFriends className="icon" /> My Network
               </Nav.Link>
@@ -59,7 +107,12 @@ function OffCanvasExample({ name, ...props }, prop) {
               <NavDropdown
                 title={
                   <div className="icon-word ">
-                    <img src={myProfile.image} className="rounded-circle" alt="pic-user" style={{ width: "35px" }} />
+                    <img
+                      src={myProfile.image}
+                      className="rounded-circle"
+                      alt="pic-user"
+                      style={{ width: "35px" }}
+                    />
                     Me
                   </div>
                 }
@@ -76,16 +129,24 @@ function OffCanvasExample({ name, ...props }, prop) {
                 <NavDropdown.Item href="#action3">
                   <strong>Account</strong>{" "}
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action3">Try Premium for free</NavDropdown.Item>
-                <NavDropdown.Item href="#action3">Settings & Privacy</NavDropdown.Item>
+                <NavDropdown.Item href="#action3">
+                  Try Premium for free
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action3">
+                  Settings & Privacy
+                </NavDropdown.Item>
                 <NavDropdown.Item href="#action4">Help</NavDropdown.Item>
                 <NavDropdown.Item href="#action3">Language</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action5">
                   <strong>Manage</strong>
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action5">Posts & Activity</NavDropdown.Item>
-                <NavDropdown.Item href="#action5">Job Posting Account</NavDropdown.Item>
+                <NavDropdown.Item href="#action5">
+                  Posts & Activity
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action5">
+                  Job Posting Account
+                </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action5"> Sign Out</NavDropdown.Item>
               </NavDropdown>
@@ -166,7 +227,10 @@ function OffCanvasExample({ name, ...props }, prop) {
                       </ListGroup.Item>
                       <ListGroup.Item>
                         <div>
-                          <strong>Talent Solutions</strong> <p className="mia">Find, attract and recruit talent</p>
+                          <strong>Talent Solutions</strong>{" "}
+                          <p className="mia">
+                            Find, attract and recruit talent
+                          </p>
                         </div>
                         <div>
                           <strong>Sales Solutions</strong>
@@ -174,15 +238,21 @@ function OffCanvasExample({ name, ...props }, prop) {
                         </div>
                         <div>
                           <strong>Post a job for free</strong>
-                          <p className="mia">Get your job in front of quality candidates</p>
+                          <p className="mia">
+                            Get your job in front of quality candidates
+                          </p>
                         </div>
                         <div>
                           <strong>Marketing Solutions</strong>
-                          <p className="mia">Acquire customers and grow your business</p>
+                          <p className="mia">
+                            Acquire customers and grow your business
+                          </p>
                         </div>
                         <div>
                           <strong>Learning Solutions</strong>
-                          <p className="mia">Develop talent across your organization</p>
+                          <p className="mia">
+                            Develop talent across your organization
+                          </p>
                         </div>
                       </ListGroup.Item>
                       <ListGroup.Item>
@@ -207,7 +277,7 @@ function OffCanvasExample({ name, ...props }, prop) {
         </div>
       </Container>
     </Navbar>
-  )
+  );
 }
 function Example() {
   return (
@@ -216,7 +286,7 @@ function Example() {
         <OffCanvasExample key={idx} placement={placement} name={placement} />
       ))}
     </>
-  )
+  );
 }
 
-export default Example
+export default Example;

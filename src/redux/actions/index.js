@@ -1,5 +1,6 @@
 export const CARICA_FETCH = "CARICA_FETCH";
 export const SET_SHOW_EXP = "SET_SHOW_EXP";
+export const HOME_FETCH = "HOME_FETCH";
 
 export const fetchProfile = (token) => {
   return async (dispatch, getState) => {
@@ -91,5 +92,38 @@ export const showModalExp = (toggleState) => {
   return {
     type: SET_SHOW_EXP,
     payload: !toggleState,
+  };
+};
+
+export const fetchHome = (token) => {
+  return async (dispatch, getState) => {
+    const urlHomeGet = "https://striveschool-api.herokuapp.com/api/posts/ ";
+    try {
+      const res = await fetch(urlHomeGet, {
+        headers: {
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+        },
+      });
+      if (res.ok) {
+        let post = await res.json();
+        console.log("post",post);
+        dispatch({
+          type: HOME_FETCH,
+          payload: post,
+        });
+      } else {
+        // dispatch({
+        //   type: HAS_ERROR,
+        // });
+      }
+    } catch (error) {
+      alert(error);
+      // dispatch({
+      //   type: IS_LOADING,
+      // });
+      // dispatch({
+      //   type: HAS_ERROR,
+      // });
+    }
   };
 };

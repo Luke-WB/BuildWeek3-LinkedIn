@@ -9,6 +9,7 @@ import People from "./components/People";
 import TestFetch from "./components/TestFetch";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import NewPerson from "./components/NewPerson";
+import Home from "./components/Home";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Routes>
             <Route path="/" element={<Profile />}/>
             <Route path="user/:userID" element={<NewPerson />}/>
+            <Route path="/home" element={<Home/>}/>
       </Routes>
           </Col>
           <Col xs={12} lg={3}>

@@ -8,6 +8,7 @@ import { BiSearch, BiPencil } from "react-icons/bi"
 import { FaSatelliteDish } from "react-icons/fa"
 import Exprience from "./Expercience"
 import ModalEsperience from "../components/ModalExperience"
+import Home from "./Home"
 
 const Profile = () => {
   /* MODALE*/
@@ -31,7 +32,7 @@ const Profile = () => {
 
   return (
     <>
-      <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
+      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="proImgBarSetting">
           <a href="#">
             <img
@@ -179,7 +180,7 @@ const Profile = () => {
         </div>
         </div>
 
-      <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
+      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-2 mx-4">
           <h2 className="mt-2 mb-0">Analitics</h2>
           <div className="proGrey proLight proSmall my-0">
@@ -215,14 +216,14 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
+      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
           <h2 className="my-0">About</h2>
           <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
         </div>
       </div>
 
-      <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
+      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
           <h2 className="my-0">Experience</h2>
           <a href="#">
@@ -234,7 +235,7 @@ const Profile = () => {
         <ModalEsperience/>
       </div>
 
-      <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
+      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
           <h2 className="my-0">Activity</h2>
           <a href="#">
@@ -244,19 +245,19 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
+      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
           <h2 className="my-0">Interest</h2>
           <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
         </div>
       </div>
-      <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
+      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
           <h2 className="my-0">Education</h2>
           <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
         </div>
       </div>
-      <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
+      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
           <Exprience />
         </div>
