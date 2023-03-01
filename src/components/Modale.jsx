@@ -1,9 +1,8 @@
-import { useState } from "react"
-import { Button, Form } from "react-bootstrap"
-import Modal from "react-bootstrap/Modal"
+import { useState } from "react";
+import { Button, Form } from "react-bootstrap";
+import Modal from "react-bootstrap/Modal";
 
 function Modale(props) {
-
   return (
     <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header closeButton>
@@ -14,7 +13,12 @@ function Modale(props) {
           <Form.Text className="text-muted">* Indicates required</Form.Text>
           <Form.Group className="mb-3 mt-4" controlId="formBasicEmail">
             <Form.Text className="text-muted">Title*</Form.Text>
-            <Form.Control type="email" placeholder="Ex: Retails Sales Manager" required />
+            <Form.Control
+              type="email"
+              placeholder="Ex: Retails Sales Manager"
+              required
+              /*        onChange={(e) => props.handlechange("role", e.target.value)} */
+            />
           </Form.Group>
           <Form.Text className="text-muted">Employment type</Form.Text>
           <Form.Select aria-label="Default select example">
@@ -103,15 +107,25 @@ function Modale(props) {
         </div>
       </Modal.Body>
       <Modal.Footer className="d-flex justify-content-between">
-        <Button onClick={()=> {return props.delete(props.id), props.render()}} variant="outline-danger" >
+        <Button
+          onClick={() => {
+            return props.delete(props.id), props.render(), props.onHide;
+          }}
+          variant="outline-danger"
+        >
           Delete experience
         </Button>
-        <Button className="proOpenTo">
+        <Button
+          className="proOpenTo"
+          onClick={() => {
+            return props.put(props.id), props.onHide;
+          }}
+        >
           Save
         </Button>
       </Modal.Footer>
     </Modal>
-  )
+  );
 }
 
-export default Modale
+export default Modale;
