@@ -24,8 +24,9 @@ const Profile = () => {
   // console.log(myProfile);
   console.log("random number")
 
-  const toggleModal = (showExp) => {
-    dispatch(showModalExp(showExp));
+  const showExp = useSelector((state) => state.profile.showExp);
+  const toggleModal = (param) => {
+    dispatch(showModalExp(param));
   }
 
   return (
@@ -229,9 +230,8 @@ const Profile = () => {
           </a>
           <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
         </div>
-        <BiPencil className="position-absolute top-0 end-0 m-4" onClick={() => toggleModal()}/>
+        <BiPencil className="position-absolute top-0 end-0 m-4" onClick={() => toggleModal(showExp)}/>
         <ModalEsperience/>
-        >
       </div>
 
       <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">

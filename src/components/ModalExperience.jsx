@@ -8,8 +8,8 @@ import { useDispatch } from "react-redux";
 function ModalEsperience() {
   const dispatch = useDispatch();
   const showExp = useSelector((state) => state.profile.showExp);
-  const toggleModal = (showExp) => {
-    dispatch(showModalExp(showExp));
+  const toggleModal = (param) => {
+    dispatch(showModalExp(param));
   };
 
 //   const [show, setShow] = useState(false);
