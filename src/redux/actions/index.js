@@ -38,31 +38,6 @@ export const fetchProfile = (token) => {
   };
 };
 
-export function changeProfile(id, type, obj) {
-  const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/${id}`;
-  return async (dispatch) => {
-     try {
-        const response = await fetch(urlToFetch, {
-          method: type,
-          headers: {
-            'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(obj)
-        })
-        console.log(fetch.toString);
-        if (response.ok) {
-           const data = await response.json();
-           console.log("azzzzzzz", data);
-        } else {
-           alert("Error fetching results");
-        }
-     } catch (error) {
-        console.log(error);
-     }
-  }
-}
-
 
 export function fetchIdProfile(id) {
   const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/${id}`;
@@ -78,6 +53,30 @@ export function fetchIdProfile(id) {
            const data = await response.json();
            console.log("azzzzzzz", data);
            dispatch({type: "SET_PROFILE", payload: data})
+        } else {
+           alert("Error fetching results");
+        }
+     } catch (error) {
+        console.log(error);
+     }
+  }
+}
+
+export function getExperiences(id) {
+  const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/${id}/experiences`;
+  return async (dispatch) => {
+     try {
+        const response = await fetch(urlToFetch, {
+          method: "GET",
+          headers: {
+            'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+            'Content-Type': 'application/json'
+          },
+        })
+        if (response.ok) {
+           const data = await response.json();
+           console.log("getExp", data);
+           dispatch({type: "GET_EXPERIENCES", payload: data})
         } else {
            alert("Error fetching results");
         }

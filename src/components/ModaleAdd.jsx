@@ -174,7 +174,7 @@ function ModaleAdd(props) {
         </div>
       </Modal.Body>
       <Modal.Footer className="d-flex justify-content-end">
-        <Button className="proOpenTo" onClick={() => ipipipip()}>
+        <Button className="proOpenTo" onClick={() => {return ipipipip(), props.render()}}>
           Save
         </Button>
       </Modal.Footer>

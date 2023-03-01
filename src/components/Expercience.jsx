@@ -1,53 +1,128 @@
-import { useState } from "react"
-import { Button, Modal, Row, Col, Form } from "react-bootstrap"
-import { BiPencil } from "react-icons/bi"
-import { BsPlusLg } from "react-icons/bs"
-import logo from "../assets/management-suitcase-icon-outline-work-job-vector.jpg"
-import Modale from "./Modale"
-import ModaleAdd from "./ModaleAdd"
+import { useEffect, useState } from "react";
+import { BsPlusLg } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
 
-const Exprience = (props) => {
-  const [modalShow, setModalShow] = useState(false)
-  const [modalShowPlus, setModalShowPlus] = useState(false)
-  return (
-    <>
-      <div>
-        <div className="d-flex ">
-          <h1 className="mt-2">Experience</h1>
-          <Button className="position-absolute plus" id="bottoneModale" onClick={() => setModalShowPlus(true)}>
-            <BsPlusLg />
-          </Button>
+import { getExperiences } from "../redux/actions";
+import ModaleAdd from "./ModaleAdd";
+import { Button, Col, Row } from "react-bootstrap";
+import logo from "../assets/management-suitcase-icon-outline-work-job-vector.jpg";
+import { BiPencil } from "react-icons/bi";
+import Modale from "./Modale";
 
-          <ModaleAdd show={modalShowPlus} onHide={() => setModalShowPlus(false)} />
+const Exprience = () => {
+  const [modalShowPlus, setModalShowPlus] = useState(false);
+  const [experiencesToRender, setExperiencesToRender] = useState([]);
 
-          <Button className="position-absolute matita" id="bottoneModale" onClick={() => setModalShow(true)}>
-            <BiPencil />
-          </Button>
+  const [modalShow, setModalShow] = useState(false);
+  const [isDeleted, setISDeleted] = useState(true)
 
-          <Modale show={modalShow} onHide={() => setModalShow(false)} />
+    async function deleteExperience(id) {
+      const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences/${id}`;
+      try {
+        await fetch(urlToFetch, {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+            // 'Content-Type': 'application/json'
+          },
+          // body: JSON.stringify(experiences)
+        }, setISDeleted(false), console.log("deleted", isDeleted)) 
+      } catch (error) {
+        console.log("delete", error)
+      }
+    }
+
+    async function getExp() {
+      const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences`;
+     try {
+        const response = await fetch(urlToFetch, {
+          method: "GET",
+          headers: {
+            'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+            'Content-Type': 'application/json'
+          },
+        })
+        if (response.ok) {
+           const data = await response.json();
+           setExperiencesToRender(data);
+        } else {
+           alert("Error fetching results");
+        }
+     } catch (error) {
+        console.log(error);
+     }
+    }
+
+    useEffect(()=> {
+      getExp()
+    },[isDeleted])
+    
+    return (
+      <>
+        <div>
+          <div className="d-flex ">
+            <h1 className="mt-2">Experience</h1>
+            <Button
+              className="position-absolute plus"
+              id="bottoneModale"
+              onClick={() => setModalShowPlus(true)}
+            >
+              <BsPlusLg />
+            </Button>
+            <ModaleAdd
+              show={modalShowPlus}
+              onHide={() => setModalShowPlus(false)}
+              render={getExp}
+            />
+          </div>
+          {experiencesToRender.map((el) => (
+            <Row key={el._id}>
+              <Button
+                className="position-absolute matita"
+                id="bottoneModale"
+                onClick={() => setModalShow(true)}
+              >
+                <BiPencil />
+              </Button>
+              <Modale
+                show={modalShow}
+                id={el._id}
+                onHide={() => setModalShow(false)}
+                delete={deleteExperience}
+                render={getExp}
+              />
+              <Col ms={6} md={3}>
+                <div className="parteUno ">
+                  <img
+                    src={logo}
+                    alt="pic-job"
+                    style={{
+                      width: "70px",
+                      height: "70px",
+                      objectFit: "cover",
+                    }}
+                  />
+                </div>
+              </Col>
+              <Col ms={6} md={9}>
+                <div className="parteDue">
+                  <p className="titolo m-0">{el.role}</p>
+                  <p className="m-0">{el.company}</p>
+                  <p className="m-0">
+                    <i style={{ color: "#9B9B9B" }}>
+                      {el.startDate}/{el.endDate}
+                    </i>
+                  </p>
+                  <p className="m-0" style={{ color: "#5a5a5a" }}>
+                    {el.area}
+                  </p>
+                </div>
+              </Col>
+            </Row>
+          ))}
         </div>
-        <Row>
-          <Col ms={6} md={3}>
-            <div className="parteUno ">
-              <img src={logo} alt="pic-job" style={{ width: "70px", height: "70px", objectFit: "cover" }} />
-            </div>
-          </Col>
-          <Col ms={6} md={9}>
-            <div className="parteDue">
-              <p className="titolo m-0">Studente</p>
-              <p className="m-0">Università degli Studi di Genova - FullTime</p>
-              <p className="m-0">
-                <i style={{ color: "#9B9B9B" }}>Sep 2013 - Present - 9yrs 6 mos</i>
-              </p>
-              <p className="m-0" style={{ color: "#5a5a5a" }}>
-                Genova, Liguria, Italia
-              </p>
-            </div>
-          </Col>
-        </Row>
-      </div>
-    </>
-  )
-}
+      </>
+    );
+};
 
-export default Exprience
+export default Exprience;

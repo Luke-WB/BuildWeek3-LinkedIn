@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap"
 import Modal from "react-bootstrap/Modal"
 
 function Modale(props) {
+
   return (
     <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Header closeButton>
@@ -102,10 +103,10 @@ function Modale(props) {
         </div>
       </Modal.Body>
       <Modal.Footer className="d-flex justify-content-between">
-        <Button onClick={props.onHide} variant="outline-danger">
+        <Button onClick={()=> {return props.delete(props.id), props.render()}} variant="outline-danger" >
           Delete experience
         </Button>
-        <Button className="proOpenTo" onClick={props.onHide}>
+        <Button className="proOpenTo">
           Save
         </Button>
       </Modal.Footer>
