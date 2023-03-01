@@ -37,6 +37,10 @@ const Profile = () => {
   const [modified, setModified] = useState(null);
   const [fetched, setFetched] = useState(false);
 
+  function check() {
+    setFetched((prevState) => !prevState)
+  }
+
   useEffect(() => {
     console.log("MODIFIED", modified);
     //dispatch(changeProfile(myProfile._id, "PUT", obj));
@@ -53,9 +57,6 @@ const Profile = () => {
         });
         if (res.ok) {
           console.log(res);
-          setFetched(true);
-          let profile = await res.json();
-          console.log("testPUT", profile);
         } else {
         }
       } catch (error) {
@@ -69,8 +70,7 @@ const Profile = () => {
   // console.log("random number");
   useEffect(() => {
     dispatch(fetchProfile(token));
-  }, [!fetched]);
-  console.log("random number");
+  }, [fetched]);
 
   const showExp = useSelector((state) => state.profile.showExp);
   const toggleModal = (param) => {
@@ -257,8 +257,10 @@ const Profile = () => {
               <Button
                 variant="primary"
                 className="rounded-5"
-                onClick={() => {
-                  return setModified(obj), fetchProfile(token);
+                onMouseDown={() => {
+                  check();
+                  setModified(obj);
+                  fetchProfile(token);
                 }}
               >
                 Salva

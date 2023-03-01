@@ -191,6 +191,7 @@ function Modale(props) {
               deleteExperience();
               props.render();
               setModalShow(false);
+              props.checking();
             }}
             variant="outline-danger"
           >
@@ -200,8 +201,9 @@ function Modale(props) {
             className="proOpenTo"
             onClick={() => {
               putExperience();
-              props.render();
               setModalShow(false);
+              props.render();
+              props.checking();
             }}
           >
             Save

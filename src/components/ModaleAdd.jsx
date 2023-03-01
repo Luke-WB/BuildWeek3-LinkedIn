@@ -181,6 +181,7 @@ function ModaleAdd(props) {
             postExperience();
             props.render();
             props.onHide();
+            props.checking();
           }}
         >
           Save
