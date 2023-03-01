@@ -47,9 +47,7 @@ const Exprience = (props) => {
           </Col>
         </Row>
       </div>
-      <div>
-        <HomeProfile />
-      </div>
+      <div></div>
     </>
   )
 }
