@@ -12,7 +12,7 @@ function Modale(props) {
     setNewState((prev) => ({ ...prev, [field]: value }));
   };
 
-  async function deleteExperience(id) {
+  async function deleteExperience() {
     const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences/${props.id}`;
     try {
       await fetch(

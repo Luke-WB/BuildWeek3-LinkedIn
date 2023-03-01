@@ -9,10 +9,6 @@ const Exprience = () => {
   const [modalShowPlus, setModalShowPlus] = useState(false);
   const [experiencesToRender, setExperiencesToRender] = useState([]);
 
-  /*  const handleChange = (field, value) => {
-    setExperiencesToRender((prev) => ({ ...prev, [field]: value }));
-  }; */
-
   async function getExp() {
     const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences`;
     try {
