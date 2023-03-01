@@ -26,19 +26,15 @@ const Home = () => {
     <>
       <Container>
         <Row>
-          <Col xs={5}>
+          <Col xs={4}>
             <HomeProfile/>
           </Col>
-          <Col xs={7}>
-            <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
-              <div className="my-2 mx-4"></div>
-            </div>
-
+          <Col xs={8}>
             <div className="bg-light rounded-3 position-relative proCard my-4 me-0 p3-0">
               <div className="d-flex align-items-center">
                 <div className="d-inline-block">
                   <img
-                    className="my-3 ms-4 me-2 rounded-circle"
+                    className="my-3 ms-4 me-3 rounded-circle"
                     style={{ height: "55px" }}
                     src="https://i.pinimg.com/736x/65/91/a0/6591a0cdc097b089c2b329d1feddee54.jpg"
                     alt="profile"
@@ -85,7 +81,7 @@ const Home = () => {
                           writted by{" "}
                           <a href="#">
                             <span className="proBlack proGreyHBlue">
-                              {singPost.username}
+                              {singPost.user.name}
                             </span>
                           </a>
                         </h3>

@@ -210,3 +210,51 @@ a {
 #bottoneModale:focus {
   box-shadow: 1px 1px 1px 1px black;
 }
+
+.eccolo {
+  // width: 90px;
+  position: relative;
+  top: -35px;
+}
+#photo {
+  width: 75px;
+  height: 75px;
+  // padding: 3px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.topCard {
+  border-bottom: 1px solid black;
+}
+
+.square {
+  width: 15px;
+  height: 15px;
+  background: rgb(248, 199, 126);
+  background: -moz-linear-gradient(52deg, rgba(248, 199, 126, 1) 50%, rgba(255, 224, 179, 1) 50%);
+  background: -webkit-linear-gradient(52deg, rgba(248, 199, 126, 1) 50%, rgba(255, 224, 179, 1) 50%);
+  background: linear-gradient(52deg, rgba(248, 199, 126, 1) 50%, rgba(255, 224, 179, 1) 50%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f8c77e",endColorstr="#ffe0b3",GradientType=1);
+  margin-right: 3px;
+  border-radius: 10%;
+}
+
+.copert {
+  height: 100px;
+  object-fit: cover;
+}
+
+.tratto {
+  margin: 0px 0px 16px;
+}
+
+.grigio:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+.divPost {
+  height: 55px;
+  width: 100%;
+  background-color: lightgray;
+}

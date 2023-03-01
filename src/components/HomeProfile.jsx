@@ -16,7 +16,7 @@ function HomeProfile() {
   }, [])
   return (
     <>
-      <Card style={{ width: "18rem" }}>
+      <Card className="my-4 mx-0" style={{ width: "18rem" }}>
         <Card.Img variant="top" src={copertina} className="copert" />
         <Card.Body className=" m-0">
           <div className="d-flex flex-column justify-content-center align-items-center topCard">
