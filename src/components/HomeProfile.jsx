@@ -6,6 +6,7 @@ import logo from "../assets/camera.png"
 import copertina from "../assets/user.jpg"
 import { BsFillPersonPlusFill, BsBookmarkFill } from "react-icons/bs"
 import { AiOutlinePlus } from "react-icons/ai"
+import { Link } from "react-router-dom"
 
 function HomeProfile() {
   const token = useSelector((state) => state.profile.token)
@@ -19,11 +20,11 @@ function HomeProfile() {
       <Card className="my-4 mx-0" style={{ width: "18rem" }}>
         <Card.Img variant="top" src={copertina} className="copert" />
         <Card.Body className=" m-0">
-          <div className="d-flex flex-column justify-content-center align-items-center topCard">
-            <div className="  eccolo">
-              <img src={logo} alt="pic-profile " id="photo" />
+          <div className="d-flex flex-column justify-content-center align-items-center topCard position-relative">
+            <div className="position-absolute eccolo">
+            <Link to={"/profile"}><img src="https://i.pinimg.com/736x/65/91/a0/6591a0cdc097b089c2b329d1feddee54.jpg" alt="pic-profile " id="photo" /></Link>
             </div>
-            <Card.Title>Welcome, {myProfile.name}</Card.Title>
+            <Card.Title className="mt-5">Welcome, {myProfile.name}</Card.Title>
             <p className="mx-3 text-center proLight">{myProfile.email}</p>
             <a href="#" className="mb-2 proBlue">
               Add a photo

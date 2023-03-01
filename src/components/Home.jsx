@@ -6,6 +6,7 @@ import { MdPhotoSizeSelectActual } from "react-icons/md";
 import { BsFillPlayBtnFill, BsCalendarDay } from "react-icons/bs";
 import { MdArticle } from "react-icons/md";
 import HomeProfile from "./HomeProfile";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   // profile fetch
@@ -33,12 +34,12 @@ const Home = () => {
             <div className="bg-light rounded-3 position-relative proCard my-4 me-0 p3-0">
               <div className="d-flex align-items-center">
                 <div className="d-inline-block">
-                  <img
+                <Link to={"/profile"}><img
                     className="my-3 ms-4 me-3 rounded-circle"
                     style={{ height: "55px" }}
                     src="https://i.pinimg.com/736x/65/91/a0/6591a0cdc097b089c2b329d1feddee54.jpg"
                     alt="profile"
-                  />
+                  /></Link>
                 </div>
                 <span className="d-inline-block proMore proGrey position-relative postModBar me-3">
                   <span className="postModText me-3">Start a post</span>

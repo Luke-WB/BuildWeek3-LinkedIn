@@ -82,27 +82,35 @@ function OffCanvasExample({ name, ...props }, prop) {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              <Link to={"/home"}>
+              <Link to={"/"}>
                 <Nav.Link href="#action1" className="icon-word">
                   <FaHome className="icon" />
                   Home
                 </Nav.Link>
               </Link>
-              <Nav.Link href="#action1" className="icon-word">
-                <FaUserFriends className="icon" /> My Network
-              </Nav.Link>
-              <Nav.Link href="#action1" className="icon-word">
-                <BsBriefcaseFill className="icon" />
-                Jobs
-              </Nav.Link>
-              <Nav.Link href="#action1" className="icon-word">
-                <RiMessage3Line className="icon" />
-                Messaging
-              </Nav.Link>
-              <Nav.Link href="#action1" className="icon-word">
-                <FaBell className="icon" />
-                Notifications
-              </Nav.Link>
+              <Link to={"/"}>
+                <Nav.Link href="#action1" className="icon-word">
+                  <FaUserFriends className="icon" /> My Network
+                </Nav.Link>
+              </Link>
+              <Link to={"/"}>
+                <Nav.Link href="#action1" className="icon-word">
+                  <BsBriefcaseFill className="icon" />
+                  Jobs
+                </Nav.Link>
+              </Link>
+              <Link to={"/"}>
+                <Nav.Link href="#action1" className="icon-word">
+                  <RiMessage3Line className="icon" />
+                  Messaging
+                </Nav.Link>
+              </Link>
+              <Link to={"/"}>
+                <Nav.Link href="#action1" className="icon-word">
+                  <FaBell className="icon" />
+                  Notifications
+                </Nav.Link>
+              </Link>
 
               <NavDropdown
                 title={
