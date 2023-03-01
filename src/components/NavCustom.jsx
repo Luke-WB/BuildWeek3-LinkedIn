@@ -119,11 +119,13 @@ function OffCanvasExample({ name, ...props }, prop) {
                 id="navbarScrollingDropdown"
                 className="icon-word"
               >
-                <div className="text-center d-flex justify-content-center">
-                  <Button variant="green w-100 py-0" id="bottoncino">
-                    View Profile
-                  </Button>
-                </div>
+<Link to={"/"}>
+                  <div className="text-center d-flex justify-content-center">
+                    <Button variant="green w-100 py-0" id="bottoncino">
+                      View Profile
+                    </Button>
+                  </div>
+</Link>
 
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action3">

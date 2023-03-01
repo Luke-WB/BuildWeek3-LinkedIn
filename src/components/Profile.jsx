@@ -70,7 +70,7 @@ const Profile = () => {
   // console.log("random number");
   useEffect(() => {
     dispatch(fetchProfile(token));
-  }, [fetched]);
+  }, [modified]);
 
   const showExp = useSelector((state) => state.profile.showExp);
   const toggleModal = (param) => {
