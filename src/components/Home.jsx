@@ -5,6 +5,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { MdPhotoSizeSelectActual } from "react-icons/md";
 import { BsFillPlayBtnFill, BsCalendarDay } from "react-icons/bs";
 import { MdArticle } from "react-icons/md";
+import HomeProfile from "./HomeProfile";
 
 const Home = () => {
   // profile fetch
@@ -26,12 +27,7 @@ const Home = () => {
       <Container>
         <Row>
           <Col xs={5}>
-            <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
-              <div
-                className="my-2 mx-4"
-                style={{ backgroundColor: "red", height: "1000px" }}
-              ></div>
-            </div>
+            <HomeProfile/>
           </Col>
           <Col xs={7}>
             <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
