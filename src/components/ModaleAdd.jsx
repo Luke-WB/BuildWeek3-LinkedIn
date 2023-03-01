@@ -11,14 +11,6 @@ function ModaleAdd(props) {
     description: "",
     area: "",
   };
-  /*   const experiences = {
-    role: "POSTMAN",
-    company: "POST",
-    startDate: "1700-06-16",
-    endDate: null,
-    description: "TOP secret",
-    area: "Berlin",
-  }; */
 
   const [objExp, setObjExp] = useState(addExperience);
 
@@ -26,6 +18,7 @@ function ModaleAdd(props) {
     setObjExp((prev) => ({ ...prev, [field]: value }));
   };
   console.log(objExp);
+
   async function ipipipip() {
     const urlToFetch = "https://striveschool-api.herokuapp.com/api/profile/63fe5220579c6300137cf956npm/experiences";
     try {
@@ -174,7 +167,12 @@ function ModaleAdd(props) {
         </div>
       </Modal.Body>
       <Modal.Footer className="d-flex justify-content-end">
-        <Button className="proOpenTo" onClick={() => {return ipipipip(), props.render()}}>
+        <Button
+          className="proOpenTo"
+          onClick={() => {
+            return ipipipip(), props.render(), props.onHide;
+          }}
+        >
           Save
         </Button>
       </Modal.Footer>
