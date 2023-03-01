@@ -23,7 +23,7 @@ function App() {
               <Routes>
                 <Route path="/profile" element={<Profile />} />
                 <Route path="user/:userID" element={<NewPerson />} />
-                <Route path="/home" element={<Home />} />
+                <Route path="/" element={<Home />} />
               </Routes>
             </Col>
             <Col xs={12} lg={3}>
