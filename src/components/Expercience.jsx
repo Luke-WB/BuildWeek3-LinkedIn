@@ -3,6 +3,7 @@ import { Button, Modal, Row, Col, Form } from "react-bootstrap"
 import { BiPencil } from "react-icons/bi"
 import { BsPlusLg } from "react-icons/bs"
 import logo from "../assets/management-suitcase-icon-outline-work-job-vector.jpg"
+import HomeProfile from "./HomeProfile"
 import Modale from "./Modale"
 import ModaleAdd from "./ModaleAdd"
 
@@ -45,6 +46,9 @@ const Exprience = (props) => {
             </div>
           </Col>
         </Row>
+      </div>
+      <div>
+        <HomeProfile />
       </div>
     </>
   )
