@@ -68,6 +68,25 @@ a#navbarScrollingDropdown {
   border: solid 4px white;
 }
 
+.postModBar {
+  height: 55px;
+  width: 100%;
+  border-radius: 60px;
+}
+
+.postModText {
+position: absolute;
+  top: 50%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.greyHover:hover {
+  background-color: #EBEBEB;
+}
+
 // button setting profile component
 
 .proOpenTo {
@@ -103,6 +122,20 @@ a#navbarScrollingDropdown {
   color: #5e5e5e !important;
   outline: #5e5e5e 1px solid !important;
   background-color: #ebebeb !important;
+}
+
+.proDelete {
+  border-radius: 30px !important;
+  padding: 5px 15px !important;
+  color: white !important;
+  background-color: #e63238;
+  border: #e63238 solid 1px !important;
+}
+
+.proDelete:hover {
+  box-sizing: border-box;
+  color: white !important;
+  background-color: #c70c12 !important;
 }
 
 // font setting profile component
@@ -176,4 +209,52 @@ a {
 
 #bottoneModale:focus {
   box-shadow: 1px 1px 1px 1px black;
+}
+
+.eccolo {
+  // width: 90px;
+  position: relative;
+  top: -35px;
+}
+#photo {
+  width: 75px;
+  height: 75px;
+  // padding: 3px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.topCard {
+  border-bottom: 1px solid black;
+}
+
+.square {
+  width: 15px;
+  height: 15px;
+  background: rgb(248, 199, 126);
+  background: -moz-linear-gradient(52deg, rgba(248, 199, 126, 1) 50%, rgba(255, 224, 179, 1) 50%);
+  background: -webkit-linear-gradient(52deg, rgba(248, 199, 126, 1) 50%, rgba(255, 224, 179, 1) 50%);
+  background: linear-gradient(52deg, rgba(248, 199, 126, 1) 50%, rgba(255, 224, 179, 1) 50%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f8c77e",endColorstr="#ffe0b3",GradientType=1);
+  margin-right: 3px;
+  border-radius: 10%;
+}
+
+.copert {
+  height: 100px;
+  object-fit: cover;
+}
+
+.tratto {
+  margin: 0px 0px 16px;
+}
+
+.grigio:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+.divPost {
+  height: 55px;
+  width: 100%;
+  background-color: lightgray;
 }

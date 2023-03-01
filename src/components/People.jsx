@@ -47,7 +47,7 @@ export default function People() {
 
   return (
     <div
-      className="bg-light rounded-4d-flex flex-column align-items-center my-4 rounded-4"
+      className="bg-light rounded-4d-flex flex-column align-items-center my-4 rounded-3"
       style={{ border: "solid 1px rgba(176, 176, 176, 0.5)" }}
     >
       <h5 className="m-4">
