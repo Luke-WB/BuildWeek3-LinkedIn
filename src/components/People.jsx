@@ -22,6 +22,7 @@ export default function People() {
         });
         if (response.ok) {
           let data = await response.json();
+          console.log("arrayPeople", data);
           setPeopleFetched(data);
           setLoading(false);
         }
@@ -56,7 +57,7 @@ export default function People() {
         {loading ? (
           <Spinner animation="border" variant="primary" className="m-auto my-5" />
         ) : (
-          peopleToRender.map((el) => <SinglePerson personInfo={el} />)
+          peopleToRender.map((el, i) => <SinglePerson personInfo={el} key={i} />)
         )}
       </Col>
       <Row>
