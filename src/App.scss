@@ -46,6 +46,10 @@ a#navbarScrollingDropdown {
 
 // profile component Section
 
+.singolaPersona :last-child{
+  border-bottom: none !important;
+}
+
 .proCard {
   overflow: hidden;
   border: solid 1px #e0dfdc;
