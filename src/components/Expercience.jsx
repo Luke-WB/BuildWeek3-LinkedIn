@@ -103,6 +103,7 @@ const Exprience = () => {
             delete={deleteExperience}
             render={getExp}
             put={putExperience}
+            obj={experiencesToRender}
             /* handlechange={handleChange} */
           />
 

@@ -17,7 +17,7 @@ function Modale(props) {
               type="email"
               placeholder="Ex: Retails Sales Manager"
               required
-              /*        onChange={(e) => props.handlechange("role", e.target.value)} */
+              onChange={(e) => (props.obj.role = e.target.value)}
             />
           </Form.Group>
           <Form.Text className="text-muted">Employment type</Form.Text>
@@ -35,11 +35,21 @@ function Modale(props) {
           <p>Learn more about employment types.</p>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Text className="text-muted">Company name*</Form.Text>
-            <Form.Control type="email" placeholder="Ex: Microsoft" required />
+            <Form.Control
+              type="email"
+              placeholder="Ex: Microsoft"
+              required
+              onChange={(e) => (props.obj.company = e.target.value)}
+            />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Text className="text-muted">Location*</Form.Text>
-            <Form.Control type="email" placeholder="Ex: Lonon, United Kingdom" required />
+            <Form.Control
+              type="email"
+              placeholder="Ex: Lonon, United Kingdom"
+              required
+              onChange={(e) => (props.obj.area = e.target.value)}
+            />
           </Form.Group>
           <Form.Text className="text-muted">Location type</Form.Text>
           <Form.Select aria-label="Default select example">
@@ -55,28 +65,37 @@ function Modale(props) {
           </Form.Group>
           <Form.Text className="text-muted">Start date*</Form.Text>
           <div className="d-flex gap-2 mb-4">
-            <Form.Select aria-label="Mounth">
+            <Form.Select aria-label="Mounth" onChange={(e) => (props.obj.startDate = e.target.value)}>
               <option>Mounth</option>
-              <option value="1">One-site</option>
-              <option value="2">Hybrid</option>
-              <option value="3">Remote</option>
+              <option value="1">Gennaio</option>
+              <option value="2">Febbraio</option>
+              <option value="3">Marzo</option>
+              <option value="4">Aprile</option>
+              <option value="5">Maggio</option>
+              <option value="6">Giugno</option>
+              <option value="7">Luglio</option>
+              <option value="8">Agosto</option>
+              <option value="9">Settembre</option>
+              <option value="10">Ottobre</option>
+              <option value="11">Novembre</option>
+              <option value="12">Dicembre</option>
             </Form.Select>
-            <Form.Select aria-label="Default select example">
+            <Form.Select aria-label="Default select example" onChange={(e) => (props.obj.startDate = e.target.value)}>
               <option>Year</option>
-              <option value="1">2023</option>
-              <option value="2">2022</option>
-              <option value="3">2021</option>
+              <option value="2023">2023</option>
+              <option value="2022">2022</option>
+              <option value="2021">2021</option>
             </Form.Select>
           </div>
           <Form.Text className="text-muted">End date*</Form.Text>
           <div className="d-flex gap-2">
-            <Form.Select aria-label="Mounth">
+            <Form.Select aria-label="Mounth" onChange={(e) => (props.obj.endDate = e.target.value)}>
               <option>Mounth</option>
               <option value="1">One-site</option>
               <option value="2">Hybrid</option>
               <option value="3">Remote</option>
             </Form.Select>
-            <Form.Select aria-label="Default select example">
+            <Form.Select aria-label="Default select example" onChange={(e) => (props.obj.endDate = e.target.value)}>
               <option>Year</option>
               <option value="1">One-site</option>
               <option value="2">Hybrid</option>
@@ -85,7 +104,7 @@ function Modale(props) {
           </div>
           <Form.Group className="my-4" controlId="exampleForm.ControlTextarea1">
             <Form.Text className="text-muted">Description</Form.Text>
-            <Form.Control as="textarea" rows={3} />
+            <Form.Control as="textarea" rows={3} onChange={(e) => (props.obj.description = e.target.value)} />
           </Form.Group>
         </Form>
         <div>
