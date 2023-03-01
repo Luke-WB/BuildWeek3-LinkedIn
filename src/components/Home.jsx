@@ -81,7 +81,7 @@ const Home = () => {
                           writted by{" "}
                           <a href="#">
                             <span className="proBlack proGreyHBlue">
-                              {singPost.user.name}
+                              {singPost.user?.name}
                             </span>
                           </a>
                         </h3>
