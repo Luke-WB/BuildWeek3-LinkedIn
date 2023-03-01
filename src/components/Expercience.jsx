@@ -41,11 +41,11 @@ const Exprience = () => {
 
   return (
     <>
-      <div className="d-flex ">
+      <div className="d-flex">
         <h1 className="mt-2">Experience</h1>
-        <Button className="position-absolute plus" id="bottoneModale" onClick={() => setModalShowPlus(true)}>
+        <div className="matita position-absolute" onClick={() => setModalShowPlus(true)}>
           <BsPlusLg />
-        </Button>
+        </div>
         <ModaleAdd show={modalShowPlus} onHide={() => setModalShowPlus(false)} render={getExp} checking={check}/>
       </div>
       {experiencesToRender.map((el) => (

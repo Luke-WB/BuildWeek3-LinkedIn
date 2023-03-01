@@ -189,19 +189,34 @@ a {
   }
 }
 #bottoneModale {
-  color: black;
-  background-color: transparent;
-  border: 0;
+  // color: black;
+  // background-color: transparent;
+  // border: 0;
 }
 
 #bottoneModale:hover {
-  border: 1px solid black;
+  
 }
 
 .matita {
-  left: 92%;
+  right:5%;
   font-size: 30px;
+  background-color: transparent;
+  border: none;
+  color:#5E5E5E;
+  padding: 2px 10px 5px;
 }
+
+.matita:hover{
+  background-color: #EBEBEB;
+  border-radius: 50%;
+  color:#5E5E5E;
+}
+
+.matita:active{
+  color:black;
+}
+
 .plus {
   left: 92%;
   font-size: 25px;

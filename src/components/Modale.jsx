@@ -56,9 +56,9 @@ function Modale(props) {
 
   return (
     <>
-      <Button className="position-absolute matita" id="bottoneModale" onClick={() => setModalShow(true)}>
+      <div className="position-absolute matita"onClick={() => setModalShow(true)}>
         <BiPencil />
-      </Button>
+      </div>
       <Modal
         show={modalShow}
         onHide={() => setModalShow(false)}
