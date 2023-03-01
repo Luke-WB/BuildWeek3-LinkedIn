@@ -3,13 +3,10 @@ import { BsPlusLg } from "react-icons/bs";
 import ModaleAdd from "./ModaleAdd";
 import { Button, Col, Row } from "react-bootstrap";
 import logo from "../assets/management-suitcase-icon-outline-work-job-vector.jpg";
-import { BiPencil } from "react-icons/bi";
 import Modale from "./Modale";
 
 const Exprience = () => {
   const [modalShowPlus, setModalShowPlus] = useState(false);
-  const [modalShow, setModalShow] = useState(false);
-  const [isDeleted, setISDeleted] = useState(true);
   const [experiencesToRender, setExperiencesToRender] = useState([]);
 
   /*  const handleChange = (field, value) => {
@@ -37,50 +34,9 @@ const Exprience = () => {
     }
   }
 
-  async function deleteExperience(id) {
-    const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences/${id}`;
-    try {
-      await fetch(
-        urlToFetch,
-        {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
-          },
-        },
-        setISDeleted(false),
-        console.log("DELETE", isDeleted)
-      );
-    } catch (error) {
-      console.log("delete", error);
-    }
-  }
-
-  async function putExperience(id) {
-    const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences/${id}`;
-    try {
-      const res = await fetch(urlToFetch, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(experiencesToRender),
-      });
-      if (res.ok) {
-        let modifica = await res.json();
-        console.log("PUT", modifica);
-      } else {
-        console.log("error");
-      }
-    } catch (error) {
-      alert(error);
-    }
-  }
-
   useEffect(() => {
     getExp();
-  }, [isDeleted]);
+  }, []);
 
   return (
     <>
@@ -93,16 +49,10 @@ const Exprience = () => {
       </div>
       {experiencesToRender.map((el) => (
         <div key={el._id}>
-          <Button className="position-absolute matita" id="bottoneModale" onClick={() => setModalShow(true)}>
-            <BiPencil />
-          </Button>
           <Modale
-            show={modalShow}
             id={el._id}
-            onHide={() => setModalShow(false)}
-            delete={deleteExperience}
             render={getExp}
-            put={putExperience}
+
             /* handlechange={handleChange} */
           />
 
