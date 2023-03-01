@@ -19,7 +19,7 @@ function ModaleAdd(props) {
   };
   console.log(objExp);
 
-  async function ipipipip() {
+  async function postExperience() {
     const urlToFetch = "https://striveschool-api.herokuapp.com/api/profile/63fe5220579c6300137cf956npm/experiences";
     try {
       const res = await fetch(urlToFetch, {
@@ -170,7 +170,7 @@ function ModaleAdd(props) {
         <Button
           className="proOpenTo"
           onClick={() => {
-            return ipipipip(), props.render(), props.onHide;
+            return postExperience(), props.render(), props.onHide;
           }}
         >
           Save

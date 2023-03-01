@@ -13,7 +13,12 @@ function Modale(props) {
           <Form.Text className="text-muted">* Indicates required</Form.Text>
           <Form.Group className="mb-3 mt-4" controlId="formBasicEmail">
             <Form.Text className="text-muted">Title*</Form.Text>
-            <Form.Control type="email" placeholder="Ex: Retails Sales Manager" required />
+            <Form.Control
+              type="email"
+              placeholder="Ex: Retails Sales Manager"
+              required
+              /*        onChange={(e) => props.handlechange("role", e.target.value)} */
+            />
           </Form.Group>
           <Form.Text className="text-muted">Employment type</Form.Text>
           <Form.Select aria-label="Default select example">
@@ -110,7 +115,12 @@ function Modale(props) {
         >
           Delete experience
         </Button>
-        <Button className="proOpenTo" onClick={props.onHide}>
+        <Button
+          className="proOpenTo"
+          onClick={() => {
+            return props.put(props.id), props.onHide;
+          }}
+        >
           Save
         </Button>
       </Modal.Footer>
