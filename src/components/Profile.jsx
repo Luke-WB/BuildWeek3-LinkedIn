@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import { Button, Form, Modal } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
-import { fetchProfile } from "../redux/actions"
+import { fetchProfile, showModalExp } from "../redux/actions"
 import { HiUsers } from "react-icons/hi"
 import { AiOutlineArrowRight, AiFillEye } from "react-icons/ai"
-import { BiSearch } from "react-icons/bi"
+import { BiSearch, BiPencil } from "react-icons/bi"
 import { FaSatelliteDish } from "react-icons/fa"
 import Exprience from "./Expercience"
+import ModalEsperience from "../components/ModalExperience"
 
 const Profile = () => {
   /* MODALE*/
@@ -22,6 +23,11 @@ const Profile = () => {
   }, [])
   // console.log(myProfile);
   console.log("random number")
+
+  const toggleModal = (showExp) => {
+    dispatch(showModalExp(showExp));
+  }
+
   return (
     <>
       <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
@@ -225,6 +231,7 @@ const Profile = () => {
         </div>
         <BiPencil className="position-absolute top-0 end-0 m-4" onClick={() => toggleModal()}/>
         <ModalEsperience/>
+        >
       </div>
 
       <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
