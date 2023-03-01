@@ -45,12 +45,7 @@ const Exprience = () => {
       </div>
       {experiencesToRender.map((el) => (
         <div key={el._id}>
-          <Modale
-            id={el._id}
-            render={getExp}
-
-            /* handlechange={handleChange} */
-          />
+          <Modale id={el._id} render={getExp} />
 
           <Row>
             <Col ms={6} md={3}>
