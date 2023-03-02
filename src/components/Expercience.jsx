@@ -27,6 +27,7 @@ const Exprience = () => {
       if (response.ok) {
         const data = await response.json();
         setExperiencesToRender(data);
+        console.log(data);
       } else {
         alert("Error fetching results");
       }
@@ -55,7 +56,7 @@ const Exprience = () => {
             <Col ms={6} md={3}>
               <div className="parteUno ">
                 <img
-                  src={logo}
+                  src={el.image? el.image : logo }
                   alt="pic-job"
                   style={{
                     width: "70px",

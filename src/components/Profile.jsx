@@ -10,15 +10,12 @@ import { FaSatelliteDish } from "react-icons/fa";
 import Exprience from "./Expercience";
 import ModalEsperience from "../components/ModalExperience";
 import Home from "./Home";
-import { Link } from "react-router-dom";
 
 const Profile = () => {
   /* MODALE*/
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  const post = useSelector((state) => state.profile.post);
 
   const token = useSelector((state) => state.profile.token);
   const myProfile = useSelector((state) => state.profile.profile);
@@ -41,8 +38,12 @@ const Profile = () => {
   const [fetched, setFetched] = useState(false);
 
   function check() {
-    setFetched((prevState) => !prevState);
+    setFetched((prevState) => !prevState)
   }
+
+  const post = useSelector((state) => state.profile.post);
+
+
 
   useEffect(() => {
     console.log("MODIFIED", modified);
@@ -60,6 +61,7 @@ const Profile = () => {
         });
         if (res.ok) {
           console.log(res);
+        } else {
         }
       } catch (error) {
         alert(error);
@@ -68,11 +70,11 @@ const Profile = () => {
     ipipipip();
   }, [modified]);
 
-  // console.log(myProfile);
+   console.log(myProfile);
   // console.log("random number");
   useEffect(() => {
     dispatch(fetchProfile(token));
-  }, [modified]);
+  }, [fetched]);
 
   const showExp = useSelector((state) => state.profile.showExp);
   const toggleModal = (param) => {
@@ -95,14 +97,19 @@ const Profile = () => {
         <a href="#">
           <img
             className="rounded-circle position-absolute proAbsolute"
-            src={"https://i.pinimg.com/736x/65/91/a0/6591a0cdc097b089c2b329d1feddee54.jpg"}
+            src={myProfile.image}
             alt="immagine profilo"
           />
         </a>
-        <div className="mt-5 mx-4">
-          <div className="matita position-absolute" onClick={handleShow}>
+        <div className="mt-5 mx-4" style={{ position: "relative" }}>
+          <Button
+            className="matita"
+            style={{ position: "absolute", top: "-33px", left: "720px" }}
+            id="bottoneModale"
+            onClick={handleShow}
+          >
             <BiPencil />
-          </div>
+          </Button>
 
           <h2 className="mt-2 mb-0">
             {myProfile.name} {myProfile.surname}
@@ -322,59 +329,25 @@ const Profile = () => {
         <ModalEsperience />
       </div> */}
 
-      <div className="bg-light rounded-3 position-relative proCard my-4">
+      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
           <h2 className="my-0">Activity</h2>
           <a href="#">
             <div className="proBlue my-0">{Math.floor(Math.random() * 100)} connection</div>
           </a>
-          <div className="proBlack prosmall proLight mt-2">
-            {post &&
-              post
-                .filter(
-                  (postunfiltered) => postunfiltered.user?._id === myProfile.id
-                )
-                .slice(0, 3)
-                .map((postfultered, i) => {
-                  return (
-                    <>
-                      <div className="my-2w-100" style={{borderBottom:"1px solid grey"}}>
-                        <h3 className="proBlack my-2">
-                          writted by{" "}
-                          <Link to={`/user/${postfultered.user?._id}`}>
-                            <span className="proBlack proGreyHBlue">
-                              {postfultered.username}
-                            </span>
-                          </Link>
-                        </h3>
-                        <div className="my-2 me-5">
-                          <span className="proGrey proBlack proLight proSmall proNormal">
-                            {postfultered.text}
-                          </span>
-                        </div>
-                        <div className="proSmall proLight">
-                          edited: {postfultered.updatedAt.slice(0, 10)}
-                        </div>
-                        <Button
-                          className="proModProfile me-3 my-3"
-                          variant="outline-primary"
-                        >
-                          Add
-                        </Button>
-                        <Button className="proDelete" variant="danger">
-                          Delete
-                        </Button>
-                      </div>
-                    </>
-                  );
-                })}
-          </div>
+          <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
         </div>
       </div>
 
       <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
           <h2 className="my-0">Interest</h2>
+          <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
+        </div>
+      </div>
+      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
+        <div className="my-4 mx-4">
+          <h2 className="my-0">Education</h2>
           <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
         </div>
       </div>
