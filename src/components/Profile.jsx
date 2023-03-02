@@ -7,9 +7,10 @@ import { BsFillInfoSquareFill } from "react-icons/bs";
 import { fetchProfile, showModalExp } from "../redux/actions";
 import { BiSearch, BiPencil } from "react-icons/bi";
 import { FaSatelliteDish } from "react-icons/fa";
-import Exprience from "./Expercience";
 import ModalEsperience from "../components/ModalExperience";
 import Home from "./Home";
+import { Link } from "react-router-dom";
+import Experience from "./Experience";
 
 const Profile = () => {
   /* MODALE*/
@@ -347,13 +348,7 @@ const Profile = () => {
       </div>
       <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
-          <h2 className="my-0">Education</h2>
-          <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
-        </div>
-      </div>
-      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
-        <div className="my-4 mx-4">
-          <Exprience />
+          <Experience />
         </div>
       </div>
     </>

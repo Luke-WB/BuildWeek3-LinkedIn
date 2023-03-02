@@ -116,25 +116,8 @@ const Home = () => {
                     <span className="postModText me-3">Start a post</span>
                   </span>
 
-                  <ModalePost handleClose={handleClose} show={show} check={check}/>
-                  {/* <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
-                      <Modal.Title>Create a post</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body className="d-flex flex-column">
-                      <Form.Control as="textarea" rows={3} onChange={(e) => handleChange("text", e.target.value)} />
-                      <Button
-                        variant="primary"
-                        onClick={() => {
-                          postPost();
-                          handleClose();
-                          check();
-                        }}
-                      >
-                        Save Changes
-                      </Button>
-                    </Modal.Body>
-                  </Modal> */}
+                  <ModalePost handleClose={handleClose} show={show} check={check}/>      
+                              
                 </div>
                 <div className="d-flex justify-content-evenly my-2 mx-4">
                   <div className="greyHover rounded-2 me-2 px-2 py-3">
