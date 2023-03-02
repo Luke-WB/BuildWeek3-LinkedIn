@@ -12,6 +12,9 @@ function ModaleAdd(props) {
     area: "",
   };
 
+  /*  const [fd, setFd] = useState([]);
+  console.log("okokokokok", fd); */
+
   const [objExp, setObjExp] = useState(addExperience);
 
   const handleChange = (field, value) => {

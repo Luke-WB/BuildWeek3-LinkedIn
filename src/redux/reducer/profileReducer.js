@@ -1,4 +1,4 @@
-import { CARICA_FETCH, HOME_FETCH, IS_LOADING } from "../actions";
+import { CARICA_FETCH, HOME_FETCH, IS_LOADING, REVERSE } from "../actions";
 import { SET_SHOW_EXP } from "../actions";
 
 const initialState = {

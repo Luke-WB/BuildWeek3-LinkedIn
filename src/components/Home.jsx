@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchHome, fetchProfile } from "../redux/actions";
+import { fetchHome, fetchProfile, reversed } from "../redux/actions";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { MdPhotoSizeSelectActual } from "react-icons/md";
 import { BsFillPlayBtnFill, BsCalendarDay } from "react-icons/bs";
@@ -32,10 +32,18 @@ const Home = () => {
   }, []);
 
   // post fetch
+
+  const [rendered, setRendered] = useState(false);
+
+  function check() {
+    setRendered((prevState) => !prevState);
+  }
+
   const post = useSelector((state) => state.profile.post);
   useEffect(() => {
-    dispatch(fetchHome(token));
-  }, []);
+    /* dispatch(fetchHome(token)); */
+    dispatch(reversed(token));
+  }, [rendered]);
 
   async function postPost() {
     const urlToFetch = "https://striveschool-api.herokuapp.com/api/posts/";
@@ -100,6 +108,7 @@ const Home = () => {
                         onClick={() => {
                           postPost();
                           handleClose();
+                          check();
                         }}
                       >
                         Save Changes
@@ -125,38 +134,9 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              {newPost.map((singPost, i) => {
-                return (
-                  <>
-                    <div
-                      key={i + "post"}
-                      className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4"
-                    >
-                      <div className="my-2 mx-4">
-                        <h3 className="proBlack my-2">
-                          writted by{" "}
-                          <Link to={`/user/${singPost.user?._id}`}>
-                            <span className="proBlack proGreyHBlue">{singPost.user?.name}</span>
-                          </Link>
-                        </h3>
-                        <div className="my-2 me-5">
-                          <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
-                        </div>
-                        <div className="proSmall proLight">edited: {singPost.updatedAt.slice(0, 10)}</div>
-                        <Button className="proModProfile me-3 my-3" variant="outline-primary">
-                          Add
-                        </Button>
-                        <Button className="proDelete" variant="danger">
-                          Delete
-                        </Button>
-                      </div>
-                    </div>
-                  </>
-                );
-              })}
               {post
-                .filter((postUnfilt, h) => h > 2800 && postUnfilt.text.length > 10)
-                .slice(0, 10)
+                /* .filter((postUnfilt) => postUnfilt.text.length > 10) */
+                .slice(0, 100)
                 .map((singPost, i) => {
                   return (
                     <>
