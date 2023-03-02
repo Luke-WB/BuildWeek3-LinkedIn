@@ -28,7 +28,7 @@ const Home = () => {
   const loading = useSelector((state) => state.profile.loading);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchProfile(token));
+    dispatch(fetchProfile());
   }, []);
 
   // post fetch
@@ -97,12 +97,12 @@ const Home = () => {
       },
     });
   };
-  const handleFile = (ev) => {
+  const handleFile = (ev, type) => {
     setFd((prev) => {
       console.log(ev.target.files[0]);
       //per cambiare i formData, bisogna "appendere" una nuova coppia chiave/valore, usando il metodo .append()
-      prev.delete("post"); //ricordatevi di svuotare il FormData prima :)
-      prev.append("post", ev.target.files[0]); //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
+      prev.delete(type); //ricordatevi di svuotare il FormData prima :)
+      prev.append(type, ev.target.files[0]); //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
       console.log(prev);
       return prev;
     });
@@ -144,7 +144,7 @@ const Home = () => {
                   <form onSubmit={handleSubmit}>
                     <div className="greyHover rounded-2 me-2 px-2 py-3">
                       <MdPhotoSizeSelectActual className="fs-4 text-primary me-2" /> Photo
-                      <input type="file" onChange={handleFile} accept=".jpg" />
+                      <input type="file" onChange={(ev) => handleFile(ev, "post")} accept=".jpg" />
                       <button>SEND</button>
                     </div>
                   </form>
@@ -186,17 +186,26 @@ const Home = () => {
                             </div>
                           </div>
                           <div className="proSmall proLight">edited: {singPost.updatedAt.slice(0, 10)}</div>
-                          {singPost.user._id === `63fc6fa3f193e60013807f59` ? <> <Button className="proModProfile me-3 my-3" variant="outline-primary">
-                               Add
-                             </Button>
-                             <Button className="proDelete" variant="danger"onClick={() => {
-                               deletePost(singPost._id);
-                               check()
-                             }}>
-                               Delete
-                             </Button>                   
-                             </> : <></>
-                             }
+                          {singPost.user._id === `63fc6fa3f193e60013807f59` ? (
+                            <>
+                              {" "}
+                              <Button className="proModProfile me-3 my-3" variant="outline-primary">
+                                Add
+                              </Button>
+                              <Button
+                                className="proDelete"
+                                variant="danger"
+                                onClick={() => {
+                                  deletePost(singPost._id);
+                                  check();
+                                }}
+                              >
+                                Delete
+                              </Button>
+                            </>
+                          ) : (
+                            <></>
+                          )}
                         </div>
                       </>
                     );
