@@ -137,7 +137,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              {post
+              {post && post
                 /* .filter((postUnfilt) => postUnfilt.text.length > 10) */
                 .slice(0, 50)
                 .map((singPost, i) => {
