@@ -76,12 +76,45 @@ const Home = () => {
         headers: {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
         },
+<<<<<<< HEAD
       })
+=======
+      });
+>>>>>>> fbe1bb599d0898e56d612cafdcec07fba3d7998b
     } catch (error) {
       console.log("delete", error)
     }
   }
 
+<<<<<<< HEAD
+=======
+  const [fd, setFd] = useState(new FormData()); //FormData e' una classe usata per raccogliere dati non stringa dai form
+  //E' formata da coppie chiave/valore => ["post", File], ["exp", File]
+  const handleSubmit = async (ev) => {
+    ev.preventDefault();
+    let res = await fetch("https://striveschool-api.herokuapp.com/api/posts/64008cfc035832001350bcd7", {
+      //qui l'id andra' sostituito con un id DINAMICO!!!!!
+      method: "POST",
+      body: fd, //non serve JSON.stringify
+      headers: {
+        //NON serve ContentType :)
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs",
+      },
+    });
+  };
+  const handleFile = (ev) => {
+    setFd((prev) => {
+      console.log(ev.target.files[0]);
+      //per cambiare i formData, bisogna "appendere" una nuova coppia chiave/valore, usando il metodo .append()
+      prev.delete("post"); //ricordatevi di svuotare il FormData prima :)
+      prev.append("post", ev.target.files[0]); //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
+      console.log(prev);
+      return prev;
+    });
+  };
+
+>>>>>>> fbe1bb599d0898e56d612cafdcec07fba3d7998b
   return (
     <>
       {loading ? (
@@ -115,9 +148,13 @@ const Home = () => {
                   <ModalePost handleClose={handleClose} show={show} check={check} />
                 </div>
                 <div className="d-flex justify-content-evenly my-2 mx-4">
-                  <div className="greyHover rounded-2 me-2 px-2 py-3">
-                    <MdPhotoSizeSelectActual className="fs-4 text-primary me-2" /> Photo
-                  </div>
+                  <form onSubmit={handleSubmit}>
+                    <div className="greyHover rounded-2 me-2 px-2 py-3">
+                      <MdPhotoSizeSelectActual className="fs-4 text-primary me-2" /> Photo
+                      <input type="file" onChange={handleFile} accept=".jpg" />
+                      <button>SEND</button>
+                    </div>
+                  </form>
                   <div className="greyHover rounded-2 me-2 px-2 py-3">
                     <BsFillPlayBtnFill className="fs-4 text-success me-2" />
                     Video
@@ -167,8 +204,13 @@ const Home = () => {
                                     className="proDelete"
                                     variant="danger"
                                     onClick={() => {
+<<<<<<< HEAD
                                       deletePost(singPost._id)
                                       check()
+=======
+                                      deletePost(singPost._id);
+                                      check();
+>>>>>>> fbe1bb599d0898e56d612cafdcec07fba3d7998b
                                     }}
                                   >
                                     Delete
@@ -181,7 +223,11 @@ const Home = () => {
                           </div>
                         </div>
                       </>
+<<<<<<< HEAD
                     )
+=======
+                    );
+>>>>>>> fbe1bb599d0898e56d612cafdcec07fba3d7998b
                   })}
             </Col>
           </Row>
