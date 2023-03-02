@@ -86,7 +86,7 @@ const Home = () => {
   //E' formata da coppie chiave/valore => ["post", File], ["exp", File]
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    let res = await fetch("https://striveschool-api.herokuapp.com/api/posts/64008cfc035832001350bcd7", {
+    let res = await fetch("https://striveschool-api.herokuapp.com/api/posts/6400dc4f035832001350be4e", {
       //qui l'id andra' sostituito con un id DINAMICO!!!!!
       method: "POST",
       body: fd, //non serve JSON.stringify
