@@ -46,6 +46,10 @@ a#navbarScrollingDropdown {
 
 // profile component Section
 
+.singolaPersona :last-child {
+  border-bottom: none !important;
+}
+
 .proCard {
   overflow: hidden;
   border: solid 1px #e0dfdc;
@@ -66,6 +70,25 @@ a#navbarScrollingDropdown {
   top: 100px;
   left: 25px;
   border: solid 4px white;
+}
+
+.postModBar {
+  height: 55px;
+  width: 100%;
+  border-radius: 60px;
+}
+
+.postModText {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.greyHover:hover {
+  background-color: #ebebeb;
 }
 
 // button setting profile component
@@ -105,6 +128,20 @@ a#navbarScrollingDropdown {
   background-color: #ebebeb !important;
 }
 
+.proDelete {
+  border-radius: 30px !important;
+  padding: 5px 15px !important;
+  color: white !important;
+  background-color: #e63238;
+  border: #e63238 solid 1px !important;
+}
+
+.proDelete:hover {
+  box-sizing: border-box;
+  color: white !important;
+  background-color: #c70c12 !important;
+}
+
 // font setting profile component
 
 .proBlack {
@@ -117,6 +154,18 @@ a#navbarScrollingDropdown {
 
 .proLight {
   font-weight: 300;
+}
+
+.proMiddle {
+  font-weight: 500;
+}
+
+.proBold {
+  font-weight: 700;
+}
+
+.proVerySmall {
+  font-size: 13px;
 }
 
 .proSmall {
@@ -155,25 +204,176 @@ a {
     font-weight: 500;
   }
 }
-#bottoneModale {
-  color: black;
-  background-color: transparent;
-  border: 0;
-}
-
-#bottoneModale:hover {
-  border: 1px solid black;
-}
 
 .matita {
-  left: 92%;
+  right: 5%;
   font-size: 30px;
+  background-color: transparent;
+  border: none;
+  color: #5e5e5e;
+  padding: 2px 10px 5px;
 }
+
+.matita:hover {
+  background-color: #ebebeb;
+  border-radius: 50%;
+  color: #5e5e5e;
+}
+
+.matita:active {
+  color: black;
+}
+
 .plus {
-  left: 85%;
+  left: 92%;
   font-size: 25px;
 }
 
-#bottoneModale:focus {
-  box-shadow: 1px 1px 1px 1px black;
+.eccolo {
+  top: -50px;
+}
+
+#photo {
+  width: 75px;
+  height: 75px;
+  // padding: 3px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.topCard {
+  border-bottom: 1px solid black;
+}
+
+.square {
+  width: 15px;
+  height: 15px;
+  background: rgb(248, 199, 126);
+  background: -moz-linear-gradient(
+    52deg,
+    rgba(248, 199, 126, 1) 50%,
+    rgba(255, 224, 179, 1) 50%
+  );
+  background: -webkit-linear-gradient(
+    52deg,
+    rgba(248, 199, 126, 1) 50%,
+    rgba(255, 224, 179, 1) 50%
+  );
+  background: linear-gradient(
+    52deg,
+    rgba(248, 199, 126, 1) 50%,
+    rgba(255, 224, 179, 1) 50%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f8c77e",endColorstr="#ffe0b3",GradientType=1);
+  margin-right: 3px;
+  border-radius: 10%;
+}
+
+.copert {
+  height: 100px;
+  object-fit: cover;
+}
+
+.tratto {
+  margin: 0px 0px 16px;
+}
+
+.grigio:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+.divPost {
+  height: 55px;
+  width: 100%;
+  background-color: lightgray;
+}
+
+[contentEditable="true"]:empty:not(:focus):before {
+  content: attr(data-placeholder);
+  color: #bababa;
+}
+
+// Modal section
+
+.modalTitle {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.modalColor {
+  color: #404040;
+}
+
+.modalIcon {
+  color: #666666;
+}
+
+.modaltextArea {
+  border: 0px !important;
+  resize: none;
+}
+
+.modaltextArea:focus {
+  box-shadow: none !important;
+  resize: none;
+}
+
+.modalOrrBar {
+  border-left: 1px rgb(220, 220, 220) solid;
+  height: 100%;
+  width: 1px;
+  margin: 5px;
+}
+.messageTrans {
+transform: translate(-5px,0);
+}
+
+.iconSmile {
+  padding: 8px 0px 8px 0px;
+  font-size: 40px !important;
+  font-weight: 500 !important;
+  color: #666666;
+}
+
+.iconSmile:hover {
+  border-radius: 50%;
+  background-color: #ebebeb;
+  padding: 8px 0px 8px 0px;
+}
+
+.modalHGrey {
+  padding: 8px 0px 8px 0px;
+}
+
+.modalHGrey:hover {
+  border-radius: 50%;
+  background-color: #ebebeb;
+  padding: 8px 0px 8px 0px;
+}
+
+.modalHoverText {
+  border-radius: 30px !important;
+  padding: 8px 15px !important;
+}
+
+.modalHoverText:hover {
+  background-color: #ebebeb !important;
+  border-radius: 30px !important;
+  padding: 8px 15px !important;
+}
+
+.proOpenTo:disabled  {
+  background-color: #ebebeb;
+  color: #666666;
+  border: transparent;
+}
+
+.homeModalH {
+  padding: 8px 12px 8px 12px;
+}
+
+.homeModalH:hover {
+  border-radius: 50%;
+  background-color: #ebebeb;
+  padding: 8px 12px 8px 12px;
 }

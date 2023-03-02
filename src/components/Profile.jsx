@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProfile } from "../redux/actions";
 import { HiUsers } from "react-icons/hi";
 import { AiOutlineArrowRight, AiFillEye } from "react-icons/ai";
-import { BiSearch } from "react-icons/bi";
-import { FaSatelliteDish } from "react-icons/fa";
-import Exprience from "./Expercience";
-import { BiPencil } from "react-icons/bi";
 import { BsFillInfoSquareFill } from "react-icons/bs";
+import { fetchProfile, showModalExp } from "../redux/actions";
+import { BiSearch, BiPencil } from "react-icons/bi";
+import { FaSatelliteDish } from "react-icons/fa";
+import ModalEsperience from "../components/ModalExperience";
+import Home from "./Home";
+import { Link } from "react-router-dom";
+import Experience from "./Experience";
+
 const Profile = () => {
   /* MODALE*/
   const [show, setShow] = useState(false);
@@ -35,6 +38,14 @@ const Profile = () => {
   const [modified, setModified] = useState(null);
   const [fetched, setFetched] = useState(false);
 
+  function check() {
+    setFetched((prevState) => !prevState)
+  }
+
+  const post = useSelector((state) => state.profile.post);
+
+
+
   useEffect(() => {
     console.log("MODIFIED", modified);
     //dispatch(changeProfile(myProfile._id, "PUT", obj));
@@ -51,9 +62,6 @@ const Profile = () => {
         });
         if (res.ok) {
           console.log(res);
-          setFetched(true);
-          let profile = await res.json();
-          console.log("testPUT", profile);
         } else {
         }
       } catch (error) {
@@ -63,15 +71,20 @@ const Profile = () => {
     ipipipip();
   }, [modified]);
 
-  // console.log(myProfile);
+   console.log(myProfile);
   // console.log("random number");
   useEffect(() => {
     dispatch(fetchProfile(token));
-  }, [!fetched]);
+  }, [fetched]);
+
+  const showExp = useSelector((state) => state.profile.showExp);
+  const toggleModal = (param) => {
+    dispatch(showModalExp(param));
+  };
 
   return (
     <>
-      <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
+      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="proImgBarSetting">
           <a href="#">
             <img
@@ -85,16 +98,15 @@ const Profile = () => {
         <a href="#">
           <img
             className="rounded-circle position-absolute proAbsolute"
-            src={"https://i.pinimg.com/736x/65/91/a0/6591a0cdc097b089c2b329d1feddee54.jpg"}
+            src={myProfile.image}
             alt="immagine profilo"
           />
         </a>
-        <div className="mt-5 mx-4" style={{ position: "relative" }}>
+        <div className="mt-5 mx-4">
           <Button
-            className="matita"
-            style={{ position: "absolute", top: "-33px", left: "720px" }}
-            id="bottoneModale"
-            onClick={handleShow}>
+            className="matita position-absolute"
+            onClick={handleShow}
+          >
             <BiPencil />
           </Button>
 
@@ -248,9 +260,12 @@ const Profile = () => {
               <Button
                 variant="primary"
                 className="rounded-5"
-                onClick={() => {
-                  return setModified(obj), fetchProfile(token);
-                }}>
+                onMouseDown={() => {
+                  check();
+                  setModified(obj);
+                  fetchProfile(token);
+                }}
+              >
                 Salva
               </Button>
             </Modal.Footer>
@@ -258,7 +273,7 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
+      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-2 mx-4">
           <h2 className="mt-2 mb-0">Analitics</h2>
           <div className="proGrey proLight proSmall my-0">
@@ -294,14 +309,14 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
+      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
           <h2 className="my-0">About</h2>
           <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
         </div>
       </div>
 
-      <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
+      {/*  <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
           <h2 className="my-0">Experience</h2>
           <a href="#">
@@ -309,9 +324,11 @@ const Profile = () => {
           </a>
           <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
         </div>
-      </div>
+        <BiPencil className="position-absolute top-0 end-0 m-4" onClick={() => toggleModal(showExp)} />
+        <ModalEsperience />
+      </div> */}
 
-      <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
+      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
           <h2 className="my-0">Activity</h2>
           <a href="#">
@@ -321,22 +338,15 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
+      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
           <h2 className="my-0">Interest</h2>
           <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
         </div>
       </div>
-      <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
+      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
-          <h2 className="my-0">Education</h2>
-          <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
-        </div>
-      </div>
-      <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
-        <div className="my-4 mx-4">
-          
-          <Exprience />
+          <Experience />
         </div>
       </div>
     </>
