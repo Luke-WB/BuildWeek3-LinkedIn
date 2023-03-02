@@ -10,12 +10,15 @@ import { FaSatelliteDish } from "react-icons/fa";
 import Exprience from "./Expercience";
 import ModalEsperience from "../components/ModalExperience";
 import Home from "./Home";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   /* MODALE*/
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const post = useSelector((state) => state.profile.post);
 
   const token = useSelector((state) => state.profile.token);
   const myProfile = useSelector((state) => state.profile.profile);
@@ -403,7 +406,7 @@ const Profile = () => {
         <ModalEsperience />
       </div> */}
 
-      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
+      <div className="bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
           <h2 className="my-0">Activity</h2>
           <a href="#">
@@ -411,7 +414,47 @@ const Profile = () => {
               {Math.floor(Math.random() * 100)} connection
             </div>
           </a>
-          <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
+          <div className="proBlack prosmall proLight mt-2">
+            {post &&
+              post
+                .filter(
+                  (postunfiltered) => postunfiltered.user?._id === myProfile.id
+                )
+                .slice(0, 3)
+                .map((postfultered, i) => {
+                  return (
+                    <>
+                      <div className="my-2w-100" style={{borderBottom:"1px solid grey"}}>
+                        <h3 className="proBlack my-2">
+                          writted by{" "}
+                          <Link to={`/user/${postfultered.user?._id}`}>
+                            <span className="proBlack proGreyHBlue">
+                              {postfultered.username}
+                            </span>
+                          </Link>
+                        </h3>
+                        <div className="my-2 me-5">
+                          <span className="proGrey proBlack proLight proSmall proNormal">
+                            {postfultered.text}
+                          </span>
+                        </div>
+                        <div className="proSmall proLight">
+                          edited: {postfultered.updatedAt.slice(0, 10)}
+                        </div>
+                        <Button
+                          className="proModProfile me-3 my-3"
+                          variant="outline-primary"
+                        >
+                          Add
+                        </Button>
+                        <Button className="proDelete" variant="danger">
+                          Delete
+                        </Button>
+                      </div>
+                    </>
+                  );
+                })}
+          </div>
         </div>
       </div>
 
