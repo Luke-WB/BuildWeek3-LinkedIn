@@ -1,11 +1,13 @@
-import { CARICA_FETCH, HOME_FETCH } from "../actions";
-import { SET_SHOW_EXP } from "../actions"
+import { CARICA_FETCH, HOME_FETCH, IS_LOADING } from "../actions";
+import { SET_SHOW_EXP } from "../actions";
 
 const initialState = {
   profile: {},
-  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs",
+  token:
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs",
   showExp: false,
-  post: []
+  post: [],
+  loading: true,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -19,12 +21,17 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         showExp: action.payload,
-      }
+      };
     case HOME_FETCH:
-        return {
-          ...state,
+      return {
+        ...state,
         post: action.payload,
-        }
+      };
+    case IS_LOADING:
+      return {
+        ...state,
+        IS_LOADING: false,
+      };
     default:
       return state;
   }
