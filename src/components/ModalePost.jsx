@@ -1,14 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { HiOutlineClock, HiDocumentText } from "react-icons/hi";
 import { MdPhotoSizeSelectActual } from "react-icons/md";
-import { BsFillPlayBtnFill } from "react-icons/bs";
+import { BsFillPlayBtnFill, BsCaretDownFill, BsThreeDots } from "react-icons/bs";
 import { VscSmiley } from "react-icons/vsc";
-import { BsThreeDots } from "react-icons/bs";
 import { BiMessageRoundedDetail } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProfile } from "../redux/actions";
 
 const ModalePost = ({ show, handleClose, check }) => {
   const dispatch = useDispatch;
@@ -73,11 +71,11 @@ const ModalePost = ({ show, handleClose, check }) => {
             />
           </div>
           <div>
-            <div>
-              {myProfile.name}
-              {myProfile.surname}
+            <div className="proNormal">
+              <span className="me-2">{myProfile.name}</span>
+              <span>{myProfile.surname}</span>
             </div>
-            <Button className="proMore mt-2" variant="outline-primary">Anyone</Button>
+            <Button className="proMore mt-1" variant="outline-primary">Anyone <BsCaretDownFill/></Button>
           </div>
         </div>
         <Form.Control
