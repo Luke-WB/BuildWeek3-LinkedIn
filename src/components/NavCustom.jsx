@@ -1,28 +1,29 @@
-import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas, Card, ListGroup } from "react-bootstrap"
-import logo from "../assets/LinkedIn_logo_initials.png"
-import React, { useState } from "react"
-import { useSelector } from "react-redux"
+import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas, Card, ListGroup } from "react-bootstrap";
+import logo from "../assets/LinkedIn_logo_initials.png";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
-import { FaSearch, FaHome, FaUserFriends, FaBell, FaCompass } from "react-icons/fa"
-import { BsBriefcaseFill, BsGrid3X3GapFill, BsPlayBtnFill } from "react-icons/bs"
-import { CgInsights } from "react-icons/cg"
-import { RiSuitcaseFill, RiAdvertisementLine, RiMessage3Line } from "react-icons/ri"
-import { MdGroups } from "react-icons/md"
-import { TiTick } from "react-icons/ti"
-import { AiOutlinePlus } from "react-icons/ai"
+import { FaSearch, FaHome, FaUserFriends, FaBell, FaCompass } from "react-icons/fa";
+import { BsBriefcaseFill, BsGrid3X3GapFill, BsPlayBtnFill } from "react-icons/bs";
+import { CgInsights } from "react-icons/cg";
+import { RiSuitcaseFill, RiAdvertisementLine, RiMessage3Line } from "react-icons/ri";
+import { MdGroups } from "react-icons/md";
+import { TiTick } from "react-icons/ti";
+import { AiOutlinePlus } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 function OffCanvasExample({ name, ...props }, prop) {
-  const myProfile = useSelector((state) => state.profile.profile)
+  const myProfile = useSelector((state) => state.profile.profile);
 
-  const [show, setShow] = useState(false)
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <Navbar bg="white" expand="lg">
       <Container className="container d-flex justify-content-between align-items-baseline" style={{ padding: "12px" }}>
         <div className="d-flex ">
-          <Navbar.Brand href="#home">
+          <Navbar.Brand>
             <img src={logo} width="35" height="35" className="d-inline-block align-top" alt="React Bootstrap logo" />
           </Navbar.Brand>
           <div className="d-flex">
@@ -35,26 +36,40 @@ function OffCanvasExample({ name, ...props }, prop) {
         <div>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-            <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
-              <Nav.Link href="#action1" className="icon-word">
-                <FaHome className="icon" />
-                Home
-              </Nav.Link>
-              <Nav.Link href="#action1" className="icon-word">
-                <FaUserFriends className="icon" /> My Network
-              </Nav.Link>
-              <Nav.Link href="#action1" className="icon-word">
-                <BsBriefcaseFill className="icon" />
-                Jobs
-              </Nav.Link>
-              <Nav.Link href="#action1" className="icon-word">
-                <RiMessage3Line className="icon" />
-                Messaging
-              </Nav.Link>
-              <Nav.Link href="#action1" className="icon-word">
-                <FaBell className="icon" />
-                Notifications
-              </Nav.Link>
+            <Nav
+              className="me-auto my-2 my-lg-0"
+              style={{ maxHeight: "100px" }}
+              navbarScroll
+            >
+              <Link to={"/"}>
+                <Nav.Link href="#action1" className="icon-word">
+                  <FaHome className="icon" />
+                  Home
+                </Nav.Link>
+              </Link>
+              <Link to={"/"}>
+                <Nav.Link href="#action1" className="icon-word">
+                  <FaUserFriends className="icon" /> My Network
+                </Nav.Link>
+              </Link>
+              <Link to={"/"}>
+                <Nav.Link href="#action1" className="icon-word">
+                  <BsBriefcaseFill className="icon" />
+                  Jobs
+                </Nav.Link>
+              </Link>
+              <Link to={"/"}>
+                <Nav.Link href="#action1" className="icon-word">
+                  <RiMessage3Line className="icon" />
+                  Messaging
+                </Nav.Link>
+              </Link>
+              <Link to={"/"}>
+                <Nav.Link href="#action1" className="icon-word">
+                  <FaBell className="icon" />
+                  Notifications
+                </Nav.Link>
+              </Link>
 
               <NavDropdown
                 title={
@@ -66,11 +81,13 @@ function OffCanvasExample({ name, ...props }, prop) {
                 id="navbarScrollingDropdown"
                 className="icon-word"
               >
-                <div className="text-center d-flex justify-content-center">
-                  <Button variant="green w-100 py-0" id="bottoncino">
-                    View Profile
-                  </Button>
-                </div>
+                <Link to={"/profile"}>
+                  <div className="text-center d-flex justify-content-center">
+                    <Button variant="green w-100 py-0" id="bottoncino">
+                      View Profile
+                    </Button>
+                  </div>
+                </Link>
 
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action3">
@@ -207,7 +224,7 @@ function OffCanvasExample({ name, ...props }, prop) {
         </div>
       </Container>
     </Navbar>
-  )
+  );
 }
 function Example() {
   return (
@@ -216,7 +233,7 @@ function Example() {
         <OffCanvasExample key={idx} placement={placement} name={placement} />
       ))}
     </>
-  )
+  );
 }
 
-export default Example
+export default Example;

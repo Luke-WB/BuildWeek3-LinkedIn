@@ -17,10 +17,9 @@ function ModaleAdd(props) {
   const handleChange = (field, value) => {
     setObjExp((prev) => ({ ...prev, [field]: value }));
   };
-  console.log(objExp);
 
   async function postExperience() {
-    const urlToFetch = "https://striveschool-api.herokuapp.com/api/profile/63fe5220579c6300137cf956npm/experiences";
+    const urlToFetch = "https://striveschool-api.herokuapp.com/api/profile/63fe5220579c6300137cf956/experiences";
     try {
       const res = await fetch(urlToFetch, {
         method: "POST",
@@ -132,15 +131,24 @@ function ModaleAdd(props) {
           <div className="d-flex gap-2">
             <Form.Select aria-label="Mounth" onChange={(e) => handleChange("endDate", e.target.value)}>
               <option>Mounth</option>
-              <option value="1">One-site</option>
-              <option value="2">Hybrid</option>
-              <option value="3">Remote</option>
+              <option value="1">Gennaio</option>
+              <option value="2">Febbraio</option>
+              <option value="3">Marzo</option>
+              <option value="4">Aprile</option>
+              <option value="5">Maggio</option>
+              <option value="6">Giugno</option>
+              <option value="7">Luglio</option>
+              <option value="8">Agosto</option>
+              <option value="9">Settembre</option>
+              <option value="10">Ottobre</option>
+              <option value="11">Novembre</option>
+              <option value="12">Dicembre</option>
             </Form.Select>
             <Form.Select aria-label="Default select example" onChange={(e) => handleChange("endDate", e.target.value)}>
               <option>Year</option>
-              <option value="1">One-site</option>
-              <option value="2">Hybrid</option>
-              <option value="3">Remote</option>
+              <option value="1">2023</option>
+              <option value="2">2022</option>
+              <option value="3">2021</option>
             </Form.Select>
           </div>
           <Form.Group className="my-4" controlId="exampleForm.ControlTextarea1">
@@ -170,7 +178,10 @@ function ModaleAdd(props) {
         <Button
           className="proOpenTo"
           onClick={() => {
-            return postExperience(), props.render(), props.onHide;
+            postExperience();
+            props.render();
+            props.onHide();
+            props.checking();
           }}
         >
           Save
