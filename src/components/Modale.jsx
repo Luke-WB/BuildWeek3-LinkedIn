@@ -31,7 +31,7 @@ function Modale(props) {
     }
   }
 
-  async function putExperience(id) {
+  async function putExperience() {
     const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences/${props.id}`;
     try {
       console.log(newState);
@@ -56,7 +56,7 @@ function Modale(props) {
 
   return (
     <>
-      <div className="position-absolute matita"onClick={() => setModalShow(true)}>
+      <div className="position-absolute matita" onClick={() => setModalShow(true)}>
         <BiPencil />
       </div>
       <Modal

@@ -2,6 +2,7 @@ export const CARICA_FETCH = "CARICA_FETCH";
 export const IS_LOADING = "IS_LOADING";
 export const SET_SHOW_EXP = "SET_SHOW_EXP";
 export const HOME_FETCH = "HOME_FETCH";
+export const REVERSE = "REVERSE";
 
 export const fetchProfile = (token) => {
   return async (dispatch, getState) => {
@@ -95,10 +96,38 @@ export const fetchHome = (token) => {
       });
       if (res.ok) {
         let post = await res.json();
+        reversed(post);
         console.log("post", post);
         dispatch({
           type: HOME_FETCH,
           payload: post,
+        });
+      } else {
+        dispatch({
+          type: IS_LOADING,
+        });
+      }
+    } catch (error) {
+      alert(error);
+    }
+  };
+};
+
+export const reversed = (token) => {
+  return async (dispatch, getState) => {
+    const urlHomeGet = "https://striveschool-api.herokuapp.com/api/posts/ ";
+    try {
+      const res = await fetch(urlHomeGet, {
+        headers: {
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+        },
+      });
+      if (res.ok) {
+        let post = await res.json();
+        console.log("post", post);
+        dispatch({
+          type: HOME_FETCH,
+          payload: post.reverse(),
         });
       } else {
         dispatch({

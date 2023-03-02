@@ -46,7 +46,7 @@ a#navbarScrollingDropdown {
 
 // profile component Section
 
-.singolaPersona :last-child{
+.singolaPersona :last-child {
   border-bottom: none !important;
 }
 
@@ -192,33 +192,24 @@ a {
     font-weight: 500;
   }
 }
-#bottoneModale {
-  // color: black;
-  // background-color: transparent;
-  // border: 0;
-}
-
-#bottoneModale:hover {
-  
-}
 
 .matita {
-  right:5%;
+  right: 5%;
   font-size: 30px;
   background-color: transparent;
   border: none;
-  color:#5E5E5E;
+  color: #5e5e5e;
   padding: 2px 10px 5px;
 }
 
-.matita:hover{
-  background-color: #EBEBEB;
+.matita:hover {
+  background-color: #ebebeb;
   border-radius: 50%;
-  color:#5E5E5E;
+  color: #5e5e5e;
 }
 
-.matita:active{
-  color:black;
+.matita:active {
+  color: black;
 }
 
 .plus {
@@ -226,12 +217,8 @@ a {
   font-size: 25px;
 }
 
-#bottoneModale:focus {
-  box-shadow: 1px 1px 1px 1px black;
-}
-
 .eccolo {
-  top:-50px;
+  top: -50px;
 }
 
 #photo {
@@ -275,4 +262,34 @@ a {
   height: 55px;
   width: 100%;
   background-color: lightgray;
+}
+
+[contentEditable="true"]:empty:not(:focus):before {
+  content: attr(data-placeholder);
+  color: #bababa;
+}
+
+// Modal section
+
+.modalTitle {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.modalColor {
+  color: #404040;
+}
+
+.modalIcon {
+  color: #666666
+}
+
+.modaltextArea {
+  border: 0px!important;
+  resize: none;
+}
+
+.modaltextArea:focus {
+  box-shadow: none!important;
+  resize: none;
 }
