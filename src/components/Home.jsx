@@ -1,52 +1,56 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProfile, reversed } from "../redux/actions";
-import { Container, Row, Col, Button, Form } from "react-bootstrap";
-import { MdPhotoSizeSelectActual } from "react-icons/md";
-import { BsFillPlayBtnFill, BsCalendarDay } from "react-icons/bs";
-import { MdArticle } from "react-icons/md";
-import HomeProfile from "./HomeProfile";
-import { Link } from "react-router-dom";
-import Loading from "./Loading";
-import ModalePost from "./ModalePost";
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchProfile, reversed } from "../redux/actions"
+import { Container, Row, Col, Button, Form } from "react-bootstrap"
+import { MdPhotoSizeSelectActual } from "react-icons/md"
+import { BsFillPlayBtnFill, BsCalendarDay } from "react-icons/bs"
+import { MdArticle } from "react-icons/md"
+import HomeProfile from "./HomeProfile"
+import { Link } from "react-router-dom"
+import Loading from "./Loading"
+import ModalePost from "./ModalePost"
+import ModalePut from "./ModalPut"
 
 const Home = () => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+
+  const [showPut, setShowPut] = useState(false)
+  const handleShowPut = () => setShow(true)
+  const handleClosePut = () => setShow(false)
 
   const addPost = {
     text: "",
-  };
-  const [objPost, setObjPost] = useState(addPost);
+  }
+  const [objPost, setObjPost] = useState(addPost)
   const handleChange = (field, value) => {
-    setObjPost((prev) => ({ ...prev, [field]: value }));
-  };
-  const [newPost, setPost] = useState([]);
+    setObjPost((prev) => ({ ...prev, [field]: value }))
+  }
+  const [newPost, setPost] = useState([])
   // profile fetch
-  const token = useSelector((state) => state.profile.token);
-  const loading = useSelector((state) => state.profile.loading);
-  const dispatch = useDispatch();
+  const token = useSelector((state) => state.profile.token)
+  const loading = useSelector((state) => state.profile.loading)
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchProfile());
-  }, []);
+    dispatch(fetchProfile())
+  }, [])
 
   // post fetch
 
-  const [rendered, setRendered] = useState(false);
+  const [rendered, setRendered] = useState(false)
 
   function check() {
-    setRendered((prevState) => !prevState);
+    setRendered((prevState) => !prevState)
   }
 
-  const post = useSelector((state) => state.profile.post);
+  const post = useSelector((state) => state.profile.post)
   useEffect(() => {
-    /* dispatch(fetchHome(token)); */
-    dispatch(reversed(token));
-  }, [rendered]);
+    dispatch(reversed(token))
+  }, [rendered])
 
   async function postPost() {
-    const urlToFetch = "https://striveschool-api.herokuapp.com/api/posts/";
+    const urlToFetch = "https://striveschool-api.herokuapp.com/api/posts/"
     try {
       const res = await fetch(urlToFetch, {
         method: "POST",
@@ -55,61 +59,58 @@ const Home = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(objPost),
-      });
+      })
       if (res.ok) {
-        const addPost = await res.json();
-        console.log("testPOST", addPost);
-        setPost(addPost);
+        const addPost = await res.json()
+        console.log("testPOST", addPost)
+        setPost(addPost)
       } else {
-        console.log("error");
+        console.log("error")
       }
     } catch (error) {
-      alert(error);
+      alert(error)
     }
   }
 
   async function deletePost(id) {
-    const urlToFetch = `https://striveschool-api.herokuapp.com/api/posts/${id}`;
+    const urlToFetch = `https://striveschool-api.herokuapp.com/api/posts/${id}`
     try {
       await fetch(urlToFetch, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
         },
-      });
+      })
     } catch (error) {
-      console.log("delete", error);
+      console.log("delete", error)
     }
   }
 
-  const [fd, setFd] = useState(new FormData()); //FormData e' una classe usata per raccogliere dati non stringa dai form
+  const [fd, setFd] = useState(new FormData()) //FormData e' una classe usata per raccogliere dati non stringa dai form
   //E' formata da coppie chiave/valore => ["post", File], ["exp", File]
   const handleSubmit = async (ev) => {
-    ev.preventDefault();
-    let res = await fetch(
-      "https://striveschool-api.herokuapp.com/api/posts/6400de50035832001350be55",
-      {
-        //qui l'id andra' sostituito con un id DINAMICO!!!!!
-        method: "POST",
-        body: fd, //non serve JSON.stringify
-        headers: {
-          //NON serve ContentType :)
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs",
-        },
-      }
-    );
-  };
+    ev.preventDefault()
+    let res = await fetch("https://striveschool-api.herokuapp.com/api/posts/6400de50035832001350be55", {
+      //qui l'id andra' sostituito con un id DINAMICO!!!!!
+      method: "POST",
+      body: fd, //non serve JSON.stringify
+      headers: {
+        //NON serve ContentType :)
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs",
+      },
+    })
+  }
   const handleFile = (ev, type) => {
     setFd((prev) => {
-      console.log(ev.target.files[0]);
+      console.log(ev.target.files[0])
       //per cambiare i formData, bisogna "appendere" una nuova coppia chiave/valore, usando il metodo .append()
-      prev.delete(type); //ricordatevi di svuotare il FormData prima :)
-      prev.append(type, ev.target.files[0]); //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
-      console.log(prev);
-      return prev;
-    });
-  };
+      prev.delete(type) //ricordatevi di svuotare il FormData prima :)
+      prev.append(type, ev.target.files[0]) //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
+      console.log(prev)
+      return prev
+    })
+  }
 
   return (
     <>
@@ -151,13 +152,8 @@ const Home = () => {
                 <div className="d-flex justify-content-evenly my-2 mx-4">
                   <form onSubmit={handleSubmit}>
                     <div className="greyHover rounded-2 me-2 px-2 py-3">
-                      <MdPhotoSizeSelectActual className="fs-4 text-primary me-2" />{" "}
-                      Photo
-                      <input
-                        type="file"
-                        onChange={(ev) => handleFile(ev, "post")}
-                        accept=".jpg"
-                      />
+                      <MdPhotoSizeSelectActual className="fs-4 text-primary me-2" /> Photo
+                      <input type="file" onChange={(ev) => handleFile(ev, "post")} accept=".jpg" />
                       <button>SEND</button>
                     </div>
                   </form>
@@ -190,43 +186,38 @@ const Home = () => {
                             <h3 className="proBlack my-2">
                               writted by{" "}
                               <Link to={`/user/${singPost.user?._id}`}>
-                                <span className="proBlack proGreyHBlue">
-                                  {singPost.user?.name}
-                                </span>
+                                <span className="proBlack proGreyHBlue">{singPost.user?.name}</span>
                               </Link>
                             </h3>
                             <div className="my-2 me-5">
-                              <span className="proGrey proBlack proLight proSmall proNormal">
-                                {singPost.text}
-                              </span>
+                              <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
                               <img src={singPost.image} />
                             </div>
                           </div>
-                          <div className="proSmall proLight">
-                            edited: {singPost.updatedAt.slice(0, 10)}
-                          </div>
+                          <div className="proSmall proLight">edited: {singPost.updatedAt.slice(0, 10)}</div>
                           {singPost.user._id === `63fc6fa3f193e60013807f59` ? (
                             <>
-                              {" "}
                               <Button
                                 className="proModProfile me-3 my-3"
                                 variant="outline-primary"
-                                onClick={handleShow}
+                                onClick={handleShowPut}
                               >
-                                Add
+                                add
                               </Button>
-                              <ModalePost
-                                handleClose={handleClose}
-                                show={show}
+                              <ModalePut
+                                handleClose={handleClosePut}
+                                show={showPut}
                                 check={check}
+                                iddi={singPost._id}
                                 // ternaryCheck={true} <--- perchè non funzion :(
                               />
+                              {console.log("eccolo id", singPost._id)}
                               <Button
                                 className="proDelete"
                                 variant="danger"
                                 onClick={() => {
-                                  deletePost(singPost._id);
-                                  check();
+                                  deletePost(singPost._id)
+                                  check()
                                 }}
                               >
                                 Delete
@@ -237,14 +228,14 @@ const Home = () => {
                           )}
                         </div>
                       </>
-                    );
+                    )
                   })}
             </Col>
           </Row>
         </Container>
       )}
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
