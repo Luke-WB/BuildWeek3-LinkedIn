@@ -3,11 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { HiOutlineClock, HiDocumentText } from "react-icons/hi";
 import { MdPhotoSizeSelectActual } from "react-icons/md";
-import {
-  BsFillPlayBtnFill,
-  BsCaretDownFill,
-  BsThreeDots,
-} from "react-icons/bs";
+import { BsFillPlayBtnFill, BsCaretDownFill, BsThreeDots } from "react-icons/bs";
 import { VscSmiley } from "react-icons/vsc";
 import { BiMessageRoundedDetail } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
@@ -59,9 +55,7 @@ const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title className="modalColor modalTitle">
-          Create a post
-        </Modal.Title>
+        <Modal.Title className="modalColor modalTitle">Create a post</Modal.Title>
       </Modal.Header>
       <Modal.Body className="d-flex flex-column">
         <div className="d-flex">
@@ -113,24 +107,24 @@ const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
               <BiMessageRoundedDetail className="ms-3 me-1 messageTrans" />
             </div>
 
-            <span className="proVerySmall proMiddle modalHoverText">
-              Anyone
-            </span>
+            <span className="proVerySmall proMiddle modalHoverText">Anyone</span>
           </div>
           <div>
             <div className="d-inline-block modalHGrey">
               <HiOutlineClock className="proIcon mx-2" />
             </div>
             <Button
-                  className="proOpenTo modalButtonGrey ms-2"
-                  variant="primary"
-                  disabled={!enabled}
-                  onClick={() => {
-                    postPost();
-                    handleClose();
-                    check();
-                  }}
-                >post</Button>
+              className="proOpenTo modalButtonGrey ms-2"
+              variant="primary"
+              disabled={!enabled}
+              onClick={() => {
+                postPost();
+                handleClose();
+                check();
+              }}
+            >
+              Aggiungi
+            </Button>
             {/* {ternaryCheck !== true ? (
               <>
                 <Button

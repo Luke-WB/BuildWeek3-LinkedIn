@@ -1,41 +1,47 @@
-import { useState } from "react"
-import { Button, Form } from "react-bootstrap"
-import Modal from "react-bootstrap/Modal"
-import { HiOutlineClock, HiDocumentText } from "react-icons/hi"
-import { MdPhotoSizeSelectActual } from "react-icons/md"
-import { BsFillPlayBtnFill, BsCaretDownFill, BsThreeDots } from "react-icons/bs"
-import { VscSmiley } from "react-icons/vsc"
-import { BiMessageRoundedDetail } from "react-icons/bi"
-import { useDispatch, useSelector } from "react-redux"
+import { useState } from "react";
+import { Button, Form } from "react-bootstrap";
+import Modal from "react-bootstrap/Modal";
+import { HiOutlineClock, HiDocumentText } from "react-icons/hi";
+import { MdPhotoSizeSelectActual } from "react-icons/md";
+import { BsFillPlayBtnFill, BsCaretDownFill, BsThreeDots } from "react-icons/bs";
+import { VscSmiley } from "react-icons/vsc";
+import { BiMessageRoundedDetail } from "react-icons/bi";
+import { useDispatch, useSelector } from "react-redux";
 
-const ModalePut = ({ show, handleClose, check, iddi }) => {
-  const dispatch = useDispatch
+const ModalePut = ({ show, handleClose, check, id }) => {
+  const addPost = {
+    text: "",
+  };
 
-  const [objPost, setObjPost] = useState({})
+  const [objPost, setObjPost] = useState(addPost);
 
   const handleChange = (field, value) => {
-    setObjPost((prev) => ({ ...prev, [field]: value }))
-  }
+    setObjPost((prev) => ({ ...prev, [field]: value }));
+  };
 
-  const myProfile = useSelector((state) => state.profile.profile)
+  const myProfile = useSelector((state) => state.profile.profile);
 
-  let enabled = objPost.text.length > 0
-
-  const [newPost, setPost] = useState([])
-
-  async function putPost(id) {
-    const urlToFetch = `https://striveschool-api.herokuapp.com/api/posts/${id}`
+  async function putPost() {
+    const urlToFetch = `https://striveschool-api.herokuapp.com/api/posts/${id}`;
+    console.log("oooooooooooooooooooooooooooooooooooooo", id);
     try {
-      await fetch(urlToFetch, {
+      const res = await fetch(urlToFetch, {
         method: "PUT",
         headers: {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(objPost),
-      })
+      });
+      console.log(objPost);
+      if (res.ok) {
+        const modifica = await res.json();
+        console.log("PUT", modifica);
+      } else {
+        console.log("error");
+      }
     } catch (error) {
-      console.log("PUT", error)
+      console.log("PUT", error);
     }
   }
 
@@ -93,7 +99,6 @@ const ModalePut = ({ show, handleClose, check, iddi }) => {
             <div className="d-inline-block modalHGrey">
               <BiMessageRoundedDetail className="ms-3 me-1 messageTrans" />
             </div>
-
             <span className="proVerySmall proMiddle modalHoverText">Anyone</span>
           </div>
           <div>
@@ -103,20 +108,19 @@ const ModalePut = ({ show, handleClose, check, iddi }) => {
             <Button
               className="proOpenTo modalButtonGrey ms-2"
               variant="primary"
-              disabled={!enabled}
               onClick={() => {
-                putPost(iddi)
-                handleClose()
-                check()
+                putPost();
+                check();
+                handleClose();
               }}
             >
-              put
+              Modifica
             </Button>
           </div>
         </Form.Group>
       </Modal.Body>
     </Modal>
-  )
-}
+  );
+};
 
-export default ModalePut
+export default ModalePut;

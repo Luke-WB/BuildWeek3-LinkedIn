@@ -1,56 +1,56 @@
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { fetchProfile, reversed } from "../redux/actions"
-import { Container, Row, Col, Button, Form } from "react-bootstrap"
-import { MdPhotoSizeSelectActual } from "react-icons/md"
-import { BsFillPlayBtnFill, BsCalendarDay } from "react-icons/bs"
-import { MdArticle } from "react-icons/md"
-import HomeProfile from "./HomeProfile"
-import { Link } from "react-router-dom"
-import Loading from "./Loading"
-import ModalePost from "./ModalePost"
-import ModalePut from "./ModalPut"
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProfile, reversed } from "../redux/actions";
+import { Container, Row, Col, Button, Form } from "react-bootstrap";
+import { MdPhotoSizeSelectActual } from "react-icons/md";
+import { BsFillPlayBtnFill, BsCalendarDay } from "react-icons/bs";
+import { MdArticle } from "react-icons/md";
+import HomeProfile from "./HomeProfile";
+import { Link } from "react-router-dom";
+import Loading from "./Loading";
+import ModalePost from "./ModalePost";
+import ModalePut from "./ModalPut";
 
 const Home = () => {
-  const [show, setShow] = useState(false)
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-  const [showPut, setShowPut] = useState(false)
-  const handleShowPut = () => setShow(true)
-  const handleClosePut = () => setShow(false)
+  const [showPut, setShowPut] = useState(false);
+  const handleShowPut = () => setShowPut(true);
+  const handleClosePut = () => setShowPut(false);
 
   const addPost = {
     text: "",
-  }
-  const [objPost, setObjPost] = useState(addPost)
+  };
+  const [objPost, setObjPost] = useState(addPost);
   const handleChange = (field, value) => {
-    setObjPost((prev) => ({ ...prev, [field]: value }))
-  }
-  const [newPost, setPost] = useState([])
+    setObjPost((prev) => ({ ...prev, [field]: value }));
+  };
+  const [newPost, setPost] = useState([]);
   // profile fetch
-  const token = useSelector((state) => state.profile.token)
-  const loading = useSelector((state) => state.profile.loading)
-  const dispatch = useDispatch()
+  const token = useSelector((state) => state.profile.token);
+  const loading = useSelector((state) => state.profile.loading);
+  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchProfile())
-  }, [])
+    dispatch(fetchProfile());
+  }, []);
 
   // post fetch
 
-  const [rendered, setRendered] = useState(false)
+  const [rendered, setRendered] = useState(false);
 
   function check() {
-    setRendered((prevState) => !prevState)
+    setRendered((prevState) => !prevState);
   }
 
-  const post = useSelector((state) => state.profile.post)
+  const post = useSelector((state) => state.profile.post);
   useEffect(() => {
-    dispatch(reversed(token))
-  }, [rendered])
+    dispatch(reversed(token));
+  }, [rendered]);
 
-  async function postPost() {
-    const urlToFetch = "https://striveschool-api.herokuapp.com/api/posts/"
+  /*  async function postPost() {
+    const urlToFetch = "https://striveschool-api.herokuapp.com/api/posts/";
     try {
       const res = await fetch(urlToFetch, {
         method: "POST",
@@ -59,37 +59,37 @@ const Home = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(objPost),
-      })
+      });
       if (res.ok) {
-        const addPost = await res.json()
-        console.log("testPOST", addPost)
-        setPost(addPost)
+        const addPost = await res.json();
+        console.log("testPOST", addPost);
+        setPost(addPost);
       } else {
-        console.log("error")
+        console.log("error");
       }
     } catch (error) {
-      alert(error)
+      alert(error);
     }
   }
-
+ */
   async function deletePost(id) {
-    const urlToFetch = `https://striveschool-api.herokuapp.com/api/posts/${id}`
+    const urlToFetch = `https://striveschool-api.herokuapp.com/api/posts/${id}`;
     try {
       await fetch(urlToFetch, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
         },
-      })
+      });
     } catch (error) {
-      console.log("delete", error)
+      console.log("delete", error);
     }
   }
 
-  const [fd, setFd] = useState(new FormData()) //FormData e' una classe usata per raccogliere dati non stringa dai form
+  const [fd, setFd] = useState(new FormData()); //FormData e' una classe usata per raccogliere dati non stringa dai form
   //E' formata da coppie chiave/valore => ["post", File], ["exp", File]
   const handleSubmit = async (ev) => {
-    ev.preventDefault()
+    ev.preventDefault();
     let res = await fetch("https://striveschool-api.herokuapp.com/api/posts/6400de50035832001350be55", {
       //qui l'id andra' sostituito con un id DINAMICO!!!!!
       method: "POST",
@@ -99,18 +99,18 @@ const Home = () => {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs",
       },
-    })
-  }
+    });
+  };
   const handleFile = (ev, type) => {
     setFd((prev) => {
-      console.log(ev.target.files[0])
+      console.log(ev.target.files[0]);
       //per cambiare i formData, bisogna "appendere" una nuova coppia chiave/valore, usando il metodo .append()
-      prev.delete(type) //ricordatevi di svuotare il FormData prima :)
-      prev.append(type, ev.target.files[0]) //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
-      console.log(prev)
-      return prev
-    })
-  }
+      prev.delete(type); //ricordatevi di svuotare il FormData prima :)
+      prev.append(type, ev.target.files[0]); //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
+      console.log(prev);
+      return prev;
+    });
+  };
 
   return (
     <>
@@ -202,22 +202,22 @@ const Home = () => {
                                 variant="outline-primary"
                                 onClick={handleShowPut}
                               >
-                                add
+                                Add
                               </Button>
                               <ModalePut
                                 handleClose={handleClosePut}
                                 show={showPut}
                                 check={check}
-                                iddi={singPost._id}
+                                id={singPost._id}
                                 // ternaryCheck={true} <--- perchè non funzion :(
                               />
-                              {console.log("eccolo id", singPost._id)}
+                              {console.log("eccolo id POST", singPost._id)}
                               <Button
                                 className="proDelete"
                                 variant="danger"
                                 onClick={() => {
-                                  deletePost(singPost._id)
-                                  check()
+                                  deletePost(singPost._id);
+                                  check();
                                 }}
                               >
                                 Delete
@@ -228,14 +228,14 @@ const Home = () => {
                           )}
                         </div>
                       </>
-                    )
+                    );
                   })}
             </Col>
           </Row>
         </Container>
       )}
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
