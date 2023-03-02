@@ -76,22 +76,16 @@ const Home = () => {
         headers: {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
         },
-<<<<<<< HEAD
       })
-=======
-      });
->>>>>>> fbe1bb599d0898e56d612cafdcec07fba3d7998b
     } catch (error) {
       console.log("delete", error)
     }
   }
 
-<<<<<<< HEAD
-=======
-  const [fd, setFd] = useState(new FormData()); //FormData e' una classe usata per raccogliere dati non stringa dai form
+  const [fd, setFd] = useState(new FormData()) //FormData e' una classe usata per raccogliere dati non stringa dai form
   //E' formata da coppie chiave/valore => ["post", File], ["exp", File]
   const handleSubmit = async (ev) => {
-    ev.preventDefault();
+    ev.preventDefault()
     let res = await fetch("https://striveschool-api.herokuapp.com/api/posts/64008cfc035832001350bcd7", {
       //qui l'id andra' sostituito con un id DINAMICO!!!!!
       method: "POST",
@@ -101,20 +95,19 @@ const Home = () => {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs",
       },
-    });
-  };
+    })
+  }
   const handleFile = (ev) => {
     setFd((prev) => {
-      console.log(ev.target.files[0]);
+      console.log(ev.target.files[0])
       //per cambiare i formData, bisogna "appendere" una nuova coppia chiave/valore, usando il metodo .append()
-      prev.delete("post"); //ricordatevi di svuotare il FormData prima :)
-      prev.append("post", ev.target.files[0]); //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
-      console.log(prev);
-      return prev;
-    });
-  };
+      prev.delete("post") //ricordatevi di svuotare il FormData prima :)
+      prev.append("post", ev.target.files[0]) //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
+      console.log(prev)
+      return prev
+    })
+  }
 
->>>>>>> fbe1bb599d0898e56d612cafdcec07fba3d7998b
   return (
     <>
       {loading ? (
@@ -191,43 +184,31 @@ const Home = () => {
                               <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
                               <img src={singPost.image} />
                             </div>
-                            <div className="proSmall proLight">edited: {singPost.updatedAt.slice(0, 10)}</div>
-                            {
-                              singPost.user === `63fe74bc579c6300137cf9b7` ? (
-                                <></>
-                              ) : (
-                                <>
-                                  <Button className="proModProfile me-3 my-3" variant="outline-primary">
-                                    Add
-                                  </Button>
-                                  <Button
-                                    className="proDelete"
-                                    variant="danger"
-                                    onClick={() => {
-<<<<<<< HEAD
-                                      deletePost(singPost._id)
-                                      check()
-=======
-                                      deletePost(singPost._id);
-                                      check();
->>>>>>> fbe1bb599d0898e56d612cafdcec07fba3d7998b
-                                    }}
-                                  >
-                                    Delete
-                                  </Button>
-                                </>
-                              )
-                              //  (console.log(singPost))
-                              // ()
-                            }
                           </div>
+                          <div className="proSmall proLight">edited: {singPost.updatedAt.slice(0, 10)}</div>
+                          {singPost.user._id === `63fc6fa3f193e60013807f59` ? (
+                            <>
+                              {" "}
+                              <Button className="proModProfile me-3 my-3" variant="outline-primary">
+                                Add
+                              </Button>
+                              <Button
+                                className="proDelete"
+                                variant="danger"
+                                onClick={() => {
+                                  deletePost(singPost._id)
+                                  check()
+                                }}
+                              >
+                                Delete
+                              </Button>
+                            </>
+                          ) : (
+                            <></>
+                          )}
                         </div>
                       </>
-<<<<<<< HEAD
                     )
-=======
-                    );
->>>>>>> fbe1bb599d0898e56d612cafdcec07fba3d7998b
                   })}
             </Col>
           </Row>

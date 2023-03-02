@@ -102,11 +102,9 @@ const Profile = () => {
             alt="immagine profilo"
           />
         </a>
-        <div className="mt-5 mx-4" style={{ position: "relative" }}>
+        <div className="mt-5 mx-4">
           <Button
-            className="matita"
-            style={{ position: "absolute", top: "-33px", left: "720px" }}
-            id="bottoneModale"
+            className="matita position-absolute"
             onClick={handleShow}
           >
             <BiPencil />

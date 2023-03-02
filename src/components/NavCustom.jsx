@@ -26,42 +26,41 @@ function OffCanvasExample({ name, ...props }, prop) {
 
   const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/"
 
-  // useEffect(() => {
-  //   const fetchUser_Profile = async () => {
-  //     try {
-  //       const response = await fetch(profili_utente, {
-  //         headers: {
-  //           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjN2Y3MWYxOTNlNjAwMTM4MDdmNjAiLCJpYXQiOjE2Nzc0OTIwODEsImV4cCI6MTY3ODcwMTY4MX0.VsSZ2d0tCDoaQSZpm1CGnM4ctkdFFFZhAu36PvkG-hU`,
-  //         },
-  //       });
-  //       if (response.ok) {
-  //         let data = await response.json();
-  //         console.log("arrayPeople", data);
-  //         setPeopleFetched(data);
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   fetchUser_Profile();
-  // }, []);
+  useEffect(() => {
+    const fetchUser_Profile = async () => {
+      try {
+        const response = await fetch(profili_utente, {
+          headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjN2Y3MWYxOTNlNjAwMTM4MDdmNjAiLCJpYXQiOjE2Nzc0OTIwODEsImV4cCI6MTY3ODcwMTY4MX0.VsSZ2d0tCDoaQSZpm1CGnM4ctkdFFFZhAu36PvkG-hU`,
+          },
+        })
+        if (response.ok) {
+          let data = await response.json()
+          console.log("arrayPeople", data)
+          setPeopleFetched(data)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchUser_Profile()
+  }, [])
 
-  // let newData = []
+  let newData = []
 
-  // for (let i = 0; i < peopleFetched.length; i++) {
-  //   newData.push({name: peopleFetched[i].name, id: peopleFetched[i]._id})
-  // }
+  for (let i = 0; i < peopleFetched.length; i++) {
+    newData.push({ name: peopleFetched[i].name, id: peopleFetched[i]._id })
+  }
 
-  // useEffect(() => {
-  //   setNameSearch(newData.find(el => el.name === word))
-  //   console.log(word);
-  //   console.log("nenene", nameSearch);
-  // }, [word])
+  useEffect(() => {
+    setNameSearch(newData.find((el) => el.name.toLowerCase().includes(word.toLowerCase())))
+    console.log(word)
+    console.log("nenene", nameSearch)
+  }, [word])
 
-  // const searchName = async() => {
-  //   console.log(nameSearch);
-  //   navigate(`user/${nameSearch.id}`)
-  // }
+  const searchName = async () => {
+    navigate(`user/${nameSearch.id}`)
+  }
 
   return (
     <Navbar bg="white" expand="lg">
@@ -75,7 +74,7 @@ function OffCanvasExample({ name, ...props }, prop) {
             <form
               onSubmit={(e) => {
                 e.preventDefault()
-                //  searchName()
+                searchName()
               }}
             >
               <input
