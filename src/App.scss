@@ -46,6 +46,10 @@ a#navbarScrollingDropdown {
 
 // profile component Section
 
+.singolaPersona :last-child {
+  border-bottom: none !important;
+}
+
 .proCard {
   overflow: hidden;
   border: solid 1px #e0dfdc;
@@ -66,6 +70,25 @@ a#navbarScrollingDropdown {
   top: 100px;
   left: 25px;
   border: solid 4px white;
+}
+
+.postModBar {
+  height: 55px;
+  width: 100%;
+  border-radius: 60px;
+}
+
+.postModText {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.greyHover:hover {
+  background-color: #ebebeb;
 }
 
 // button setting profile component
@@ -103,6 +126,20 @@ a#navbarScrollingDropdown {
   color: #5e5e5e !important;
   outline: #5e5e5e 1px solid !important;
   background-color: #ebebeb !important;
+}
+
+.proDelete {
+  border-radius: 30px !important;
+  padding: 5px 15px !important;
+  color: white !important;
+  background-color: #e63238;
+  border: #e63238 solid 1px !important;
+}
+
+.proDelete:hover {
+  box-sizing: border-box;
+  color: white !important;
+  background-color: #c70c12 !important;
 }
 
 // font setting profile component
@@ -155,34 +192,35 @@ a {
     font-weight: 500;
   }
 }
-#bottoneModale {
-  color: black;
-  background-color: transparent;
-  border: 0;
-}
-
-#bottoneModale:hover {
-  border: 1px solid black;
-}
 
 .matita {
-  left: 92%;
+  right: 5%;
   font-size: 30px;
+  background-color: transparent;
+  border: none;
+  color: #5e5e5e;
+  padding: 2px 10px 5px;
 }
+
+.matita:hover {
+  background-color: #ebebeb;
+  border-radius: 50%;
+  color: #5e5e5e;
+}
+
+.matita:active {
+  color: black;
+}
+
 .plus {
-  left: 85%;
+  left: 92%;
   font-size: 25px;
 }
 
-#bottoneModale:focus {
-  box-shadow: 1px 1px 1px 1px black;
+.eccolo {
+  top: -50px;
 }
 
-.eccolo {
-  // width: 90px;
-  position: relative;
-  top: -35px;
-}
 #photo {
   width: 75px;
   height: 75px;
@@ -224,4 +262,34 @@ a {
   height: 55px;
   width: 100%;
   background-color: lightgray;
+}
+
+[contentEditable="true"]:empty:not(:focus):before {
+  content: attr(data-placeholder);
+  color: #bababa;
+}
+
+// Modal section
+
+.modalTitle {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.modalColor {
+  color: #404040;
+}
+
+.modalIcon {
+  color: #666666
+}
+
+.modaltextArea {
+  border: 0px!important;
+  resize: none;
+}
+
+.modaltextArea:focus {
+  box-shadow: none!important;
+  resize: none;
 }
