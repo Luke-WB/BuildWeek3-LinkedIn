@@ -1,36 +1,30 @@
-import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas, Card, ListGroup } from "react-bootstrap";
-import logo from "../assets/LinkedIn_logo_initials.png";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas, Card, ListGroup } from "react-bootstrap"
+import logo from "../assets/LinkedIn_logo_initials.png"
+import React, { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 
-import { FaSearch, FaHome, FaUserFriends, FaBell, FaCompass } from "react-icons/fa";
-import { BsBriefcaseFill, BsGrid3X3GapFill, BsPlayBtnFill } from "react-icons/bs";
-import { CgInsights } from "react-icons/cg";
-import { RiSuitcaseFill, RiAdvertisementLine, RiMessage3Line } from "react-icons/ri";
-import { MdGroups } from "react-icons/md";
-import { TiTick } from "react-icons/ti";
-import { AiOutlinePlus } from "react-icons/ai";
-import { Link, useNavigate } from "react-router-dom";
-import { fetchIdProfile } from "../redux/actions";
+import { FaSearch, FaHome, FaUserFriends, FaBell, FaCompass } from "react-icons/fa"
+import { BsBriefcaseFill, BsGrid3X3GapFill, BsPlayBtnFill } from "react-icons/bs"
+import { CgInsights } from "react-icons/cg"
+import { RiSuitcaseFill, RiAdvertisementLine, RiMessage3Line } from "react-icons/ri"
+import { MdGroups } from "react-icons/md"
+import { TiTick } from "react-icons/ti"
+import { AiOutlinePlus } from "react-icons/ai"
+import { Link, useNavigate } from "react-router-dom"
+import { fetchIdProfile } from "../redux/actions"
 
 function OffCanvasExample({ name, ...props }, prop) {
-  const myProfile = useSelector((state) => state.profile.profile);
+  const myProfile = useSelector((state) => state.profile.profile)
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const [peopleFetched, setPeopleFetched] = useState([]);
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
+  const [peopleFetched, setPeopleFetched] = useState([])
   const [word, setWord] = useState("")
   const [nameSearch, setNameSearch] = useState()
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-
-  const dispatch = useDispatch()
-  dispatch(
-    fetchIdProfile()
-  )
-
-  const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/";
+  const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/"
 
   // useEffect(() => {
   //   const fetchUser_Profile = async () => {
@@ -52,14 +46,11 @@ function OffCanvasExample({ name, ...props }, prop) {
   //   fetchUser_Profile();
   // }, []);
 
-
-
   // let newData = []
 
   // for (let i = 0; i < peopleFetched.length; i++) {
   //   newData.push({name: peopleFetched[i].name, id: peopleFetched[i]._id})
   // }
-  
 
   // useEffect(() => {
   //   setNameSearch(newData.find(el => el.name === word))
@@ -81,24 +72,26 @@ function OffCanvasExample({ name, ...props }, prop) {
           </Navbar.Brand>
           <div className="d-flex">
             <FaSearch className="position-relative" style={{ right: "-183px", top: "15px", color: "#006699" }} />
-            <form onSubmit={(e) => {
-              e.preventDefault();
-              //  searchName()
-               }}>
-
-              <input type="search" placeholder="Search" className="me-2" aria-label="Search" onChange={(e) => setWord(e.target.value)}/>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault()
+                //  searchName()
+              }}
+            >
+              <input
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+                onChange={(e) => setWord(e.target.value)}
+              />
             </form>
-
           </div>
         </div>
         <div>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-            <Nav
-              className="me-auto my-2 my-lg-0"
-              style={{ maxHeight: "100px" }}
-              navbarScroll
-            >
+            <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
               <Link to={"/"}>
                 <Nav.Link href="#action1" className="icon-word">
                   <FaHome className="icon" />
@@ -282,7 +275,7 @@ function OffCanvasExample({ name, ...props }, prop) {
         </div>
       </Container>
     </Navbar>
-  );
+  )
 }
 function Example() {
   return (
@@ -291,7 +284,7 @@ function Example() {
         <OffCanvasExample key={idx} placement={placement} name={placement} />
       ))}
     </>
-  );
+  )
 }
 
-export default Example;
+export default Example
