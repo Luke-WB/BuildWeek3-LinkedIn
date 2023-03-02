@@ -192,14 +192,6 @@ a {
     font-weight: 500;
   }
 }
-#bottoneModale {
-  // color: black;
-  // background-color: transparent;
-  // border: 0;
-}
-
-#bottoneModale:hover {
-}
 
 .matita {
   right: 5%;
@@ -223,10 +215,6 @@ a {
 .plus {
   left: 92%;
   font-size: 25px;
-}
-
-#bottoneModale:focus {
-  box-shadow: 1px 1px 1px 1px black;
 }
 
 .eccolo {
@@ -279,4 +267,29 @@ a {
 [contentEditable="true"]:empty:not(:focus):before {
   content: attr(data-placeholder);
   color: #bababa;
+}
+
+// Modal section
+
+.modalTitle {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.modalColor {
+  color: #404040;
+}
+
+.modalIcon {
+  color: #666666
+}
+
+.modaltextArea {
+  border: 0px!important;
+  resize: none;
+}
+
+.modaltextArea:focus {
+  box-shadow: none!important;
+  resize: none;
 }

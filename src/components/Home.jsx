@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchHome, fetchProfile, reversed } from "../redux/actions";
+import { fetchProfile, reversed } from "../redux/actions";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { MdPhotoSizeSelectActual } from "react-icons/md";
 import { BsFillPlayBtnFill, BsCalendarDay } from "react-icons/bs";
@@ -8,7 +8,7 @@ import { MdArticle } from "react-icons/md";
 import HomeProfile from "./HomeProfile";
 import { Link } from "react-router-dom";
 import Loading from "./Loading";
-import Modal from "react-bootstrap/Modal";
+import ModalePost from "./ModalePost";
 
 const Home = () => {
   const [show, setShow] = useState(false);
@@ -97,7 +97,9 @@ const Home = () => {
                   >
                     <span className="postModText me-3">Start a post</span>
                   </span>
-                  <Modal show={show} onHide={handleClose}>
+
+                  <ModalePost handleClose={handleClose} show={show} check={check}/>
+                  {/* <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                       <Modal.Title>Create a post</Modal.Title>
                     </Modal.Header>
@@ -114,7 +116,7 @@ const Home = () => {
                         Save Changes
                       </Button>
                     </Modal.Body>
-                  </Modal>
+                  </Modal> */}
                 </div>
                 <div className="d-flex justify-content-evenly my-2 mx-4">
                   <div className="greyHover rounded-2 me-2 px-2 py-3">
@@ -136,7 +138,7 @@ const Home = () => {
               </div>
               {post
                 /* .filter((postUnfilt) => postUnfilt.text.length > 10) */
-                .slice(0, 100)
+                .slice(0, 50)
                 .map((singPost, i) => {
                   return (
                     <>
