@@ -184,33 +184,9 @@ const Home = () => {
                               <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
                               <img src={singPost.image} />
                             </div>
-                            <div className="proSmall proLight">edited: {singPost.updatedAt.slice(0, 10)}</div>
-                            {
-                              singPost.user === `63fe74bc579c6300137cf9b7` ? (
-                                <></>
-                              ) : (
-                                <>
-                                  <Button className="proModProfile me-3 my-3" variant="outline-primary">
-                                    Add
-                                  </Button>
-                                  <Button
-                                    className="proDelete"
-                                    variant="danger"
-                                    onClick={() => {
-                                      deletePost(singPost._id);
-                                      check();
-                                    }}
-                                  >
-                                    Delete
-                                  </Button>
-                                </>
-                              )
-                              //  (console.log(singPost))
-                              // ()
-                            }
                           </div>
                           <div className="proSmall proLight">edited: {singPost.updatedAt.slice(0, 10)}</div>
-                          {singPost.user._id === `63fc6fa3f193e60013807f59` ? <><Button className="proModProfile me-3 my-3" variant="outline-primary">
+                          {singPost.user._id === `63fc6fa3f193e60013807f59` ? <> <Button className="proModProfile me-3 my-3" variant="outline-primary">
                                Add
                              </Button>
                              <Button className="proDelete" variant="danger"onClick={() => {
@@ -218,11 +194,8 @@ const Home = () => {
                                check()
                              }}>
                                Delete
-                             </Button>
-                             
-                             </> :  <></>
-                          //  (console.log(singPost)) 
-                          // () 
+                             </Button>                   
+                             </> : <></>
                              }
                         </div>
                       </>
