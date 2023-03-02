@@ -3,12 +3,16 @@ import { Button, Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { HiOutlineClock, HiDocumentText } from "react-icons/hi";
 import { MdPhotoSizeSelectActual } from "react-icons/md";
-import { BsFillPlayBtnFill, BsCaretDownFill, BsThreeDots } from "react-icons/bs";
+import {
+  BsFillPlayBtnFill,
+  BsCaretDownFill,
+  BsThreeDots,
+} from "react-icons/bs";
 import { VscSmiley } from "react-icons/vsc";
 import { BiMessageRoundedDetail } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 
-const ModalePost = ({ show, handleClose, check }) => {
+const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
   const dispatch = useDispatch;
   const addPost = {
     text: "",
@@ -18,6 +22,8 @@ const ModalePost = ({ show, handleClose, check }) => {
     setObjPost((prev) => ({ ...prev, [field]: value }));
   };
 
+  console.log("ternaryCheck", ternaryCheck);
+  console.log("comparison", ternaryCheck === true);
   // const token = useSelector((state) => state.profile.token)
   // useEffect(() => {
   //   dispatch(fetchProfile(token));
@@ -50,9 +56,6 @@ const ModalePost = ({ show, handleClose, check }) => {
     }
   }
 
-
-
-  
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
@@ -75,7 +78,9 @@ const ModalePost = ({ show, handleClose, check }) => {
               <span className="me-2">{myProfile.name}</span>
               <span>{myProfile.surname}</span>
             </div>
-            <Button className="proMore mt-1" variant="outline-primary">Anyone <BsCaretDownFill/></Button>
+            <Button className="proMore mt-1" variant="outline-primary">
+              Anyone <BsCaretDownFill />
+            </Button>
           </div>
         </div>
         <Form.Control
@@ -116,19 +121,45 @@ const ModalePost = ({ show, handleClose, check }) => {
             <div className="d-inline-block modalHGrey">
               <HiOutlineClock className="proIcon mx-2" />
             </div>
-
             <Button
-              className="proOpenTo modalButtonGrey ms-2"
-              variant="primary"
-              disabled={!enabled}
-              onClick={() => {
-                postPost();
-                handleClose();
-                check();
-              }}
-            >
-              Post
-            </Button>
+                  className="proOpenTo modalButtonGrey ms-2"
+                  variant="primary"
+                  disabled={!enabled}
+                  onClick={() => {
+                    postPost();
+                    handleClose();
+                    check();
+                  }}
+                >post</Button>
+            {/* {ternaryCheck !== true ? (
+              <>
+                <Button
+                  className="proOpenTo modalButtonGrey ms-2"
+                  variant="primary"
+                  disabled={!enabled}
+                  onClick={() => {
+                    postPost();
+                    handleClose();
+                    check();
+                  }}
+                >
+                  pippo
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button
+                  className="proOpenTo modalButtonGrey ms-2"
+                  variant="primary"
+                  disabled={!enabled}
+                  onClick={() => {
+                    handleClose();
+                  }}
+                >
+                  put
+                </Button>
+              </>
+            )} */}
           </div>
         </Form.Group>
       </Modal.Body>
