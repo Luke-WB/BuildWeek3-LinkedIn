@@ -22,7 +22,7 @@ const Home = () => {
   const handleChange = (field, value) => {
     setObjPost((prev) => ({ ...prev, [field]: value }));
   };
-  const [newPost, setPost] = useState([]);
+  const [newPost, setPost] = useState("");
   // profile fetch
   const token = useSelector((state) => state.profile.token);
   const loading = useSelector((state) => state.profile.loading);
@@ -45,28 +45,6 @@ const Home = () => {
     dispatch(reversed(token));
   }, [rendered]);
 
-  async function postPost() {
-    const urlToFetch = "https://striveschool-api.herokuapp.com/api/posts/";
-    try {
-      const res = await fetch(urlToFetch, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(objPost),
-      });
-      if (res.ok) {
-        const addPost = await res.json();
-        console.log("testPOST", addPost);
-        setPost(addPost);
-      } else {
-        console.log("error");
-      }
-    } catch (error) {
-      alert(error);
-    }
-  }
 
   async function deletePost(id) {
     const urlToFetch = `https://striveschool-api.herokuapp.com/api/posts/${id}`;
@@ -97,16 +75,7 @@ const Home = () => {
       },
     });
   };
-  const handleFile = (ev, type) => {
-    setFd((prev) => {
-      console.log(ev.target.files[0]);
-      //per cambiare i formData, bisogna "appendere" una nuova coppia chiave/valore, usando il metodo .append()
-      prev.delete(type); //ricordatevi di svuotare il FormData prima :)
-      prev.append(type, ev.target.files[0]); //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
-      console.log(prev);
-      return prev;
-    });
-  };
+
 
   return (
     <>
@@ -133,18 +102,17 @@ const Home = () => {
                   </div>
                   <span
                     className="d-inline-block proMore proGrey position-relative postModBar me-3"
-                    onClick={handleShow}
-                  >
+                    onClick={handleShow}>
+                  
                     <span className="postModText me-3">Start a post</span>
                   </span>
-
                   <ModalePost handleClose={handleClose} show={show} check={check} />
                 </div>
                 <div className="d-flex justify-content-evenly my-2 mx-4">
                   <form onSubmit={handleSubmit}>
                     <div className="greyHover rounded-2 me-2 px-2 py-3">
                       <MdPhotoSizeSelectActual className="fs-4 text-primary me-2" /> Photo
-                      <input type="file" onChange={(ev) => handleFile(ev, "post")} accept=".jpg" />
+                      <input type="file"/>
                       <button>SEND</button>
                     </div>
                   </form>
