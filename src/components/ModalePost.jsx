@@ -39,6 +39,10 @@ const ModalePost = ({ show, handleClose, check }) => {
       alert(error);
     }
   }
+
+
+
+  
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>

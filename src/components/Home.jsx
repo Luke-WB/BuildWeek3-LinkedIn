@@ -68,6 +68,24 @@ const Home = () => {
     }
   }
 
+  async function deletePost(id) {
+    const urlToFetch = `https://striveschool-api.herokuapp.com/api/posts/${id}`;
+    try {
+      await fetch(
+        urlToFetch,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+          },
+        },
+      );
+    } catch (error) {
+      console.log("delete", error);
+    }
+  }
+
+
   return (
     <>
       {loading ? (
@@ -155,14 +173,23 @@ const Home = () => {
                           </h3>
                           <div className="my-2 me-5">
                             <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
+                            <img src={singPost.image}/>
                           </div>
                           <div className="proSmall proLight">edited: {singPost.updatedAt.slice(0, 10)}</div>
-                          <Button className="proModProfile me-3 my-3" variant="outline-primary">
-                            Add
-                          </Button>
-                          <Button className="proDelete" variant="danger">
-                            Delete
-                          </Button>
+                          {singPost.user === `63fe74bc579c6300137cf9b7` ? <>
+                             
+                             </> :  <><Button className="proModProfile me-3 my-3" variant="outline-primary">
+                               Add
+                             </Button>
+                             <Button className="proDelete" variant="danger"onClick={() => {
+                               deletePost(singPost._id);
+                               check()
+                             }}>
+                               Delete
+                             </Button></>
+                          //  (console.log(singPost)) 
+                          // () 
+                             }
                         </div>
                       </div>
                     </>

@@ -1,7 +1,7 @@
 import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas, Card, ListGroup } from "react-bootstrap";
 import logo from "../assets/LinkedIn_logo_initials.png";
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { FaSearch, FaHome, FaUserFriends, FaBell, FaCompass } from "react-icons/fa";
 import { BsBriefcaseFill, BsGrid3X3GapFill, BsPlayBtnFill } from "react-icons/bs";
@@ -10,7 +10,8 @@ import { RiSuitcaseFill, RiAdvertisementLine, RiMessage3Line } from "react-icons
 import { MdGroups } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
 import { AiOutlinePlus } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { fetchIdProfile } from "../redux/actions";
 
 function OffCanvasExample({ name, ...props }, prop) {
   const myProfile = useSelector((state) => state.profile.profile);
@@ -18,6 +19,58 @@ function OffCanvasExample({ name, ...props }, prop) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [peopleFetched, setPeopleFetched] = useState([]);
+  const [word, setWord] = useState("")
+  const [nameSearch, setNameSearch] = useState()
+  const navigate = useNavigate();
+
+
+  const dispatch = useDispatch()
+  dispatch(
+    fetchIdProfile()
+  )
+
+  const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/";
+
+  // useEffect(() => {
+  //   const fetchUser_Profile = async () => {
+  //     try {
+  //       const response = await fetch(profili_utente, {
+  //         headers: {
+  //           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjN2Y3MWYxOTNlNjAwMTM4MDdmNjAiLCJpYXQiOjE2Nzc0OTIwODEsImV4cCI6MTY3ODcwMTY4MX0.VsSZ2d0tCDoaQSZpm1CGnM4ctkdFFFZhAu36PvkG-hU`,
+  //         },
+  //       });
+  //       if (response.ok) {
+  //         let data = await response.json();
+  //         console.log("arrayPeople", data);
+  //         setPeopleFetched(data);
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   fetchUser_Profile();
+  // }, []);
+
+
+
+  // let newData = []
+
+  // for (let i = 0; i < peopleFetched.length; i++) {
+  //   newData.push({name: peopleFetched[i].name, id: peopleFetched[i]._id})
+  // }
+  
+
+  // useEffect(() => {
+  //   setNameSearch(newData.find(el => el.name === word))
+  //   console.log(word);
+  //   console.log("nenene", nameSearch);
+  // }, [word])
+
+  // const searchName = async() => {
+  //   console.log(nameSearch);
+  //   navigate(`user/${nameSearch.id}`)
+  // }
 
   return (
     <Navbar bg="white" expand="lg">
@@ -28,9 +81,14 @@ function OffCanvasExample({ name, ...props }, prop) {
           </Navbar.Brand>
           <div className="d-flex">
             <FaSearch className="position-relative" style={{ right: "-183px", top: "15px", color: "#006699" }} />
-            <Form className="d-flex">
-              <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" />
-            </Form>
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              //  searchName()
+               }}>
+
+              <input type="search" placeholder="Search" className="me-2" aria-label="Search" onChange={(e) => setWord(e.target.value)}/>
+            </form>
+
           </div>
         </div>
         <div>
