@@ -5,7 +5,7 @@ import { Button, Col, Row } from "react-bootstrap";
 import logo from "../assets/management-suitcase-icon-outline-work-job-vector.jpg";
 import Modale from "./Modale";
 
-const Exprience = () => {
+const Experience = () => {
   const [modalShowPlus, setModalShowPlus] = useState(false);
   const [experiencesToRender, setExperiencesToRender] = useState([]);
   const [rendered, setRendered] = useState(false)
@@ -86,4 +86,4 @@ const Exprience = () => {
   );
 };
 
-export default Exprience;
+export default Experience;

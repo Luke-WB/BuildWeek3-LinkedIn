@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
-import {HiOutlineClock} from "react-icons/hi";
+import { HiOutlineClock, HiDocumentText } from "react-icons/hi";
 import { MdPhotoSizeSelectActual } from "react-icons/md";
-import { BsFillPlayBtnFill, BsCalendarDay } from "react-icons/bs";
-import { MdArticle } from "react-icons/md";
-import {BsThreeDots} from "react-icons/bs"
+import { BsFillPlayBtnFill } from "react-icons/bs";
+import { VscSmiley } from "react-icons/vsc";
+import { BsThreeDots } from "react-icons/bs";
+import { BiMessageRoundedDetail } from "react-icons/bi";
 
 const ModalePost = ({ show, handleClose, check }) => {
   const addPost = {
@@ -15,6 +16,12 @@ const ModalePost = ({ show, handleClose, check }) => {
   const handleChange = (field, value) => {
     setObjPost((prev) => ({ ...prev, [field]: value }));
   };
+  
+
+   let enabled = objPost.text.length > 0;
+//   console.log("strobjPost.length",strobjPost.length)
+//   console.log("enabled", enabled)
+//   console.log("strobjPost",strobjPost)
 
   const [newPost, setPost] = useState([]);
   async function postPost() {
@@ -42,7 +49,9 @@ const ModalePost = ({ show, handleClose, check }) => {
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title className="modalColor modalTitle">Create a post</Modal.Title>
+        <Modal.Title className="modalColor modalTitle">
+          Create a post
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body className="d-flex flex-column">
         <Form.Control
@@ -50,20 +59,53 @@ const ModalePost = ({ show, handleClose, check }) => {
           placeholder="What do you want to talk about?"
           as="textarea"
           rows={6}
+          type="text"
           onChange={(e) => handleChange("text", e.target.value)}
         />
+        <div>
+          <VscSmiley className="iconSmile my-3" />
+        </div>
         <Form.Group className="d-flex justify-content-between align-items-center modalIcon">
-            <div><MdPhotoSizeSelectActual className="proIcon me-3"/><BsFillPlayBtnFill className="proIcon me-3"/><BsCalendarDay className="proIcon me-3"/></div>
-          <div><HiOutlineClock className="proIcon me-2"/><Button className="proOpenTo"
-            variant="primary"
-            onClick={() => {
-              postPost();
-              handleClose();
-              check();
-            }}
-          >
-            Post
-          </Button></div>
+          <div>
+            <div className="d-inline-block modalHGrey">
+              <MdPhotoSizeSelectActual className="proIcon mx-2" />
+            </div>
+            <div className="d-inline-block modalHGrey">
+              <BsFillPlayBtnFill className="proIcon mx-2" />
+            </div>
+            <div className="d-inline-block modalHGrey">
+              <HiDocumentText className="proIcon mx-2" />
+            </div>
+            <div className="d-inline-block modalHGrey">
+              <BsThreeDots className="proIcon mx-2" />
+            </div>
+            <span className="modalOrrBar"></span>
+            <div className="d-inline-block modalHGrey">
+              <BiMessageRoundedDetail className="ms-3 me-1 messageTrans" />
+            </div>
+
+            <span className="proVerySmall proMiddle modalHoverText">
+              Anyone
+            </span>
+          </div>
+          <div>
+            <div className="d-inline-block modalHGrey">
+              <HiOutlineClock className="proIcon mx-2" />
+            </div>
+
+            <Button
+              className="proOpenTo modalButtonGrey ms-2"
+              variant="primary"
+              disabled={!enabled}
+              onClick={() => {
+                postPost();
+                handleClose();
+                check();
+              }}
+            >
+              Post
+            </Button>
+          </div>
         </Form.Group>
       </Modal.Body>
     </Modal>

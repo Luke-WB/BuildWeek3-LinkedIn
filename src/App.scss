@@ -156,6 +156,18 @@ a#navbarScrollingDropdown {
   font-weight: 300;
 }
 
+.proMiddle {
+  font-weight: 500;
+}
+
+.proBold {
+  font-weight: 700;
+}
+
+.proVerySmall {
+  font-size: 13px;
+}
+
 .proSmall {
   font-size: 15px;
 }
@@ -237,9 +249,21 @@ a {
   width: 15px;
   height: 15px;
   background: rgb(248, 199, 126);
-  background: -moz-linear-gradient(52deg, rgba(248, 199, 126, 1) 50%, rgba(255, 224, 179, 1) 50%);
-  background: -webkit-linear-gradient(52deg, rgba(248, 199, 126, 1) 50%, rgba(255, 224, 179, 1) 50%);
-  background: linear-gradient(52deg, rgba(248, 199, 126, 1) 50%, rgba(255, 224, 179, 1) 50%);
+  background: -moz-linear-gradient(
+    52deg,
+    rgba(248, 199, 126, 1) 50%,
+    rgba(255, 224, 179, 1) 50%
+  );
+  background: -webkit-linear-gradient(
+    52deg,
+    rgba(248, 199, 126, 1) 50%,
+    rgba(255, 224, 179, 1) 50%
+  );
+  background: linear-gradient(
+    52deg,
+    rgba(248, 199, 126, 1) 50%,
+    rgba(255, 224, 179, 1) 50%
+  );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f8c77e",endColorstr="#ffe0b3",GradientType=1);
   margin-right: 3px;
   border-radius: 10%;
@@ -281,15 +305,65 @@ a {
 }
 
 .modalIcon {
-  color: #666666
+  color: #666666;
 }
 
 .modaltextArea {
-  border: 0px!important;
+  border: 0px !important;
   resize: none;
 }
 
 .modaltextArea:focus {
-  box-shadow: none!important;
+  box-shadow: none !important;
   resize: none;
+}
+
+.modalOrrBar {
+  border-left: 1px rgb(220, 220, 220) solid;
+  height: 100%;
+  width: 1px;
+  margin: 5px;
+}
+.messageTrans {
+transform: translate(-5px,0);
+}
+
+.iconSmile {
+  padding: 8px 0px 8px 0px;
+  font-size: 40px !important;
+  font-weight: 500 !important;
+  color: #666666;
+}
+
+.iconSmile:hover {
+  border-radius: 50%;
+  background-color: #ebebeb;
+  padding: 8px 0px 8px 0px;
+}
+
+.modalHGrey {
+  padding: 8px 0px 8px 0px;
+}
+
+.modalHGrey:hover {
+  border-radius: 50%;
+  background-color: #ebebeb;
+  padding: 8px 0px 8px 0px;
+}
+
+.modalHoverText {
+  border-radius: 30px !important;
+  padding: 8px 15px !important;
+}
+
+.modalHoverText:hover {
+  background-color: #ebebeb !important;
+  border-radius: 30px !important;
+  padding: 8px 15px !important;
+}
+
+.proOpenTo:disabled  {
+  background-color: #ebebeb;
+  color: #666666;
+  border: transparent;
 }

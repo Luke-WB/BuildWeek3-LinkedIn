@@ -75,7 +75,7 @@ function HomeProfile() {
             <p className="proBlue">Group</p>
             <div className="d-flex align-item-center justify-content-between tratto">
               <div className="proBlue">Events</div>
-              <div>
+              <div className="modalHGrey px-3 py-2">
                 <AiOutlinePlus />
               </div>
             </div>
