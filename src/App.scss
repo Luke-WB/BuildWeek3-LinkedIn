@@ -367,3 +367,13 @@ transform: translate(-5px,0);
   color: #666666;
   border: transparent;
 }
+
+.homeModalH {
+  padding: 8px 12px 8px 12px;
+}
+
+.homeModalH:hover {
+  border-radius: 50%;
+  background-color: #ebebeb;
+  padding: 8px 12px 8px 12px;
+}
