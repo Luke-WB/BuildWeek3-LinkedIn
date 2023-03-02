@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { HiOutlineClock, HiDocumentText } from "react-icons/hi";
@@ -7,8 +7,11 @@ import { BsFillPlayBtnFill } from "react-icons/bs";
 import { VscSmiley } from "react-icons/vsc";
 import { BsThreeDots } from "react-icons/bs";
 import { BiMessageRoundedDetail } from "react-icons/bi";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProfile } from "../redux/actions";
 
 const ModalePost = ({ show, handleClose, check }) => {
+  const dispatch = useDispatch;
   const addPost = {
     text: "",
   };
@@ -16,12 +19,14 @@ const ModalePost = ({ show, handleClose, check }) => {
   const handleChange = (field, value) => {
     setObjPost((prev) => ({ ...prev, [field]: value }));
   };
-  
 
-   let enabled = objPost.text.length > 0;
-//   console.log("strobjPost.length",strobjPost.length)
-//   console.log("enabled", enabled)
-//   console.log("strobjPost",strobjPost)
+  // const token = useSelector((state) => state.profile.token)
+  // useEffect(() => {
+  //   dispatch(fetchProfile(token));
+  // }, []);
+  const myProfile = useSelector((state) => state.profile.profile);
+
+  let enabled = objPost.text.length > 0;
 
   const [newPost, setPost] = useState([]);
   async function postPost() {
@@ -54,6 +59,23 @@ const ModalePost = ({ show, handleClose, check }) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="d-flex flex-column">
+        <div className="d-flex">
+          <div>
+            <img
+              className="my-3 ms-4 me-3 rounded-circle"
+              style={{ height: "55px" }}
+              src={myProfile.image}
+              alt="portrait"
+            />
+          </div>
+          <div>
+            <div>
+              {myProfile.name}
+              {myProfile.surname}
+            </div>
+            <Button className="proMore mt-2" variant="outline-primary">Anyone</Button>
+          </div>
+        </div>
         <Form.Control
           className="visible modaltextArea"
           placeholder="What do you want to talk about?"
