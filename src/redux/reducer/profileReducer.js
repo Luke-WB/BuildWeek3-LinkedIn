@@ -7,7 +7,7 @@ const initialState = {
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs",
   showExp: false,
   post: [],
-  loading: false,
+  loading: true,
 };
 
 const profileReducer = (state = initialState, action) => {
