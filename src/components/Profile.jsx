@@ -466,12 +466,6 @@ const Profile = () => {
       </div>
       <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
-          <h2 className="my-0">Education</h2>
-          <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
-        </div>
-      </div>
-      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
-        <div className="my-4 mx-4">
           <Exprience />
         </div>
       </div>
