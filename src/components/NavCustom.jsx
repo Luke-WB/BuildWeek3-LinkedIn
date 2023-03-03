@@ -2,7 +2,6 @@ import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas, Card, Lis
 import logo from "../assets/LinkedIn_logo_initials.png";
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-
 import { FaSearch, FaHome, FaUserFriends, FaBell, FaCompass } from "react-icons/fa";
 import { BsBriefcaseFill, BsGrid3X3GapFill, BsPlayBtnFill } from "react-icons/bs";
 import { CgInsights } from "react-icons/cg";
@@ -10,6 +9,7 @@ import { RiSuitcaseFill, RiAdvertisementLine, RiMessage3Line } from "react-icons
 import { MdGroups } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
 import { AiOutlinePlus } from "react-icons/ai";
+import { Link, useNavigate } from "react-router-dom";
 
 function OffCanvasExample({ name, ...props }, prop) {
   const myProfile = useSelector((state) => state.profile.profile);
@@ -40,7 +40,6 @@ function OffCanvasExample({ name, ...props }, prop) {
   const [peopleFetched, setPeopleFetched] = useState([]);
   const [word, setWord] = useState("");
   const [nameSearch, setNameSearch] = useState();
-  const myProfile = useSelector((state) => state.profile.profile);
   const navigate = useNavigate();
 
   const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/";
@@ -87,7 +86,8 @@ function OffCanvasExample({ name, ...props }, prop) {
         bg="white"
         expand="lg"
         className="sticky-top mb "
-        style={{ height: "70px", display: "flex", alignItems: "center" }}>
+        style={{ height: "70px", display: "flex", alignItems: "center" }}
+      >
         <Container className="container d-flex justify-content-between align-items-center" style={{ padding: "2px" }}>
           <Navbar.Brand href="#home" className="m-0">
             <img
@@ -150,7 +150,8 @@ function OffCanvasExample({ name, ...props }, prop) {
                 }
                 id="navbarScrollingDropdown"
                 style={{ borderRight: "1px solid lightgray", paddingRight: "15px" }}
-                className="icon-word ">
+                className="icon-word "
+              >
                 <div className="text-center d-flex justify-content-center">
                   <Button variant="green w-100 py-0" id="bottoncino">
                     View Profile
@@ -295,7 +296,8 @@ function OffCanvasExample({ name, ...props }, prop) {
 
       <div
         id="scroolDiv"
-        className="shadow p-3 mb-5 bg-body rounded border-top d-flex justify-content-between  align-items-center">
+        className="shadow p-3 mb-5 bg-body rounded border-top d-flex justify-content-between  align-items-center"
+      >
         <div style={{ height: "60px", display: "flex", alignItems: "center" }}>
           <div style={{ marginLeft: "7%" }}>
             <img
@@ -314,7 +316,8 @@ function OffCanvasExample({ name, ...props }, prop) {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-            }}>
+            }}
+          >
             <p style={{ marginBottom: "5px" }}>
               <strong>
                 {myProfile.name} {myProfile.surname}
