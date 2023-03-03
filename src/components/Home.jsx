@@ -71,6 +71,8 @@ const Home = () => {
   }
  */
 
+  const myProfile = useSelector((state) => state.profile.profile);
+
   const [fd, setFd] = useState(new FormData()); //FormData e' una classe usata per raccogliere dati non stringa dai form
   //E' formata da coppie chiave/valore => ["post", File], ["exp", File]
   const handleSubmit = async (ev) => {
