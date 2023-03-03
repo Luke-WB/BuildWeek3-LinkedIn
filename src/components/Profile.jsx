@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { HiUsers } from "react-icons/hi";
 import { AiOutlineArrowRight, AiFillEye } from "react-icons/ai";
 import { BsFillInfoSquareFill } from "react-icons/bs";
-import { fetchProfile, reversed, showModalExp } from "../redux/actions";
+import { fetchIdProfile, fetchProfile, reversed, showModalExp } from "../redux/actions";
 import { BiSearch, BiPencil } from "react-icons/bi";
 import { FaSatelliteDish } from "react-icons/fa";
 import ModalEsperience from "../components/ModalExperience";
 import Home from "./Home";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Experience from "./Experience";
 import ModalePost from "./ModalePost";
 import ModalePut from "./ModalPut";
@@ -19,10 +19,12 @@ const Profile = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
   const token = useSelector((state) => state.profile.token);
   const myProfile = useSelector((state) => state.profile.profile);
   const dispatch = useDispatch();
+  const [modified, setModified] = useState(null);
+  const [fetched, setFetched] = useState(false);
+  const post = useSelector((state) => state.profile.post);
 
   //console.log("PROFILOOO", myProfile._id);
   /*REDUCER PROFILEMODREDUCER DA USARE CON PUT*/
@@ -37,14 +39,11 @@ const Profile = () => {
     title: "",
     area: "",
   };
-  const [modified, setModified] = useState(null);
-  const [fetched, setFetched] = useState(false);
 
   function check() {
     setFetched((prevState) => !prevState);
   }
 
-  const post = useSelector((state) => state.profile.post);
 
   useEffect(() => {
     console.log("MODIFIED", modified);
@@ -413,7 +412,7 @@ const Profile = () => {
                 .map((singPost, i) => {
                   return (
                     <>
-                      {singPost.user._id === `63fc6fa3f193e60013807f59` ? (
+                      {singPost.user._id === `${myProfile._id}` ? (
                         <>
                           <div
                             key={i}
