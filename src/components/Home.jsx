@@ -9,7 +9,7 @@ import HomeProfile from "./HomeProfile";
 import { Link } from "react-router-dom";
 import Loading from "./Loading";
 import ModalePost from "./ModalePost";
-import ModalePut from "./ModalPut";
+import ModalPut from "./ModalPut";
 import ModalePhoto from "./ModalePhoto";
 
 const Home = () => {
@@ -175,15 +175,15 @@ const Home = () => {
                             <div className="d-flex flex-row align-items-center">
                               {myProfile._id === singPost.user._id ? (
                                 <img
-                                  className="my-3 ms-4 me-3 rounded-circle"
-                                  style={{ height: "55px" }}
+                                  className="my-3 ms-4 me-3 rounded-2"
+                                  style={{ height: "55px", width:"55px" }}
                                   src={myProfile.image}
                                   alt="portrait author"
                                 />
                               ) : (
                                 <img
-                                  className="my-3 ms-4 me-3 rounded-circle"
-                                  style={{ height: "55px" }}
+                                  className="my-3 ms-4 me-3 rounded-2"
+                                  style={{ height: "55px", width:"55px" }}
                                   src={singPost.user.image}
                                   alt="portrait author"
                                 />
@@ -199,11 +199,11 @@ const Home = () => {
                               <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
                               <img className="w-100" src={singPost.image} />
                             </div>
-                          </div>
-                          <div className="proSmall proLight">edited: {singPost.updatedAt.slice(0, 10)}</div>
+                          </div>                          
                           {singPost.user._id === `63fc6fa3f193e60013807f59` ? (
                             <>
-                              <ModalePut
+                            <div className="proSmall proLight ms-3 mb-1">edited: {singPost.updatedAt.slice(0, 10)}</div>
+                              <ModalPut
                                 check={check}
                                 id={singPost._id}
                                 // ternaryCheck={true} <--- perchè non funzion :(
@@ -211,7 +211,7 @@ const Home = () => {
                               {console.log("eccolo id POST", singPost._id)}
                             </>
                           ) : (
-                            <></>
+                            <div className="proSmall proLight ms-3 mb-3">edited: {singPost.updatedAt.slice(0, 10)}</div>
                           )}
                         </div>
                       </>
