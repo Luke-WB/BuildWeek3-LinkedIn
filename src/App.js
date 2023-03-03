@@ -20,7 +20,7 @@ function App() {
           <Row className="d-flex flex-column flex-md-row">
             <Col xs={12} lg={9}>
               <Routes>
-                <Route path="/profile" element={<Profile />} />
+                <Route path="/user/me" element={<Profile />} />
                 <Route path="user/:userID" element={<NewPerson />} />
                 <Route path="/" element={<Home />} />
               </Routes>

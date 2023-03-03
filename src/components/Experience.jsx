@@ -17,7 +17,7 @@ const Experience = ({ myProfile }) => {
   }
 
   async function getExp() {
-    const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences`;
+    const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/${myProfile._id}/experiences`;
     try {
       const response = await fetch(urlToFetch, {
         method: "GET",

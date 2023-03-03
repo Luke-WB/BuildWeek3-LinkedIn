@@ -142,7 +142,7 @@ const Home = () => {
                             </div>
                             <div className="my-2 me-5 mx-4">
                               <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
-                              <img className="my-3 w-100" src={singPost.image} />
+                              <img className="my-3 w-100" src={singPost.image} alt="activity" />
                             </div>
                             {singPost.user._id === `63fc6fa3f193e60013807f59` ? (
                               <>

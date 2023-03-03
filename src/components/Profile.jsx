@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { HiUsers } from "react-icons/hi";
 import { AiFillEye } from "react-icons/ai";
 import { BsFillInfoSquareFill } from "react-icons/bs";
-import { fetchProfile, reversed, showModalExp } from "../redux/actions";
+import { fetchIdProfile, fetchProfile, reversed, showModalExp } from "../redux/actions";
 import { BiSearch, BiPencil } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import Experience from "./Experience";
@@ -15,10 +15,12 @@ const Profile = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
   const token = useSelector((state) => state.profile.token);
   const myProfile = useSelector((state) => state.profile.profile);
   const dispatch = useDispatch();
+  const [modified, setModified] = useState(null);
+  const [fetched, setFetched] = useState(false);
+  const post = useSelector((state) => state.profile.post);
 
   const obj = {
     name: "",
@@ -28,14 +30,10 @@ const Profile = () => {
     title: "",
     area: "",
   };
-  const [modified, setModified] = useState(null);
-  const [fetched, setFetched] = useState(false);
 
   function check() {
     setFetched((prevState) => !prevState);
   }
-
-  const post = useSelector((state) => state.profile.post);
 
   useEffect(() => {
     async function ipipipip(id, expid) {
@@ -298,25 +296,29 @@ const Profile = () => {
           </div>
           <div className="proBlack prosmall proLight mt-2">
             {post &&
-              post.slice(0, 50).map((singPost, i) => {
-                return (
-                  <>
-                    {singPost.user._id === `63fc6fa3f193e60013807f59` ? (
-                      <>
-                        <div
-                          key={i}
-                          className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4"
-                        >
-                          <div className="my-2">
-                            <h3 className="proBlack my-2 mx-4">
-                              writted by{" "}
-                              <Link to={`/user/${singPost.user?._id}`}>
-                                <span className="proBlack proGreyHBlue">{singPost.user?.name}</span>
-                              </Link>
-                            </h3>
-                            <div className="my-2 me-5 mx-4">
-                              <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
-                              <img className="my-3 ms-4 me-3 rounded-2 w-100" src={singPost.image} />
+              post
+                /* .filter((postUnfilt) => postUnfilt.text.length > 10) */
+                .slice(0, 50)
+                .map((singPost, i) => {
+                  return (
+                    <>
+                      {singPost.user._id === `${myProfile._id}` ? (
+                        <>
+                          <div
+                            key={i}
+                            className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4"
+                          >
+                            <div className="my-2">
+                              <h3 className="proBlack my-2 mx-4">
+                                writted by{" "}
+                                <Link to={`/user/${singPost.user?._id}`}>
+                                  <span className="proBlack proGreyHBlue">{singPost.user?.name}</span>
+                                </Link>
+                              </h3>
+                              <div className="my-2 me-5 mx-4">
+                                <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
+                                <img className="my-3 ms-4 me-3 rounded-2 w-100" src={singPost.image} alt="postedImg" />
+                              </div>
                             </div>
                           </div>
                           <div className="proSmall proLight mx-4">edited: {singPost.updatedAt.slice(0, 10)}</div>
@@ -327,14 +329,13 @@ const Profile = () => {
                             // ternaryCheck={true} <--- perchè non funzion :(
                           />
                           {console.log("eccolo id POST", singPost._id)}
-                        </div>
-                      </>
-                    ) : (
-                      <></>
-                    )}
-                  </>
-                );
-              })}
+                        </>
+                      ) : (
+                        <></>
+                      )}
+                    </>
+                  );
+                })}
           </div>
         </div>
       </div>

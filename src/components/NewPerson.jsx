@@ -150,7 +150,7 @@ export default function NewPerson() {
                               <div className="my-2 me-5 mx-4">
                                 <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
                               </div>
-                              <img className="my-3 mx-4 rounded-2" src={singPost.image} />
+                              <img className="my-3 mx-4 rounded-2" src={singPost.image} alt="imgPerson" />
                             </div>
                             <div className="proSmall proLight mx-4">edited: {singPost.updatedAt.slice(0, 10)}</div>
                           </div>

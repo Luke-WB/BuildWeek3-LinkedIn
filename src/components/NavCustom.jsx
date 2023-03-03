@@ -130,7 +130,7 @@ function OffCanvasExample({ name, ...props }, prop) {
                 id="navbarScrollingDropdown"
                 className="icon-word"
               >
-                <Link to={"/profile"}>
+                <Link to={"/user/me"}>
                   <div className="text-center d-flex justify-content-center">
                     <Button variant="green w-100 py-0" id="bottoncino">
                       View Profile
