@@ -24,7 +24,6 @@ body {
 }
 a#navbarScrollingDropdown {
   display: flex;
-  flex-direction: column;
   align-items: center;
 }
 
@@ -176,4 +175,28 @@ a {
 
 #bottoneModale:focus {
   box-shadow: 1px 1px 1px 1px black;
+}
+
+/*SEARCHBAR IN CUSTOMNAV*/
+.form-control.searchFormNav:focus {
+  border-color: #eef3f8;
+  box-shadow: none;
+}
+
+.form-control.searchFormNav {
+  transition: width 1.5s;
+  transition-delay: 0;
+}
+
+.form-control.searchFormNav:focus-visible {
+  width: 300px;
+  border: 2px solid black;
+}
+
+.dropdown-toggle:after {
+  margin-top: 35px;
+}
+
+#navLinks:hover {
+  text-decoration: underline;
 }

@@ -1,71 +1,112 @@
-import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas, Card, ListGroup } from "react-bootstrap"
-import logo from "../assets/LinkedIn_logo_initials.png"
-import React, { useState } from "react"
-import { useSelector } from "react-redux"
+import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas, Card, ListGroup } from "react-bootstrap";
+import logo from "../assets/LinkedIn_logo_initials.png";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
-import { FaSearch, FaHome, FaUserFriends, FaBell, FaCompass } from "react-icons/fa"
-import { BsBriefcaseFill, BsGrid3X3GapFill, BsPlayBtnFill } from "react-icons/bs"
-import { CgInsights } from "react-icons/cg"
-import { RiSuitcaseFill, RiAdvertisementLine, RiMessage3Line } from "react-icons/ri"
-import { MdGroups } from "react-icons/md"
-import { TiTick } from "react-icons/ti"
-import { AiOutlinePlus } from "react-icons/ai"
+import { FaSearch, FaHome, FaUserFriends, FaBell, FaCompass } from "react-icons/fa";
+import { BsBriefcaseFill, BsGrid3X3GapFill, BsPlayBtnFill } from "react-icons/bs";
+import { CgInsights } from "react-icons/cg";
+import { RiSuitcaseFill, RiAdvertisementLine, RiMessage3Line } from "react-icons/ri";
+import { MdGroups } from "react-icons/md";
+import { TiTick } from "react-icons/ti";
+import { AiOutlinePlus } from "react-icons/ai";
 
 function OffCanvasExample({ name, ...props }, prop) {
-  const myProfile = useSelector((state) => state.profile.profile)
+  const myProfile = useSelector((state) => state.profile.profile);
 
-  const [show, setShow] = useState(false)
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  /* scoll */
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    window.removeEventListener("scroll", listenToScroll);
+    return () => window.addEventListener("scroll", listenToScroll);
+  }, []);
+
+  const listenToScroll = () => {
+    let heightToShowDiv = 10;
+    const windowScroll = document.body.scrollTop || document.documentElement.scrollTop;
+
+    if (windowScroll > heightToShowDiv) {
+      isVisible && setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
 
   return (
-    <Navbar bg="white" expand="lg">
-      <Container className="container d-flex justify-content-between align-items-baseline" style={{ padding: "12px" }}>
-        <div className="d-flex ">
-          <Navbar.Brand href="#home">
-            <img src={logo} width="35" height="35" className="d-inline-block align-top" alt="React Bootstrap logo" />
+    <>
+      <Navbar
+        bg="white"
+        expand="lg"
+        className="sticky-top mb "
+        style={{ height: "70px", display: "flex", alignItems: "center" }}>
+        <Container className="container d-flex justify-content-between align-items-center" style={{ padding: "2px" }}>
+          <Navbar.Brand href="#home" className="m-0">
+            <img
+              src={logo}
+              width="35"
+              height="35"
+              className="d-inline-block align-top me-0"
+              alt="React Bootstrap logo"
+            />
           </Navbar.Brand>
-          <div className="d-flex">
-            <FaSearch className="position-relative" style={{ right: "-183px", top: "15px", color: "#006699" }} />
-            <Form className="d-flex">
-              <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" />
-            </Form>
-          </div>
-        </div>
-        <div>
           <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll">
-            <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
+          <Navbar.Collapse id="navbarScroll" className="bg-white">
+            <div className="d-flex align-items-center">
+              <FaSearch className="position-relative" style={{ right: "-31px", top: "1px", color: "#4a4a4a" }} />
+              <Form className="d-flex">
+                <Form.Control
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                  className="searchFormNav"
+                  style={{
+                    backgroundColor: "#eef3f8",
+                    textIndent: "24px",
+                    height: "38px",
+                    minWidth: "260px",
+                    marginRight: "2px",
+                    borderRadius: "4px",
+                  }}
+                />
+              </Form>
+            </div>
+
+            <Nav className=" my-2 my-lg-0 align-items-start  ms-5 ms-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
               <Nav.Link href="#action1" className="icon-word">
                 <FaHome className="icon" />
-                Home
+                <span className="d-none d-lg-block">Home</span>
               </Nav.Link>
               <Nav.Link href="#action1" className="icon-word">
-                <FaUserFriends className="icon" /> My Network
+                <FaUserFriends className="icon" /> <span className="d-none d-lg-block">My Network</span>
               </Nav.Link>
               <Nav.Link href="#action1" className="icon-word">
                 <BsBriefcaseFill className="icon" />
-                Jobs
+                <span className="d-none d-lg-block"> Jobs</span>
               </Nav.Link>
               <Nav.Link href="#action1" className="icon-word">
                 <RiMessage3Line className="icon" />
-                Messaging
+                <span className="d-none d-lg-block">Messaging</span>
               </Nav.Link>
               <Nav.Link href="#action1" className="icon-word">
                 <FaBell className="icon" />
-                Notifications
+                <span className="d-none d-lg-block">Notifications </span>
               </Nav.Link>
 
               <NavDropdown
                 title={
                   <div className="icon-word ">
-                    <img src={myProfile.image} className="rounded-circle" alt="pic-user" style={{ width: "35px" }} />
-                    Me
+                    <img src={myProfile.image} className="rounded-circle" alt="pic-user" style={{ width: "29px" }} />
+                    <span className="d-none d-lg-block">Me </span>
                   </div>
                 }
                 id="navbarScrollingDropdown"
-                className="icon-word"
-              >
+                style={{ borderRight: "1px solid lightgray", paddingRight: "15px" }}
+                className="icon-word ">
                 <div className="text-center d-flex justify-content-center">
                   <Button variant="green w-100 py-0" id="bottoncino">
                     View Profile
@@ -74,7 +115,7 @@ function OffCanvasExample({ name, ...props }, prop) {
 
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action3">
-                  <strong>Account</strong>{" "}
+                  <strong>Account</strong>
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action3">Try Premium for free</NavDropdown.Item>
                 <NavDropdown.Item href="#action3">Settings & Privacy</NavDropdown.Item>
@@ -94,11 +135,10 @@ function OffCanvasExample({ name, ...props }, prop) {
                 title={
                   <div className="icon-word">
                     <BsGrid3X3GapFill className="icon" />
-                    Work
+                    <span className="d-none d-lg-block"> Work </span>
                   </div>
                 }
                 id="navbarScrollingDropdown"
-                style={{ borderLeft: "1px solid lightgray" }}
                 className="icon-word "
                 onClick={handleShow}
               />
@@ -199,15 +239,62 @@ function OffCanvasExample({ name, ...props }, prop) {
               </Offcanvas>
             </Nav>
             <Navbar.Text>
-              <a href="#login" className="gold ms-5 d-flex flex-nowrap">
-                Try Premium for free
+              <a href="#login" className="gold  d-flex flex-nowrap d-none d-lg-block ">
+                <ins>Try Premium for free </ins>
               </a>
             </Navbar.Text>
           </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+      {/*DIV CHE COMPARE ALLO SCROLL*/}
+
+      <div
+        id="scroolDiv"
+        className="shadow p-3 mb-5 bg-body rounded border-top d-flex justify-content-between  align-items-center">
+        <div style={{ height: "60px", display: "flex", alignItems: "center" }}>
+          <div style={{ marginLeft: "7%" }}>
+            <img
+              className="rounded-circle"
+              style={{ width: "50px" }}
+              src={"https://i.pinimg.com/736x/65/91/a0/6591a0cdc097b089c2b329d1feddee54.jpg"}
+              alt="immagine profilo"
+            />
+          </div>
+          <div
+            style={{
+              width: "400px",
+              lineHeight: "17px",
+              marginTop: "10px",
+              marginLeft: "15px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}>
+            <p style={{ marginBottom: "5px" }}>
+              <strong>
+                {myProfile.name} {myProfile.surname}
+              </strong>
+            </p>
+            <p style={{ marginBottom: "0px" }}>{myProfile.title}</p>
+          </div>
         </div>
-      </Container>
-    </Navbar>
-  )
+        <div>
+          <Form>
+            <Button className="proMore me-3" variant="outline-primary">
+              Add profile section
+            </Button>
+            <Button className="proModProfile me-3" variant="outline-primary">
+              Add profile section
+            </Button>
+            <Button className="proOpenTo me-3" variant="primary">
+              Open to
+            </Button>
+          </Form>
+        </div>
+      </div>
+    </>
+  );
 }
 function Example() {
   return (
@@ -216,7 +303,7 @@ function Example() {
         <OffCanvasExample key={idx} placement={placement} name={placement} />
       ))}
     </>
-  )
+  );
 }
 
-export default Example
+export default Example;
