@@ -10,12 +10,17 @@ import { Link } from "react-router-dom";
 import Loading from "./Loading";
 import ModalePost from "./ModalePost";
 import ModalePut from "./ModalPut";
+import ModalePhoto from "./ModalePhoto";
 
 const Home = () => {
+  const [showPhoto, setShowPhoto] = useState(false);
+  const handleClosePhoto = () => setShowPhoto(false);
+  const handleShowPhoto = () => setShowPhoto(true);
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  
   const [showPut, setShowPut] = useState(false);
   const handleShowPut = () => setShowPut(true);
   const handleClosePut = () => setShowPut(false);
@@ -121,11 +126,11 @@ const Home = () => {
         <Loading />
       ) : (
         <Container>
-          <Row>
-            <Col xs={4}>
+          <Row className="d-flex flex-column flex-md-row">
+            <Col xs={12} lg={4}>
               <HomeProfile />
             </Col>
-            <Col xs={8}>
+            <Col xs={12} lg={8}>
               <div className="bg-light rounded-3 position-relative proCard my-4 me-0 p3-0">
                 <div className="d-flex align-items-center">
                   <div className="d-inline-block">
@@ -152,19 +157,20 @@ const Home = () => {
                     // ternaryCheck={false} <--- perchè non funzion :(
                   />
                 </div>
-                <div className="d-flex justify-content-evenly my-2 mx-4">
-                  <form onSubmit={handleSubmit}>
-                    <div className="greyHover rounded-2 me-2 px-2 py-3">
-                      <MdPhotoSizeSelectActual className="fs-4 text-primary me-2" />{" "}
-                      Photo
-                      <input
-                        type="file"
-                        onChange={(ev) => handleFile(ev, "post")}
-                        accept=".jpg"
-                      />
-                      <button>SEND</button>
-                    </div>
-                  </form>
+                <div
+                  onClick={handleSubmit}
+                  className="d-flex justify-content-evenly my-2 mx-4"
+                >                  
+                  <div onClick={handleShowPhoto} className="greyHover rounded-2 me-2 px-2 py-3"
+                  >
+                    <MdPhotoSizeSelectActual className="fs-4 text-primary me-2" />
+                    <ModalePhoto
+                      showPhoto={showPhoto}
+                      handleClosePhoto={handleClosePhoto}
+                      // ternaryCheck={false} <--- perchè non funzion :(
+                    />
+                    Photo
+                  </div>
                   <div className="greyHover rounded-2 me-2 px-2 py-3">
                     <BsFillPlayBtnFill className="fs-4 text-success me-2" />
                     Video
@@ -187,7 +193,7 @@ const Home = () => {
                     return (
                       <>
                         <div
-                          key={i + "post"}
+                          key={singPost.user?._id}
                           className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4"
                         >
                           <div className="my-2 ms-4">

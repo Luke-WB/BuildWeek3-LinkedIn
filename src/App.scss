@@ -93,6 +93,15 @@ a#navbarScrollingDropdown {
 
 // button setting profile component
 
+.greyHover2 {
+  border:none;
+  background: #F8F9FA;
+}
+
+.greyHover2:hover {
+  background: #ebebeb;
+}
+
 .proOpenTo {
   border-radius: 30px !important;
   padding: 5px 15px !important;
@@ -316,6 +325,23 @@ a {
 .modaltextArea:focus {
   box-shadow: none !important;
   resize: none;
+}
+
+
+.modaltextArea:hover{
+  background-color: #E2F0FE;
+  text-decoration: none;
+}
+
+.modalFile {
+  color: #0a77d2;
+  text-decoration: none;
+  border: transparent  
+}
+
+.modalFile::placeholder {
+  color: #0a77d2;
+  text-decoration: none;  
 }
 
 .modalOrrBar {
