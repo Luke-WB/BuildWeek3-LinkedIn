@@ -79,7 +79,7 @@ const ModalePut = ({ show, handleClose, check, id }) => {
         </Button>
       </div>
 
-      <Modal show={showPut} onHide={handleClose}>
+      <Modal show={showPut} onHide={handleClosePut}>
         <Modal.Header closeButton>
           <Modal.Title className="modalColor modalTitle">Create a post</Modal.Title>
         </Modal.Header>

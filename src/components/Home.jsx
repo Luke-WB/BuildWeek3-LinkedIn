@@ -193,7 +193,6 @@ const Home = () => {
                               id={singPost._id}
                               // ternaryCheck={true} <--- perchè non funzion :(
                             />
-                            {console.log("eccolo id POST", singPost._id)}
                           </>
                         ) : (
                           <div className="proSmall proLight mx-4 my-2">edited: {singPost.updatedAt.slice(0, 10)}</div>
