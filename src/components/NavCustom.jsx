@@ -90,38 +90,27 @@ function OffCanvasExample({ name, ...props }, prop) {
         <div>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-            <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
-              <Link to={"/"}>
-                <Nav.Link href="#action1" className="icon-word">
+            <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>              
+                <Nav.Link to="/" className="icon-word">
                   <FaHome className="icon" />
                   Home
                 </Nav.Link>
-              </Link>
-              <Link to={"/"}>
-                <Nav.Link href="#action1" className="icon-word">
+                <Nav.Link to="/" className="icon-word">
                   <FaUserFriends className="icon" /> My Network
                 </Nav.Link>
-              </Link>
-              <Link to={"/"}>
-                <Nav.Link href="#action1" className="icon-word">
+                <Nav.Link to="/" className="icon-word">
                   <BsBriefcaseFill className="icon" />
                   Jobs
                 </Nav.Link>
-              </Link>
-              <Link to={"/"}>
-                <Nav.Link href="#action1" className="icon-word">
+                <Nav.Link to="/" className="icon-word">
                   <RiMessage3Line className="icon" />
                   Messaging
                 </Nav.Link>
-              </Link>
-              <Link to={"/"}>
-                <Nav.Link href="#action1" className="icon-word">
+                <Nav.Link to="/" className="icon-word">
                   <FaBell className="icon" />
                   Notifications
                 </Nav.Link>
-              </Link>
-
-              <NavDropdown
+                <NavDropdown
                 title={
                   <div className="icon-word ">
                     <img src={myProfile.image} className="rounded-circle" alt="pic-user" style={{ width: "35px" }} />
