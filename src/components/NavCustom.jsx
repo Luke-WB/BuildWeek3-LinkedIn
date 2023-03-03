@@ -9,7 +9,8 @@ import { RiSuitcaseFill, RiAdvertisementLine, RiMessage3Line } from "react-icons
 import { MdGroups } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
 import { AiOutlinePlus } from "react-icons/ai";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import "../assets/sass/_navBar.scss";
 
 function OffCanvasExample({ name, ...props }, prop) {
   const myProfile = useSelector((state) => state.profile.profile);
@@ -79,16 +80,16 @@ function OffCanvasExample({ name, ...props }, prop) {
   const searchName = async () => {
     navigate(`user/${nameSearch.id}`);
   };
-
+  const location = useLocation();
   return (
     <>
       <Navbar
         bg="white"
         expand="lg"
-        className="sticky-top mb "
+        className="sticky-top mb"
         style={{ height: "70px", display: "flex", alignItems: "center" }}
       >
-        <Container className="container d-flex justify-content-between align-items-center" style={{ padding: "2px" }}>
+        <Container className="container d-flex justify-content-between align-items-center">
           <Navbar.Brand href="#home" className="m-0">
             <img
               src={logo}
@@ -98,32 +99,36 @@ function OffCanvasExample({ name, ...props }, prop) {
               alt="React Bootstrap logo"
             />
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll" className="bg-white">
-            <div className="d-flex align-items-center">
-              <FaSearch className="position-relative" style={{ right: "-31px", top: "1px", color: "#4a4a4a" }} />
-              <Form className="d-flex" onSubmit={() => searchName()}>
-                <Form.Control
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                  className="searchFormNav"
-                  style={{
-                    backgroundColor: "#eef3f8",
-                    textIndent: "24px",
-                    height: "38px",
-                    minWidth: "260px",
-                    marginRight: "2px",
-                    borderRadius: "4px",
-                  }}
-                  onChange={(e) => setWord(e.target.value)}
-                />
-              </Form>
-            </div>
 
-            <Nav className=" my-2 my-lg-0 align-items-start  ms-5 ms-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
-              <Link to={"/"} className="link-fix text-dark">
-                <Navbar className="icon-word">
+          <div className="d-flex align-items-center">
+            <FaSearch className="position-relative" style={{ right: "-31px", top: "1px", color: "#4a4a4a" }} />
+            <Form className="d-flex" onSubmit={() => searchName()}>
+              <Form.Control
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                className="searchFormNav"
+                style={{
+                  backgroundColor: "#eef3f8",
+                  textIndent: "24px",
+                  height: "38px",
+                  minWidth: "260px",
+                  marginRight: "2px",
+                  borderRadius: "4px",
+                }}
+                onChange={(e) => setWord(e.target.value)}
+              />
+            </Form>
+          </div>
+
+          {/* <Link className={`nav-link ${location.pathname === "/" ? "active" : ""}`} to="/">
+              Home
+            </Link>*/}
+          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Collapse id="navbarScroll" className="bg-white justify-content-end">
+            <Nav className=" my-2 my-lg-0 align-items-start ms-5 ms-lg-0 " style={{ maxHeight: "100px" }} navbarScroll>
+              <Link className={`nav-link ${location.pathname === "/" ? "active" : ""}`} to="/">
+                <Navbar className="icon-word ">
                   <FaHome className="icon" />
                   <span className="d-none d-lg-block">Home</span>
                 </Navbar>

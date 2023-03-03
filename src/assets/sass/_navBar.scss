@@ -1,8 +1,10 @@
 .container {
   .icon-word {
     display: flex;
-
+    flex-direction: column;
     align-items: center;
+    margin-left: 3px;
+    margin-right: 3px;
   }
   .icon {
     font-size: 30px;
@@ -21,31 +23,6 @@
 a#navbarScrollingDropdown {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-left: 3px;
-  margin-right: 3px;
-}
-
-.icone {
-  #banana:hover {
-    box-shadow: 1px 5px 5px 0px gray;
-  }
-
-  .mia {
-    font-size: 12px;
-  }
-}
-
-#bottoncino {
-  border: 2px solid #88b5e1;
-}
-#bottoncino:hover {
-  background-color: #88b5e1;
-  border: 2px solid #0080ff;
-}
-
-a#navbarScrollingDropdown {
-  display: flex;
   align-items: center;
 }
 .dropdown-toggle::after {
@@ -69,6 +46,7 @@ a#navbarScrollingDropdown {
 }
 
 /* SEARCHBAR IN CUSTOMNAV */
+
 .form-control.searchFormNav:focus {
   border-color: #eef3f8;
   box-shadow: none;
@@ -84,6 +62,9 @@ a#navbarScrollingDropdown {
   border: 2px solid black;
 }
 
+.dropdown-toggle:after {
+  margin-top: 35px;
+}
 .nav-link {
   padding: 0;
 }
