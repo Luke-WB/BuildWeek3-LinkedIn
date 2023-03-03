@@ -63,11 +63,12 @@ const ModalePut = ({ show, handleClose, check, id }) => {
 
   return (
     <>
+    <div className="d-flex ms-3">
       <Button className="proModProfile me-3 my-3" variant="outline-primary" onClick={handleShowPut}>
         Add
       </Button>
       <Button
-        className="proDelete"
+        className="proDelete me-3 my-3"
         variant="danger"
         onClick={() => {
           deletePost();
@@ -76,6 +77,7 @@ const ModalePut = ({ show, handleClose, check, id }) => {
       >
         Delete
       </Button>
+      </div>
 
       <Modal show={showPut} onHide={handleClose}>
         <Modal.Header closeButton>
