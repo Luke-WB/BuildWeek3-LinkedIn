@@ -112,7 +112,7 @@ const Home = () => {
                     // ternaryCheck={false} <--- perchè non funzion :(
                   />
                 </div>
-                <div className="d-flex justify-content-evenly my-2 mx-4">
+                <div onClick={handleSubmit} className="d-flex justify-content-evenly my-2 mx-4">
                   <div onClick={handleShowPhoto} className="greyHover rounded-2 me-2 px-2 py-3">
                     <MdPhotoSizeSelectActual className="fs-4 text-primary me-2" />
                     Photo
@@ -148,7 +148,7 @@ const Home = () => {
                           key={i}
                           className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4"
                         >
-                          <div className="my-2 ms-4">
+                          <div className="my-2 mx-4">
                             <div className="d-flex flex-row align-items-center">
                               {myProfile._id === singPost.user._id ? (
                                 <img
@@ -172,9 +172,9 @@ const Home = () => {
                                 </Link>
                               </h3>
                             </div>
-                            <div className="my-2 me-5">
+                            <div className="my-2 me-5 mx-4">
                               <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
-                              <img className="w-100" src={singPost.image} />
+                              <img className="my-3 w-100" src={singPost.image} />
                             </div>
                           </div>
                           {singPost.user._id === `63fc6fa3f193e60013807f59` ? (
@@ -190,7 +190,7 @@ const Home = () => {
                               {console.log("eccolo id POST", singPost._id)}
                             </>
                           ) : (
-                            <div className="proSmall proLight ms-3 mb-3">edited: {singPost.updatedAt.slice(0, 10)}</div>
+                            <div className="proSmall proLight mx-4 my-2">edited: {singPost.updatedAt.slice(0, 10)}</div>
                           )}
                         </div>
                       </>

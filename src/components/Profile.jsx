@@ -91,13 +91,19 @@ const Profile = () => {
             <img
               className="proImgBarSetting"
               style={{ objectFit: "cover", objectPosition: "top" }}
-              src={"https://www.media.inaf.it/wp-content/uploads/2020/03/meteorite-1280x720.jpg"}
+              src={
+                "https://www.media.inaf.it/wp-content/uploads/2020/03/meteorite-1280x720.jpg"
+              }
               alt="immagine background"
             />
           </a>
         </div>
         <a href="#">
-          <img className="rounded-circle position-absolute proAbsolute" src={myProfile.image} alt="immagine profilo" />
+          <img
+            className="rounded-circle position-absolute proAbsolute"
+            src={myProfile.image}
+            alt="immagine profilo"
+          />
         </a>
         <div className="mt-5 mx-4">
           <div className="matita position-absolute" onClick={handleShow}>
@@ -109,11 +115,15 @@ const Profile = () => {
           </h2>
           <div className="proBlack proMedium proLight">{myProfile.title}</div>
           <a href="#">
-            <div className="proGrey proLight proGreyHBlue mt-2">{myProfile.email}</div>
+            <div className="proGrey proLight proGreyHBlue mt-2">
+              {myProfile.email}
+            </div>
           </a>
           <div className="mt-2">
             <a href="#">
-              <span className="proGrey proLight proGreyHBlue">{myProfile.area}</span>
+              <span className="proGrey proLight proGreyHBlue">
+                {myProfile.area}
+              </span>
             </a>
 
             <a href="#">
@@ -121,7 +131,9 @@ const Profile = () => {
             </a>
           </div>
           <a href="#">
-            <div className="proBlue mt-2 mb-3">{Math.floor(Math.random() * 100)} connection</div>
+            <div className="proBlue mt-2 mb-3">
+              {Math.floor(Math.random() * 100)} connection
+            </div>
           </a>
           <Form className="mb-4">
             <Button className="proOpenTo me-3" variant="primary">
@@ -140,16 +152,28 @@ const Profile = () => {
           {/* <Button onClick={handleShow}>
             <BiPencil />
           </Button>*/}
-          <Modal show={show} onHide={handleClose} style={{ height: "50%", position: "fixed", top: "30px" }}>
+          <Modal
+            show={show}
+            onHide={handleClose}
+            style={{ height: "50%", position: "fixed", top: "30px" }}
+          >
             <Modal.Header closeButton>
-              <Modal.Title className="fw-normal fs-5">Modifica introduzione</Modal.Title>
+              <Modal.Title className="fw-normal fs-5">
+                Modifica introduzione
+              </Modal.Title>
             </Modal.Header>
-            <p className="text-secondary fw-light ms-3" style={{ fontSize: "12px" }}>
+            <p
+              className="text-secondary fw-light ms-3"
+              style={{ fontSize: "12px" }}
+            >
               * Indica che il campo è obbligatorio
             </p>
             <Modal.Body style={{ overflowY: "scroll" }}>
               <Form className="text-secondary">
-                <Form.Group className="mb-3 text-secondary" style={{ fontSize: "14px" }}>
+                <Form.Group
+                  className="mb-3 text-secondary"
+                  style={{ fontSize: "14px" }}
+                >
                   <Form.Label className="mb-1">Nome*</Form.Label>
                   <Form.Control
                     type="text"
@@ -157,7 +181,10 @@ const Profile = () => {
                     onChange={(e) => (obj.name = e.target.value)}
                   />
                 </Form.Group>
-                <Form.Group className="mb-3 text-secondary" style={{ fontSize: "14px" }}>
+                <Form.Group
+                  className="mb-3 text-secondary"
+                  style={{ fontSize: "14px" }}
+                >
                   <Form.Label className="mb-1">Cognome*</Form.Label>
                   <Form.Control
                     type="text"
@@ -165,29 +192,47 @@ const Profile = () => {
                     onChange={(e) => (obj.surname = e.target.value)}
                   />
                 </Form.Group>
-                <Form.Group className="mb-3 text-secondary" style={{ fontSize: "14px" }}>
+                <Form.Group
+                  className="mb-3 text-secondary"
+                  style={{ fontSize: "14px" }}
+                >
                   <Form.Label className="mb-1">Nome aggiuntivo</Form.Label>
                   <Form.Control type="text" />
                 </Form.Group>
                 <p style={{ fontSize: "14px" }}> Pronuncia del nome</p>
                 <p style={{ fontSize: "14px", color: "#535454" }}>
-                  <BsFillInfoSquareFill /> Può essere aggiunta solo usando la nostra app per dispositivi mobili
+                  <BsFillInfoSquareFill /> Può essere aggiunta solo usando la
+                  nostra app per dispositivi mobili
                 </p>
-                <Form.Group className="mb-3 text-secondary" style={{ fontSize: "14px" }}>
-                  <Form.Label className="mb-1">Inserisci pronomi personalizzati</Form.Label>
+                <Form.Group
+                  className="mb-3 text-secondary"
+                  style={{ fontSize: "14px" }}
+                >
+                  <Form.Label className="mb-1">
+                    Inserisci pronomi personalizzati
+                  </Form.Label>
                   <Form.Control type="text" />
                   <Form.Text className="text-muted">
-                    Indica i pronomi di genere che vuoi che gli altri usino per riferirsi a te
+                    Indica i pronomi di genere che vuoi che gli altri usino per
+                    riferirsi a te
                   </Form.Text>
                   <p> Scopri di più sui pronomi di genere</p>
                 </Form.Group>
-                <Form.Group className="mb-3 text-secondary" style={{ fontSize: "14px" }}>
+                <Form.Group
+                  className="mb-3 text-secondary"
+                  style={{ fontSize: "14px" }}
+                >
                   <Form.Label className="mb-1">Sommario*</Form.Label>
                   <Form.Control type="text" />
                 </Form.Group>
                 <h5> Posizione attuale</h5>
-                <Form.Group className="mb-3 text-secondary" style={{ fontSize: "14px" }}>
-                  <Form.Label className="mb-1">Posizione lavorativa*</Form.Label>
+                <Form.Group
+                  className="mb-3 text-secondary"
+                  style={{ fontSize: "14px" }}
+                >
+                  <Form.Label className="mb-1">
+                    Posizione lavorativa*
+                  </Form.Label>
                   <Form.Control
                     type="text"
                     defaultValue={myProfile.title}
@@ -198,7 +243,10 @@ const Profile = () => {
                   <Form.Check aria-label="option 1" />
                   <p>Mostra l'azienda attuale nella mia presentazione</p>
                 </div>
-                <Form.Group className="mb-3 text-secondary" style={{ fontSize: "14px" }}>
+                <Form.Group
+                  className="mb-3 text-secondary"
+                  style={{ fontSize: "14px" }}
+                >
                   <Form.Label className="mb-1">Settore*</Form.Label>
                   <Form.Control
                     type="text"
@@ -208,24 +256,39 @@ const Profile = () => {
                   <p> Scopri di più sulle opzioni relative al settore</p>
                 </Form.Group>
                 <h5> Formazione</h5>
-                <Form.Group className="mb-3 text-secondary" style={{ fontSize: "14px" }}>
+                <Form.Group
+                  className="mb-3 text-secondary"
+                  style={{ fontSize: "14px" }}
+                >
                   <Form.Label className="mb-1">Formazione*</Form.Label>
-                  <Form.Control type="text" defaultValue={myProfile.bio} onChange={(e) => (obj.bio = e.target.value)} />
+                  <Form.Control
+                    type="text"
+                    defaultValue={myProfile.bio}
+                    onChange={(e) => (obj.bio = e.target.value)}
+                  />
                 </Form.Group>
                 <div className="d-flex">
                   <Form.Check aria-label="option 1" />
                   <p>Mostra l'azienda attuale nella mia presentazione</p>
                 </div>
                 <h5> Località</h5>
-                <Form.Group className="mb-3 text-secondary" style={{ fontSize: "14px" }}>
-                  <Form.Label className="mb-1">Paese/Area geografica*</Form.Label>
+                <Form.Group
+                  className="mb-3 text-secondary"
+                  style={{ fontSize: "14px" }}
+                >
+                  <Form.Label className="mb-1">
+                    Paese/Area geografica*
+                  </Form.Label>
                   <Form.Control
                     type="text"
                     defaultValue={myProfile.area}
                     onChange={(e) => (obj.area = e.target.value)}
                   />
                 </Form.Group>
-                <Form.Group className="mb-3 text-secondary" style={{ fontSize: "14px" }}>
+                <Form.Group
+                  className="mb-3 text-secondary"
+                  style={{ fontSize: "14px" }}
+                >
                   <Form.Label className="mb-1">Città</Form.Label>
                   <Form.Control
                     type="text"
@@ -234,21 +297,35 @@ const Profile = () => {
                   />
                 </Form.Group>
                 <h5 className="mt-4"> Informazioni di contatto</h5>
-                <p style={{ fontSize: "14px" }}> Aggiungi o modifica il tuo profilo URL, indirizzo email e altro</p>
+                <p style={{ fontSize: "14px" }}>
+                  {" "}
+                  Aggiungi o modifica il tuo profilo URL, indirizzo email e
+                  altro
+                </p>
 
-                <p className="text-primary fw-bold mt-4 mb-5">Modifica le informazioni di contatto </p>
+                <p className="text-primary fw-bold mt-4 mb-5">
+                  Modifica le informazioni di contatto{" "}
+                </p>
                 <h5> Sito Web</h5>
                 <Form.Text className="text-muted">
-                  Aggiungi un link che apparirà nella parte superiore del tuo profilo
+                  Aggiungi un link che apparirà nella parte superiore del tuo
+                  profilo
                 </Form.Text>
-                <Form.Group className="mb-3 text-secondary" style={{ fontSize: "14px" }}>
+                <Form.Group
+                  className="mb-3 text-secondary"
+                  style={{ fontSize: "14px" }}
+                >
                   <Form.Label className="mb-1">Link</Form.Label>
                   <Form.Control type="text" />
                 </Form.Group>
               </Form>
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="primary" className="rounded-5" onClick={handleClose}>
+              <Button
+                variant="primary"
+                className="rounded-5"
+                onClick={handleClose}
+              >
                 CHIUDI
               </Button>
               <Button
@@ -281,10 +358,14 @@ const Profile = () => {
               </a>
               <div>
                 <a href="#">
-                  <span className="proGrey proGreyHBlue">{Math.floor(Math.random() * 100)} profile views </span>
+                  <span className="proGrey proGreyHBlue">
+                    {Math.floor(Math.random() * 100)} profile views{" "}
+                  </span>
                 </a>
                 <br />
-                <span className="proGrey proLight proSmall">Discover who's viewed your profile.</span>
+                <span className="proGrey proLight proSmall">
+                  Discover who's viewed your profile.
+                </span>
               </div>
             </div>
             <div className="proGrey proNormal me-5 d-flex">
@@ -293,10 +374,14 @@ const Profile = () => {
               </a>
               <div>
                 <a href="#">
-                  <span className="proGrey proGreyHBlue">{Math.floor(Math.random() * 100)} search appearance</span>
+                  <span className="proGrey proGreyHBlue">
+                    {Math.floor(Math.random() * 100)} search appearance
+                  </span>
                 </a>
                 <br />
-                <span className="proGrey proLight proSmall">See how often you appear in search results</span>
+                <span className="proGrey proLight proSmall">
+                  See how often you appear in search results
+                </span>
               </div>
             </div>
           </div>
@@ -324,10 +409,14 @@ const Profile = () => {
 
       <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
-          <h2 className="my-0">Activity</h2>
-          <a href="#">
-            <div className="proBlue my-0">{Math.floor(Math.random() * 100)} connection</div>
-          </a>
+          <div>
+            <h2 className="my-0">Activity</h2>
+            <a href="#">
+              <div className="proBlue my-0">
+                {Math.floor(Math.random() * 100)} connection
+              </div>
+            </a>
+          </div>
           <div className="proBlack prosmall proLight mt-2">
             {post &&
               post
@@ -342,19 +431,28 @@ const Profile = () => {
                             key={i}
                             className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4"
                           >
-                            <div className="my-2 mx-4">
-                              <h3 className="proBlack my-2">
+                            <div className="my-2">
+                              <h3 className="proBlack my-2 mx-4">
                                 writted by{" "}
                                 <Link to={`/user/${singPost.user?._id}`}>
-                                  <span className="proBlack proGreyHBlue">{singPost.user?.name}</span>
+                                  <span className="proBlack proGreyHBlue">
+                                    {singPost.user?.name}
+                                  </span>
                                 </Link>
                               </h3>
-                              <div className="my-2 me-5">
-                                <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
-                                <img src={singPost.image} />
+                              <div className="my-2 me-5 mx-4">
+                                <span className="proGrey proBlack proLight proSmall proNormal">
+                                  {singPost.text}
+                                </span>
                               </div>
+                              <img
+                                className="my-3 ms-4 me-3 rounded-2 w-100"
+                                src={singPost.image}
+                              />
                             </div>
-                            <div className="proSmall proLight">edited: {singPost.updatedAt.slice(0, 10)}</div>
+                            <div className="proSmall proLight mx-4">
+                              edited: {singPost.updatedAt.slice(0, 10)}
+                            </div>
 
                             <ModalePut
                               check={check}
