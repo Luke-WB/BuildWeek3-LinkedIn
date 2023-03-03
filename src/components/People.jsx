@@ -48,8 +48,7 @@ export default function People() {
   return (
     <div
       className="bg-light rounded-4d-flex flex-column align-items-center my-4 rounded-3"
-      style={{ border: "solid 1px rgba(176, 176, 176, 0.5)" }}
-    >
+      style={{ border: "solid 1px rgba(176, 176, 176, 0.5)" }}>
       <h5 className="m-4">
         <b>People you may know</b>
       </h5>
@@ -65,23 +64,20 @@ export default function People() {
           style={{ width: "100%", textAlign: "center", cursor: "pointer" }}
           onClick={() => {
             isTrue ? setIsTrue(false) : setIsTrue(true);
-          }}
-        >
+          }}>
           <b>
             {" "}
             {isTrue ? (
               <p
                 className="greyHover m-0 pb-2 text-secondary"
-                style={{ borderTop: "solid 1px rgba(176, 176, 176, 0.5)" }}
-              >
+                style={{ borderTop: "solid 1px rgba(176, 176, 176, 0.5)" }}>
                 {" "}
                 Show less <BsChevronCompactUp />
               </p>
             ) : (
               <p
                 className="greyHover m-0 pb-2 text-secondary"
-                style={{ borderTop: "solid 1px rgba(176, 176, 176, 0.5)" }}
-              >
+                style={{ borderTop: "solid 1px rgba(176, 176, 176, 0.5)" }}>
                 {" "}
                 Show more <BsChevronCompactDown />
               </p>
