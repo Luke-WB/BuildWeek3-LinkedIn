@@ -9,9 +9,8 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import {DocumentTitle} from "react"
 
-function HomeProfile() {
+function HomeProfile({myProfile}) {
   const token = useSelector((state) => state.profile.token);
-  const myProfile = useSelector((state) => state.profile.profile);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProfile(token));
@@ -25,7 +24,7 @@ function HomeProfile() {
             <div className="position-absolute eccolo">
               <Link to={"/profile"}>
                 <img
-                  src="https://i.pinimg.com/736x/65/91/a0/6591a0cdc097b089c2b329d1feddee54.jpg"
+                  src={myProfile.image}
                   alt="pic-profile "
                   id="photo"
                 />

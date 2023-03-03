@@ -20,10 +20,12 @@ const Home = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  
+
   const [showPut, setShowPut] = useState(false);
   const handleShowPut = () => setShowPut(true);
   const handleClosePut = () => setShowPut(false);
+
+  const myProfile = useSelector((state) => state.profile.profile);
 
   const addPost = {
     text: "",
@@ -128,7 +130,7 @@ const Home = () => {
         <Container>
           <Row className="d-flex flex-column flex-md-row">
             <Col xs={12} lg={4}>
-              <HomeProfile />
+              <HomeProfile myProfile={myProfile} />
             </Col>
             <Col xs={12} lg={8}>
               <div className="bg-light rounded-3 position-relative proCard my-4 me-0 p3-0">
@@ -138,7 +140,7 @@ const Home = () => {
                       <img
                         className="my-3 ms-4 me-3 rounded-circle"
                         style={{ height: "55px" }}
-                        src="https://i.pinimg.com/736x/65/91/a0/6591a0cdc097b089c2b329d1feddee54.jpg"
+                        src={myProfile.image}
                         alt="profile"
                       />
                     </Link>
@@ -160,8 +162,10 @@ const Home = () => {
                 <div
                   onClick={handleSubmit}
                   className="d-flex justify-content-evenly my-2 mx-4"
-                >                  
-                  <div onClick={handleShowPhoto} className="greyHover rounded-2 me-2 px-2 py-3"
+                >
+                  <div
+                    onClick={handleShowPhoto}
+                    className="greyHover rounded-2 me-2 px-2 py-3"
                   >
                     <MdPhotoSizeSelectActual className="fs-4 text-primary me-2" />
                     <ModalePhoto
@@ -197,14 +201,27 @@ const Home = () => {
                           className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4"
                         >
                           <div className="my-2 ms-4">
-                            <h3 className="proBlack my-2">
-                              writted by{" "}
-                              <Link to={`/user/${singPost.user?._id}`}>
-                                <span className="proBlack proGreyHBlue">
-                                  {singPost.user?.name}
-                                </span>
-                              </Link>
-                            </h3>
+                            <div className="d-flex flex-row align-items-center">
+                              {myProfile._id === singPost.user._id ? <img
+                                className="my-3 ms-4 me-3 rounded-circle"
+                                style={{ height: "55px" }}
+                                src={myProfile.image}
+                                alt="portrait author"
+                              /> : <img
+                              className="my-3 ms-4 me-3 rounded-circle"
+                              style={{ height: "55px" }}
+                              src={singPost.user.image}
+                              alt="portrait author"
+                            />}
+                              <h3 className="proBlack my-2">
+                                writted by{" "}
+                                <Link to={`/user/${singPost.user?._id}`}>
+                                  <span className="proBlack proGreyHBlue">
+                                    {singPost.user?.name}
+                                  </span>
+                                </Link>
+                              </h3>
+                            </div>
                             <div className="my-2 me-5">
                               <span className="proGrey proBlack proLight proSmall proNormal">
                                 {singPost.text}
