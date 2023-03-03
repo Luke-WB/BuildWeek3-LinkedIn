@@ -19,10 +19,7 @@ const Home = () => {
   const addPost = {
     text: "",
   };
-  const [objPost, setObjPost] = useState(addPost);
-  const handleChange = (field, value) => {
-    setObjPost((prev) => ({ ...prev, [field]: value }));
-  };
+
   const [newPost, setPost] = useState([]);
   // profile fetch
   const token = useSelector((state) => state.profile.token);
@@ -68,25 +65,12 @@ const Home = () => {
     }
   }
  */
-  async function deletePost(id) {
-    const urlToFetch = `https://striveschool-api.herokuapp.com/api/posts/${id}`;
-    try {
-      await fetch(urlToFetch, {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
-        },
-      });
-    } catch (error) {
-      console.log("delete", error);
-    }
-  }
 
   const [fd, setFd] = useState(new FormData()); //FormData e' una classe usata per raccogliere dati non stringa dai form
   //E' formata da coppie chiave/valore => ["post", File], ["exp", File]
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    let res = await fetch("https://striveschool-api.herokuapp.com/api/posts/6400de50035832001350be55", {
+    let res = await fetch("https://striveschool-api.herokuapp.com/api/posts/640142c7ab3c5e001380be52", {
       //qui l'id andra' sostituito con un id DINAMICO!!!!!
       method: "POST",
       body: fd, //non serve JSON.stringify
@@ -175,7 +159,7 @@ const Home = () => {
                     return (
                       <>
                         <div
-                          key={i + "post"}
+                          key={i}
                           className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4"
                         >
                           <div className="my-2 mx-4">
@@ -199,16 +183,6 @@ const Home = () => {
                                 // ternaryCheck={true} <--- perchè non funzion :(
                               />
                               {console.log("eccolo id POST", singPost._id)}
-                              <Button
-                                className="proDelete"
-                                variant="danger"
-                                onClick={() => {
-                                  deletePost(singPost._id);
-                                  check();
-                                }}
-                              >
-                                Delete
-                              </Button>
                             </>
                           ) : (
                             <></>

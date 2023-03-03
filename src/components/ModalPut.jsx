@@ -47,11 +47,36 @@ const ModalePut = ({ show, handleClose, check, id }) => {
     }
   }
 
+  async function deletePost() {
+    const urlToFetch = `https://striveschool-api.herokuapp.com/api/posts/${id}`;
+    try {
+      await fetch(urlToFetch, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+        },
+      });
+    } catch (error) {
+      console.log("delete", error);
+    }
+  }
+
   return (
     <>
       <Button className="proModProfile me-3 my-3" variant="outline-primary" onClick={handleShowPut}>
         Add
       </Button>
+      <Button
+        className="proDelete"
+        variant="danger"
+        onClick={() => {
+          deletePost();
+          check();
+        }}
+      >
+        Delete
+      </Button>
+
       <Modal show={showPut} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title className="modalColor modalTitle">Create a post</Modal.Title>
