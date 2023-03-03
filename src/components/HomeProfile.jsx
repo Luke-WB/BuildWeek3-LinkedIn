@@ -32,26 +32,26 @@ function HomeProfile({myProfile}) {
             </div>
             <Card.Title className="mt-5">Welcome, {myProfile.name}</Card.Title>
             <p className="mx-3 text-center proLight">{myProfile.email}</p>
-            <a href="#" className="mb-2 proBlue">
+            <Link to="/" className="mb-2 proBlue">
               Add a photo
-            </a>
+            </Link>
           </div>
 
           <ListGroup variant="flush">
             <ListGroup.Item className="grigio">
               <div className="d-flex justify-content-between">
-                <a href="#" className="m-0" style={{ color: "gray" }}>
+                <Link to="/" className="m-0" style={{ color: "gray" }}>
                   Connection
-                </a>
+                </Link>
                 <div className="d-flex align-items-center">
                   <BsFillPersonPlusFill />
                   <span className="proBlue ms-3"> {Math.floor(Math.random() * 100)}</span>
                 </div>
               </div>
               <div>
-                <a href="#" className="m-0" style={{ color: "black" }}>
+                <Link to="/" className="m-0" style={{ color: "black" }}>
                   Grow your network
-                </a>
+                </Link>
               </div>
             </ListGroup.Item>
             <ListGroup.Item className="grigio">
@@ -60,9 +60,9 @@ function HomeProfile({myProfile}) {
               </p>
               <div className="d-flex align-items-center">
                 <div className="square d-flex "></div>
-                <a href="#" className="proGreyHBlue proGrey">
+                <Link to="/" className="proGreyHBlue proGrey">
                   Try premium for free
-                </a>
+                </Link>
               </div>
             </ListGroup.Item>
             <ListGroup.Item className="grigio">

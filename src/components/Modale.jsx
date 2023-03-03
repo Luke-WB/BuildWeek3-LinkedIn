@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { BiPencil } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 function Modale(props) {
   const [modalShow, setModalShow] = useState(false);
@@ -178,7 +179,7 @@ function Modale(props) {
             <h5>Media</h5>
             <p>
               Add or link to external documents, photos, sites, videos, and presentations. Learn more about{" "}
-              <a href="#">media file types supported</a>
+              <Link to="/">media file types supported</Link>
             </p>
             <Button className="proModProfile" variant="outline-primary">
               + Add media
