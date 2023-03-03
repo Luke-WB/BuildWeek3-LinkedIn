@@ -1,20 +1,20 @@
-import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
-import Modal from "react-bootstrap/Modal";
-import { BiPencil } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { useState } from "react"
+import { Button, Form } from "react-bootstrap"
+import Modal from "react-bootstrap/Modal"
+import { BiPencil } from "react-icons/bi"
+import { Link } from "react-router-dom"
 
 function Modale(props) {
-  const [modalShow, setModalShow] = useState(false);
-  const [isDeleted, setISDeleted] = useState(true);
-  const [newState, setNewState] = useState({});
+  const [modalShow, setModalShow] = useState(false)
+  const [isDeleted, setISDeleted] = useState(true)
+  const [newState, setNewState] = useState({})
 
   const handleChange = (field, value) => {
-    setNewState((prev) => ({ ...prev, [field]: value }));
-  };
+    setNewState((prev) => ({ ...prev, [field]: value }))
+  }
 
   async function deleteExperience() {
-    const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences/${props.id}`;
+    const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences/${props.id}`
     try {
       await fetch(
         urlToFetch,
@@ -26,16 +26,16 @@ function Modale(props) {
         },
         setISDeleted(false),
         console.log("DELETE", isDeleted)
-      );
+      )
     } catch (error) {
-      console.log("delete", error);
+      console.log("delete", error)
     }
   }
 
   async function putExperience() {
-    const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences/${props.id}`;
+    const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences/${props.id}`
     try {
-      console.log(newState);
+      console.log(newState)
       const res = await fetch(urlToFetch, {
         method: "PUT",
         headers: {
@@ -43,15 +43,15 @@ function Modale(props) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(newState),
-      });
+      })
       if (res.ok) {
-        let modifica = await res.json();
-        console.log("PUT", modifica);
+        let modifica = await res.json()
+        console.log("PUT", modifica)
       } else {
-        console.log("error");
+        console.log("error")
       }
     } catch (error) {
-      alert(error);
+      alert(error)
     }
   }
 
@@ -197,7 +197,9 @@ function Modale(props) {
             <h5>Media</h5>
             <p>
               Add or link to external documents, photos, sites, videos, and presentations. Learn more about{" "}
-              <Link to="/">media file types supported</Link>
+              <Link to="/" className="link-fix">
+                media file types supported
+              </Link>
             </p>
             <Button className="proModProfile" variant="outline-primary">
               + Add media
@@ -207,10 +209,10 @@ function Modale(props) {
         <Modal.Footer className="d-flex justify-content-between">
           <Button
             onClick={() => {
-              deleteExperience();
-              props.render();
-              setModalShow(false);
-              props.checking();
+              deleteExperience()
+              props.render()
+              setModalShow(false)
+              props.checking()
             }}
             variant="outline-danger"
           >
@@ -219,10 +221,10 @@ function Modale(props) {
           <Button
             className="proOpenTo"
             onClick={() => {
-              putExperience();
-              setModalShow(false);
-              props.render();
-              props.checking();
+              putExperience()
+              setModalShow(false)
+              props.render()
+              props.checking()
             }}
           >
             Save
@@ -230,7 +232,7 @@ function Modale(props) {
         </Modal.Footer>
       </Modal>
     </>
-  );
+  )
 }
 
-export default Modale;
+export default Modale

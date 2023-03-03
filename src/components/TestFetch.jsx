@@ -67,7 +67,7 @@
 //     //  }
 // }
 // ipipipip()
-import { useState } from "react"; //ChangeEvent e FormEvent sono i tipi degli eventi onChange e onSubmit
+import { useState } from "react" //ChangeEvent e FormEvent sono i tipi degli eventi onChange e onSubmit
 // export default function Component() {
 //   const [fd, setFd] = useState(new FormData()) //FormData e' una classe usata per raccogliere dati non stringa dai form
 //   //E' formata da coppie chiave/valore => ["post", File], ["exp", File]
@@ -147,10 +147,10 @@ import { useState } from "react"; //ChangeEvent e FormEvent sono i tipi degli ev
 //   )
 // }
 export default function POSPOSPSOPSOSOSP() {
-  const [fd, setFd] = useState(new FormData()); //FormData e' una classe usata per raccogliere dati non stringa dai form
+  const [fd, setFd] = useState(new FormData()) //FormData e' una classe usata per raccogliere dati non stringa dai form
   //E' formata da coppie chiave/valore => ["post", File], ["exp", File]
   const handleSubmit = async (ev) => {
-    ev.preventDefault();
+    ev.preventDefault()
     let res = await fetch("https://striveschool-api.herokuapp.com/api/posts/64008cfc035832001350bcd7", {
       //qui l'id andra' sostituito con un id DINAMICO!!!!!
       method: "POST",
@@ -160,18 +160,18 @@ export default function POSPOSPSOPSOSOSP() {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs",
       },
-    });
-  };
+    })
+  }
   const handleFile = (ev) => {
     setFd((prev) => {
-      console.log(ev.target.files[0]);
+      console.log(ev.target.files[0])
       //per cambiare i formData, bisogna "appendere" una nuova coppia chiave/valore, usando il metodo .append()
-      prev.delete("post"); //ricordatevi di svuotare il FormData prima :)
-      prev.append("post", ev.target.files[0]); //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
-      console.log(prev);
-      return prev;
-    });
-  };
+      prev.delete("post") //ricordatevi di svuotare il FormData prima :)
+      prev.append("post", ev.target.files[0]) //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
+      console.log(prev)
+      return prev
+    })
+  }
   /*   return (
     <>
       <form onSubmit={handleSubmit}>

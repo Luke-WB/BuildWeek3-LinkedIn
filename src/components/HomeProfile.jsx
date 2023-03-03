@@ -1,18 +1,18 @@
-import { useEffect } from "react";
-import { Card, ListGroup } from "react-bootstrap/";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchProfile } from "../redux/actions";
-import copertina from "../assets/user.jpg";
-import { BsFillPersonPlusFill, BsBookmarkFill } from "react-icons/bs";
-import { AiOutlinePlus } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { useEffect } from "react"
+import { Card, ListGroup } from "react-bootstrap/"
+import { useSelector, useDispatch } from "react-redux"
+import { fetchProfile } from "../redux/actions"
+import copertina from "../assets/user.jpg"
+import { BsFillPersonPlusFill, BsBookmarkFill } from "react-icons/bs"
+import { AiOutlinePlus } from "react-icons/ai"
+import { Link } from "react-router-dom"
 
 function HomeProfile({ myProfile }) {
-  const token = useSelector((state) => state.profile.token);
-  const dispatch = useDispatch();
+  const token = useSelector((state) => state.profile.token)
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchProfile(token));
-  }, []);
+    dispatch(fetchProfile(token))
+  }, [])
   return (
     <>
       <Card className="my-4 mx-0">
@@ -20,13 +20,13 @@ function HomeProfile({ myProfile }) {
         <Card.Body className=" m-0">
           <div className="d-flex flex-column justify-content-center align-items-center topCard position-relative">
             <div className="position-absolute eccolo">
-              <Link to={"/profile"}>
+              <Link to={"/profile"} className="link-fix">
                 <img src={myProfile.image} alt="pic-profile " id="photo" />
               </Link>
             </div>
             <Card.Title className="mt-5">Welcome, {myProfile.name}</Card.Title>
             <p className="mx-3 text-center proLight">{myProfile.email}</p>
-            <Link to="/" className="mb-2 proBlue">
+            <Link to="/" className="mb-2 proBlue link-fix">
               Add a photo
             </Link>
           </div>
@@ -34,7 +34,7 @@ function HomeProfile({ myProfile }) {
           <ListGroup variant="flush">
             <ListGroup.Item className="grigio">
               <div className="d-flex justify-content-between">
-                <Link to="/" className="m-0" style={{ color: "gray" }}>
+                <Link to="/" className="m-0 link-fix" style={{ color: "gray" }}>
                   Connection
                 </Link>
                 <div className="d-flex align-items-center">
@@ -43,7 +43,7 @@ function HomeProfile({ myProfile }) {
                 </div>
               </div>
               <div>
-                <Link to="/" className="m-0" style={{ color: "black" }}>
+                <Link to="/" className="m-0 link-fix" style={{ color: "black" }}>
                   Grow your network
                 </Link>
               </div>
@@ -54,7 +54,7 @@ function HomeProfile({ myProfile }) {
               </p>
               <div className="d-flex align-items-center">
                 <div className="square d-flex "></div>
-                <Link to="/" className="proGreyHBlue proGrey">
+                <Link to="/" className="proGreyHBlue proGrey link-fix">
                   Try premium for free
                 </Link>
               </div>
@@ -90,7 +90,7 @@ function HomeProfile({ myProfile }) {
         </ListGroup>
       </Card>
     </>
-  );
+  )
 }
 
-export default HomeProfile;
+export default HomeProfile

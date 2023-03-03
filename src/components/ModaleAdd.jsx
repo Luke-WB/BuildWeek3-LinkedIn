@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
-import Modal from "react-bootstrap/Modal";
-import { Link } from "react-router-dom";
+import { useState } from "react"
+import { Button, Form } from "react-bootstrap"
+import Modal from "react-bootstrap/Modal"
+import { Link } from "react-router-dom"
 
 function ModaleAdd(props) {
   const addExperience = {
@@ -11,19 +11,19 @@ function ModaleAdd(props) {
     endDate: null,
     description: "",
     area: "",
-  };
+  }
 
   /*  const [fd, setFd] = useState([]);
   console.log("okokokokok", fd); */
 
-  const [objExp, setObjExp] = useState(addExperience);
+  const [objExp, setObjExp] = useState(addExperience)
 
   const handleChange = (field, value) => {
-    setObjExp((prev) => ({ ...prev, [field]: value }));
-  };
+    setObjExp((prev) => ({ ...prev, [field]: value }))
+  }
 
   async function postExperience() {
-    const urlToFetch = "https://striveschool-api.herokuapp.com/api/profile/63fe5220579c6300137cf956/experiences";
+    const urlToFetch = "https://striveschool-api.herokuapp.com/api/profile/63fe5220579c6300137cf956/experiences"
     try {
       const res = await fetch(urlToFetch, {
         method: "POST",
@@ -32,16 +32,16 @@ function ModaleAdd(props) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(objExp),
-      });
+      })
       if (res.ok) {
-        console.log(res);
-        let profile = await res.json();
-        console.log("testPOST", profile);
+        console.log(res)
+        let profile = await res.json()
+        console.log("testPOST", profile)
       } else {
-        console.log("error");
+        console.log("error")
       }
     } catch (error) {
-      alert(error);
+      alert(error)
     }
   }
 
@@ -171,7 +171,9 @@ function ModaleAdd(props) {
           <h5>Media</h5>
           <p>
             Add or link to external documents, photos, sites, videos, and presentations. Learn more about{" "}
-            <Link to="/">media file types supported</Link>
+            <Link to="/" className="link-fix">
+              media file types supported
+            </Link>
           </p>
           <Button variant="outline-primary" className="proModProfile">
             + Add media
@@ -182,17 +184,17 @@ function ModaleAdd(props) {
         <Button
           className="proOpenTo"
           onClick={() => {
-            postExperience();
-            props.render();
-            props.onHide();
-            props.checking();
+            postExperience()
+            props.render()
+            props.onHide()
+            props.checking()
           }}
         >
           Save
         </Button>
       </Modal.Footer>
     </Modal>
-  );
+  )
 }
 
-export default ModaleAdd;
+export default ModaleAdd

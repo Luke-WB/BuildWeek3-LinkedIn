@@ -1,29 +1,29 @@
-import { Button, Container, Nav, Navbar, NavDropdown, Offcanvas, Card, ListGroup } from "react-bootstrap";
-import logo from "../assets/LinkedIn_logo_initials.png";
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { Button, Container, Nav, Navbar, NavDropdown, Offcanvas, Card, ListGroup } from "react-bootstrap"
+import logo from "../assets/LinkedIn_logo_initials.png"
+import React, { useEffect, useState } from "react"
+import { useSelector } from "react-redux"
 
-import { FaSearch, FaHome, FaUserFriends, FaBell, FaCompass } from "react-icons/fa";
-import { BsBriefcaseFill, BsGrid3X3GapFill, BsPlayBtnFill } from "react-icons/bs";
-import { CgInsights } from "react-icons/cg";
-import { RiSuitcaseFill, RiAdvertisementLine, RiMessage3Line } from "react-icons/ri";
-import { MdGroups } from "react-icons/md";
-import { TiTick } from "react-icons/ti";
-import { AiOutlinePlus } from "react-icons/ai";
-import { Link, useNavigate } from "react-router-dom";
+import { FaSearch, FaHome, FaUserFriends, FaBell, FaCompass } from "react-icons/fa"
+import { BsBriefcaseFill, BsGrid3X3GapFill, BsPlayBtnFill } from "react-icons/bs"
+import { CgInsights } from "react-icons/cg"
+import { RiSuitcaseFill, RiAdvertisementLine, RiMessage3Line } from "react-icons/ri"
+import { MdGroups } from "react-icons/md"
+import { TiTick } from "react-icons/ti"
+import { AiOutlinePlus } from "react-icons/ai"
+import { Link, useNavigate } from "react-router-dom"
 
 function OffCanvasExample({ name, ...props }, prop) {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
-  const [peopleFetched, setPeopleFetched] = useState([]);
-  const [word, setWord] = useState("");
-  const [nameSearch, setNameSearch] = useState();
-  const myProfile = useSelector((state) => state.profile.profile);
-  const navigate = useNavigate();
+  const [peopleFetched, setPeopleFetched] = useState([])
+  const [word, setWord] = useState("")
+  const [nameSearch, setNameSearch] = useState()
+  const myProfile = useSelector((state) => state.profile.profile)
+  const navigate = useNavigate()
 
-  const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/";
+  const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/"
 
   useEffect(() => {
     const fetchUser_Profile = async () => {
@@ -32,34 +32,34 @@ function OffCanvasExample({ name, ...props }, prop) {
           headers: {
             Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjN2Y3MWYxOTNlNjAwMTM4MDdmNjAiLCJpYXQiOjE2Nzc0OTIwODEsImV4cCI6MTY3ODcwMTY4MX0.VsSZ2d0tCDoaQSZpm1CGnM4ctkdFFFZhAu36PvkG-hU`,
           },
-        });
+        })
         if (response.ok) {
-          let data = await response.json();
-          console.log("arrayPeople", data);
-          setPeopleFetched(data);
+          let data = await response.json()
+          console.log("arrayPeople", data)
+          setPeopleFetched(data)
         }
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
-    };
-    fetchUser_Profile();
-  }, []);
+    }
+    fetchUser_Profile()
+  }, [])
 
-  let newData = [];
+  let newData = []
 
   for (let i = 0; i < peopleFetched.length; i++) {
-    newData.push({ name: peopleFetched[i].name, id: peopleFetched[i]._id });
+    newData.push({ name: peopleFetched[i].name, id: peopleFetched[i]._id })
   }
 
   useEffect(() => {
-    setNameSearch(newData.find((el) => el.name.toLowerCase().includes(word.toLowerCase())));
-    console.log(word);
-    console.log("nenene", nameSearch);
-  }, [word]);
+    setNameSearch(newData.find((el) => el.name.toLowerCase().includes(word.toLowerCase())))
+    console.log(word)
+    console.log("nenene", nameSearch)
+  }, [word])
 
   const searchName = async () => {
-    navigate(`user/${nameSearch.id}`);
-  };
+    navigate(`user/${nameSearch.id}`)
+  }
 
   return (
     <Navbar bg="white" expand="lg">
@@ -72,8 +72,8 @@ function OffCanvasExample({ name, ...props }, prop) {
             <FaSearch className="position-relative" style={{ right: "-183px", top: "15px", color: "#006699" }} />
             <form
               onSubmit={(e) => {
-                e.preventDefault();
-                searchName();
+                e.preventDefault()
+                searchName()
               }}
             >
               <input
@@ -90,30 +90,30 @@ function OffCanvasExample({ name, ...props }, prop) {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
-              <Link to={"/"}>
+              <Link to={"/"} className="link-fix">
                 <Nav.Link href="#action1" className="icon-word">
                   <FaHome className="icon" />
                   Home
                 </Nav.Link>
               </Link>
-              <Link to={"/"}>
+              <Link to={"/"} className="link-fix">
                 <Nav.Link href="#action1" className="icon-word">
                   <FaUserFriends className="icon" /> My Network
                 </Nav.Link>
               </Link>
-              <Link to={"/"}>
+              <Link to={"/"} className="link-fix">
                 <Nav.Link href="#action1" className="icon-word">
                   <BsBriefcaseFill className="icon" />
                   Jobs
                 </Nav.Link>
               </Link>
-              <Link to={"/"}>
+              <Link to={"/"} className="link-fix">
                 <Nav.Link href="#action1" className="icon-word">
                   <RiMessage3Line className="icon" />
                   Messaging
                 </Nav.Link>
               </Link>
-              <Link to={"/"}>
+              <Link to={"/"} className="link-fix">
                 <Nav.Link href="#action1" className="icon-word">
                   <FaBell className="icon" />
                   Notifications
@@ -130,7 +130,7 @@ function OffCanvasExample({ name, ...props }, prop) {
                 id="navbarScrollingDropdown"
                 className="icon-word"
               >
-                <Link to={"/user/me"}>
+                <Link to={"/user/me"} className="link-fix">
                   <div className="text-center d-flex justify-content-center">
                     <Button variant="green w-100 py-0" id="bottoncino">
                       View Profile
@@ -265,7 +265,7 @@ function OffCanvasExample({ name, ...props }, prop) {
               </Offcanvas>
             </Nav>
             <Navbar.Text>
-              <Link to="/" className="gold ms-5 d-flex flex-nowrap">
+              <Link to="/" className="gold ms-5 d-flex flex-nowrap link-fix">
                 Try Premium for free
               </Link>
             </Navbar.Text>
@@ -273,7 +273,7 @@ function OffCanvasExample({ name, ...props }, prop) {
         </div>
       </Container>
     </Navbar>
-  );
+  )
 }
 function Example() {
   return (
@@ -282,7 +282,7 @@ function Example() {
         <OffCanvasExample key={idx} placement={placement} name={placement} />
       ))}
     </>
-  );
+  )
 }
 
-export default Example;
+export default Example

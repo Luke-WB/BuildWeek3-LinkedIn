@@ -1,31 +1,31 @@
-import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react"
+import { Button } from "react-bootstrap"
+import { Link } from "react-router-dom"
 
 const Prova = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([])
   const getPost = async () => {
-    const urlHomeGet = `https://striveschool-api.herokuapp.com/api/posts/`;
+    const urlHomeGet = `https://striveschool-api.herokuapp.com/api/posts/`
     try {
       const res = await fetch(urlHomeGet, {
         headers: {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
         },
-      });
+      })
       if (res.ok) {
-        const aito = await res.json();
-        setData(aito);
-        console.log("post", aito);
+        const aito = await res.json()
+        setData(aito)
+        console.log("post", aito)
       } else {
-        console.log("error");
+        console.log("error")
       }
     } catch (error) {
-      alert(error);
+      alert(error)
     }
-  };
+  }
   useEffect(() => {
-    getPost();
-  }, []);
+    getPost()
+  }, [])
   return (
     <>
       {data.map((singPost, i) => {
@@ -38,7 +38,7 @@ const Prova = () => {
               <div className="my-2 mx-4">
                 <h3 className="proBlack my-2">
                   writted by{" "}
-                  <Link to={`/user/${singPost.user?._id}`}>
+                  <Link to={`/user/${singPost.user?._id}`} className="link-fix">
                     <span className="proBlack proGreyHBlue">{singPost.user?.name}</span>
                   </Link>
                 </h3>
@@ -55,10 +55,10 @@ const Prova = () => {
               </div>
             </div>
           </>
-        );
+        )
       })}
     </>
-  );
-};
+  )
+}
 
-export default Prova;
+export default Prova

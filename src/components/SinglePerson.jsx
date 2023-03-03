@@ -1,11 +1,11 @@
-import { Button, Col } from "react-bootstrap";
-import { BsPersonPlusFill } from "react-icons/bs";
-import { Link, useNavigate } from "react-router-dom";
+import { Button, Col } from "react-bootstrap"
+import { BsPersonPlusFill } from "react-icons/bs"
+import { Link, useNavigate } from "react-router-dom"
 
 export default function SinglePerson({ personInfo }) {
-  let navigate = useNavigate();
+  let navigate = useNavigate()
   function handleClick() {
-    navigate(`/user/${personInfo._id}`);
+    navigate(`/user/${personInfo._id}`)
   }
 
   return (
@@ -18,7 +18,7 @@ export default function SinglePerson({ personInfo }) {
           alt="personImg"
         />
         <Col className="m-2">
-          <Link to={`/user/${personInfo._id}`}>
+          <Link to={`/user/${personInfo._id}`} className="link-fix">
             <h5 className="m-0">
               {personInfo.name} {personInfo.surname}
             </h5>
@@ -30,5 +30,5 @@ export default function SinglePerson({ personInfo }) {
         </Col>
       </div>
     </Col>
-  );
+  )
 }

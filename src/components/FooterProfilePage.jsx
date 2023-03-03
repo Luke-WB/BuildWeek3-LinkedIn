@@ -1,8 +1,8 @@
-import { Col, Container, Form, Row } from "react-bootstrap";
-import logo from "../assets/Linkedin-Logo-2003.png";
-import { BsFillQuestionCircleFill } from "react-icons/bs";
-import { AiFillSetting } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Col, Container, Form, Row } from "react-bootstrap"
+import logo from "../assets/Linkedin-Logo-2003.png"
+import { BsFillQuestionCircleFill } from "react-icons/bs"
+import { AiFillSetting } from "react-icons/ai"
+import { Link } from "react-router-dom"
 
 export default function FooterProfilePage() {
   return (
@@ -14,27 +14,27 @@ export default function FooterProfilePage() {
               <img src={logo} width={"90px"} alt="linkedLogo" />
               <ul className="nav flex-column">
                 <li className="nav-item mb-2">
-                  <Link to="/" className="nav-link p-0 text-muted">
+                  <Link to="/" className="link-fix nav-link p-0 text-muted">
                     About
                   </Link>
                 </li>
                 <li className="nav-item mb-2">
-                  <Link to="/" className="nav-link p-0 text-muted">
+                  <Link to="/" className="link-fix nav-link p-0 text-muted">
                     Community Guidelines
                   </Link>
                 </li>
                 <li className="nav-item mb-2">
-                  <Link to="/" className="nav-link p-0 text-muted">
+                  <Link to="/" className="link-fix nav-link p-0 text-muted">
                     Privacy & Terms
                   </Link>
                 </li>
                 <li className="nav-item mb-2">
-                  <Link to="/" className="nav-link p-0 text-muted">
+                  <Link to="/" className="link-fix nav-link p-0 text-muted">
                     Sales Solutions
                   </Link>
                 </li>
                 <li className="nav-item mb-2">
-                  <Link to="/" className="nav-link p-0 text-muted">
+                  <Link to="/" className="link-fix nav-link p-0 text-muted">
                     Safety Center
                   </Link>
                 </li>
@@ -44,22 +44,22 @@ export default function FooterProfilePage() {
             <Col xs={6} md={2} className="mb-3 mt-5">
               <ul className="nav flex-column">
                 <li className="nav-item mb-2">
-                  <Link to="/" className="nav-link p-0 text-muted">
+                  <Link to="/" className="link-fix nav-link p-0 text-muted">
                     Accessibility
                   </Link>
                 </li>
                 <li className="nav-item mb-2">
-                  <Link to="/" className="nav-link p-0 text-muted">
+                  <Link to="/" className="link-fix nav-link p-0 text-muted">
                     Careers
                   </Link>
                 </li>
                 <li className="nav-item mb-2">
-                  <Link to="/" className="nav-link p-0 text-muted">
+                  <Link to="/" className="link-fix nav-link p-0 text-muted">
                     Ad Choices
                   </Link>
                 </li>
                 <li className="nav-item mb-2">
-                  <Link to="/" className="nav-link p-0 text-muted">
+                  <Link to="/" className="link-fix nav-link p-0 text-muted">
                     Mobile
                   </Link>
                 </li>
@@ -69,22 +69,22 @@ export default function FooterProfilePage() {
             <Col xs={6} md={2} className="mb-3 mt-5">
               <ul className="nav flex-column">
                 <li className="nav-item mb-2">
-                  <Link to="/" className="nav-link p-0 text-muted">
+                  <Link to="/" className="link-fix nav-link p-0 text-muted">
                     Talent Solutions
                   </Link>
                 </li>
                 <li className="nav-item mb-2">
-                  <Link to="/" className="nav-link p-0 text-muted">
+                  <Link to="/" className="link-fix nav-link p-0 text-muted">
                     Marketing Solutions
                   </Link>
                 </li>
                 <li className="nav-item mb-2">
-                  <Link to="/" className="nav-link p-0 text-muted">
+                  <Link to="/" className="link-fix nav-link p-0 text-muted">
                     Advertising
                   </Link>
                 </li>
                 <li className="nav-item mb-2">
-                  <Link to="/" className="nav-link p-0 text-muted">
+                  <Link to="/" className="link-fix nav-link p-0 text-muted">
                     Small Business
                   </Link>
                 </li>
@@ -140,5 +140,5 @@ export default function FooterProfilePage() {
         </footer>
       </Container>
     </>
-  );
+  )
 }
