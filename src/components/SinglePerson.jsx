@@ -17,6 +17,7 @@ export default function SinglePerson({personInfo}) {
             src={personInfo.image}
             className="rounded-circle overflow-hidden"
             style={{ width:"50px", height:"50px", marginRight: "10px"}}
+            alt="personImg"
           />
           <Col className="m-2" >
             <Link to={`/user/${personInfo._id}`}>

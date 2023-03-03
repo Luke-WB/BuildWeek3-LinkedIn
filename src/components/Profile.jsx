@@ -435,6 +435,7 @@ const Profile = () => {
                               <img
                                 className="my-3 ms-4 me-3 rounded-2 w-100"
                                 src={singPost.image}
+                                alt="postedImg"
                                 />
                                 </div>
                             </div>
