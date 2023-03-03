@@ -212,7 +212,7 @@ const Home = () => {
                               <img className="w-100" src={singPost.image} />
                             </div>
                           </div>
-                          <div className="proSmall proLight ms-4">
+                          <div className="proSmall proLight ms-4 mb-3">
                             edited: {singPost.updatedAt.slice(0, 10)}
                           </div>
                           <div className="d-flex  ms-4">
