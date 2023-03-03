@@ -346,7 +346,7 @@ const Profile = () => {
       </div>
       <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
-          <Experience />
+          <Experience myProfile = {myProfile}/>
         </div>
       </div>
     </>

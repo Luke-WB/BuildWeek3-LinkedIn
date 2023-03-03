@@ -5,10 +5,12 @@ import { Button, Col, Row } from "react-bootstrap";
 import logo from "../assets/management-suitcase-icon-outline-work-job-vector.jpg";
 import Modale from "./Modale";
 
-const Experience = () => {
+const Experience = ({myProfile}) => {
   const [modalShowPlus, setModalShowPlus] = useState(false);
   const [experiencesToRender, setExperiencesToRender] = useState([]);
   const [rendered, setRendered] = useState(false)
+
+  console.log("cosa cavolo è myProfile",myProfile)
 
   function check() {
     setRendered((prevState) => !prevState)
@@ -56,13 +58,10 @@ const Experience = () => {
             <Col ms={6} md={3}>
               <div className="parteUno ">
                 <img
-                  src={el.image? el.image : logo }
-                  alt="pic-job"
-                  style={{
-                    width: "70px",
-                    height: "70px",
-                    objectFit: "cover",
-                  }}
+                  className="my-3 ms-4 me-3 rounded-circle"
+                  style={{ height: "55px" }}
+                  src={myProfile.image}
+                  alt="portrait author"
                 />
               </div>
             </Col>
