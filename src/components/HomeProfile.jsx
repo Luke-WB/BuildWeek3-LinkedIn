@@ -18,7 +18,7 @@ function HomeProfile() {
   }, []);
   return (
     <>
-      <Card className="my-4 mx-0" style={{ width: "18rem" }}>
+      <Card className="my-4 mx-0">
         <Card.Img variant="top" src={copertina} className="copert" />
         <Card.Body className=" m-0">
           <div className="d-flex flex-column justify-content-center align-items-center topCard position-relative">
@@ -82,7 +82,7 @@ function HomeProfile() {
         </Card.Body>
       </Card>
 
-      <Card style={{ width: "18rem" }} className="mt-2">
+      <Card className="mt-2">
         <ListGroup variant="flush">
           <ListGroup.Item>
             <p className="proBlue">Group</p>
