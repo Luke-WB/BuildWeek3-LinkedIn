@@ -1,8 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
-import "./App.scss";
 import Profile from "./components/Profile";
-import "./App.scss";
+import "./assets/sass/App.scss";
 import NavCustom from "./components/NavCustom";
 import FooterProfilePage from "./components/FooterProfilePage";
 import People from "./components/People";
@@ -18,8 +17,8 @@ function App() {
         <NavCustom />
         <TestFetch />
         <Container>
-          <Row>
-            <Col xs={12} md={9}>
+          <Row className="d-flex flex-column flex-md-row">
+            <Col xs={12} lg={9}>
               <Routes>
                 <Route path="/profile" element={<Profile />} />
                 <Route path="user/:userID" element={<NewPerson />} />

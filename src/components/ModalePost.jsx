@@ -8,7 +8,7 @@ import { VscSmiley } from "react-icons/vsc";
 import { BiMessageRoundedDetail } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 
-const ModalePost = ({ show, handleClose, check }) => {
+const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
   const dispatch = useDispatch;
   const addPost = {
     text: "",
@@ -18,6 +18,8 @@ const ModalePost = ({ show, handleClose, check }) => {
     setObjPost((prev) => ({ ...prev, [field]: value }));
   };
 
+  console.log("ternaryCheck", ternaryCheck);
+  console.log("comparison", ternaryCheck === true);
   // const token = useSelector((state) => state.profile.token)
   // useEffect(() => {
   //   dispatch(fetchProfile(token));
@@ -50,15 +52,10 @@ const ModalePost = ({ show, handleClose, check }) => {
     }
   }
 
-
-
-  
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title className="modalColor modalTitle">
-          Create a post
-        </Modal.Title>
+        <Modal.Title className="modalColor modalTitle">Create a post</Modal.Title>
       </Modal.Header>
       <Modal.Body className="d-flex flex-column">
         <div className="d-flex">
@@ -75,7 +72,9 @@ const ModalePost = ({ show, handleClose, check }) => {
               <span className="me-2">{myProfile.name}</span>
               <span>{myProfile.surname}</span>
             </div>
-            <Button className="proMore mt-1" variant="outline-primary">Anyone <BsCaretDownFill/></Button>
+            <Button className="proMore mt-1" variant="outline-primary">
+              Anyone <BsCaretDownFill />
+            </Button>
           </div>
         </div>
         <Form.Control
@@ -108,15 +107,12 @@ const ModalePost = ({ show, handleClose, check }) => {
               <BiMessageRoundedDetail className="ms-3 me-1 messageTrans" />
             </div>
 
-            <span className="proVerySmall proMiddle modalHoverText">
-              Anyone
-            </span>
+            <span className="proVerySmall proMiddle modalHoverText">Anyone</span>
           </div>
           <div>
             <div className="d-inline-block modalHGrey">
               <HiOutlineClock className="proIcon mx-2" />
             </div>
-
             <Button
               className="proOpenTo modalButtonGrey ms-2"
               variant="primary"
@@ -127,8 +123,37 @@ const ModalePost = ({ show, handleClose, check }) => {
                 check();
               }}
             >
-              Post
+              Aggiungi
             </Button>
+            {/* {ternaryCheck !== true ? (
+              <>
+                <Button
+                  className="proOpenTo modalButtonGrey ms-2"
+                  variant="primary"
+                  disabled={!enabled}
+                  onClick={() => {
+                    postPost();
+                    handleClose();
+                    check();
+                  }}
+                >
+                  pippo
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button
+                  className="proOpenTo modalButtonGrey ms-2"
+                  variant="primary"
+                  disabled={!enabled}
+                  onClick={() => {
+                    handleClose();
+                  }}
+                >
+                  put
+                </Button>
+              </>
+            )} */}
           </div>
         </Form.Group>
       </Modal.Body>

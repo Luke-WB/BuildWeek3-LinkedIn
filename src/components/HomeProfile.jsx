@@ -7,25 +7,24 @@ import copertina from "../assets/user.jpg";
 import { BsFillPersonPlusFill, BsBookmarkFill } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import {DocumentTitle} from "react"
+import { DocumentTitle } from "react";
 
-function HomeProfile() {
+function HomeProfile({myProfile}) {
   const token = useSelector((state) => state.profile.token);
-  const myProfile = useSelector((state) => state.profile.profile);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProfile(token));
   }, []);
   return (
     <>
-      <Card className="my-4 mx-0" style={{ width: "18rem" }}>
+      <Card className="my-4 mx-0">
         <Card.Img variant="top" src={copertina} className="copert" />
         <Card.Body className=" m-0">
           <div className="d-flex flex-column justify-content-center align-items-center topCard position-relative">
             <div className="position-absolute eccolo">
               <Link to={"/profile"}>
                 <img
-                  src="https://i.pinimg.com/736x/65/91/a0/6591a0cdc097b089c2b329d1feddee54.jpg"
+                  src={myProfile.image}
                   alt="pic-profile "
                   id="photo"
                 />
@@ -46,10 +45,7 @@ function HomeProfile() {
                 </a>
                 <div className="d-flex align-items-center">
                   <BsFillPersonPlusFill />
-                  <span className="proBlue ms-3">
-                    {" "}
-                    {Math.floor(Math.random() * 100)}
-                  </span>
+                  <span className="proBlue ms-3"> {Math.floor(Math.random() * 100)}</span>
                 </div>
               </div>
               <div>
@@ -71,10 +67,7 @@ function HomeProfile() {
             </ListGroup.Item>
             <ListGroup.Item className="grigio">
               <div className="d-flex align-items-center">
-                <BsBookmarkFill
-                  className="d-flex  me-1"
-                  style={{ color: "grey", cursor: "pointer" }}
-                />
+                <BsBookmarkFill className="d-flex  me-1" style={{ color: "grey", cursor: "pointer" }} />
                 <div style={{ cursor: "pointer" }}>My items</div>
               </div>
             </ListGroup.Item>
@@ -82,15 +75,15 @@ function HomeProfile() {
         </Card.Body>
       </Card>
 
-      <Card style={{ width: "18rem" }} className="mt-2">
+      <Card className="mt-2">
         <ListGroup variant="flush">
           <ListGroup.Item>
             <p className="proBlue">Group</p>
             <div className="d-flex align-item-center justify-content-between tratto">
-              <div className="proBlue">Events</div>              
-                <div title="Create an event" className="homeModalH">
-                  <AiOutlinePlus />
-                </div>            
+              <div className="proBlue">Events</div>
+              <div title="Create an event" className="homeModalH">
+                <AiOutlinePlus />
+              </div>
             </div>
             <p className="proBlue">Followed Hashtags</p>
           </ListGroup.Item>

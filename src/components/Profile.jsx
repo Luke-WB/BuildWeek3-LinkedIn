@@ -4,13 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { HiUsers } from "react-icons/hi";
 import { AiOutlineArrowRight, AiFillEye } from "react-icons/ai";
 import { BsFillInfoSquareFill } from "react-icons/bs";
-import { fetchProfile, showModalExp } from "../redux/actions";
+import { fetchProfile, reversed, showModalExp } from "../redux/actions";
 import { BiSearch, BiPencil } from "react-icons/bi";
 import { FaSatelliteDish } from "react-icons/fa";
 import ModalEsperience from "../components/ModalExperience";
 import Home from "./Home";
 import { Link } from "react-router-dom";
 import Experience from "./Experience";
+import ModalePost from "./ModalePost";
+import ModalePut from "./ModalPut";
 
 const Profile = () => {
   /* MODALE*/
@@ -39,12 +41,10 @@ const Profile = () => {
   const [fetched, setFetched] = useState(false);
 
   function check() {
-    setFetched((prevState) => !prevState)
+    setFetched((prevState) => !prevState);
   }
 
   const post = useSelector((state) => state.profile.post);
-
-
 
   useEffect(() => {
     console.log("MODIFIED", modified);
@@ -71,10 +71,11 @@ const Profile = () => {
     ipipipip();
   }, [modified]);
 
-   console.log(myProfile);
+  console.log(myProfile);
   // console.log("random number");
   useEffect(() => {
     dispatch(fetchProfile(token));
+    dispatch(reversed(token));
   }, [fetched]);
 
   const showExp = useSelector((state) => state.profile.showExp);
@@ -96,19 +97,12 @@ const Profile = () => {
           </a>
         </div>
         <a href="#">
-          <img
-            className="rounded-circle position-absolute proAbsolute"
-            src={myProfile.image}
-            alt="immagine profilo"
-          />
+          <img className="rounded-circle position-absolute proAbsolute" src={myProfile.image} alt="immagine profilo" />
         </a>
         <div className="mt-5 mx-4">
-          <Button
-            className="matita position-absolute"
-            onClick={handleShow}
-          >
+          <div className="matita position-absolute" onClick={handleShow}>
             <BiPencil />
-          </Button>
+          </div>
 
           <h2 className="mt-2 mb-0">
             {myProfile.name} {myProfile.surname}
@@ -334,7 +328,49 @@ const Profile = () => {
           <a href="#">
             <div className="proBlue my-0">{Math.floor(Math.random() * 100)} connection</div>
           </a>
-          <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
+          <div className="proBlack prosmall proLight mt-2">
+            {post &&
+              post
+                /* .filter((postUnfilt) => postUnfilt.text.length > 10) */
+                .slice(0, 50)
+                .map((singPost, i) => {
+                  return (
+                    <>
+                      {singPost.user._id === `63fc6fa3f193e60013807f59` ? (
+                        <>
+                          <div
+                            key={i}
+                            className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4"
+                          >
+                            <div className="my-2 mx-4">
+                              <h3 className="proBlack my-2">
+                                writted by{" "}
+                                <Link to={`/user/${singPost.user?._id}`}>
+                                  <span className="proBlack proGreyHBlue">{singPost.user?.name}</span>
+                                </Link>
+                              </h3>
+                              <div className="my-2 me-5">
+                                <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
+                                <img src={singPost.image} />
+                              </div>
+                            </div>
+                            <div className="proSmall proLight">edited: {singPost.updatedAt.slice(0, 10)}</div>
+
+                            <ModalePut
+                              check={check}
+                              id={singPost._id}
+                              // ternaryCheck={true} <--- perchè non funzion :(
+                            />
+                            {console.log("eccolo id POST", singPost._id)}
+                          </div>
+                        </>
+                      ) : (
+                        <></>
+                      )}
+                    </>
+                  );
+                })}
+          </div>
         </div>
       </div>
 
@@ -346,7 +382,7 @@ const Profile = () => {
       </div>
       <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
-          <Experience />
+          <Experience myProfile={myProfile} />
         </div>
       </div>
     </>

@@ -9,8 +9,14 @@ import HomeProfile from "./HomeProfile";
 import { Link } from "react-router-dom";
 import Loading from "./Loading";
 import ModalePost from "./ModalePost";
+import ModalePut from "./ModalPut";
+import ModalePhoto from "./ModalePhoto";
 
 const Home = () => {
+  const [showPhoto, setShowPhoto] = useState(false);
+  const handleClosePhoto = () => setShowPhoto(false);
+  const handleShowPhoto = () => setShowPhoto(true);
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -18,11 +24,8 @@ const Home = () => {
   const addPost = {
     text: "",
   };
-  const [objPost, setObjPost] = useState(addPost);
-  const handleChange = (field, value) => {
-    setObjPost((prev) => ({ ...prev, [field]: value }));
-  };
-  const [newPost, setPost] = useState("");
+
+  const [newPost, setPost] = useState([]);
   // profile fetch
   const token = useSelector((state) => state.profile.token);
   const loading = useSelector((state) => state.profile.loading);
@@ -41,30 +44,40 @@ const Home = () => {
 
   const post = useSelector((state) => state.profile.post);
   useEffect(() => {
-    /* dispatch(fetchHome(token)); */
     dispatch(reversed(token));
   }, [rendered]);
 
-
-  async function deletePost(id) {
-    const urlToFetch = `https://striveschool-api.herokuapp.com/api/posts/${id}`;
+  /*  async function postPost() {
+    const urlToFetch = "https://striveschool-api.herokuapp.com/api/posts/";
     try {
-      await fetch(urlToFetch, {
-        method: "DELETE",
+      const res = await fetch(urlToFetch, {
+        method: "POST",
         headers: {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+          "Content-Type": "application/json",
         },
+        body: JSON.stringify(objPost),
       });
+      if (res.ok) {
+        const addPost = await res.json();
+        console.log("testPOST", addPost);
+        setPost(addPost);
+      } else {
+        console.log("error");
+      }
     } catch (error) {
-      console.log("delete", error);
+      alert(error);
     }
   }
+ */
+
+  const myProfile = useSelector((state) => state.profile.profile);
 
   const [fd, setFd] = useState(new FormData()); //FormData e' una classe usata per raccogliere dati non stringa dai form
   //E' formata da coppie chiave/valore => ["post", File], ["exp", File]
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    let res = await fetch("https://striveschool-api.herokuapp.com/api/posts/6400dc4f035832001350be4e", {
+    let res = await fetch("https://striveschool-api.herokuapp.com/api/posts/640142c7ab3c5e001380be52", {
       //qui l'id andra' sostituito con un id DINAMICO!!!!!
       method: "POST",
       body: fd, //non serve JSON.stringify
@@ -75,7 +88,16 @@ const Home = () => {
       },
     });
   };
-
+  const handleFile = (ev, type) => {
+    setFd((prev) => {
+      console.log(ev.target.files[0]);
+      //per cambiare i formData, bisogna "appendere" una nuova coppia chiave/valore, usando il metodo .append()
+      prev.delete(type); //ricordatevi di svuotare il FormData prima :)
+      prev.append(type, ev.target.files[0]); //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
+      console.log(prev);
+      return prev;
+    });
+  };
 
   return (
     <>
@@ -83,11 +105,11 @@ const Home = () => {
         <Loading />
       ) : (
         <Container>
-          <Row>
-            <Col xs={4}>
-              <HomeProfile />
+          <Row className="d-flex flex-column flex-md-row">
+            <Col xs={12} lg={4}>
+              <HomeProfile myProfile={myProfile} />
             </Col>
-            <Col xs={8}>
+            <Col xs={12} lg={8}>
               <div className="bg-light rounded-3 position-relative proCard my-4 me-0 p3-0">
                 <div className="d-flex align-items-center">
                   <div className="d-inline-block">
@@ -95,27 +117,35 @@ const Home = () => {
                       <img
                         className="my-3 ms-4 me-3 rounded-circle"
                         style={{ height: "55px" }}
-                        src="https://i.pinimg.com/736x/65/91/a0/6591a0cdc097b089c2b329d1feddee54.jpg"
+                        src={myProfile.image}
                         alt="profile"
                       />
                     </Link>
                   </div>
                   <span
                     className="d-inline-block proMore proGrey position-relative postModBar me-3"
-                    onClick={handleShow}>
-                  
+                    onClick={handleShow}
+                  >
                     <span className="postModText me-3">Start a post</span>
                   </span>
-                  <ModalePost handleClose={handleClose} show={show} check={check} />
+
+                  <ModalePost
+                    handleClose={handleClose}
+                    show={show}
+                    check={check}
+                    // ternaryCheck={false} <--- perchè non funzion :(
+                  />
                 </div>
-                <div className="d-flex justify-content-evenly my-2 mx-4">
-                  <form onSubmit={handleSubmit}>
-                    <div className="greyHover rounded-2 me-2 px-2 py-3">
-                      <MdPhotoSizeSelectActual className="fs-4 text-primary me-2" /> Photo
-                      <input type="file"/>
-                      <button>SEND</button>
-                    </div>
-                  </form>
+                <div onClick={handleSubmit} className="d-flex justify-content-evenly my-2 mx-4">
+                  <div onClick={handleShowPhoto} className="greyHover rounded-2 me-2 px-2 py-3">
+                    <MdPhotoSizeSelectActual className="fs-4 text-primary me-2" />
+                    <ModalePhoto
+                      showPhoto={showPhoto}
+                      handleClosePhoto={handleClosePhoto}
+                      // ternaryCheck={false} <--- perchè non funzion :(
+                    />
+                    Photo
+                  </div>
                   <div className="greyHover rounded-2 me-2 px-2 py-3">
                     <BsFillPlayBtnFill className="fs-4 text-success me-2" />
                     Video
@@ -138,38 +168,47 @@ const Home = () => {
                     return (
                       <>
                         <div
-                          key={i + "post"}
+                          key={i}
                           className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4"
                         >
-                          <div className="my-2 mx-4">
-                            <h3 className="proBlack my-2">
-                              writted by{" "}
-                              <Link to={`/user/${singPost.user?._id}`}>
-                                <span className="proBlack proGreyHBlue">{singPost.user?.name}</span>
-                              </Link>
-                            </h3>
+                          <div className="my-2 ms-4">
+                            <div className="d-flex flex-row align-items-center">
+                              {myProfile._id === singPost.user._id ? (
+                                <img
+                                  className="my-3 ms-4 me-3 rounded-circle"
+                                  style={{ height: "55px" }}
+                                  src={myProfile.image}
+                                  alt="portrait author"
+                                />
+                              ) : (
+                                <img
+                                  className="my-3 ms-4 me-3 rounded-circle"
+                                  style={{ height: "55px" }}
+                                  src={singPost.user.image}
+                                  alt="portrait author"
+                                />
+                              )}
+                              <h3 className="proBlack my-2">
+                                writted by{" "}
+                                <Link to={`/user/${singPost.user?._id}`}>
+                                  <span className="proBlack proGreyHBlue">{singPost.user?.name}</span>
+                                </Link>
+                              </h3>
+                            </div>
                             <div className="my-2 me-5">
                               <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
-                              <img src={singPost.image} />
+                              <img className="w-100" src={singPost.image} />
                             </div>
                           </div>
                           <div className="proSmall proLight">edited: {singPost.updatedAt.slice(0, 10)}</div>
                           {singPost.user._id === `63fc6fa3f193e60013807f59` ? (
                             <>
-                              {" "}
-                              <Button className="proModProfile me-3 my-3" variant="outline-primary">
-                                Add
-                              </Button>
-                              <Button
-                                className="proDelete"
-                                variant="danger"
-                                onClick={() => {
-                                  deletePost(singPost._id);
-                                  check();
-                                }}
-                              >
-                                Delete
-                              </Button>
+                              <ModalePut
+                                check={check}
+                                id={singPost._id}
+                                // ternaryCheck={true} <--- perchè non funzion :(
+                              />
+                              {console.log("eccolo id POST", singPost._id)}
                             </>
                           ) : (
                             <></>
