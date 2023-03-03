@@ -63,7 +63,7 @@ const ModalePut = ({ show, handleClose, check, id }) => {
 
   return (
     <>
-    <div className="d-flex ms-3">
+    <div className="d-flex mx-4">
       <Button className="proModProfile me-3 my-3" variant="outline-primary" onClick={handleShowPut}>
         Add
       </Button>
