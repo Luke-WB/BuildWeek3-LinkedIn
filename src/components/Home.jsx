@@ -18,11 +18,7 @@ import { BiMessageRoundedDetail } from "react-icons/bi";
 
 const Home = () => {
   let userKey =
-<<<<<<< HEAD
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs";
-=======
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs"
->>>>>>> parent of 6ce1eca (.)
 
   const [showPhoto, setShowPhoto] = useState(false);
   const handleClosePhoto = () => setShowPhoto(false);
@@ -32,17 +28,10 @@ const Home = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-<<<<<<< HEAD
   const token = useSelector((state) => state.profile.token);
   const loading = useSelector((state) => state.profile.loading);
   const post = useSelector((state) => state.profile.post);
   const myProfile = useSelector((state) => state.profile.profile);
-=======
-  const token = useSelector((state) => state.profile.token)
-  const loading = useSelector((state) => state.profile.loading)
-  const post = useSelector((state) => state.profile.post)
-  const myProfile = useSelector((state) => state.profile.profile)
->>>>>>> parent of 6ce1eca (.)
 
   // profile fetch
   const dispatch = useDispatch();
@@ -99,10 +88,7 @@ const Home = () => {
                   />
                 </div>
                 <div className="d-flex justify-content-evenly my-2 mx-4">
-                  <div
-                    onClick={handleShowPhoto}
-                    className="greyHover rounded-2 me-2 px-2 py-3"
-                  >
+                  <div onClick={handleShowPhoto} className="greyHover rounded-2 me-2 px-2 py-3">
                     <MdPhotoSizeSelectActual className="fs-4 text-primary me-2" />
                     Photo
                   </div>
@@ -156,10 +142,7 @@ const Home = () => {
                                   />
                                 )}
                                 <div className="proBlack my-2">
-                                  <Link
-                                    to={`/user/${singPost.user?._id}`}
-                                    className="link-fix"
-                                  >
+                                  <Link to={`/user/${singPost.user?._id}`} className="link-fix">
                                     <div className="proBlack proNormal proGreyHBlue link-fix">
                                       {singPost.user?.name}
                                     </div>
@@ -168,8 +151,7 @@ const Home = () => {
                                     {Math.floor(Math.random() * 100)} followers
                                   </div>
                                   <div className="proGrey proVerySmall">
-                                    {Math.floor(Math.random() * 12)} <BsDot />{" "}
-                                    <GiEarthAmerica />
+                                    {Math.floor(Math.random() * 12)} <BsDot /> <GiEarthAmerica />
                                   </div>
                                 </div>
                               </div>
@@ -179,26 +161,20 @@ const Home = () => {
                             </div>
                           </div>
                           <div className="my-2 mx-1">
-                            <span className="proGrey proBlack proLight proSmall proNormal">
-                              {singPost.text}
-                            </span>
+                            <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
                             {singPost.image ? (
-                              <img
-                                className="mt-3 mb-1 w-100"
-                                src={singPost.image}
-                                alt="activity"
-                              />
+                              <img className="mt-3 mb-1 w-100" src={singPost.image} alt="activity" />
                             ) : (
                               <></>
                             )}
                           </div>
-                          <div className="mb-1 mx-3 proGrey proSmall d-flex align-items-center"><BsHandThumbsUp className="likeHover fs-4 me-2"/>{Math.floor(Math.random() * 100)}</div>
-                          <hr className="my-1 mx-3"/>
+                          <div className="mb-1 mx-3 proGrey proSmall d-flex align-items-center">
+                            <BsHandThumbsUp className="likeHover fs-4 me-2" />
+                            {Math.floor(Math.random() * 100)}
+                          </div>
+                          <hr className="my-1 mx-3" />
                           <div className="d-flex justify-content-evenly text-secondary">
-                            <div
-                              onClick={handleShowPhoto}
-                              className="greyHover rounded-2 me-2 px-4 py-3"
-                            >
+                            <div onClick={handleShowPhoto} className="greyHover rounded-2 me-2 px-4 py-3">
                               <BsHandThumbsUp className="fs-4 me-2" />
                               Like
                             </div>
@@ -234,9 +210,7 @@ const Home = () => {
                               {console.log("eccolo id POST", singPost._id)}
                             </>
                           ) : (
-                            <div className="proSmall proLight mx-4 my-2">
-                              edited: {singPost.updatedAt.slice(0, 10)}
-                            </div>
+                            <div className="proSmall proLight mx-4 my-2">edited: {singPost.updatedAt.slice(0, 10)}</div>
                           )}
                         </div>
                       </>
