@@ -1,41 +1,61 @@
 .container {
-    .icon-word {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .icon {
-      font-size: 30px;
-    }
-    .gold {
-      color: rgb(138, 118, 4);
-    }
-    #bottoncino {
-      border: 2px solid #88b5e1;
-    }
-    #bottoncino:hover {
-      background-color: #88b5e1;
-      border: 2px solid #0080ff;
-    }
-  }
-  a#navbarScrollingDropdown {
+  .icon-word {
     display: flex;
-    flex-direction: column;
+
     align-items: center;
   }
-  
-  .icone {
+  .icon {
     font-size: 30px;
-    color: #33aada;
-    padding: 0;
-    margin: 0;
-    padding: 0px 7px;
   }
-  
-  #banana:hover {
-    box-shadow: 1px 5px 5px 0px gray;
+  .gold {
+    color: rgb(138, 118, 4);
   }
-  
-  .mia {
-    font-size: 12px;
+  #bottoncino {
+    border: 2px solid #88b5e1;
   }
+  #bottoncino:hover {
+    background-color: #88b5e1;
+    border: 2px solid #0080ff;
+  }
+}
+a#navbarScrollingDropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icone {
+  font-size: 30px;
+  color: #33aada;
+  padding: 0;
+  margin: 0;
+  padding: 0px 7px;
+}
+
+#banana:hover {
+  box-shadow: 1px 5px 5px 0px gray;
+}
+
+.mia {
+  font-size: 12px;
+}
+
+/*SEARCHBAR IN CUSTOMNAV*/
+.form-control.searchFormNav:focus {
+  border-color: #eef3f8;
+  box-shadow: none;
+}
+
+.form-control.searchFormNav {
+  transition: width 1.5s;
+  transition-delay: 0;
+}
+
+.form-control.searchFormNav:focus-visible {
+  width: 300px;
+  border: 2px solid black;
+}
+
+.dropdown-toggle:after {
+  margin-top: 35px;
+}
