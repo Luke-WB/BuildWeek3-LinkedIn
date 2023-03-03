@@ -30,7 +30,7 @@ const profileReducer = (state = initialState, action) => {
     case IS_LOADING:
       return {
         ...state,
-        IS_LOADING: false,
+        loading: false,
       };
     default:
       return state;

@@ -54,14 +54,12 @@ export function fetchIdProfile(id) {
   };
 }
 
-
 export const showModalExp = (toggleState) => {
   return {
     type: SET_SHOW_EXP,
     payload: !toggleState,
   };
 };
-
 
 export const reversed = (userKey) => {
   return async (dispatch, getState) => {
@@ -79,10 +77,10 @@ export const reversed = (userKey) => {
           type: HOME_FETCH,
           payload: post.reverse(),
         });
-      } else {
         dispatch({
           type: IS_LOADING,
         });
+      } else {
       }
     } catch (error) {
       alert(error);
