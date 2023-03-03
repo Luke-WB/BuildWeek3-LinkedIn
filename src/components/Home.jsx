@@ -112,7 +112,7 @@ const Home = () => {
                     // ternaryCheck={false} <--- perchè non funzion :(
                   />
                 </div>
-                <div onClick={handleSubmit} className="d-flex justify-content-evenly my-2 mx-4">
+                <div className="d-flex justify-content-evenly my-2 mx-4">
                   <div onClick={handleShowPhoto} className="greyHover rounded-2 me-2 px-2 py-3">
                     <MdPhotoSizeSelectActual className="fs-4 text-primary me-2" />
                     Photo
