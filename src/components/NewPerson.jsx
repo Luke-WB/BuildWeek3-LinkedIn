@@ -19,9 +19,9 @@ export default function NewPerson() {
   const post = useSelector((state) => state.profile.post);
   console.log("prova", selProfile);
 
-// function check() {
-//     setFetched((prevState) => !prevState);
-//   }
+  // function check() {
+  //     setFetched((prevState) => !prevState);
+  //   }
 
   console.log(params.userID);
   return (
@@ -134,7 +134,7 @@ export default function NewPerson() {
             <div className="proBlue my-0">{Math.floor(Math.random() * 100)} connection</div>
           </a>
           <div className="proBlack prosmall proLight mt-2">
-          {post &&
+            {post &&
               post
                 /* .filter((postUnfilt) => postUnfilt.text.length > 10) */
                 .slice(0, 50)
@@ -151,24 +151,15 @@ export default function NewPerson() {
                               <h3 className="proBlack my-2 mx-4">
                                 writted by{" "}
                                 <Link to={`/user/${singPost.user?._id}`}>
-                                  <span className="proBlack proGreyHBlue">
-                                    {singPost.user?.name}
-                                  </span>
+                                  <span className="proBlack proGreyHBlue">{singPost.user?.name}</span>
                                 </Link>
                               </h3>
                               <div className="my-2 me-5 mx-4">
-                                <span className="proGrey proBlack proLight proSmall proNormal">
-                                  {singPost.text}
-                                </span>
+                                <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
                               </div>
-                              <img
-                                className="my-3 ms-4 me-3 rounded-2 w-100"
-                                src={singPost.image}
-                              />
+                              <img className="my-3 mx-4 rounded-2" src={singPost.image} />
                             </div>
-                            <div className="proSmall proLight mx-4">
-                              edited: {singPost.updatedAt.slice(0, 10)}
-                            </div>
+                            <div className="proSmall proLight mx-4">edited: {singPost.updatedAt.slice(0, 10)}</div>
                           </div>
                         </>
                       ) : (
