@@ -11,8 +11,8 @@ import Experience from "./Experience";
 import ModalePut from "./ModalPut";
 
 const Profile = () => {
-
-  let userKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs" 
+  let userKey =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs";
   /* MODALE*/
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -298,46 +298,43 @@ const Profile = () => {
           </div>
           <div className="proBlack prosmall proLight mt-2">
             {post &&
-              post
-                /* .filter((postUnfilt) => postUnfilt.text.length > 10) */
-                .slice(0, 50)
-                .map((singPost, i) => {
-                  return (
-                    <>
-                      {singPost.user._id === `${myProfile._id}` ? (
-                        <>
-                          <div
-                            key={i}
-                            className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4"
-                          >
-                            <div className="my-2">
-                              <h3 className="proBlack my-2 mx-4">
-                                writted by{" "}
-                                <Link to={`/user/${singPost.user?._id}`}>
-                                  <span className="proBlack proGreyHBlue">{singPost.user?.name}</span>
-                                </Link>
-                              </h3>
-                              <div className="my-2 me-5 mx-4">
-                                <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
-                                <img className="my-3 ms-4 me-3 rounded-2 w-100" src={singPost.image} alt="postedImg" />
-                              </div>
+              post.slice(0, 50).map((singPost, i) => {
+                return (
+                  <>
+                    {singPost.user._id === `${myProfile._id}` ? (
+                      <>
+                        <div
+                          key={i}
+                          className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4"
+                        >
+                          <div className="my-2">
+                            <h3 className="proBlack my-2 mx-4">
+                              writted by{" "}
+                              <Link to={`/user/${singPost.user?._id}`}>
+                                <span className="proBlack proGreyHBlue">{singPost.user?.name}</span>
+                              </Link>
+                            </h3>
+                            <div className="my-2 me-5 mx-4">
+                              <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
+                              <img className="my-3 ms-4 me-3 rounded-2 w-100" src={singPost.image} alt="postedImg" />
                             </div>
                           </div>
-                          <div className="proSmall proLight mx-4">edited: {singPost.updatedAt.slice(0, 10)}</div>
+                        </div>
+                        <div className="proSmall proLight mx-4">edited: {singPost.updatedAt.slice(0, 10)}</div>
 
-                          <ModalePut
-                            check={check}
-                            id={singPost._id}
-                            // ternaryCheck={true} <--- perchè non funzion :(
-                          />
-                          {console.log("eccolo id POST", singPost._id)}
-                        </>
-                      ) : (
-                        <></>
-                      )}
-                    </>
-                  );
-                })}
+                        <ModalePut
+                          check={check}
+                          id={singPost._id}
+                          // ternaryCheck={true} <--- perchè non funzion :(
+                        />
+                        {console.log("eccolo id POST", singPost._id)}
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                  </>
+                );
+              })}
           </div>
         </div>
       </div>
