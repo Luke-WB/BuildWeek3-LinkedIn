@@ -100,9 +100,9 @@ const Profile = () => {
           <img className="rounded-circle position-absolute proAbsolute" src={myProfile.image} alt="immagine profilo" />
         </a>
         <div className="mt-5 mx-4">
-          <Button className="matita position-absolute" onClick={handleShow}>
+          <div className="matita position-absolute" onClick={handleShow}>
             <BiPencil />
-          </Button>
+          </div>
 
           <h2 className="mt-2 mb-0">
             {myProfile.name} {myProfile.surname}
@@ -382,7 +382,7 @@ const Profile = () => {
       </div>
       <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
-          <Experience myProfile = {myProfile}/>
+          <Experience myProfile={myProfile} />
         </div>
       </div>
     </>
