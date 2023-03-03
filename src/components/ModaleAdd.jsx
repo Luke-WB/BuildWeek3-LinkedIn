@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
@@ -171,7 +171,7 @@ function ModaleAdd(props) {
           <h5>Media</h5>
           <p>
             Add or link to external documents, photos, sites, videos, and presentations. Learn more about{" "}
-            <Link to="/" >media file types supported</Link>
+            <Link to="/">media file types supported</Link>
           </p>
           <Button variant="outline-primary" className="proModProfile">
             + Add media
