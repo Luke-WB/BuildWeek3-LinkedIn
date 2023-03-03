@@ -266,9 +266,9 @@ function OffCanvasExample({ name, ...props }, prop) {
               </Offcanvas>
             </Nav>
             <Navbar.Text>
-              <a href="#login" className="gold ms-5 d-flex flex-nowrap">
+              <Link to="/" className="gold ms-5 d-flex flex-nowrap">
                 Try Premium for free
-              </a>
+              </Link>
             </Navbar.Text>
           </Navbar.Collapse>
         </div>

@@ -19,47 +19,47 @@ export default function NewPerson() {
   const post = useSelector((state) => state.profile.post);
   console.log("prova", selProfile);
 
-// function check() {
-//     setFetched((prevState) => !prevState);
-//   }
+  // function check() {
+  //     setFetched((prevState) => !prevState);
+  //   }
 
   console.log(params.userID);
   return (
     <>
       <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
         <div className="proImgBarSetting">
-          <a href="#">
+          <Link to="/">
             <img
               className="proImgBarSetting"
               style={{ objectFit: "cover", objectPosition: "top" }}
               src={"https://www.media.inaf.it/wp-content/uploads/2020/03/meteorite-1280x720.jpg"}
               alt="immagine background"
             />
-          </a>
+          </Link>
         </div>
-        <a href="#">
+        <Link to="/">
           <img className="rounded-circle position-absolute proAbsolute" src={selProfile.image} alt="immagine profilo" />
-        </a>
+        </Link>
         <div className="mt-5 mx-4">
           <h2 className="mt-2 mb-0">
             {selProfile.name} {selProfile.surname}
           </h2>
           <div className="proBlack proMedium proLight">{selProfile.title}</div>
-          <a href="#">
+          <Link to="/">
             <div className="proGrey proLight proGreyHBlue mt-2">{selProfile.email}</div>
-          </a>
+          </Link>
           <div className="mt-2">
-            <a href="#">
+            <Link to="/">
               <span className="proGrey proLight proGreyHBlue">{selProfile.area}</span>
-            </a>{" "}
+            </Link>{" "}
             -{" "}
-            <a href="#">
+            <Link to="/">
               <span className="proBlue">Contact info</span>
-            </a>
+            </Link>
           </div>
-          <a href="#">
+          <Link to="/">
             <div className="proBlue mt-2 mb-3">{Math.floor(Math.random() * 100)} connection</div>
-          </a>
+          </Link>
           <Form className="mb-4">
             <Button className="proOpenTo me-3" variant="primary">
               Open to
@@ -83,25 +83,25 @@ export default function NewPerson() {
           </div>
           <div className="d-flex my-3">
             <div className="proGrey proNormal me-5 d-flex">
-              <a href="#">
+              <Link to="/">
                 <HiUsers className="proGrey proIcon me-2" />
-              </a>
+              </Link>
               <div>
-                <a href="#">
+                <Link to="/">
                   <span className="proGrey proGreyHBlue">{Math.floor(Math.random() * 100)} profile views </span>
-                </a>
+                </Link>
                 <br />
                 <span className="proGrey proLight proSmall">Discover who's viewed your profile.</span>
               </div>
             </div>
             <div className="proGrey proNormal me-5 d-flex">
-              <a href="#">
+              <Link to="/">
                 <BiSearch className="proGrey proIcon me-2" />
-              </a>
+              </Link>
               <div>
-                <a href="#">
+                <Link to="/">
                   <span className="proGrey proGreyHBlue">{Math.floor(Math.random() * 100)} search appearance</span>
-                </a>
+                </Link>
                 <br />
                 <span className="proGrey proLight proSmall">See how often you appear in search results</span>
               </div>
@@ -120,9 +120,9 @@ export default function NewPerson() {
       <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
         <div className="my-4 mx-4">
           <h2 className="my-0">Experience</h2>
-          <a href="#">
+          <Link to="/">
             <div className="proBlue my-0">{Math.floor(Math.random() * 100)} connection</div>
-          </a>
+          </Link>
           <div className="proBlack prosmall proLight mt-2">{selProfile.bio}</div>
         </div>
       </div>
@@ -130,11 +130,11 @@ export default function NewPerson() {
       <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
         <div className="my-4 mx-4">
           <h2 className="my-0">Activity</h2>
-          <a href="#">
+          <Link to="/">
             <div className="proBlue my-0">{Math.floor(Math.random() * 100)} connection</div>
-          </a>
+          </Link>
           <div className="proBlack prosmall proLight mt-2">
-          {post &&
+            {post &&
               post
                 /* .filter((postUnfilt) => postUnfilt.text.length > 10) */
                 .slice(0, 50)
@@ -151,24 +151,15 @@ export default function NewPerson() {
                               <h3 className="proBlack my-2 mx-4">
                                 writted by{" "}
                                 <Link to={`/user/${singPost.user?._id}`}>
-                                  <span className="proBlack proGreyHBlue">
-                                    {singPost.user?.name}
-                                  </span>
+                                  <span className="proBlack proGreyHBlue">{singPost.user?.name}</span>
                                 </Link>
                               </h3>
                               <div className="my-2 me-5 mx-4">
-                                <span className="proGrey proBlack proLight proSmall proNormal">
-                                  {singPost.text}
-                                </span>
+                                <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
                               </div>
-                              <img
-                                className="my-3 ms-4 me-3 rounded-2 w-100"
-                                src={singPost.image}
-                              />
+                              <img className="my-3 mx-4 rounded-2" src={singPost.image} />
                             </div>
-                            <div className="proSmall proLight mx-4">
-                              edited: {singPost.updatedAt.slice(0, 10)}
-                            </div>
+                            <div className="proSmall proLight mx-4">edited: {singPost.updatedAt.slice(0, 10)}</div>
                           </div>
                         </>
                       ) : (
