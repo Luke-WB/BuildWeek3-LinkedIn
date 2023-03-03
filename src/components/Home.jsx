@@ -28,10 +28,9 @@ const Home = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const token = useSelector((state) => state.profile.token);
-  const loading = useSelector((state) => state.profile.loading);
-  const post = useSelector((state) => state.profile.post);
-  const myProfile = useSelector((state) => state.profile.profile);
+  const loading = useSelector((state) => state.profile.loading)
+  const post = useSelector((state) => state.profile.post)
+  const myProfile = useSelector((state) => state.profile.profile)
 
   // profile fetch
   const dispatch = useDispatch();
