@@ -1,0 +1,78 @@
+.proBlack {
+  color: black;
+}
+
+.proGrey {
+  color: rgb(138, 138, 138);
+}
+
+.proGreyDark {
+  color: rgb(99, 98, 98);
+}
+
+.fontMini {
+  font-size: 13px;
+}
+
+.proLight {
+  font-weight: 300;
+}
+
+.proMiddle {
+  font-weight: 500;
+}
+
+.proBold {
+  font-weight: 700;
+}
+
+.proVerySmall {
+  font-size: 13px;
+}
+
+.proSmall {
+  font-size: 15px;
+}
+
+.proMedium {
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.proNormal {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.proGreyHBlue:hover {
+  color: #0a66c2 !important;
+  text-decoration: underline;
+}
+
+.proBlue {
+  color: #0a77d2;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.proBlue:hover {
+  text-decoration: underline;
+  .titolo {
+    font-size: 20px;
+    font-weight: 500;
+  }
+}
+
+.grandezzeHover {
+  height: 35px;
+  display: flex;
+  align-items: center;
+}
+
+.linkini {
+  line-height: 1.5rem;
+  padding: 53px;
+  margin-top: 0px !important;
+  padding-bottom: 0px;
+  padding-top: 10px;
+}

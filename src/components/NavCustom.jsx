@@ -96,7 +96,7 @@ function OffCanvasExample({ name, ...props }, prop) {
                   Home
                 </Nav.Link>
               </Link>
-              <Link to={"/"} className="link-fix">
+              <Link to={"/mynetwork"} className="link-fix">
                 <Nav.Link href="#action1" className="icon-word">
                   <FaUserFriends className="icon" /> My Network
                 </Nav.Link>
