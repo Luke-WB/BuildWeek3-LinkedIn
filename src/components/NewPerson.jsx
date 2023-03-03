@@ -6,6 +6,7 @@ import { HiUsers } from "react-icons/hi";
 import { AiFillEye } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 import { Button, Form } from "react-bootstrap";
+import ModalePut from "./ModalPut";
 
 export default function NewPerson() {
   const params = useParams();
@@ -15,8 +16,12 @@ export default function NewPerson() {
   useEffect(() => {
     dispatch(fetchIdProfile(params.userID));
   }, [params]);
-
+  const post = useSelector((state) => state.profile.post);
   console.log("prova", selProfile);
+
+  // function check() {
+  //     setFetched((prevState) => !prevState);
+  //   }
 
   console.log(params.userID);
   return (
@@ -128,7 +133,42 @@ export default function NewPerson() {
           <Link to="/">
             <div className="proBlue my-0">{Math.floor(Math.random() * 100)} connection</div>
           </Link>
-          <div className="proBlack prosmall proLight mt-2">{selProfile.bio}</div>
+          <div className="proBlack prosmall proLight mt-2">
+            {post &&
+              post
+                /* .filter((postUnfilt) => postUnfilt.text.length > 10) */
+                .slice(0, 50)
+                .map((singPost, i) => {
+                  return (
+                    <>
+                      {singPost.user._id === `${params.userID}` ? (
+                        <>
+                          <div
+                            key={i}
+                            className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4"
+                          >
+                            <div className="my-2">
+                              <h3 className="proBlack my-2 mx-4">
+                                writted by{" "}
+                                <Link to={`/user/${singPost.user?._id}`}>
+                                  <span className="proBlack proGreyHBlue">{singPost.user?.name}</span>
+                                </Link>
+                              </h3>
+                              <div className="my-2 me-5 mx-4">
+                                <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
+                              </div>
+                              <img className="my-3 mx-4 rounded-2" src={singPost.image} />
+                            </div>
+                            <div className="proSmall proLight mx-4">edited: {singPost.updatedAt.slice(0, 10)}</div>
+                          </div>
+                        </>
+                      ) : (
+                        <></>
+                      )}
+                    </>
+                  );
+                })}
+          </div>
         </div>
       </div>
 
