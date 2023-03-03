@@ -40,11 +40,13 @@ const Home = () => {
 
   function check() {
     setRendered((prevState) => !prevState);
+    console.log(check);
   }
 
   const post = useSelector((state) => state.profile.post);
   useEffect(() => {
     dispatch(reversed(token));
+    console.log(reversed);
   }, [rendered]);
 
   /*  async function postPost() {
@@ -72,32 +74,6 @@ const Home = () => {
  */
 
   const myProfile = useSelector((state) => state.profile.profile);
-
-  const [fd, setFd] = useState(new FormData()); //FormData e' una classe usata per raccogliere dati non stringa dai form
-  //E' formata da coppie chiave/valore => ["post", File], ["exp", File]
-  const handleSubmit = async (ev) => {
-    ev.preventDefault();
-    let res = await fetch("https://striveschool-api.herokuapp.com/api/posts/640142c7ab3c5e001380be52", {
-      //qui l'id andra' sostituito con un id DINAMICO!!!!!
-      method: "POST",
-      body: fd, //non serve JSON.stringify
-      headers: {
-        //NON serve ContentType :)
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs",
-      },
-    });
-  };
-  const handleFile = (ev, type) => {
-    setFd((prev) => {
-      console.log(ev.target.files[0]);
-      //per cambiare i formData, bisogna "appendere" una nuova coppia chiave/valore, usando il metodo .append()
-      prev.delete(type); //ricordatevi di svuotare il FormData prima :)
-      prev.append(type, ev.target.files[0]); //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
-      console.log(prev);
-      return prev;
-    });
-  };
 
   return (
     <>
@@ -136,7 +112,7 @@ const Home = () => {
                     // ternaryCheck={false} <--- perchè non funzion :(
                   />
                 </div>
-                <div onClick={handleSubmit} className="d-flex justify-content-evenly my-2 mx-4">
+                <div className="d-flex justify-content-evenly my-2 mx-4">
                   <div onClick={handleShowPhoto} className="greyHover rounded-2 me-2 px-2 py-3">
                     <MdPhotoSizeSelectActual className="fs-4 text-primary me-2" />
                     Photo
@@ -144,6 +120,7 @@ const Home = () => {
                   <ModalePhoto
                     showPhoto={showPhoto}
                     handleClosePhoto={handleClosePhoto}
+                    check={check}
                     // ternaryCheck={false} <--- perchè non funzion :(
                   />
                   <div className="greyHover rounded-2 me-2 px-2 py-3">
@@ -176,14 +153,14 @@ const Home = () => {
                               {myProfile._id === singPost.user._id ? (
                                 <img
                                   className="my-3 ms-4 me-3 rounded-2"
-                                  style={{ height: "55px", width:"55px" }}
+                                  style={{ height: "55px", width: "55px" }}
                                   src={myProfile.image}
                                   alt="portrait author"
                                 />
                               ) : (
                                 <img
                                   className="my-3 ms-4 me-3 rounded-2"
-                                  style={{ height: "55px", width:"55px" }}
+                                  style={{ height: "55px", width: "55px" }}
                                   src={singPost.user.image}
                                   alt="portrait author"
                                 />
@@ -199,10 +176,12 @@ const Home = () => {
                               <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
                               <img className="w-100" src={singPost.image} />
                             </div>
-                          </div>                          
+                          </div>
                           {singPost.user._id === `63fc6fa3f193e60013807f59` ? (
                             <>
-                            <div className="proSmall proLight ms-3 mb-1">edited: {singPost.updatedAt.slice(0, 10)}</div>
+                              <div className="proSmall proLight ms-3 mb-1">
+                                edited: {singPost.updatedAt.slice(0, 10)}
+                              </div>
                               <ModalPut
                                 check={check}
                                 id={singPost._id}
