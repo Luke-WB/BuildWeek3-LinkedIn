@@ -16,10 +16,6 @@ const Home = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [showPut, setShowPut] = useState(false);
-  const handleShowPut = () => setShowPut(true);
-  const handleClosePut = () => setShowPut(false);
-
   const addPost = {
     text: "",
   };
@@ -197,16 +193,7 @@ const Home = () => {
                           <div className="proSmall proLight">edited: {singPost.updatedAt.slice(0, 10)}</div>
                           {singPost.user._id === `63fc6fa3f193e60013807f59` ? (
                             <>
-                              <Button
-                                className="proModProfile me-3 my-3"
-                                variant="outline-primary"
-                                onClick={handleShowPut}
-                              >
-                                Add
-                              </Button>
                               <ModalePut
-                                handleClose={handleClosePut}
-                                show={showPut}
                                 check={check}
                                 id={singPost._id}
                                 // ternaryCheck={true} <--- perchè non funzion :(
