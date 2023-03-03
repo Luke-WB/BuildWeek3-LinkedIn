@@ -6,24 +6,17 @@ import { HiUsers } from "react-icons/hi";
 import { AiFillEye } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 import { Button, Form } from "react-bootstrap";
-import ModalePut from "./ModalPut";
 
 export default function NewPerson() {
   const params = useParams();
-  console.log(params);
-  const dispatch = useDispatch();
   const selProfile = useSelector((state) => state.selectedProfile.content);
+  const post = useSelector((state) => state.profile.post);
+
+  const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchIdProfile(params.userID));
   }, [params]);
-  const post = useSelector((state) => state.profile.post);
-  console.log("prova", selProfile);
 
-  // function check() {
-  //     setFetched((prevState) => !prevState);
-  //   }
-
-  console.log(params.userID);
   return (
     <>
       <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">

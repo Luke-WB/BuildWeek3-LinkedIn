@@ -6,7 +6,7 @@ import { MdPhotoSizeSelectActual } from "react-icons/md";
 import { BsFillPlayBtnFill, BsCaretDownFill, BsThreeDots } from "react-icons/bs";
 import { VscSmiley } from "react-icons/vsc";
 import { BiMessageRoundedDetail } from "react-icons/bi";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const ModalePut = ({ show, handleClose, check, id }) => {
   const addPost = {
@@ -63,20 +63,20 @@ const ModalePut = ({ show, handleClose, check, id }) => {
 
   return (
     <>
-    <div className="d-flex mx-4">
-      <Button className="proModProfile me-3 my-3" variant="outline-primary" onClick={handleShowPut}>
-        Add
-      </Button>
-      <Button
-        className="proDelete me-3 my-3"
-        variant="danger"
-        onClick={() => {
-          deletePost();
-          check();
-        }}
-      >
-        Delete
-      </Button>
+      <div className="d-flex mx-4">
+        <Button className="proModProfile me-3 my-3" variant="outline-primary" onClick={handleShowPut}>
+          Add
+        </Button>
+        <Button
+          className="proDelete me-3 my-3"
+          variant="danger"
+          onClick={() => {
+            deletePost();
+            check();
+          }}
+        >
+          Delete
+        </Button>
       </div>
 
       <Modal show={showPut} onHide={handleClose}>

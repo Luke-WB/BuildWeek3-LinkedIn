@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import { BsPlusLg } from "react-icons/bs";
 import ModaleAdd from "./ModaleAdd";
-import { Button, Col, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import logo from "../assets/management-suitcase-icon-outline-work-job-vector.jpg";
 import Modale from "./Modale";
 
-const Experience = ({myProfile}) => {
+const Experience = ({ myProfile }) => {
   const [modalShowPlus, setModalShowPlus] = useState(false);
   const [experiencesToRender, setExperiencesToRender] = useState([]);
-  const [rendered, setRendered] = useState(false)
+  const [rendered, setRendered] = useState(false);
 
-  console.log("cosa cavolo è myProfile",myProfile)
+  console.log("cosa cavolo è myProfile", myProfile);
 
   function check() {
-    setRendered((prevState) => !prevState)
+    setRendered((prevState) => !prevState);
   }
 
   async function getExp() {
@@ -49,19 +49,15 @@ const Experience = ({myProfile}) => {
         <div className="matita position-absolute" onClick={() => setModalShowPlus(true)}>
           <BsPlusLg />
         </div>
-        <ModaleAdd show={modalShowPlus} onHide={() => setModalShowPlus(false)} render={getExp} checking={check}/>
+        <ModaleAdd show={modalShowPlus} onHide={() => setModalShowPlus(false)} render={getExp} checking={check} />
       </div>
       {experiencesToRender.map((el) => (
         <div key={el._id}>
-          <Modale id={el._id} render={getExp} checking={check}/>
+          <Modale id={el._id} render={getExp} checking={check} />
           <Row>
             <Col ms={6} md={3}>
               <div className="parteUno rounded-2">
-                <img
-                src={el.image? el.image : logo }
-                alt="pic-job"
-                style={{ height: "75px", width: "75px" }}
-                />
+                <img src={el.image ? el.image : logo} alt="pic-job" style={{ height: "75px", width: "75px" }} />
               </div>
             </Col>
             <Col ms={6} md={9}>

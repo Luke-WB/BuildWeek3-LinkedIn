@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useSelector } from "react-redux";
@@ -6,15 +5,15 @@ import { showModalExp } from "../redux/actions";
 import { useDispatch } from "react-redux";
 
 function ModalEsperience() {
-  const dispatch = useDispatch();
+  const handleClose = () => toggleModal(showExp);
+  const handleShow = () => toggleModal(showExp);
+
   const showExp = useSelector((state) => state.profile.showExp);
+  const dispatch = useDispatch();
+
   const toggleModal = (param) => {
     dispatch(showModalExp(param));
   };
-
-//   const [show, setShow] = useState(false);
-  const handleClose = () => toggleModal(showExp);
-  const handleShow = () => toggleModal(showExp);
 
   return (
     <>

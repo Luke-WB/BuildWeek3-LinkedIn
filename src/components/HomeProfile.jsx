@@ -1,15 +1,13 @@
 import { useEffect } from "react";
-import { Card, ListGroup, Button } from "react-bootstrap/";
+import { Card, ListGroup } from "react-bootstrap/";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProfile } from "../redux/actions";
-import logo from "../assets/camera.png";
 import copertina from "../assets/user.jpg";
 import { BsFillPersonPlusFill, BsBookmarkFill } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { DocumentTitle } from "react";
 
-function HomeProfile({myProfile}) {
+function HomeProfile({ myProfile }) {
   const token = useSelector((state) => state.profile.token);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -23,11 +21,7 @@ function HomeProfile({myProfile}) {
           <div className="d-flex flex-column justify-content-center align-items-center topCard position-relative">
             <div className="position-absolute eccolo">
               <Link to={"/profile"}>
-                <img
-                  src={myProfile.image}
-                  alt="pic-profile "
-                  id="photo"
-                />
+                <img src={myProfile.image} alt="pic-profile " id="photo" />
               </Link>
             </div>
             <Card.Title className="mt-5">Welcome, {myProfile.name}</Card.Title>
