@@ -15,6 +15,8 @@ import ModalePost from "./ModalePost";
 import ModalePut from "./ModalPut";
 
 const Profile = () => {
+
+  let userKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs" 
   /* MODALE*/
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -73,14 +75,9 @@ const Profile = () => {
   console.log(myProfile);
   // console.log("random number");
   useEffect(() => {
-    dispatch(fetchProfile(token));
-    dispatch(reversed(token));
+    dispatch(fetchProfile(userKey));
+    dispatch(reversed(userKey));
   }, [fetched]);
-
-  const showExp = useSelector((state) => state.profile.showExp);
-  const toggleModal = (param) => {
-    dispatch(showModalExp(param));
-  };
 
   return (
     <>

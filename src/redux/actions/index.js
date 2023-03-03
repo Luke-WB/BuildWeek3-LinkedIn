@@ -4,13 +4,13 @@ export const SET_SHOW_EXP = "SET_SHOW_EXP";
 export const HOME_FETCH = "HOME_FETCH";
 export const REVERSE = "REVERSE";
 
-export const fetchProfile = () => {
+export const fetchProfile = (key) => {
   return async (dispatch) => {
     const urlToFetch = "https://striveschool-api.herokuapp.com/api/profile/me";
     try {
       const res = await fetch(urlToFetch, {
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+          Authorization: `Bearer ${key}`,
         },
       });
       if (res.ok) {
@@ -113,13 +113,13 @@ export const fetchHome = (token) => {
   };
 };
 
-export const reversed = (token) => {
+export const reversed = (userKey) => {
   return async (dispatch, getState) => {
     const urlHomeGet = "https://striveschool-api.herokuapp.com/api/posts/";
     try {
       const res = await fetch(urlHomeGet, {
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+          Authorization: `Bearer ${userKey}`,
         },
       });
       if (res.ok) {
