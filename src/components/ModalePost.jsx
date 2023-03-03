@@ -6,29 +6,24 @@ import { MdPhotoSizeSelectActual } from "react-icons/md";
 import { BsFillPlayBtnFill, BsCaretDownFill, BsThreeDots } from "react-icons/bs";
 import { VscSmiley } from "react-icons/vsc";
 import { BiMessageRoundedDetail } from "react-icons/bi";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
-  const dispatch = useDispatch;
   const addPost = {
     text: "",
   };
+
   const [objPost, setObjPost] = useState(addPost);
   const handleChange = (field, value) => {
     setObjPost((prev) => ({ ...prev, [field]: value }));
   };
 
-  console.log("ternaryCheck", ternaryCheck);
-  console.log("comparison", ternaryCheck === true);
-  // const token = useSelector((state) => state.profile.token)
-  // useEffect(() => {
-  //   dispatch(fetchProfile(token));
-  // }, []);
   const myProfile = useSelector((state) => state.profile.profile);
 
   let enabled = objPost.text.length > 0;
 
   const [newPost, setPost] = useState([]);
+
   async function postPost() {
     const urlToFetch = "https://striveschool-api.herokuapp.com/api/posts/";
     try {

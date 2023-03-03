@@ -14,7 +14,7 @@ const ModalePhoto = ({ showPhoto, handleClosePhoto, check }) => {
   //E' formata da coppie chiave/valore => ["post", File], ["exp", File]
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    let res = await fetch("https://striveschool-api.herokuapp.com/api/posts/6401c9baab3c5e001380be85", {
+    await fetch("https://striveschool-api.herokuapp.com/api/posts/6401c9baab3c5e001380be85", {
       //qui l'id andra' sostituito con un id DINAMICO!!!!!
       method: "POST",
       body: fd, //non serve JSON.stringify

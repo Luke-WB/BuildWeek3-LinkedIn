@@ -1,8 +1,8 @@
-import { Button, Col, Container, Form, Row } from "react-bootstrap"
-import logo from "../assets/Linkedin-Logo-2003.png"
-import { BsFillQuestionCircleFill } from "react-icons/bs"
-import { AiFillSetting } from "react-icons/ai"
-import { Link } from "react-router-dom"
+import { Col, Container, Form, Row } from "react-bootstrap";
+import logo from "../assets/Linkedin-Logo-2003.png";
+import { BsFillQuestionCircleFill } from "react-icons/bs";
+import { AiFillSetting } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 export default function FooterProfilePage() {
   return (
@@ -140,5 +140,5 @@ export default function FooterProfilePage() {
         </footer>
       </Container>
     </>
-  )
+  );
 }
