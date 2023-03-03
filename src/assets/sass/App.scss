@@ -16,7 +16,7 @@ body {
   background-color: #f3f2ef;
 }
 
-.Link {
+.link-fix {
   text-decoration: none;
 }
 
@@ -110,21 +110,9 @@ body {
   width: 15px;
   height: 15px;
   background: rgb(248, 199, 126);
-  background: -moz-linear-gradient(
-    52deg,
-    rgba(248, 199, 126, 1) 50%,
-    rgba(255, 224, 179, 1) 50%
-  );
-  background: -webkit-linear-gradient(
-    52deg,
-    rgba(248, 199, 126, 1) 50%,
-    rgba(255, 224, 179, 1) 50%
-  );
-  background: linear-gradient(
-    52deg,
-    rgba(248, 199, 126, 1) 50%,
-    rgba(255, 224, 179, 1) 50%
-  );
+  background: -moz-linear-gradient(52deg, rgba(248, 199, 126, 1) 50%, rgba(255, 224, 179, 1) 50%);
+  background: -webkit-linear-gradient(52deg, rgba(248, 199, 126, 1) 50%, rgba(255, 224, 179, 1) 50%);
+  background: linear-gradient(52deg, rgba(248, 199, 126, 1) 50%, rgba(255, 224, 179, 1) 50%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f8c77e",endColorstr="#ffe0b3",GradientType=1);
   margin-right: 3px;
   border-radius: 10%;
@@ -153,4 +141,3 @@ body {
   content: attr(data-placeholder);
   color: #bababa;
 }
-
