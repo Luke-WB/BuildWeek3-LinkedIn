@@ -113,7 +113,10 @@ const Home = () => {
                   />
                 </div>
                 <div className="d-flex justify-content-evenly my-2 mx-4">
-                  <div onClick={handleShowPhoto} className="greyHover rounded-2 me-2 px-2 py-3">
+                  <div
+                    onClick={handleShowPhoto}
+                    className="greyHover rounded-2 me-2 px-2 py-3"
+                  >
                     <MdPhotoSizeSelectActual className="fs-4 text-primary me-2" />
                     Photo
                   </div>
@@ -168,15 +171,21 @@ const Home = () => {
                               <h3 className="proBlack my-2">
                                 writted by{" "}
                                 <Link to={`/user/${singPost.user?._id}`}>
-                                  <span className="proBlack proGreyHBlue">{singPost.user?.name}</span>
+                                  <span className="proBlack proGreyHBlue">
+                                    {singPost.user?.name}
+                                  </span>
                                 </Link>
                               </h3>
                             </div>
                             <div className="my-2 me-5 mx-4">
-                              <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
-                              <img className="my-3 w-100" src={singPost.image} />
+                              <span className="proGrey proBlack proLight proSmall proNormal">
+                                {singPost.text}
+                              </span>
+                              <img
+                                className="my-3 w-100"
+                                src={singPost.image}
+                              />
                             </div>
-                          </div>
                           {singPost.user._id === `63fc6fa3f193e60013807f59` ? (
                             <>
                               <div className="proSmall proLight ms-3 mb-1">
@@ -186,12 +195,15 @@ const Home = () => {
                                 check={check}
                                 id={singPost._id}
                                 // ternaryCheck={true} <--- perchè non funzion :(
-                              />
+                                  />
                               {console.log("eccolo id POST", singPost._id)}
                             </>
                           ) : (
-                            <div className="proSmall proLight mx-4 my-2">edited: {singPost.updatedAt.slice(0, 10)}</div>
+                            <div className="proSmall proLight mx-4 my-2">
+                              edited: {singPost.updatedAt.slice(0, 10)}
+                            </div>
                           )}
+                          </div>
                         </div>
                       </>
                     );
