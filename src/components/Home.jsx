@@ -13,8 +13,7 @@ import ModalPut from "./ModalPut"
 import ModalePhoto from "./ModalePhoto"
 
 const Home = () => {
-  let userKey =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs"
+  let userKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs"
 
   const [showPhoto, setShowPhoto] = useState(false)
   const handleClosePhoto = () => setShowPhoto(false)
@@ -24,7 +23,6 @@ const Home = () => {
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
 
-  const token = useSelector((state) => state.profile.token)
   const loading = useSelector((state) => state.profile.loading)
   const post = useSelector((state) => state.profile.post)
   const myProfile = useSelector((state) => state.profile.profile)
