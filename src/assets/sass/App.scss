@@ -66,6 +66,20 @@ body {
   background-color: #ebebeb;
 }
 
+.likeHover {
+  background-color: #59A2ED;
+  padding: 5px;
+  border-radius: 50%;
+  color: Black;
+}
+
+.likeHover:hover {
+  background-color: #59A2ED;
+  text-decoration: underline;
+  padding: 5px;
+  border-radius: 50%;
+}
+
 .matita {
   right: 5%;
   font-size: 30px;

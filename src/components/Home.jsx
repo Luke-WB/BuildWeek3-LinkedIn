@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProfile, reversed } from "../redux/actions";
 import { Container, Row, Col } from "react-bootstrap";
-import { MdPhotoSizeSelectActual } from "react-icons/md";
-import { BsFillPlayBtnFill, BsCalendarDay } from "react-icons/bs";
+import { MdOutlinePostAdd, MdPhotoSizeSelectActual } from "react-icons/md";
+import { BsFillPlayBtnFill, BsCalendarDay, BsHandThumbsUp, BsHandThumbsUpFill, BsSkipEndFill } from "react-icons/bs";
 import { MdArticle } from "react-icons/md";
 import HomeProfile from "./HomeProfile";
 import { Link } from "react-router-dom";
@@ -11,6 +11,10 @@ import Loading from "./Loading";
 import ModalePost from "./ModalePost";
 import ModalPut from "./ModalPut";
 import ModalePhoto from "./ModalePhoto";
+import { GiEarthAmerica } from "react-icons/gi";
+import { BsDot } from "react-icons/bs";
+import { AiOutlinePlus } from "react-icons/ai";
+import { BiMessageRoundedDetail } from "react-icons/bi";
 
 const Home = () => {
   let userKey =
@@ -83,7 +87,10 @@ const Home = () => {
                   />
                 </div>
                 <div className="d-flex justify-content-evenly my-2 mx-4">
-                  <div onClick={handleShowPhoto} className="greyHover rounded-2 me-2 px-2 py-3">
+                  <div
+                    onClick={handleShowPhoto}
+                    className="greyHover rounded-2 me-2 px-2 py-3"
+                  >
                     <MdPhotoSizeSelectActual className="fs-4 text-primary me-2" />
                     Photo
                   </div>
@@ -116,58 +123,109 @@ const Home = () => {
                       <>
                         <div
                           key={i}
-                          className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4"
+                          className="d-flex flex-column align-items-e bg-light rounded-3 position-relative proCard my-4"
                         >
-                          <div className="my-2 mx-4">
-                            <div className="d-flex flex-row align-items-center">
-                              {myProfile._id === singPost.user._id ? (
-                                <img
-                                  className="my-3 ms-4 me-3 rounded-2"
-                                  style={{ height: "55px", width: "55px" }}
-                                  src={myProfile.image}
-                                  alt="portrait author"
-                                />
-                              ) : (
-                                <img
-                                  className="my-3 ms-4 me-3 rounded-2"
-                                  style={{ height: "55px", width: "55px" }}
-                                  src={singPost.user.image}
-                                  alt="portrait author"
-                                />
-                              )}
-                              <h3 className="proBlack my-2">
-                                writted by{" "}
-                                <Link to={`/user/${singPost.user?._id}`} className="link-fix">
-                                  <span className="proBlack proGreyHBlue">{singPost.user?.name}</span>
-                                </Link>
-                              </h3>
-                            </div>
-                            <div className="my-2 me-5 mx-4">
-                              <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
-                              {singPost.image ? (
-                                <img className="my-3 w-100" src={singPost.image} alt="activity" />
-                              ) : (
-                                <></>
-                              )}
-                            </div>
-                            {singPost.user._id === `63fc6fa3f193e60013807f59` ? (
-                              <>
-                                <div className="proSmall proLight ms-3 mb-1">
-                                  edited: {singPost.updatedAt.slice(0, 10)}
+                          <div className="d-flex flex-row justify-content-between align-items-center me-4">
+                            <div>
+                              <div className="d-flex flex-row align-items-center">
+                                {myProfile._id === singPost.user._id ? (
+                                  <img
+                                    className="my-3 ms-4 me-3 rounded-2"
+                                    style={{ height: "55px", width: "55px" }}
+                                    src={myProfile.image}
+                                    alt="portrait author"
+                                  />
+                                ) : (
+                                  <img
+                                    className="my-3 ms-4 me-3 rounded-2"
+                                    style={{ height: "55px", width: "55px" }}
+                                    src={singPost.user.image}
+                                    alt="portrait author"
+                                  />
+                                )}
+                                <div className="proBlack my-2">
+                                  <Link
+                                    to={`/user/${singPost.user?._id}`}
+                                    className="link-fix"
+                                  >
+                                    <div className="proBlack proNormal proGreyHBlue link-fix">
+                                      {singPost.user?.name}
+                                    </div>
+                                  </Link>
+                                  <div className="proGrey proVerySmall">
+                                    {Math.floor(Math.random() * 100)} followers
+                                  </div>
+                                  <div className="proGrey proVerySmall">
+                                    {Math.floor(Math.random() * 12)} <BsDot />{" "}
+                                    <GiEarthAmerica />
+                                  </div>
                                 </div>
-                                <ModalPut
-                                  check={check}
-                                  id={singPost._id}
-                                  // ternaryCheck={true} <--- perchè non funzion :(
-                                />
-                                {console.log("eccolo id POST", singPost._id)}
-                              </>
-                            ) : (
-                              <div className="proSmall proLight mx-4 my-2">
-                                edited: {singPost.updatedAt.slice(0, 10)}
                               </div>
+                            </div>
+                            <div className="proNormal proBlue">
+                              <AiOutlinePlus /> Follow
+                            </div>
+                          </div>
+                          <div className="my-2 mx-1">
+                            <span className="proGrey proBlack proLight proSmall proNormal">
+                              {singPost.text}
+                            </span>
+                            {singPost.image ? (
+                              <img
+                                className="mt-3 mb-1 w-100"
+                                src={singPost.image}
+                                alt="activity"
+                              />
+                            ) : (
+                              <></>
                             )}
                           </div>
+                          <div className="mb-1 mx-3 proGrey proSmall d-flex align-items-center"><BsHandThumbsUp className="likeHover fs-4 me-2"/>{Math.floor(Math.random() * 100)}</div>
+                          <hr className="my-1 mx-3"/>
+                          <div className="d-flex justify-content-evenly text-secondary">
+                            <div
+                              onClick={handleShowPhoto}
+                              className="greyHover rounded-2 me-2 px-4 py-3"
+                            >
+                              <BsHandThumbsUp className="fs-4 me-2" />
+                              Like
+                            </div>
+                            <ModalePhoto
+                              showPhoto={showPhoto}
+                              handleClosePhoto={handleClosePhoto}
+                              check={check}
+                              // ternaryCheck={false} <--- perchè non funzion :(
+                            />
+                            <div className="greyHover rounded-2 me-2 px-4 py-3">
+                              <BiMessageRoundedDetail className="fs-4 me-2" />
+                              Comment
+                            </div>
+                            <div className="greyHover rounded-2 me-2 px-4 py-3">
+                              <MdOutlinePostAdd className="fs-4 me-2" />
+                              Repost
+                            </div>
+                            <div className="greyHover rounded-2 me-2 px-4 py-3">
+                              <BsSkipEndFill className="fs-4 me-2" />
+                              Send
+                            </div>
+                          </div>
+                          {singPost.user._id === `63fc6fa3f193e60013807f59` ? (
+                            <>
+                              <div className="proSmall proLight ms-3 mb-1">
+                                edited: {singPost.updatedAt.slice(0, 10)}
+                              </div>
+                              <ModalPut
+                                check={check}
+                                id={singPost._id}
+                                // ternaryCheck={true} <--- perchè non funzion :(
+                              />
+                              {console.log("eccolo id POST", singPost._id)}
+                            </>
+                          ) : (
+                            <div className="proSmall proLight mx-4 my-2">
+                              edited: {singPost.updatedAt.slice(0, 10)}
+                            </div>
+                          )}
                         </div>
                       </>
                     );
