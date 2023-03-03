@@ -1,19 +1,20 @@
-import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
-import Modal from "react-bootstrap/Modal";
-import { BiPencil } from "react-icons/bi";
+import { useState } from "react"
+import { Button, Form } from "react-bootstrap"
+import Modal from "react-bootstrap/Modal"
+import { BiPencil } from "react-icons/bi"
+import { Link } from "react-router-dom"
 
 function Modale(props) {
-  const [modalShow, setModalShow] = useState(false);
-  const [isDeleted, setISDeleted] = useState(true);
-  const [newState, setNewState] = useState({});
+  const [modalShow, setModalShow] = useState(false)
+  const [isDeleted, setISDeleted] = useState(true)
+  const [newState, setNewState] = useState({})
 
   const handleChange = (field, value) => {
-    setNewState((prev) => ({ ...prev, [field]: value }));
-  };
+    setNewState((prev) => ({ ...prev, [field]: value }))
+  }
 
   async function deleteExperience() {
-    const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences/${props.id}`;
+    const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences/${props.id}`
     try {
       await fetch(
         urlToFetch,
@@ -25,16 +26,16 @@ function Modale(props) {
         },
         setISDeleted(false),
         console.log("DELETE", isDeleted)
-      );
+      )
     } catch (error) {
-      console.log("delete", error);
+      console.log("delete", error)
     }
   }
 
   async function putExperience() {
-    const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences/${props.id}`;
+    const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences/${props.id}`
     try {
-      console.log(newState);
+      console.log(newState)
       const res = await fetch(urlToFetch, {
         method: "PUT",
         headers: {
@@ -42,15 +43,15 @@ function Modale(props) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(newState),
-      });
+      })
       if (res.ok) {
-        let modifica = await res.json();
-        console.log("PUT", modifica);
+        let modifica = await res.json()
+        console.log("PUT", modifica)
       } else {
-        console.log("error");
+        console.log("error")
       }
     } catch (error) {
-      alert(error);
+      alert(error)
     }
   }
 
@@ -96,11 +97,21 @@ function Modale(props) {
             <p>Learn more about employment types.</p>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Text className="text-muted">Company name*</Form.Text>
-              <Form.Control type="email" placeholder="Ex: Microsoft" required />
+              <Form.Control
+                type="email"
+                placeholder="Ex: Microsoft"
+                required
+                onChange={(e) => handleChange("company", e.target.value)}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Text className="text-muted">Location*</Form.Text>
-              <Form.Control type="email" placeholder="Ex: Lonon, United Kingdom" required />
+              <Form.Control
+                type="email"
+                placeholder="Ex: Lonon, United Kingdom"
+                required
+                onChange={(e) => handleChange("area", e.target.value)}
+              />
             </Form.Group>
             <Form.Text className="text-muted">Location type</Form.Text>
             <Form.Select aria-label="Default select example">
@@ -116,7 +127,7 @@ function Modale(props) {
             </Form.Group>
             <Form.Text className="text-muted">Start date*</Form.Text>
             <div className="d-flex gap-2 mb-4">
-              <Form.Select aria-label="Mounth">
+              <Form.Select aria-label="Mounth" onChange={(e) => handleChange("startDate", e.target.value)}>
                 <option>Mounth</option>
                 <option value="1">Gennaio</option>
                 <option value="2">Febbraio</option>
@@ -131,16 +142,19 @@ function Modale(props) {
                 <option value="11">Novembre</option>
                 <option value="12">Dicembre</option>
               </Form.Select>
-              <Form.Select aria-label="Default select example">
+              <Form.Select
+                aria-label="Default select example"
+                onChange={(e) => handleChange("startDate", e.target.value)}
+              >
                 <option>Year</option>
-                <option value="1">2023</option>
-                <option value="2">2022</option>
-                <option value="3">2021</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
               </Form.Select>
             </div>
             <Form.Text className="text-muted">End date*</Form.Text>
             <div className="d-flex gap-2">
-              <Form.Select aria-label="Mounth">
+              <Form.Select aria-label="Mounth" onChange={(e) => handleChange("endDate", e.target.value)}>
                 <option>Mounth</option>
                 <option value="1">Gennaio</option>
                 <option value="2">Febbraio</option>
@@ -155,15 +169,20 @@ function Modale(props) {
                 <option value="11">Novembre</option>
                 <option value="12">Dicembre</option>
               </Form.Select>
-              <Form.Select aria-label="Default select example">
+              <Form.Select
+                aria-label="Default select example"
+                onChange={(e) => handleChange("endDate", e.target.value)}
+              >
                 <option>Year</option>
-                <option value="1">2023</option>
-                <option value="2">2022</option>
-                <option value="3">2021</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
               </Form.Select>
             </div>
             <Form.Group className="my-4" controlId="exampleForm.ControlTextarea1">
-              <Form.Text className="text-muted">Description</Form.Text>
+              <Form.Text className="text-muted" onChange={(e) => handleChange("description", e.target.value)}>
+                Description
+              </Form.Text>
               <Form.Control as="textarea" rows={3} />
             </Form.Group>
           </Form>
@@ -178,7 +197,9 @@ function Modale(props) {
             <h5>Media</h5>
             <p>
               Add or link to external documents, photos, sites, videos, and presentations. Learn more about{" "}
-              <a href="#">media file types supported</a>
+              <Link to="/" className="link-fix">
+                media file types supported
+              </Link>
             </p>
             <Button className="proModProfile" variant="outline-primary">
               + Add media
@@ -188,10 +209,10 @@ function Modale(props) {
         <Modal.Footer className="d-flex justify-content-between">
           <Button
             onClick={() => {
-              deleteExperience();
-              props.render();
-              setModalShow(false);
-              props.checking();
+              deleteExperience()
+              props.render()
+              setModalShow(false)
+              props.checking()
             }}
             variant="outline-danger"
           >
@@ -200,10 +221,10 @@ function Modale(props) {
           <Button
             className="proOpenTo"
             onClick={() => {
-              putExperience();
-              setModalShow(false);
-              props.render();
-              props.checking();
+              putExperience()
+              setModalShow(false)
+              props.render()
+              props.checking()
             }}
           >
             Save
@@ -211,7 +232,7 @@ function Modale(props) {
         </Modal.Footer>
       </Modal>
     </>
-  );
+  )
 }
 
-export default Modale;
+export default Modale

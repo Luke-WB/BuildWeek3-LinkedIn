@@ -1,51 +1,51 @@
 import { useEffect } from "react"
-import { Card, ListGroup, Button } from "react-bootstrap/"
+import { Card, ListGroup } from "react-bootstrap/"
 import { useSelector, useDispatch } from "react-redux"
 import { fetchProfile } from "../redux/actions"
-import logo from "../assets/camera.png"
 import copertina from "../assets/user.jpg"
 import { BsFillPersonPlusFill, BsBookmarkFill } from "react-icons/bs"
 import { AiOutlinePlus } from "react-icons/ai"
 import { Link } from "react-router-dom"
 
-function HomeProfile() {
+function HomeProfile({ myProfile }) {
   const token = useSelector((state) => state.profile.token)
-  const myProfile = useSelector((state) => state.profile.profile)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchProfile(token))
   }, [])
   return (
     <>
-      <Card className="my-4 mx-0" style={{ width: "18rem" }}>
+      <Card className="my-4 mx-0">
         <Card.Img variant="top" src={copertina} className="copert" />
         <Card.Body className=" m-0">
           <div className="d-flex flex-column justify-content-center align-items-center topCard position-relative">
             <div className="position-absolute eccolo">
-            <Link to={"/profile"}><img src="https://i.pinimg.com/736x/65/91/a0/6591a0cdc097b089c2b329d1feddee54.jpg" alt="pic-profile " id="photo" /></Link>
+              <Link to={"/profile"} className="link-fix">
+                <img src={myProfile.image} alt="pic-profile " id="photo" />
+              </Link>
             </div>
             <Card.Title className="mt-5">Welcome, {myProfile.name}</Card.Title>
             <p className="mx-3 text-center proLight">{myProfile.email}</p>
-            <a href="#" className="mb-2 proBlue">
+            <Link to="/" className="mb-2 proBlue link-fix">
               Add a photo
-            </a>
+            </Link>
           </div>
 
           <ListGroup variant="flush">
             <ListGroup.Item className="grigio">
               <div className="d-flex justify-content-between">
-                <a href="#" className="m-0" style={{ color: "gray" }}>
+                <Link to="/" className="m-0 link-fix" style={{ color: "gray" }}>
                   Connection
-                </a>
+                </Link>
                 <div className="d-flex align-items-center">
                   <BsFillPersonPlusFill />
                   <span className="proBlue ms-3"> {Math.floor(Math.random() * 100)}</span>
                 </div>
               </div>
               <div>
-                <a href="#" className="m-0" style={{ color: "black" }}>
+                <Link to="/" className="m-0 link-fix" style={{ color: "black" }}>
                   Grow your network
-                </a>
+                </Link>
               </div>
             </ListGroup.Item>
             <ListGroup.Item className="grigio">
@@ -54,9 +54,9 @@ function HomeProfile() {
               </p>
               <div className="d-flex align-items-center">
                 <div className="square d-flex "></div>
-                <a href="#" className="proGreyHBlue proGrey">
+                <Link to="/" className="proGreyHBlue proGrey link-fix">
                   Try premium for free
-                </a>
+                </Link>
               </div>
             </ListGroup.Item>
             <ListGroup.Item className="grigio">
@@ -69,20 +69,20 @@ function HomeProfile() {
         </Card.Body>
       </Card>
 
-      <Card style={{ width: "18rem" }} className="mt-2">
+      <Card className="mt-2">
         <ListGroup variant="flush">
           <ListGroup.Item>
             <p className="proBlue">Group</p>
             <div className="d-flex align-item-center justify-content-between tratto">
               <div className="proBlue">Events</div>
-              <div>
+              <div title="Create an event" className="homeModalH">
                 <AiOutlinePlus />
               </div>
             </div>
             <p className="proBlue">Followed Hashtags</p>
           </ListGroup.Item>
           <ListGroup.Item
-            className="proGrey d-flex justify-content-center"
+            className="proGrey grigio d-flex justify-content-center"
             style={{ cursor: "pointer", fontWeight: "500" }}
           >
             Discover more
