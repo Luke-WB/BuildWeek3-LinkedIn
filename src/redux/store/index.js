@@ -4,7 +4,7 @@ import storage from "redux-persist/lib/storage";
 import { encryptTransform } from "redux-persist-transform-encrypt";
 import profileReducer from "../reducer/profileReducer";
 import selectedProfileFetch from "../reducer/selectedProfileFetch";
-import experiencesFetch from "../reducer/getExperiences";
+
 /* import mainReducer from "../reducers"; */
 
 const persistConfig = {
@@ -20,7 +20,6 @@ const persistConfig = {
 const rootReducer = combineReducers({
   profile: profileReducer,
   selectedProfile: selectedProfileFetch,
-  fetchExperiences: experiencesFetch
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
