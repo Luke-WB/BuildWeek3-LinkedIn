@@ -13,6 +13,10 @@ import ModalPut from "./ModalPut";
 import ModalePhoto from "./ModalePhoto";
 
 const Home = () => {
+
+  let userKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs" 
+
+
   const [showPhoto, setShowPhoto] = useState(false);
   const handleClosePhoto = () => setShowPhoto(false);
   const handleShowPhoto = () => setShowPhoto(true);
@@ -29,7 +33,7 @@ const Home = () => {
   // profile fetch
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchProfile());
+    dispatch(fetchProfile(userKey));
   }, []);
 
   // post fetch
@@ -39,7 +43,7 @@ const Home = () => {
     console.log(check);
   }
   useEffect(() => {
-    dispatch(reversed(token));
+    dispatch(reversed(userKey));
     console.log(reversed);
   }, [rendered]);
 
