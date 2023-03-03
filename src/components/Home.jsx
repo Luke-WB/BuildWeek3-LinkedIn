@@ -174,7 +174,7 @@ const Home = () => {
                           </div>
                           <hr className="my-1 mx-3" />
                           <div className="d-flex justify-content-evenly text-secondary">
-                            <div onClick={handleShowPhoto} className="greyHover rounded-2 me-2 px-4 py-3">
+                            <div className="greyHover rounded-2 me-2 px-4 py-3">
                               <BsHandThumbsUp className="fs-4 me-2" />
                               Like
                             </div>
