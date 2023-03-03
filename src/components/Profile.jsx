@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,19 +9,6 @@ import { BiSearch, BiPencil } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import Experience from "./Experience";
 import ModalePut from "./ModalPut";
-=======
-import { useEffect, useState } from "react"
-import { Button, Form, Modal } from "react-bootstrap"
-import { useDispatch, useSelector } from "react-redux"
-import { HiUsers } from "react-icons/hi"
-import { AiFillEye } from "react-icons/ai"
-import { BsFillInfoSquareFill } from "react-icons/bs"
-import { fetchIdProfile, fetchProfile, reversed, showModalExp } from "../redux/actions"
-import { BiSearch, BiPencil } from "react-icons/bi"
-import { Link } from "react-router-dom"
-import Experience from "./Experience"
-import ModalePut from "./ModalPut"
->>>>>>> parent of 6ce1eca (.)
 
 const Profile = () => {
   let userKey =
