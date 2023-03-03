@@ -5,6 +5,10 @@ import Spinner from "react-bootstrap/Spinner";
 import { BsChevronCompactDown, BsChevronCompactUp } from "react-icons/bs";
 
 export default function People() {
+
+  const userKey =  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs` 
+
+
   const [isTrue, setIsTrue] = useState(false);
   const [peopleFetched, setPeopleFetched] = useState([]);
   const [peopleToRender, setPeopleToRender] = useState([]);
@@ -17,7 +21,7 @@ export default function People() {
       try {
         const response = await fetch(profili_utente, {
           headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjN2Y3MWYxOTNlNjAwMTM4MDdmNjAiLCJpYXQiOjE2Nzc0OTIwODEsImV4cCI6MTY3ODcwMTY4MX0.VsSZ2d0tCDoaQSZpm1CGnM4ctkdFFFZhAu36PvkG-hU`,
+            Authorization: userKey,
           },
         });
         if (response.ok) {

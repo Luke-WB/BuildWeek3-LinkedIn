@@ -6,7 +6,7 @@ import { MdOutlinePostAdd, MdPhotoSizeSelectActual } from "react-icons/md";
 import { BsFillPlayBtnFill, BsCalendarDay, BsHandThumbsUp, BsHandThumbsUpFill, BsSkipEndFill } from "react-icons/bs";
 import { MdArticle } from "react-icons/md";
 import HomeProfile from "./HomeProfile";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Loading from "./Loading";
 import ModalePost from "./ModalePost";
 import ModalPut from "./ModalPut";
@@ -17,8 +17,8 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { BiMessageRoundedDetail } from "react-icons/bi";
 
 const Home = () => {
-  let userKey =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs";
+  const userKey =  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs` 
+
 
   const [showPhoto, setShowPhoto] = useState(false);
   const handleClosePhoto = () => setShowPhoto(false);
@@ -96,6 +96,7 @@ const Home = () => {
                     showPhoto={showPhoto}
                     handleClosePhoto={handleClosePhoto}
                     check={check}
+
                     // ternaryCheck={false} <--- perchè non funzion :(
                   />
 
@@ -185,7 +186,7 @@ const Home = () => {
                             Send
                           </div>
                         </div>
-                        {singPost.user._id === `63fc6fa3f193e60013807f59` ? (
+                        {singPost.user._id === `${myProfile._id}` ? (
                           <>
                             <div className="proSmall proLight ms-3 mb-1">edited: {singPost.updatedAt.slice(0, 10)}</div>
                             <ModalPut
