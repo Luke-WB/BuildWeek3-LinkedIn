@@ -7,7 +7,7 @@ import copertina from "../assets/user.jpg";
 import { BsFillPersonPlusFill, BsBookmarkFill } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import {DocumentTitle} from "react"
+import { DocumentTitle } from "react";
 
 function HomeProfile({myProfile}) {
   const token = useSelector((state) => state.profile.token);
@@ -45,10 +45,7 @@ function HomeProfile({myProfile}) {
                 </a>
                 <div className="d-flex align-items-center">
                   <BsFillPersonPlusFill />
-                  <span className="proBlue ms-3">
-                    {" "}
-                    {Math.floor(Math.random() * 100)}
-                  </span>
+                  <span className="proBlue ms-3"> {Math.floor(Math.random() * 100)}</span>
                 </div>
               </div>
               <div>
@@ -70,10 +67,7 @@ function HomeProfile({myProfile}) {
             </ListGroup.Item>
             <ListGroup.Item className="grigio">
               <div className="d-flex align-items-center">
-                <BsBookmarkFill
-                  className="d-flex  me-1"
-                  style={{ color: "grey", cursor: "pointer" }}
-                />
+                <BsBookmarkFill className="d-flex  me-1" style={{ color: "grey", cursor: "pointer" }} />
                 <div style={{ cursor: "pointer" }}>My items</div>
               </div>
             </ListGroup.Item>
@@ -86,10 +80,10 @@ function HomeProfile({myProfile}) {
           <ListGroup.Item>
             <p className="proBlue">Group</p>
             <div className="d-flex align-item-center justify-content-between tratto">
-              <div className="proBlue">Events</div>              
-                <div title="Create an event" className="homeModalH">
-                  <AiOutlinePlus />
-                </div>            
+              <div className="proBlue">Events</div>
+              <div title="Create an event" className="homeModalH">
+                <AiOutlinePlus />
+              </div>
             </div>
             <p className="proBlue">Followed Hashtags</p>
           </ListGroup.Item>
