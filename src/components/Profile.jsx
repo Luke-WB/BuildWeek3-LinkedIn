@@ -1,28 +1,28 @@
-import { useEffect, useState } from "react"
-import { Button, Form, Modal } from "react-bootstrap"
-import { useDispatch, useSelector } from "react-redux"
-import { HiUsers } from "react-icons/hi"
-import { AiFillEye } from "react-icons/ai"
-import { BsFillInfoSquareFill } from "react-icons/bs"
-import { fetchIdProfile, fetchProfile, reversed, showModalExp } from "../redux/actions"
-import { BiSearch, BiPencil } from "react-icons/bi"
-import { Link } from "react-router-dom"
-import Experience from "./Experience"
-import ModalePut from "./ModalPut"
+import { useEffect, useState } from "react";
+import { Button, Form, Modal } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { HiUsers } from "react-icons/hi";
+import { AiFillEye } from "react-icons/ai";
+import { BsFillInfoSquareFill } from "react-icons/bs";
+import { fetchIdProfile, fetchProfile, reversed, showModalExp } from "../redux/actions";
+import { BiSearch, BiPencil } from "react-icons/bi";
+import { Link } from "react-router-dom";
+import Experience from "./Experience";
+import ModalePut from "./ModalPut";
 
 const Profile = () => {
   let userKey =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs"
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs";
   /* MODALE*/
-  const [show, setShow] = useState(false)
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
-  const token = useSelector((state) => state.profile.token)
-  const myProfile = useSelector((state) => state.profile.profile)
-  const dispatch = useDispatch()
-  const [modified, setModified] = useState(null)
-  const [fetched, setFetched] = useState(false)
-  const post = useSelector((state) => state.profile.post)
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const token = useSelector((state) => state.profile.token);
+  const myProfile = useSelector((state) => state.profile.profile);
+  const dispatch = useDispatch();
+  const [modified, setModified] = useState(null);
+  const [fetched, setFetched] = useState(false);
+  const post = useSelector((state) => state.profile.post);
 
   const obj = {
     name: "",
@@ -31,15 +31,15 @@ const Profile = () => {
     bio: "",
     title: "",
     area: "",
-  }
+  };
 
   function check() {
-    setFetched((prevState) => !prevState)
+    setFetched((prevState) => !prevState);
   }
 
   useEffect(() => {
     async function ipipipip(id, expid) {
-      const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/`
+      const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/`;
       try {
         const res = await fetch(urlToFetch, {
           method: "PUT",
@@ -48,22 +48,22 @@ const Profile = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(modified),
-        })
+        });
         if (res.ok) {
-          console.log(res)
+          console.log(res);
         } else {
         }
       } catch (error) {
-        alert(error)
+        alert(error);
       }
     }
-    ipipipip()
-  }, [modified])
+    ipipipip();
+  }, [modified]);
 
   useEffect(() => {
-    dispatch(fetchProfile(userKey))
-    dispatch(reversed(userKey))
-  }, [fetched])
+    dispatch(fetchProfile(userKey));
+    dispatch(reversed(userKey));
+  }, [fetched]);
 
   return (
     <>
@@ -233,9 +233,9 @@ const Profile = () => {
                 variant="primary"
                 className="rounded-5"
                 onMouseDown={() => {
-                  check()
-                  setModified(obj)
-                  fetchProfile(token)
+                  check();
+                  setModified(obj);
+                  fetchProfile(token);
                 }}
               >
                 Salva
@@ -333,7 +333,7 @@ const Profile = () => {
                       <></>
                     )}
                   </>
-                )
+                );
               })}
           </div>
         </div>
@@ -351,7 +351,7 @@ const Profile = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;

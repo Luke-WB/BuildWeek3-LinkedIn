@@ -102,7 +102,7 @@ function OffCanvasExample({ name, ...props }, prop) {
           <Navbar.Collapse id="navbarScroll" className="bg-white">
             <div className="d-flex align-items-center">
               <FaSearch className="position-relative" style={{ right: "-31px", top: "1px", color: "#4a4a4a" }} />
-              <Form className="d-flex">
+              <Form className="d-flex" onSubmit={() => searchName()}>
                 <Form.Control
                   type="search"
                   placeholder="Search"
@@ -116,30 +116,41 @@ function OffCanvasExample({ name, ...props }, prop) {
                     marginRight: "2px",
                     borderRadius: "4px",
                   }}
+                  onChange={(e) => setWord(e.target.value)}
                 />
               </Form>
             </div>
 
             <Nav className=" my-2 my-lg-0 align-items-start  ms-5 ms-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
-              <Nav.Link href="#action1" className="icon-word">
-                <FaHome className="icon" />
-                <span className="d-none d-lg-block">Home</span>
-              </Nav.Link>
-              <Nav.Link href="#action1" className="icon-word">
-                <FaUserFriends className="icon" /> <span className="d-none d-lg-block">My Network</span>
-              </Nav.Link>
-              <Nav.Link href="#action1" className="icon-word">
-                <BsBriefcaseFill className="icon" />
-                <span className="d-none d-lg-block"> Jobs</span>
-              </Nav.Link>
-              <Nav.Link href="#action1" className="icon-word">
-                <RiMessage3Line className="icon" />
-                <span className="d-none d-lg-block">Messaging</span>
-              </Nav.Link>
-              <Nav.Link href="#action1" className="icon-word">
-                <FaBell className="icon" />
-                <span className="d-none d-lg-block">Notifications </span>
-              </Nav.Link>
+              <Link to={"/"} className="link-fix text-dark">
+                <Navbar className="icon-word">
+                  <FaHome className="icon" />
+                  <span className="d-none d-lg-block">Home</span>
+                </Navbar>
+              </Link>
+              <Link to={"/"} className="link-fix text-dark">
+                <Navbar className="icon-word">
+                  <FaUserFriends className="icon" /> <span className="d-none d-lg-block">My Network</span>
+                </Navbar>
+              </Link>
+              <Link to={"/"} className="link-fix text-dark">
+                <Navbar className="icon-word">
+                  <BsBriefcaseFill className="icon" />
+                  <span className="d-none d-lg-block"> Jobs</span>
+                </Navbar>
+              </Link>
+              <Link to={"/"} className="link-fix text-dark">
+                <Navbar className="icon-word">
+                  <RiMessage3Line className="icon" />
+                  <span className="d-none d-lg-block">Messaging</span>
+                </Navbar>
+              </Link>
+              <Link to={"/"} className="link-fix text-dark">
+                <Navbar className="icon-word">
+                  <FaBell className="icon" />
+                  <span className="d-none d-lg-block">Notifications </span>
+                </Navbar>
+              </Link>
 
               <NavDropdown
                 title={
@@ -154,7 +165,9 @@ function OffCanvasExample({ name, ...props }, prop) {
               >
                 <div className="text-center d-flex justify-content-center">
                   <Button variant="green w-100 py-0" id="bottoncino">
-                    View Profile
+                    <Link to={"/user/me"} className="link-fix">
+                      View Profile
+                    </Link>
                   </Button>
                 </div>
 

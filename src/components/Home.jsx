@@ -1,50 +1,50 @@
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { fetchProfile, reversed } from "../redux/actions"
-import { Container, Row, Col } from "react-bootstrap"
-import { MdPhotoSizeSelectActual } from "react-icons/md"
-import { BsFillPlayBtnFill, BsCalendarDay } from "react-icons/bs"
-import { MdArticle } from "react-icons/md"
-import HomeProfile from "./HomeProfile"
-import { Link } from "react-router-dom"
-import Loading from "./Loading"
-import ModalePost from "./ModalePost"
-import ModalPut from "./ModalPut"
-import ModalePhoto from "./ModalePhoto"
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProfile, reversed } from "../redux/actions";
+import { Container, Row, Col } from "react-bootstrap";
+import { MdPhotoSizeSelectActual } from "react-icons/md";
+import { BsFillPlayBtnFill, BsCalendarDay } from "react-icons/bs";
+import { MdArticle } from "react-icons/md";
+import HomeProfile from "./HomeProfile";
+import { Link } from "react-router-dom";
+import Loading from "./Loading";
+import ModalePost from "./ModalePost";
+import ModalPut from "./ModalPut";
+import ModalePhoto from "./ModalePhoto";
 
 const Home = () => {
   let userKey =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs"
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs";
 
-  const [showPhoto, setShowPhoto] = useState(false)
-  const handleClosePhoto = () => setShowPhoto(false)
-  const handleShowPhoto = () => setShowPhoto(true)
+  const [showPhoto, setShowPhoto] = useState(false);
+  const handleClosePhoto = () => setShowPhoto(false);
+  const handleShowPhoto = () => setShowPhoto(true);
 
-  const [show, setShow] = useState(false)
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-  const token = useSelector((state) => state.profile.token)
-  const loading = useSelector((state) => state.profile.loading)
-  const post = useSelector((state) => state.profile.post)
-  const myProfile = useSelector((state) => state.profile.profile)
+  const token = useSelector((state) => state.profile.token);
+  const loading = useSelector((state) => state.profile.loading);
+  const post = useSelector((state) => state.profile.post);
+  const myProfile = useSelector((state) => state.profile.profile);
 
   // profile fetch
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchProfile(userKey))
-  }, [])
+    dispatch(fetchProfile(userKey));
+  }, []);
 
   // post fetch
-  const [rendered, setRendered] = useState(false)
+  const [rendered, setRendered] = useState(false);
   function check() {
-    setRendered((prevState) => !prevState)
-    console.log(check)
+    setRendered((prevState) => !prevState);
+    console.log(check);
   }
   useEffect(() => {
-    dispatch(reversed(userKey))
-    console.log(reversed)
-  }, [rendered])
+    dispatch(reversed(userKey));
+    console.log(reversed);
+  }, [rendered]);
 
   return (
     <>
@@ -60,7 +60,7 @@ const Home = () => {
               <div className="bg-light rounded-3 position-relative proCard my-4 me-0 p3-0">
                 <div className="d-flex align-items-center">
                   <div className="d-inline-block">
-                    <Link to={"/profile"} className="link-fix">
+                    <Link to={"/user/me"} className="link-fix">
                       <img
                         className="my-3 ms-4 me-3 rounded-circle"
                         style={{ height: "55px" }}
@@ -145,7 +145,11 @@ const Home = () => {
                             </div>
                             <div className="my-2 me-5 mx-4">
                               <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
-                              <img className="my-3 w-100" src={singPost.image} alt="activity" />
+                              {singPost.image ? (
+                                <img className="my-3 w-100" src={singPost.image} alt="activity" />
+                              ) : (
+                                <></>
+                              )}
                             </div>
                             {singPost.user._id === `63fc6fa3f193e60013807f59` ? (
                               <>
@@ -167,14 +171,14 @@ const Home = () => {
                           </div>
                         </div>
                       </>
-                    )
+                    );
                   })}
             </Col>
           </Row>
         </Container>
       )}
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
