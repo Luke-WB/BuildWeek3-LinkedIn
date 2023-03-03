@@ -23,7 +23,7 @@ export default function People() {
         if (response.ok) {
           let data = await response.json();
           console.log("arrayPeople", data);
-          setPeopleFetched(data);
+          setPeopleFetched(data.reverse());
           setLoading(false);
         }
       } catch (error) {
