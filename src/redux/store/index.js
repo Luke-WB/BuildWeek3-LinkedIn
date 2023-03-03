@@ -13,7 +13,6 @@ const persistConfig = {
   transforms: [
     encryptTransform({
       secretKey: process.env.REACT_APP_KEY_SEGRATA_SEGRETA_PROPRIO_SEGRETA,
-      barer: process.env.REACT_APP_KEY_ 
     }),
   ],
 };
