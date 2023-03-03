@@ -394,19 +394,7 @@ const Profile = () => {
           <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
         </div>
       </div>
-
-      {/*  <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
-        <div className="my-4 mx-4">
-          <h2 className="my-0">Experience</h2>
-          <a href="#">
-            <div className="proBlue my-0">{Math.floor(Math.random() * 100)} connection</div>
-          </a>
-          <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
-        </div>
-        <BiPencil className="position-absolute top-0 end-0 m-4" onClick={() => toggleModal(showExp)} />
-        <ModalEsperience />
-      </div> */}
-
+      
       <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
           <div>
