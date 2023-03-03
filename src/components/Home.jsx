@@ -184,7 +184,7 @@ const Home = () => {
                               <img
                                 className="my-3 w-100"
                                 src={singPost.image}
-                                alt="activity photo"
+                                alt="activity"
                               />
                             </div>
                           {singPost.user._id === `63fc6fa3f193e60013807f59` ? (
