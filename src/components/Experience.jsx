@@ -56,12 +56,11 @@ const Experience = ({myProfile}) => {
           <Modale id={el._id} render={getExp} checking={check}/>
           <Row>
             <Col ms={6} md={3}>
-              <div className="parteUno ">
+              <div className="parteUno rounded-2">
                 <img
-                  className="my-3 ms-4 me-3 rounded-circle"
-                  style={{ height: "55px" }}
-                  src={myProfile.image}
-                  alt="portrait author"
+                src={el.image? el.image : logo }
+                alt="pic-job"
+                style={{ height: "75px", width: "75px" }}
                 />
               </div>
             </Col>
