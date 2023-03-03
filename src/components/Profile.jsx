@@ -9,6 +9,8 @@ import { BiSearch, BiPencil } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import Experience from "./Experience";
 import ModalePut from "./ModalPut";
+import AddObj from "./AddObj";
+
 
 const Profile = () => {
   const userKey =  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs` 
@@ -22,6 +24,7 @@ const Profile = () => {
   const [modified, setModified] = useState({});
   const [fetched, setFetched] = useState(false);
   const post = useSelector((state) => state.profile.post);
+
 
   const obj = {
     name: "",
@@ -221,6 +224,9 @@ const Profile = () => {
                 <Form.Group className="mb-3 text-secondary" style={{ fontSize: "14px" }}>
                   <Form.Label className="mb-1">Link</Form.Label>
                   <Form.Control type="text" />
+                </Form.Group>
+                <Form.Group>
+                  <AddObj idAdd={myProfile._id}/>
                 </Form.Group>
               </Form>
             </Modal.Body>
