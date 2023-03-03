@@ -7,11 +7,16 @@ import { BsFillPlayBtnFill, BsCaretDownFill, BsThreeDots } from "react-icons/bs"
 import { VscSmiley } from "react-icons/vsc";
 import { BiMessageRoundedDetail } from "react-icons/bi";
 import { useSelector } from "react-redux";
+import ModalePhoto from "./ModalePhoto";
 
 const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
   const addPost = {
     text: "",
   };
+
+  const [showPhoto, setShowPhoto] = useState(false);
+  const handleClosePhoto = () => setShowPhoto(false);
+  const handleShowPhoto = () => setShowPhoto(true);
 
   const [objPost, setObjPost] = useState(addPost);
   const handleChange = (field, value) => {
@@ -85,9 +90,10 @@ const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
         </div>
         <Form.Group className="d-flex justify-content-between align-items-center modalIcon">
           <div>
-            <div className="d-inline-block modalHGrey">
+            <div className="d-inline-block modalHGrey" onClick={handleShowPhoto}>
               <MdPhotoSizeSelectActual className="proIcon mx-2" />
             </div>
+            <ModalePhoto showPhoto={showPhoto} handleClosePhoto={handleClosePhoto} check={check} />
             <div className="d-inline-block modalHGrey">
               <BsFillPlayBtnFill className="proIcon mx-2" />
             </div>
