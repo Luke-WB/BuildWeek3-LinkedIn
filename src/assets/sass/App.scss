@@ -4,6 +4,13 @@
 // Navbar section
 @import "navBar";
 
+// button section
+
+@import "button";
+
+// font setting profile component
+
+@import "fontSetting";
 
 body {
   background-color: #f3f2ef;
@@ -55,128 +62,10 @@ body {
   background-color: #ebebeb;
 }
 
-// button setting profile component
 
-.greyHover2 {
-  border:none;
-  background: #F8F9FA;
-}
 
-.greyHover2:hover {
-  background: #ebebeb;
-}
 
-.proOpenTo {
-  border-radius: 30px !important;
-  padding: 5px 15px !important;
-}
 
-.proOpenTo:hover {
-  background-color: #004182 !important;
-}
-
-.proModProfile {
-  border-radius: 30px !important;
-  padding: 5px 15px !important;
-}
-
-.proModProfile:hover {
-  box-sizing: border-box;
-  color: #0a66c2 !important;
-  outline: #0a66c2 1px solid !important;
-  background-color: #e2f0fe !important;
-}
-
-.proMore {
-  border-radius: 30px !important;
-  padding: 5px 15px !important;
-  color: rgb(138, 138, 138) !important;
-  border: rgb(138, 138, 138) solid 1px !important;
-}
-
-.proMore:hover {
-  box-sizing: border-box;
-  color: #5e5e5e !important;
-  outline: #5e5e5e 1px solid !important;
-  background-color: #ebebeb !important;
-}
-
-.proDelete {
-  border-radius: 30px !important;
-  padding: 5px 15px !important;
-  color: white !important;
-  background-color: #e63238;
-  border: #e63238 solid 1px !important;
-}
-
-.proDelete:hover {
-  box-sizing: border-box;
-  color: white !important;
-  background-color: #c70c12 !important;
-}
-
-// font setting profile component
-
-.proBlack {
-  color: black;
-}
-
-.proGrey {
-  color: rgb(138, 138, 138);
-}
-
-.proLight {
-  font-weight: 300;
-}
-
-.proMiddle {
-  font-weight: 500;
-}
-
-.proBold {
-  font-weight: 700;
-}
-
-.proVerySmall {
-  font-size: 13px;
-}
-
-.proSmall {
-  font-size: 15px;
-}
-
-.proMedium {
-  font-size: 17px;
-  font-weight: 400;
-}
-
-.proNormal {
-  font-size: 17px;
-  font-weight: 500;
-}
-
-.proGreyHBlue:hover {
-  color: #0a66c2 !important;
-  text-decoration: underline;
-}
-
-a {
-  text-decoration: none;
-}
-
-.proBlue {
-  color: #0a77d2;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.proBlue:hover {
-  text-decoration: underline;
-  .titolo {
-    font-size: 20px;
-    font-weight: 500;
-  }
-}
 
 .matita {
   right: 5%;
