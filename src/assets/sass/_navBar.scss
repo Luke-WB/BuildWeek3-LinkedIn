@@ -68,7 +68,8 @@ a#navbarScrollingDropdown {
   font-size: 12px;
 }
 
-/SEARCHBAR IN CUSTOMNAV/ .form-control.searchFormNav:focus {
+/* SEARCHBAR IN CUSTOMNAV */
+.form-control.searchFormNav:focus {
   border-color: #eef3f8;
   box-shadow: none;
 }
