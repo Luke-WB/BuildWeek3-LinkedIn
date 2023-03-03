@@ -11,8 +11,7 @@ import Experience from "./Experience";
 import ModalePut from "./ModalPut";
 
 const Profile = () => {
-  let userKey =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs";
+  const userKey =  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs` 
   /* MODALE*/
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -36,7 +35,8 @@ const Profile = () => {
   function check() {
     setFetched((prevState) => !prevState);
   }
-  async function ipipipip(id, expid) {
+  
+  async function ipipipip() {
     const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/`;
     try {
       const res = await fetch(urlToFetch, {
@@ -52,7 +52,7 @@ const Profile = () => {
       } else {
       }
     } catch (error) {
-      alert(error);
+      alert("ipipipip", error);
     }
   }
   useEffect(() => {
@@ -314,7 +314,8 @@ const Profile = () => {
                             </h3>
                             <div className="my-2 me-5 mx-4">
                               <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
-                              <img className="my-3 ms-4 me-3 rounded-2 w-100" src={singPost.image} alt="postedImg" />
+                              {singPost.image?  <img className="my-3 ms-4 me-3 rounded-2 w-100" src={singPost.image} alt="postedImg" /> : <></>}
+                             
                             </div>
                           </div>
                         </div>

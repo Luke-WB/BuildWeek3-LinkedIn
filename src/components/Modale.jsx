@@ -5,6 +5,10 @@ import { BiPencil } from "react-icons/bi"
 import { Link } from "react-router-dom"
 
 function Modale(props) {
+
+  const userKey =  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs` 
+
+
   const [modalShow, setModalShow] = useState(false)
   const [isDeleted, setISDeleted] = useState(true)
   const [newState, setNewState] = useState({})
@@ -14,14 +18,14 @@ function Modale(props) {
   }
 
   async function deleteExperience() {
-    const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences/${props.id}`
+    const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/${props.idUser}/experiences/${props.id}`
     try {
       await fetch(
         urlToFetch,
         {
           method: "DELETE",
           headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+            Authorization: userKey,
           },
         },
         setISDeleted(false),
@@ -33,13 +37,13 @@ function Modale(props) {
   }
 
   async function putExperience() {
-    const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences/${props.id}`
+    const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/${props.idUser}/experiences/${props.id}`
     try {
       console.log(newState)
       const res = await fetch(urlToFetch, {
         method: "PUT",
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+          Authorization: userKey,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(newState),
@@ -210,7 +214,7 @@ function Modale(props) {
           <Button
             onClick={() => {
               deleteExperience()
-              props.render()
+              props.render(props.idUser, userKey)
               setModalShow(false)
               props.checking()
             }}
@@ -223,7 +227,7 @@ function Modale(props) {
             onClick={() => {
               putExperience()
               setModalShow(false)
-              props.render()
+              props.render(props.idUser, userKey)
               props.checking()
             }}
           >

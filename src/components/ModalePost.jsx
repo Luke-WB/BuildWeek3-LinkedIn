@@ -10,6 +10,9 @@ import { useSelector } from "react-redux";
 import ModalePhoto from "./ModalePhoto";
 
 const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
+
+  const userKey =  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs` 
+
   const addPost = {
     text: "",
   };
@@ -28,14 +31,14 @@ const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
   let enabled = objPost.text.length > 0;
 
   const [newPost, setPost] = useState([]);
-
+  //da fare in action 
   async function postPost() {
     const urlToFetch = "https://striveschool-api.herokuapp.com/api/posts/";
     try {
       const res = await fetch(urlToFetch, {
         method: "POST",
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+          Authorization: userKey,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(objPost),

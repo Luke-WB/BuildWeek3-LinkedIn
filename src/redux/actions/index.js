@@ -10,7 +10,7 @@ export const fetchProfile = (key) => {
     try {
       const res = await fetch(urlToFetch, {
         headers: {
-          Authorization: `Bearer ${key}`,
+          Authorization: key,
         },
       });
       if (res.ok) {
@@ -26,16 +26,16 @@ export const fetchProfile = (key) => {
         });
       }
     } catch (error) {
-      alert(error);
+      alert("fetchProfile", error);
     }
   };
 };
 
 export function fetchIdProfile(id) {
-  const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/${id}`;
+
   return async (dispatch) => {
     try {
-      const response = await fetch(urlToFetch, {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${id}`, {
         headers: {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
         },
@@ -63,16 +63,14 @@ export const showModalExp = (toggleState) => {
 
 export const reversed = (userKey) => {
   return async (dispatch, getState) => {
-    const urlHomeGet = "https://striveschool-api.herokuapp.com/api/posts/";
     try {
-      const res = await fetch(urlHomeGet, {
+      const res = await fetch("https://striveschool-api.herokuapp.com/api/posts/", {
         headers: {
-          Authorization: `Bearer ${userKey}`,
+          Authorization: userKey,
         },
       });
       if (res.ok) {
         let post = await res.json();
-        console.log("post", post);
         dispatch({
           type: HOME_FETCH,
           payload: post.reverse(),
@@ -83,7 +81,7 @@ export const reversed = (userKey) => {
       } else {
       }
     } catch (error) {
-      alert(error);
+      alert("reversed", error);
     }
   };
 };

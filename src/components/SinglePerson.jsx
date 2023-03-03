@@ -3,10 +3,6 @@ import { BsPersonPlusFill } from "react-icons/bs"
 import { Link, useNavigate } from "react-router-dom"
 
 export default function SinglePerson({ personInfo }) {
-  let navigate = useNavigate()
-  function handleClick() {
-    navigate(`/user/${personInfo._id}`)
-  }
 
   return (
     <Col style={{ borderBottom: "solid 0.5px rgba(176, 176, 176, 0.5)" }} className="mt-2 mb-0">
