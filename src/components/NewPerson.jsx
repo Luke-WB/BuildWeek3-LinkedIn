@@ -8,17 +8,13 @@ import { BiSearch } from "react-icons/bi"
 import { Button, Form } from "react-bootstrap"
 
 export default function NewPerson() {
-
-  let userKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs"
-
-  
   const params = useParams()
   const selProfile = useSelector((state) => state.selectedProfile.content)
   const post = useSelector((state) => state.profile.post)
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchIdProfile(params.userID , userKey))
+    dispatch(fetchIdProfile(params.userID))
   }, [params])
 
   return (
