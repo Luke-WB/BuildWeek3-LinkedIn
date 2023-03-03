@@ -432,11 +432,11 @@ const Profile = () => {
                                 <span className="proGrey proBlack proLight proSmall proNormal">
                                   {singPost.text}
                                 </span>
-                              </div>
                               <img
                                 className="my-3 ms-4 me-3 rounded-2 w-100"
                                 src={singPost.image}
-                              />
+                                />
+                                </div>
                             </div>
                             <div className="proSmall proLight mx-4">
                               edited: {singPost.updatedAt.slice(0, 10)}
