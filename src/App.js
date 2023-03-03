@@ -1,28 +1,37 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
-import "./App.scss";
 import Profile from "./components/Profile";
-import "./App.scss";
+import "./assets/sass/App.scss";
 import NavCustom from "./components/NavCustom";
 import FooterProfilePage from "./components/FooterProfilePage";
 import People from "./components/People";
+import TestFetch from "./components/TestFetch";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import NewPerson from "./components/NewPerson";
+import Home from "./components/Home";
 
 function App() {
   return (
     <>
-      {" "}
-      <NavCustom />
-      <Container>
-        <Row>
-          <Col xs={12} md={9}>
-            <Profile />
-          </Col>
-          <Col xs={12} lg={3}>
-            <People />
-          </Col>
-        </Row>
-        <FooterProfilePage />
-      </Container>
+      <BrowserRouter>
+        <NavCustom />
+        <TestFetch />
+        <Container>
+          <Row className="d-flex flex-column flex-md-row">
+            <Col xs={12} lg={9}>
+              <Routes>
+                <Route path="/user/me" element={<Profile />} />
+                <Route path="user/:userID" element={<NewPerson />} />
+                <Route path="/" element={<Home />} />
+              </Routes>
+            </Col>
+            <Col xs={12} lg={3}>
+              <People />
+            </Col>
+          </Row>
+          <FooterProfilePage />
+        </Container>
+      </BrowserRouter>
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Col, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import SinglePerson from "./SinglePerson";
 import Spinner from "react-bootstrap/Spinner";
 import { BsChevronCompactDown, BsChevronCompactUp } from "react-icons/bs";
@@ -22,7 +22,8 @@ export default function People() {
         });
         if (response.ok) {
           let data = await response.json();
-          setPeopleFetched(data);
+          console.log("arrayPeople", data);
+          setPeopleFetched(data.reverse());
           setLoading(false);
         }
       } catch (error) {
@@ -46,36 +47,37 @@ export default function People() {
 
   return (
     <div
-      className="bg-light rounded-4d-flex flex-column align-items-center my-4 rounded-4"
-      style={{ border: "solid 1px rgba(176, 176, 176, 0.5)" }}
-    >
+      className="bg-light rounded-4d-flex flex-column align-items-center my-4 rounded-3"
+      style={{ border: "solid 1px rgba(176, 176, 176, 0.5)" }}>
       <h5 className="m-4">
         <b>People you may know</b>
       </h5>
-      <Col className="mx-4">
+      <Col className="mx-4 singolaPersona">
         {loading ? (
           <Spinner animation="border" variant="primary" className="m-auto my-5" />
         ) : (
-          peopleToRender.map((el) => <SinglePerson personInfo={el} />)
+          peopleToRender.map((el, i) => <SinglePerson personInfo={el} key={i} />)
         )}
       </Col>
       <Row>
         <div
-          className="my-1"
           style={{ width: "100%", textAlign: "center", cursor: "pointer" }}
           onClick={() => {
             isTrue ? setIsTrue(false) : setIsTrue(true);
-          }}
-        >
+          }}>
           <b>
             {" "}
             {isTrue ? (
-              <p>
+              <p
+                className="greyHover m-0 pb-2 text-secondary"
+                style={{ borderTop: "solid 1px rgba(176, 176, 176, 0.5)" }}>
                 {" "}
                 Show less <BsChevronCompactUp />
               </p>
             ) : (
-              <p>
+              <p
+                className="greyHover m-0 pb-2 text-secondary"
+                style={{ borderTop: "solid 1px rgba(176, 176, 176, 0.5)" }}>
                 {" "}
                 Show more <BsChevronCompactDown />
               </p>
