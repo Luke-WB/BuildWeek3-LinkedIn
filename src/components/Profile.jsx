@@ -308,8 +308,7 @@ const Profile = () => {
                         >
                           <div className="my-2">
                             <h3 className="proBlack my-2 mx-4">
-                              writted by{" "}
-                              <Link to={`/user/${singPost.user?._id}`}>
+                              <Link to={`/user/${singPost.user?._id}`} className="link-fix">
                                 <span className="proBlack proGreyHBlue">{singPost.user?.name}</span>
                               </Link>
                             </h3>
