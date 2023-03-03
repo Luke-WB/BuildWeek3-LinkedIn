@@ -20,7 +20,7 @@ const Profile = () => {
   const token = useSelector((state) => state.profile.token);
   const myProfile = useSelector((state) => state.profile.profile);
   const dispatch = useDispatch();
-  const [modified, setModified] = useState(null);
+  const [modified, setModified] = useState({});
   const [fetched, setFetched] = useState(false);
   const post = useSelector((state) => state.profile.post);
 
@@ -36,27 +36,26 @@ const Profile = () => {
   function check() {
     setFetched((prevState) => !prevState);
   }
-
-  useEffect(() => {
-    async function ipipipip(id, expid) {
-      const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/`;
-      try {
-        const res = await fetch(urlToFetch, {
-          method: "PUT",
-          headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(modified),
-        });
-        if (res.ok) {
-          console.log(res);
-        } else {
-        }
-      } catch (error) {
-        alert(error);
+  async function ipipipip(id, expid) {
+    const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/`;
+    try {
+      const res = await fetch(urlToFetch, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(modified),
+      });
+      if (res.ok) {
+        console.log(res);
+      } else {
       }
+    } catch (error) {
+      alert(error);
     }
+  }
+  useEffect(() => {
     ipipipip();
   }, [modified]);
 
