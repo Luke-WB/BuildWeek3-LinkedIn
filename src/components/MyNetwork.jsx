@@ -17,7 +17,7 @@ const MyNetwork = () => {
   const [peopleToRender, setPeopleToRender] = useState([])
   const [loading, setLoading] = useState(true)
   useEffect(() => {
-    setPeopleToRender(peopleFetched.slice(0, 10))
+    setPeopleToRender(peopleFetched.slice(0, 9))
   }, [peopleFetched])
 
   const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/"
@@ -203,16 +203,31 @@ const MyNetwork = () => {
             </Card.Text>
           </Card>
         </div>
-        {peopleToRender.map((el) => (
-          <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src={el.image} />
-            <Card.Body>
-              <Card.Title>{el.name}</Card.Title>
-              <Card.Text>{el.bio}</Card.Text>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-        ))}
+        <div className="container  " style={{ background: "white" }}>
+          {peopleToRender.map((el) => (
+            <Row>
+              <Col xs={12} md={4}>
+                <Card className="my-3" style={{ width: "270px" }}>
+                  <Card.Img variant="top" className="imgNetwork" src={el.image} />
+                  <img src={el.image} class="rounded-circle imgDueNetwork" alt="..." />
+                  <Card.Body className="d-flex flex-column">
+                    <Card.Text className="m-0 ">
+                      <strong>
+                        {el.name} {el.surname}
+                      </strong>
+                    </Card.Text>
+                    <Card.Text className="m-0 proGrey">{el.title}</Card.Text>
+                    <Card.Text className="m-0 proGrey">{el.bio}</Card.Text>
+                    <Card.Text className="proGrey" style={{ fontSize: "small" }}>
+                      {Math.floor(Math.random() * 3000)} Followers
+                    </Card.Text>
+                    <Button className="proModProfile">Follower</Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
+          ))}
+        </div>
       </Col>
     </Row>
   )
