@@ -7,6 +7,18 @@
     background: #ebebeb;
   }
   
+  .proIgnore {
+    border-radius: 5px !important;
+    padding: 5px 5px !important;
+    color: rgb(99, 98, 98) !important;
+    border: rgb(99, 98, 98) none 1px !important;
+  }
+  
+  .proIgnore:hover {
+    box-sizing: border-box;
+    background-color: #ebebeb !important;
+  }
+
   .proOpenTo {
     border-radius: 30px !important;
     padding: 5px 15px !important;

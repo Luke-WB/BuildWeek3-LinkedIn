@@ -1,3 +1,7 @@
+// font setting section
+
+@import "fontSetting";
+
 // Modal section
 @import "modal";
 
@@ -8,9 +12,10 @@
 
 @import "button";
 
-// font setting profile component
 
-@import "fontSetting";
+// myNetwork section
+
+@import "myNetwork";
 
 body {
   background-color: #f3f2ef;
