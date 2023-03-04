@@ -304,7 +304,7 @@ const MyNetwork = () => {
                         {post[randomNumArr[1]].user.surname}
                       </div>
                       <div className="proGrey proSmall">
-                        {post[randomNumArr[0]].user.title}
+                        {post[randomNumArr[1]].user.title}
                       </div>
                     </div>
                   </div>
@@ -338,7 +338,7 @@ const MyNetwork = () => {
                         {post[randomNumArr[2]].user.surname}
                       </div>
                       <div className="proGrey proSmall">
-                        {post[randomNumArr[0]].user.title}
+                        {post[randomNumArr[2]].user.title}
                       </div>
                     </div>
                   </div>
