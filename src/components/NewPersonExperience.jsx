@@ -5,7 +5,11 @@ import { Col, Row } from "react-bootstrap";
 import logo from "../assets/management-suitcase-icon-outline-work-job-vector.jpg";
 import Modale from "./Modale";
 
-const Experience = ({ myProfile }) => {
+const NewPersonExperience = ({ myProfile }) => {
+
+  console.log("OOOOOOOOOOOOOOOO" ,myProfile._id
+  );
+
   const userKey =  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs` 
 
   const [modalShowPlus, setModalShowPlus] = useState(false);
@@ -49,14 +53,9 @@ const Experience = ({ myProfile }) => {
     <>
       <div className="d-flex">
         <h1 className="mt-2">Experience</h1>
-        <div className="matita position-absolute" onClick={() => setModalShowPlus(true)}>
-          <BsPlusLg />
-        </div>
-        <ModaleAdd show={modalShowPlus} onHide={() => setModalShowPlus(false)} render={getExperience} checking={check} idUser={myProfile._id}/>
       </div>
       {experiencesToRender.map((el) => (
         <div key={el._id}>
-          <Modale id={el._id} render={getExperience} checking={check} idUser={myProfile._id} idAdd={myProfile._id} idExperience={el._id}/>
           <Row>
             <Col ms={6} md={3}>
               <div className="parteUno rounded-2">
@@ -84,4 +83,4 @@ const Experience = ({ myProfile }) => {
   );
 };
 
-export default Experience;
+export default NewPersonExperience;

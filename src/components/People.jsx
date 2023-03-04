@@ -60,7 +60,7 @@ export default function People() {
         {loading ? (
           <Spinner animation="border" variant="primary" className="m-auto my-5" />
         ) : (
-          peopleToRender.map((el, i) => <SinglePerson personInfo={el} key={i} />)
+          peopleToRender.map((el, i) => <SinglePerson personInfo={el} keyuser={i} />)
         )}
       </Col>
       <Row>
