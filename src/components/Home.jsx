@@ -3,7 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProfile, reversed } from "../redux/actions";
 import { Container, Row, Col } from "react-bootstrap";
 import { MdOutlinePostAdd, MdPhotoSizeSelectActual } from "react-icons/md";
-import { BsFillPlayBtnFill, BsCalendarDay, BsHandThumbsUp, BsHandThumbsUpFill, BsSkipEndFill } from "react-icons/bs";
+import {
+  BsFillPlayBtnFill,
+  BsCalendarDay,
+  BsHandThumbsUp,
+  BsSkipEndFill,
+  BsFillHandThumbsUpFill,
+} from "react-icons/bs";
 import { MdArticle } from "react-icons/md";
 import HomeProfile from "./HomeProfile";
 import { Link } from "react-router-dom";
@@ -15,6 +21,7 @@ import { GiEarthAmerica } from "react-icons/gi";
 import { BsDot } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiMessageRoundedDetail } from "react-icons/bi";
+import { likeToggle } from "../redux/actions/";
 
 const Home = () => {
   let userKey =
@@ -32,12 +39,24 @@ const Home = () => {
   const loading = useSelector((state) => state.profile.loading);
   const post = useSelector((state) => state.profile.post);
   const myProfile = useSelector((state) => state.profile.profile);
-  console.log("ooooooooooooooooooooooooooooooooo", loading);
   // profile fetch
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProfile(userKey));
   }, []);
+
+
+  const [likeSwitch, setLikeSwitch] = useState(true);
+  const setLikeUp = () => setLikeSwitch(!likeSwitch);
+  console.log(likeSwitch)
+  
+  const likeMe = useSelector((state) => state.profile.likeMe);
+  useEffect(
+    () => {
+      dispatch(likeToggle());
+    },
+    []
+  );
 
   // post fetch
   const [rendered, setRendered] = useState(false);
@@ -88,7 +107,10 @@ const Home = () => {
                   />
                 </div>
                 <div className="d-flex justify-content-evenly my-2 mx-4">
-                  <div onClick={handleShowPhoto} className="greyHover rounded-2 me-2 px-2 py-3">
+                  <div
+                    onClick={handleShowPhoto}
+                    className="greyHover rounded-2 me-2 px-2 py-3"
+                  >
                     <MdPhotoSizeSelectActual className="fs-4 text-primary me-2" />
                     Photo
                   </div>
@@ -142,7 +164,10 @@ const Home = () => {
                                   />
                                 )}
                                 <div className="proBlack my-2">
-                                  <Link to={`/user/${singPost.user?._id}`} className="link-fix">
+                                  <Link
+                                    to={`/user/${singPost.user?._id}`}
+                                    className="link-fix"
+                                  >
                                     <div className="proBlack proNormal proGreyHBlue link-fix">
                                       {singPost.user?.name}
                                     </div>
@@ -151,7 +176,8 @@ const Home = () => {
                                     {Math.floor(Math.random() * 100)} followers
                                   </div>
                                   <div className="proGrey proVerySmall">
-                                    {Math.floor(Math.random() * 12)} <BsDot /> <GiEarthAmerica />
+                                    {Math.floor(Math.random() * 12)} <BsDot />{" "}
+                                    <GiEarthAmerica />
                                   </div>
                                 </div>
                               </div>
@@ -161,29 +187,43 @@ const Home = () => {
                             </div>
                           </div>
                           <div className="my-2 mx-1">
-                            <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
+                            <span className="proGrey proBlack proLight proSmall proNormal">
+                              {singPost.text}
+                            </span>
                             {singPost.image ? (
-                              <img className="mt-3 mb-1 w-100" src={singPost.image} alt="activity" />
+                              <img
+                                className="mt-3 mb-1 w-100"
+                                src={singPost.image}
+                                alt="activity"
+                              />
                             ) : (
                               <></>
                             )}
                           </div>
                           <div className="mb-1 mx-3 proGrey proSmall d-flex align-items-center">
-                            <BsHandThumbsUp className="likeHover fs-4 me-2" />
+                            <BsFillHandThumbsUpFill className="reverseChar likeHover fs-4 me-2" />
                             {Math.floor(Math.random() * 100)}
                           </div>
                           <hr className="my-1 mx-3" />
                           <div className="d-flex justify-content-evenly text-secondary">
-                            <div className="greyHover rounded-2 me-2 px-4 py-3">
-                              <BsHandThumbsUp className="fs-4 me-2" />
-                              Like
-                            </div>
-                            <ModalePhoto
-                              showPhoto={showPhoto}
-                              handleClosePhoto={handleClosePhoto}
-                              check={check}
-                              // ternaryCheck={false} <--- perchè non funzion :(
+                            
+                            {likeSwitch ? (
+                              <div className="greyHover rounded-2 me-2 px-4 py-3">
+                              <BsHandThumbsUp
+                                onClick={() => setLikeUp()}
+                                className="fs-4 me-2 reverseChar"
+                              />
+                                  Like
+                                </div>
+                            ) : 
+                              <div className="greyHover rounded-2 me-2 px-4 py-3 likeOption">
+                            <BsHandThumbsUp
+                              onClick={() => setLikeUp()}
+                              className="likeOption fs-4 me-2 reverseChar"
                             />
+                                Like
+                              </div>}
+                            
                             <div className="greyHover rounded-2 me-2 px-4 py-3">
                               <BiMessageRoundedDetail className="fs-4 me-2" />
                               Comment
@@ -210,7 +250,9 @@ const Home = () => {
                               {console.log("eccolo id POST", singPost._id)}
                             </>
                           ) : (
-                            <div className="proSmall proLight mx-4 my-2">edited: {singPost.updatedAt.slice(0, 10)}</div>
+                            <div className="proSmall proLight mx-4 my-2">
+                              edited: {singPost.updatedAt.slice(0, 10)}
+                            </div>
                           )}
                         </div>
                       </>
