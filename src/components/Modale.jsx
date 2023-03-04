@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap"
 import Modal from "react-bootstrap/Modal"
 import { BiPencil } from "react-icons/bi"
 import { Link } from "react-router-dom"
+import AddObjTest from "./AddObjTest"
 
 function Modale(props) {
 
@@ -234,6 +235,7 @@ function Modale(props) {
             Save
           </Button>
         </Modal.Footer>
+        <AddObjTest idAdd={props.midUser} idExperience={props.id}/>
       </Modal>
     </>
   )

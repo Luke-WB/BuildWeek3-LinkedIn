@@ -226,9 +226,10 @@ const Profile = () => {
                   <Form.Control type="text" />
                 </Form.Group>
                 <Form.Group>
-                  <AddObj idAdd={myProfile._id}/>
                 </Form.Group>
               </Form>
+              <h5> Change Profile Picture</h5>
+                <AddObj idAdd={myProfile._id}/>
             </Modal.Body>
             <Modal.Footer>
               <Button variant="primary" className="rounded-5" onClick={handleClose}>
