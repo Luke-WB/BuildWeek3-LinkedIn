@@ -22,6 +22,7 @@ import { BsDot } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiMessageRoundedDetail } from "react-icons/bi";
 import { likeToggle } from "../redux/actions/";
+import LikeButton from "./LikeButton";
 
 const Home = () => {
   let userKey =
@@ -44,20 +45,14 @@ const Home = () => {
   useEffect(() => {
     dispatch(fetchProfile(userKey));
   }, []);
-
-
-  const [likeSwitch, setLikeSwitch] = useState(true);
-  const setLikeUp = () => setLikeSwitch(!likeSwitch);
-  console.log(likeSwitch)
   
-  const likeMe = useSelector((state) => state.profile.likeMe);
-  useEffect(
-    () => {
-      dispatch(likeToggle());
-    },
-    []
-  );
-
+  // const likeMe = useSelector((state) => state.profile.likeMe);
+  // useEffect(
+  //   () => {
+  //     dispatch(likeSwitch());
+  //   },
+  //   [likeSwitch]
+  // );
   // post fetch
   const [rendered, setRendered] = useState(false);
   function check() {
@@ -190,14 +185,12 @@ const Home = () => {
                             <span className="proGrey proBlack proLight proSmall proNormal">
                               {singPost.text}
                             </span>
-                            {singPost.image ? (
+                            {singPost.image && (
                               <img
                                 className="mt-3 mb-1 w-100"
                                 src={singPost.image}
                                 alt="activity"
                               />
-                            ) : (
-                              <></>
                             )}
                           </div>
                           <div className="mb-1 mx-3 proGrey proSmall d-flex align-items-center">
@@ -206,24 +199,7 @@ const Home = () => {
                           </div>
                           <hr className="my-1 mx-3" />
                           <div className="d-flex justify-content-evenly text-secondary">
-                            
-                            {likeSwitch ? (
-                              <div className="greyHover rounded-2 me-2 px-4 py-3">
-                              <BsHandThumbsUp
-                                onClick={() => setLikeUp()}
-                                className="fs-4 me-2 reverseChar"
-                              />
-                                  Like
-                                </div>
-                            ) : 
-                              <div className="greyHover rounded-2 me-2 px-4 py-3 likeOption">
-                            <BsHandThumbsUp
-                              onClick={() => setLikeUp()}
-                              className="likeOption fs-4 me-2 reverseChar"
-                            />
-                                Like
-                              </div>}
-                            
+                            <LikeButton indexButton={i}/>
                             <div className="greyHover rounded-2 me-2 px-4 py-3">
                               <BiMessageRoundedDetail className="fs-4 me-2" />
                               Comment
