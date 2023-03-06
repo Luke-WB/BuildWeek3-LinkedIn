@@ -25,7 +25,7 @@ import { likeToggle } from "../redux/actions/";
 import LikeButton from "./LikeButton";
 
 const Home = () => {
-  const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`;
+  const userKey = `${process.env.REACT_APP_API_KEY}`;
 
   const [showPhoto, setShowPhoto] = useState(false);
   const handleClosePhoto = () => setShowPhoto(false);
@@ -71,7 +71,7 @@ const Home = () => {
         <Container>
           <Row className="d-flex flex-column flex-md-row">
             <Col xs={12} lg={4}>
-              <HomeProfile myProfile={myProfile} />
+              <HomeProfile myProfile={myProfile} key={myProfile._id} />
             </Col>
             <Col xs={12} lg={8}>
               <div className="bg-light rounded-3 position-relative proCard my-4 me-0 p3-0">
@@ -109,7 +109,6 @@ const Home = () => {
                     showPhoto={showPhoto}
                     handleClosePhoto={handleClosePhoto}
                     check={check}
-
                     // ternaryCheck={false} <--- perchè non funzion :(
                   />
 
@@ -175,7 +174,7 @@ const Home = () => {
                         </div>
                         <hr className="my-1 mx-3" />
                         <div className="d-flex justify-content-evenly text-secondary">
-                          <LikeButton />
+                          <LikeButton indexButton={i} />
                           <div className="greyHover rounded-2 me-2 px-4 py-3">
                             <BiMessageRoundedDetail className="fs-4 me-2" />
                             Comment
