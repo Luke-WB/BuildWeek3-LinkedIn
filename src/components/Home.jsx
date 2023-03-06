@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProfile, reversed } from "../redux/actions";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { MdOutlinePostAdd, MdPhotoSizeSelectActual } from "react-icons/md";
 import {
   BsFillPlayBtnFill,
@@ -23,6 +23,8 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { BiMessageRoundedDetail } from "react-icons/bi";
 import { likeToggle } from "../redux/actions/";
 import LikeButton from "./LikeButton";
+import Comment from "./commentElement/Comment";
+import ReadComment from "./commentElement/readComment";
 
 const Home = () => {
   const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`;
@@ -179,10 +181,12 @@ const Home = () => {
                           <div className="greyHover rounded-2 me-2 px-4 py-3">
                             <BiMessageRoundedDetail className="fs-4 me-2" />
                             Comment
+                            <Comment id={singPost._id} />
                           </div>
                           <div className="greyHover rounded-2 me-2 px-4 py-3">
                             <MdOutlinePostAdd className="fs-4 me-2" />
                             Repost
+                            <ReadComment id={singPost._id} />
                           </div>
                           <div className="greyHover rounded-2 me-2 px-4 py-3">
                             <BsSkipEndFill className="fs-4 me-2" />
