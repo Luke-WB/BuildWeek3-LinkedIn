@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProfile, reversed } from "../redux/actions";
-import { Container, Row, Col, Collapse } from "react-bootstrap";
-import { MdOutlinePostAdd, MdPhotoSizeSelectActual } from "react-icons/md";
-import { BsFillPlayBtnFill, BsCalendarDay, BsHandThumbsUp, BsHandThumbsUpFill, BsSkipEndFill } from "react-icons/bs";
+import { Container, Row, Col } from "react-bootstrap";
+import { MdPhotoSizeSelectActual } from "react-icons/md";
+import { BsFillPlayBtnFill, BsCalendarDay, BsHandThumbsUp } from "react-icons/bs";
 import { MdArticle } from "react-icons/md";
 import HomeProfile from "./HomeProfile";
 import { Link, useParams } from "react-router-dom";
@@ -14,10 +14,7 @@ import ModalePhoto from "./ModalePhoto";
 import { GiEarthAmerica } from "react-icons/gi";
 import { BsDot } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
-import { BiMessageRoundedDetail } from "react-icons/bi";
-import Comments from "./Comments";
 import CollapseComment from "./CollapseComment";
-import Bottoni from "./Bottoni";
 
 const Home = () => {
   const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`;
@@ -172,7 +169,7 @@ const Home = () => {
                           {Math.floor(Math.random() * 100)}
                         </div>
                         <hr className="my-1 mx-3" />
-                        <Bottoni singlePostId={singPost._id} />
+                        <CollapseComment singlePostId={singPost._id} />
                         {singPost.user._id === `${myProfile._id}` ? (
                           <>
                             <div className="proSmall proLight ms-3 mb-1">edited: {singPost.updatedAt.slice(0, 10)}</div>
