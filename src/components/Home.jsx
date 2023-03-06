@@ -25,8 +25,7 @@ import { likeToggle } from "../redux/actions/";
 import LikeButton from "./LikeButton";
 
 const Home = () => {
-  const userKey =  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs` 
-
+  const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`;
 
   const [showPhoto, setShowPhoto] = useState(false);
   const handleClosePhoto = () => setShowPhoto(false);
@@ -45,7 +44,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(fetchProfile(userKey));
   }, []);
-  
+
   // const likeMe = useSelector((state) => state.profile.likeMe);
   // useEffect(
   //   () => {
@@ -102,10 +101,7 @@ const Home = () => {
                   />
                 </div>
                 <div className="d-flex justify-content-evenly my-2 mx-4">
-                  <div
-                    onClick={handleShowPhoto}
-                    className="greyHover rounded-2 me-2 px-2 py-3"
-                  >
+                  <div onClick={handleShowPhoto} className="greyHover rounded-2 me-2 px-2 py-3">
                     <MdPhotoSizeSelectActual className="fs-4 text-primary me-2" />
                     Photo
                   </div>
@@ -132,103 +128,68 @@ const Home = () => {
                 </div>
               </div>
               {post &&
-                post
-                  /* .filter((postUnfilt) => postUnfilt.text.length > 10) */
-                  .slice(0, 50)
-                  .map((singPost, i) => {
-                    return (
-                      <>
-                        <div
-                          key={i}
-                          className="d-flex flex-column align-items-e bg-light rounded-3 position-relative proCard my-4"
-                        >
-                          <div className="d-flex flex-row justify-content-between align-items-center me-4">
-                            <div>
-                              <div className="d-flex flex-row align-items-center">
-                                {myProfile._id === singPost.user._id ? (
-                                  <img
-                                    className="my-3 ms-4 me-3 rounded-2"
-                                    style={{ height: "55px", width: "55px" }}
-                                    src={myProfile.image}
-                                    alt="portrait author"
-                                  />
-                                ) : (
-                                  <img
-                                    className="my-3 ms-4 me-3 rounded-2"
-                                    style={{ height: "55px", width: "55px" }}
-                                    src={singPost.user.image}
-                                    alt="portrait author"
-                                  />
-                                )}
-                                <div className="proBlack my-2">
-                                  <Link
-                                    to={`/user/${singPost.user?._id}`}
-                                    className="link-fix"
-                                  >
-                                    <div className="proBlack proNormal proGreyHBlue link-fix">
-                                      {singPost.user?.name}
-                                    </div>
-                                  </Link>
-                                  <div className="proGrey proVerySmall">
-                                    {Math.floor(Math.random() * 100)} followers
-                                  </div>
-                                  <div className="proGrey proVerySmall">
-                                    {Math.floor(Math.random() * 12)} <BsDot />{" "}
-                                    <GiEarthAmerica />
-                                  </div>
+                post.slice(0, 50).map((singPost, i) => {
+                  return (
+                    <>
+                      <div
+                        key={i}
+                        className="d-flex flex-column align-items-e bg-light rounded-3 position-relative proCard my-4"
+                      >
+                        <div className="d-flex flex-row justify-content-between align-items-center me-4">
+                          <div>
+                            <div className="d-flex flex-row align-items-center">
+                              {myProfile._id === singPost.user._id ? (
+                                <img
+                                  className="my-3 ms-4 me-3 rounded-2"
+                                  style={{ height: "55px", width: "55px" }}
+                                  src={myProfile.image}
+                                  alt="portrait author"
+                                />
+                              ) : (
+                                <img
+                                  className="my-3 ms-4 me-3 rounded-2"
+                                  style={{ height: "55px", width: "55px" }}
+                                  src={singPost.user.image}
+                                  alt="portrait author"
+                                />
+                              )}
+                              <div className="proBlack my-2">
+                                <Link to={`/user/${singPost.user?._id}`} className="link-fix">
+                                  <div className="proBlack proNormal proGreyHBlue link-fix">{singPost.user?.name}</div>
+                                </Link>
+                                <div className="proGrey proVerySmall">{Math.floor(Math.random() * 100)} followers</div>
+                                <div className="proGrey proVerySmall">
+                                  {Math.floor(Math.random() * 12)} <BsDot /> <GiEarthAmerica />
                                 </div>
                               </div>
                             </div>
                           </div>
-                          <div className="my-2 mx-1">
-                            <span className="proGrey proBlack proLight proSmall proNormal">
-                              {singPost.text}
-                            </span>
-                            {singPost.image && (
-                              <img
-                                className="mt-3 mb-1 w-100"
-                                src={singPost.image}
-                                alt="activity"
-                              />
-                            )}
+                        </div>
+                        <div className="my-2 mx-1">
+                          <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
+                          {singPost.image && <img className="mt-3 mb-1 w-100" src={singPost.image} alt="activity" />}
+                        </div>
+                        <div className="mb-1 mx-3 proGrey proSmall d-flex align-items-center">
+                          <BsFillHandThumbsUpFill className="reverseChar likeHover fs-4 me-2" />
+                          {Math.floor(Math.random() * 100)}
+                        </div>
+                        <hr className="my-1 mx-3" />
+                        <div className="d-flex justify-content-evenly text-secondary">
+                          <LikeButton indexButton={i} />
+                          <div className="greyHover rounded-2 me-2 px-4 py-3">
+                            <BiMessageRoundedDetail className="fs-4 me-2" />
+                            Comment
                           </div>
-                          <div className="mb-1 mx-3 proGrey proSmall d-flex align-items-center">
-                            <BsFillHandThumbsUpFill className="reverseChar likeHover fs-4 me-2" />
-                            {Math.floor(Math.random() * 100)}
+                          <div className="greyHover rounded-2 me-2 px-4 py-3">
+                            <MdOutlinePostAdd className="fs-4 me-2" />
+                            Repost
                           </div>
-                          <hr className="my-1 mx-3" />
-                          <div className="d-flex justify-content-evenly text-secondary">
-                            <LikeButton indexButton={i}/>
-                            <div className="greyHover rounded-2 me-2 px-4 py-3">
-                              <BiMessageRoundedDetail className="fs-4 me-2" />
-                              Comment
-                            </div>
-                            <div className="greyHover rounded-2 me-2 px-4 py-3">
-                              <MdOutlinePostAdd className="fs-4 me-2" />
-                              Repost
-                            </div>
-                            <div className="greyHover rounded-2 me-2 px-4 py-3">
-                              <BsSkipEndFill className="fs-4 me-2" />
-                              Send
-                            </div>
+                          <div className="greyHover rounded-2 me-2 px-4 py-3">
+                            <BsSkipEndFill className="fs-4 me-2" />
+                            Send
                           </div>
-                          {singPost.user._id === `63fc6fa3f193e60013807f59` ? (
-                            <>
-                              <div className="proSmall proLight ms-3 mb-1">
-                                edited: {singPost.updatedAt.slice(0, 10)}
-                              </div>
-                              <ModalPut
-                                check={check}
-                                id={singPost._id}
-                                // ternaryCheck={true} <--- perchè non funzion :(
-                              />
-                              {console.log("eccolo id POST", singPost._id)}
-                            </>
-                          ) : (
-                            <div className="proSmall proLight mx-4 my-2">
-                              edited: {singPost.updatedAt.slice(0, 10)}
-                            </div>)}
-                          {singPost.user._id === `${myProfile._id}` ? (
+                        </div>
+                        {singPost.user._id === `${myProfile._id}` ? (
                           <>
                             <div className="proSmall proLight ms-3 mb-1">edited: {singPost.updatedAt.slice(0, 10)}</div>
                             <ModalPut
