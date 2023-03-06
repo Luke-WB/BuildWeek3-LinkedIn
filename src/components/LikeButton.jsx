@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BsHandThumbsUp } from "react-icons/bs";
 
-const LikeButton = ({ indexButton }) => {
+const LikeButton = () => {
   let cssClass = "greyHover rounded-2 me-2 px-4 py-3";
   const [likeSwitch, setLikeSwitch] = useState(true);
 
