@@ -7,7 +7,6 @@ export default function Comments({ singlePostId }) {
   const [commentsArray, setCommentArray] = useState([]);
 
   const [input, setInput] = useState(null);
-  const [putInput, setPutInput] = useState(null);
 
   const [showPost, setShowPost] = useState(false);
   const handleClosePost = () => setShowPost(false);
@@ -15,10 +14,6 @@ export default function Comments({ singlePostId }) {
 
   const handleChange = (e) => {
     setInput(e.target.value);
-    console.log(e);
-  };
-  const handlePutChange = (e) => {
-    setPutInput(e.target.value);
     console.log(e);
   };
 
@@ -69,45 +64,6 @@ export default function Comments({ singlePostId }) {
     }
   };
 
-  let putCommentsObj = {
-    comment: putInput,
-  };
-
-  const deleteComments = async () => {
-    try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${singlePostId}`, {
-        method: "DELETE",
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
-        },
-      });
-      if (response.ok) {
-      }
-    } catch (error) {
-      alert("comment", error);
-    }
-  };
-
-  const putComments = async (id) => {
-    try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${id}`, {
-        method: "PUT",
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(putCommentsObj),
-      });
-      if (response.ok) {
-        console.log("testComment", response);
-      }
-    } catch (error) {
-      alert("testComment", error);
-    }
-  };
-
   console.log("commentsArray", commentsArray);
   return (
     <>
@@ -133,7 +89,7 @@ export default function Comments({ singlePostId }) {
               {el.author} Author
               <div>
                 {el.createdAt}
-                <ModaleComment delete={deleteComments} put={putComments} get={fetchComments} id={el._id} />
+                <ModaleComment get={fetchComments} id={el._id} />
               </div>
             </div>
             <div>{el.comment}</div>
