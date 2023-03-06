@@ -15,6 +15,11 @@ import {
 import { RiContactsBookFill, RiPagesFill, RiNewspaperFill, RiHashtag } from "react-icons/ri"
 import { Spinner } from "react-bootstrap"
 
+// let personas = document.getElementById("persone")
+// if (personas) {
+
+// }
+
 const MyNetwork = () => {
   const [isTrue, setIsTrue] = useState(false)
   const [peopleFetched, setPeopleFetched] = useState([])
