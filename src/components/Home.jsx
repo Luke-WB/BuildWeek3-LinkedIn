@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProfile, reversed } from "../redux/actions";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Collapse } from "react-bootstrap";
 import { MdOutlinePostAdd, MdPhotoSizeSelectActual } from "react-icons/md";
 import { BsFillPlayBtnFill, BsCalendarDay, BsHandThumbsUp, BsHandThumbsUpFill, BsSkipEndFill } from "react-icons/bs";
 import { MdArticle } from "react-icons/md";
@@ -16,9 +16,11 @@ import { BsDot } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiMessageRoundedDetail } from "react-icons/bi";
 import Comments from "./Comments";
+import CollapseComment from "./CollapseComment";
+import Bottoni from "./Bottoni";
 
 const Home = () => {
-  const userKey =  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs` 
+  const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`;
 
   const [showPhoto, setShowPhoto] = useState(false);
   const handleClosePhoto = () => setShowPhoto(false);
@@ -33,6 +35,7 @@ const Home = () => {
   const post = useSelector((state) => state.profile.post);
   const myProfile = useSelector((state) => state.profile.profile);
   console.log("ooooooooooooooooooooooooooooooooo", loading);
+
   // profile fetch
   const dispatch = useDispatch();
   useEffect(() => {
@@ -116,7 +119,7 @@ const Home = () => {
               </div>
               {post &&
                 post.slice(0, 10).map((singPost, i) => {
-                  console.log("poste", singPost)
+                  console.log("poste", singPost);
                   return (
                     <>
                       <div
@@ -169,25 +172,7 @@ const Home = () => {
                           {Math.floor(Math.random() * 100)}
                         </div>
                         <hr className="my-1 mx-3" />
-                        <div className="d-flex justify-content-evenly text-secondary">
-                          <div className="greyHover rounded-2 me-2 px-4 py-3">
-                            <BsHandThumbsUp className="fs-4 me-2" />
-                            Like
-                          </div>
-                          <div className="greyHover rounded-2 me-2 px-4 py-3">
-                            <BiMessageRoundedDetail className="fs-4 me-2" />
-                            Comment
-                          </div>
-                          <div className="greyHover rounded-2 me-2 px-4 py-3">
-                            <MdOutlinePostAdd className="fs-4 me-2" />
-                            Repost
-                          </div>
-                          <div className="greyHover rounded-2 me-2 px-4 py-3">
-                            <BsSkipEndFill className="fs-4 me-2" />
-                            Send
-                          </div>
-                        </div>
-                        <Comments singlePostId={singPost._id}/>
+                        <Bottoni singlePostId={singPost._id} />
                         {singPost.user._id === `${myProfile._id}` ? (
                           <>
                             <div className="proSmall proLight ms-3 mb-1">edited: {singPost.updatedAt.slice(0, 10)}</div>
