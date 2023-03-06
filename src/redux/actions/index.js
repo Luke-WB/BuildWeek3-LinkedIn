@@ -3,6 +3,7 @@ export const IS_LOADING = "IS_LOADING";
 export const SET_SHOW_EXP = "SET_SHOW_EXP";
 export const HOME_FETCH = "HOME_FETCH";
 export const REVERSE = "REVERSE";
+export const SWITCH_COLOR = "SWITCH_COLOR"
 
 export const fetchProfile = (key) => {
   return async (dispatch) => {
@@ -85,3 +86,10 @@ export const reversed = (userKey) => {
     }
   };
 };
+
+export const likeToggle = (param) => {
+  console.log(param)
+  return {
+  type: SWITCH_COLOR,
+  payload:!param,
+}}

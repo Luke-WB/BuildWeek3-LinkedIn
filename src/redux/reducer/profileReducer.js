@@ -1,5 +1,6 @@
 import { CARICA_FETCH, HOME_FETCH, IS_LOADING, REVERSE } from "../actions";
 import { SET_SHOW_EXP } from "../actions";
+import { SWITCH_COLOR } from "../actions"
 
 const initialState = {
   profile: {},
@@ -8,6 +9,7 @@ const initialState = {
   showExp: false,
   post: [],
   loading: true,
+  likeMe: false,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -32,6 +34,11 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         loading: false,
       };
+      case SWITCH_COLOR:
+        return {
+          ...state,
+          likeMe: !action.payload,
+        };
     default:
       return state;
   }
