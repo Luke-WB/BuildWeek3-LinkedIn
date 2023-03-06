@@ -12,17 +12,9 @@ const NewPersonExperience = ({ myProfile }) => {
 
   const userKey =  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs` 
 
-  const [modalShowPlus, setModalShowPlus] = useState(false);
   const [experiencesToRender, setExperiencesToRender] = useState([]);
-  const [rendered, setRendered] = useState(false);
 
   console.log("cosa cavolo è myProfile", myProfile);
-
-  function check() {
-    setRendered((prevState) => !prevState);
-  }
-
-  
   
   async function getExperience(id, key) {
     const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/${id}/experiences`;
@@ -47,7 +39,7 @@ const NewPersonExperience = ({ myProfile }) => {
   
   useEffect(() => {
     getExperience(myProfile._id, userKey);
-  }, [rendered]);
+  }, [myProfile]);
 
   return (
     <>
