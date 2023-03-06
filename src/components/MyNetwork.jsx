@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
-import { Row, Col, Card, Button, Container } from "react-bootstrap"
+import { Row, Col, Card, Button, Container, NavDropdown, CloseButton } from "react-bootstrap"
 import { MdGroups } from "react-icons/md"
+import { BsPlusLg } from "react-icons/bs"
 import logo from "../assets/Linkedin-Logo-2003.png"
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
@@ -12,6 +13,7 @@ import {
   BsFillCalendarDateFill,
 } from "react-icons/bs"
 import { RiContactsBookFill, RiPagesFill, RiNewspaperFill, RiHashtag } from "react-icons/ri"
+import { Spinner } from "react-bootstrap"
 
 const MyNetwork = () => {
   const [isTrue, setIsTrue] = useState(false)
@@ -31,7 +33,7 @@ const MyNetwork = () => {
     randomNumArr[i] = Math.floor(Math.random() * 500)
   }
   useEffect(() => {
-    setPeopleToRender(peopleFetched.filter((random) => Math.floor(Math.random() * 2)).slice(0, 9))
+    setPeopleToRender(peopleFetched.filter((random) => Math.floor(Math.random() * 2)).slice(0, 12))
   }, [peopleFetched])
   // fine implementate da antonio
 
@@ -61,7 +63,7 @@ const MyNetwork = () => {
   return (
     <Container>
       <Row className="mt-4">
-        <Col xs={12} md={4}>
+        <Col xs={12} md={3}>
           <Card>
             <Card.Body className="pb-0">
               <Card.Text className="proMiddle proGrey">Manage my network</Card.Text>
@@ -149,7 +151,7 @@ const MyNetwork = () => {
                   </Card.Body>
                 ) : (
                   <p className="greyHover ms-2 mb-0 text-secondary d-flex justify-content-start">
-                    Show more{" "}
+                    Show more
                     <span className="ms-2">
                       <BsChevronCompactDown />
                     </span>
@@ -175,18 +177,79 @@ const MyNetwork = () => {
                 <span className="mx-2 fontMini proGrey proGreyHBlue" style={{ cursor: "pointer" }}>
                   Help Center
                 </span>
-                <span className="mx-2 fontMini proGrey proGreyHBlue" style={{ cursor: "pointer" }}>
-                  Privacy & Terms
-                </span>
+                <NavDropdown
+                  title=" Privacy & Terms"
+                  id="basic-nav-dropdown"
+                  className="mx-2 fontMini proGrey proGreyHBlue"
+                  style={{ cursor: "pointer" }}
+                >
+                  <NavDropdown.Item href="#action/3.4">
+                    <small style={{ color: "#5e5e5e" }}>Privacy Policy</small>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.4">
+                    <small style={{ color: "#5e5e5e" }}>User Agreement</small>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.4">
+                    <small style={{ color: "#5e5e5e" }}>Cookie Policy</small>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.4">
+                    <small style={{ color: "#5e5e5e" }}>Copyright Policy</small>
+                  </NavDropdown.Item>
+                </NavDropdown>
+
                 <span className="mx-2 fontMini proGrey proGreyHBlue" style={{ cursor: "pointer" }}>
                   Ad Choises
                 </span>
                 <span className="mx-2 fontMini proGrey proGreyHBlue" style={{ cursor: "pointer" }}>
                   Advertising
                 </span>
-                <span className="mx-2 fontMini proGrey proGreyHBlue" style={{ cursor: "pointer" }}>
-                  Business Services
-                </span>
+                <NavDropdown
+                  title="Business Services"
+                  id="basic-nav-dropdown"
+                  className="mx-2 fontMini proGrey proGreyHBlue"
+                  style={{ cursor: "pointer" }}
+                >
+                  <NavDropdown.Item href="#action/3.4">
+                    <strong style={{ fontSize: "15px" }} className="d-block">
+                      Talent Solutions
+                    </strong>
+                    <span style={{ fontSize: "11px" }}>Find, attract and recruit talent</span>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.4">
+                    <strong style={{ fontSize: "15px" }} className="d-block">
+                      Sales Solutions
+                    </strong>
+                    <span style={{ fontSize: "11px" }}>Unlock sales opportunities</span>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.4">
+                    <strong style={{ fontSize: "15px" }} className="d-block">
+                      Post a job for free
+                    </strong>
+                    <span style={{ fontSize: "11px" }}>Get your job in front of quality candidates</span>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.4">
+                    <strong style={{ fontSize: "15px" }} className="d-block">
+                      Marketing Solutions
+                    </strong>
+                    <span style={{ fontSize: "11px" }}>Acquire customers and grow your business</span>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.4">
+                    <strong style={{ fontSize: "15px" }} className="d-block">
+                      Learnig Solutions
+                    </strong>
+                    <span style={{ fontSize: "11px" }}>Develop talent across your organization</span>
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action/3.4">
+                    <strong style={{ fontSize: "15px" }} className="d-block text-center">
+                      Create a Company Page
+                      <span title="Press to Create" className="ms-3">
+                        <BsPlusLg />
+                      </span>
+                    </strong>
+                  </NavDropdown.Item>
+                </NavDropdown>
+
                 <span className="mx-2 fontMini proGrey proGreyHBlue" style={{ cursor: "pointer" }}>
                   Get the Linkedin App
                 </span>
@@ -194,24 +257,24 @@ const MyNetwork = () => {
                   More
                 </span>
                 <div className="mt-2" style={{ fontSize: "12px" }}>
-                  <div className="d-flex justify-content-center align-items-center">
+                  <div className="d-flex justify-content-center align-items-center ">
                     <img src={logo} alt="pic-logo" style={{ width: "23%" }} />
                     <span>Linkedin Corporation ©</span>
+                    <span className="d-flex justify-content-center">
+                      <i>2023</i>
+                    </span>
                   </div>
-                  <span className="d-flex justify-content-center">
-                    <i>2023</i>
-                  </span>
                 </div>
               </div>
             </Card.Text>
           </Card>
         </Col>
-        <Col xs={12} md={8}>
+        <Col xs={12} md={9}>
           {/* versione di antonio */}
           {/* d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4 */}
           <Container>
             <Row>
-              <Col xs={12} className="bg-light rounded-3 position-relative proCard my-3 p-2">
+              <Col xs={12} className="bg-light rounded-3 position-relative proCard  p-2">
                 <div className="d-flex justify-content-between align-items-center">
                   <span className="proSmall">Invitations</span>
                   <div className="proIgnore">
@@ -296,39 +359,56 @@ const MyNetwork = () => {
               </Col>
               <Col xs={12} className="bg-light rounded-3 position-relative proCard my-3 p-2">
                 <div className="d-flex justify-content-between align-items-center my-2">
-                  <span className="proSmall">People you may know from Epicode FullStack Web Developer</span>
+                  <span className="proSmall">People you may know </span>
                   <div className="proIgnore">
                     <span className="proMedium proGreyDark p-2">See all</span>
                   </div>
                 </div>
                 <Row>
-                  {peopleToRender.map((el) => {
-                    return (
-                      <Col xs={4}>
-                        <Card className="m-0 p-0 my-2" style={{ height: "300px", width: "272px" }}>
-                          <Card.Img variant="top" className="imgNetwork m-0 p-0" src={el.image} />
-                          <img src={el.image} className="rounded-circle imgDueNetwork mb-0 pb-0" alt="..." />
-                          <Card.Body className="m-0 p-0 d-flex flex-column justify-content-between">
-                            <div className="ms-3 mb-0">
-                              <Card.Text className="m-0 proBlack proBold">
-                                {el.name} {el.surname}
-                              </Card.Text>
-                              <Card.Text className="m-0 proGrey proVerySmall">{el.title}</Card.Text>
-                              <Card.Text className="m-0 proGrey proVerySmall">
-                                {el.bio.length < 50 ? `${el.bio}` : `${el.bio.substring(0, 50)}...`}
-                              </Card.Text>
-                              <Card.Text className="m-0 mt-1 proGrey proVerySmall" style={{ fontSize: "10px" }}>
-                                {Math.floor(Math.random() * 3000)} <i>Followers</i>
-                              </Card.Text>
+                  {loading ? (
+                    <div className="d-flex justify-content-center mb-3">
+                      <Spinner animation="border" variant="primary" />
+                    </div>
+                  ) : (
+                    peopleToRender.map((el) => {
+                      return (
+                        <Col xs={4}>
+                          <Card className="m-0 p-0 my-2 ombra" style={{ height: "255px" }}>
+                            <div
+                              className="chiusura rounded-circle"
+                              style={{ backgroundColor: "black", opacity: "0.60" }}
+                            >
+                              <CloseButton variant="white" className="p-2" />
                             </div>
-                            <Button className="proModProfile mb-3 mx-3" variant="outline-primary">
-                              Follower
-                            </Button>
-                          </Card.Body>
-                        </Card>
-                      </Col>
-                    )
-                  })}
+                            <Card.Img variant="top" className="imgNetwork m-0 p-0" src={el.image} />
+                            <img
+                              src={el.image}
+                              className="rounded-circle imgDueNetwork mb-0 pb-0"
+                              style={{ objectFit: "cover" }}
+                              alt="..."
+                            />
+                            <Card.Body className="m-0 p-0 d-flex flex-column justify-content-between">
+                              <div className="ms-3 mb-0">
+                                <Card.Text className="mt-4 mb-0 proBlack proBold">
+                                  {el.name} {el.surname}
+                                </Card.Text>
+                                <Card.Text className="m-0 proGrey proVerySmall">{el.title}</Card.Text>
+                                <Card.Text className="m-0 proGrey proVerySmall">
+                                  {el.bio.length < 50 ? `${el.bio}` : `${el.bio.substring(0, 50)}...`}
+                                </Card.Text>
+                                <Card.Text className="m-0 mt-1 proGrey proVerySmall" style={{ fontSize: "10px" }}>
+                                  {Math.floor(Math.random() * 3000)} <i>Followers</i>
+                                </Card.Text>
+                              </div>
+                              <Button className="proModProfile mb-3 mx-3" variant="outline-primary">
+                                Follower
+                              </Button>
+                            </Card.Body>
+                          </Card>
+                        </Col>
+                      )
+                    })
+                  )}
                 </Row>
               </Col>
             </Row>

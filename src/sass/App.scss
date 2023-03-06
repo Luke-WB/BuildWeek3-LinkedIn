@@ -12,7 +12,6 @@
 
 @import "button";
 
-
 // myNetwork section
 
 @import "myNetwork";
@@ -156,7 +155,7 @@ body {
 .imgDueNetwork {
   width: 72px;
   height: 72px;
-  position: relative;
-  top: -30px;
+  position: absolute;
+  top: 23px;
   left: 4%;
 }
