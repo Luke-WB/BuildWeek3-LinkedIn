@@ -23,20 +23,25 @@ function OffCanvasExample({ name, ...props }, prop) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    window.removeEventListener("scroll", listenToScroll);
-    return () => window.addEventListener("scroll", listenToScroll);
+    window.addEventListener("scroll", (listenToScroll) => {
+      console.log("scroll");
+    });
+    let listenToScroll = 0;
+
+    listenToScroll = () => {
+      if (windowScroll > heightToShowDiv) {
+        isVisible && setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    //window.removeEventListener("scroll", listenToScroll);
+    //return () => window.addEventListener("scroll", listenToScroll);
   }, []);
 
-  const listenToScroll = () => {
-    let heightToShowDiv = 10;
-    const windowScroll = document.body.scrollTop || document.documentElement.scrollTop;
-
-    if (windowScroll > heightToShowDiv) {
-      isVisible && setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
-  };
+  let heightToShowDiv = 40;
+  const windowScroll = document.body.scrollTop || document.documentElement.scrollTop;
 
   const [peopleFetched, setPeopleFetched] = useState([]);
   const [word, setWord] = useState("");
@@ -87,70 +92,74 @@ function OffCanvasExample({ name, ...props }, prop) {
         bg="white"
         expand="lg"
         className="sticky-top mb"
-        style={{ height: "70px", display: "flex", alignItems: "center" }}
-      >
+        style={{ height: "70px", display: "flex", alignItems: "center" }}>
         <Container className="container d-flex justify-content-between align-items-center">
-          <Navbar.Brand href="#home" className="m-0">
-            <img
-              src={logo}
-              width="35"
-              height="35"
-              className="d-inline-block align-top me-0"
-              alt="React Bootstrap logo"
-            />
-          </Navbar.Brand>
-
-          <div className="d-flex align-items-center">
-            <FaSearch className="position-relative" style={{ right: "-31px", top: "1px", color: "#4a4a4a" }} />
-            <Form className="d-flex" onSubmit={() => searchName()}>
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-                className="searchFormNav"
-                style={{
-                  backgroundColor: "#eef3f8",
-                  textIndent: "24px",
-                  height: "38px",
-                  minWidth: "260px",
-                  marginRight: "2px",
-                  borderRadius: "4px",
-                }}
-                onChange={(e) => setWord(e.target.value)}
+          <Link to={"/"}>
+            <Navbar.Brand href="#home" className="m-0">
+              <img
+                src={logo}
+                width="35"
+                height="35"
+                className="d-inline-block align-top me-0"
+                alt="React Bootstrap logo"
               />
-            </Form>
-          </div>
+            </Navbar.Brand>
+          </Link>
 
-          {/* <Link className={`nav-link ${location.pathname === "/" ? "active" : ""}`} to="/">
-              Home
-            </Link>*/}
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll" className="bg-white justify-content-end">
+            <div className="d-flex align-items-center me-auto mt-4 mt-lg-0 ">
+              <FaSearch className="position-relative" style={{ right: "-31px", top: "1px", color: "#4a4a4a" }} />
+              <Form className="d-flex " onSubmit={() => searchName()}>
+                <Form.Control
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                  className="searchFormNav"
+                  style={{
+                    backgroundColor: "#eef3f8",
+                    textIndent: "24px",
+                    height: "38px",
+                    minWidth: "260px",
+                    marginRight: "2px",
+                    borderRadius: "4px",
+                  }}
+                  onChange={(e) => setWord(e.target.value)}
+                />
+              </Form>
+            </div>
+
+            {/* <Link className={`nav-link ${location.pathname === "/" ? "active" : ""}`} to="/">
+              Home
+            </Link>*/}
+
             <Nav className=" my-2 my-lg-0 align-items-start ms-5 ms-lg-0 " style={{ maxHeight: "100px" }} navbarScroll>
-              <Link className={`nav-link ${location.pathname === "/" ? "active" : ""}`} to="/">
+              <Link className={`px-2 nav-link ${location.pathname === "/" ? "active" : ""}`} to="/">
                 <Navbar className="icon-word ">
                   <FaHome className="icon" />
-                  <span className="d-none d-lg-block">Home</span>
+                  <span className="d-none d-lg-block ">Home</span>
                 </Navbar>
               </Link>
-              <Link to={"/"} className="link-fix text-dark">
+              <Link to={"/"} className="link-fix text-secondary px-1">
                 <Navbar className="icon-word">
-                  <FaUserFriends className="icon" /> <span className="d-none d-lg-block">My Network</span>
+                  <FaUserFriends className="icon" />
+
+                  <span className="d-none d-lg-block"> My Network</span>
                 </Navbar>
               </Link>
-              <Link to={"/"} className="link-fix text-dark">
+              <Link to={"/"} className="link-fix text-secondary px-1">
                 <Navbar className="icon-word">
                   <BsBriefcaseFill className="icon" />
                   <span className="d-none d-lg-block"> Jobs</span>
                 </Navbar>
               </Link>
-              <Link to={"/"} className="link-fix text-dark">
+              <Link to={"/"} className="link-fix text-secondary px-1">
                 <Navbar className="icon-word">
                   <RiMessage3Line className="icon" />
                   <span className="d-none d-lg-block">Messaging</span>
                 </Navbar>
               </Link>
-              <Link to={"/"} className="link-fix text-dark">
+              <Link to={"/"} className="link-fix text-secondary px-1">
                 <Navbar className="icon-word">
                   <FaBell className="icon" />
                   <span className="d-none d-lg-block">Notifications </span>
@@ -165,9 +174,8 @@ function OffCanvasExample({ name, ...props }, prop) {
                   </div>
                 }
                 id="navbarScrollingDropdown"
-                style={{ borderRight: "1px solid lightgray", paddingRight: "15px" }}
-                className="icon-word "
-              >
+                style={{ borderRight: "1px solid lightgray", paddingRight: "15px", paddingTop: "0.5rem" }}
+                className="icon-word ">
                 <div className="text-center d-flex justify-content-center">
                   <Button variant="green w-100 py-0" id="bottoncino">
                     <Link to={"/user/me"} className="link-fix">
@@ -196,13 +204,14 @@ function OffCanvasExample({ name, ...props }, prop) {
 
               <NavDropdown
                 title={
-                  <div className="icon-word">
+                  <div className="icon-word" s>
                     <BsGrid3X3GapFill className="icon" />
                     <span className="d-none d-lg-block"> Work </span>
                   </div>
                 }
                 id="navbarScrollingDropdown"
                 className="icon-word "
+                style={{ paddingTop: "0.5rem" }}
                 onClick={handleShow}
               />
               <Offcanvas show={show} onHide={handleClose} {...props}>
@@ -310,12 +319,11 @@ function OffCanvasExample({ name, ...props }, prop) {
         </Container>
       </Navbar>
 
-      {/*DIV CHE COMPARE ALLO SCROLL*/}
+      {/*DIV CHE COMPARE ALLO SCROLL */}
 
       <div
         id="scroolDiv"
-        className="shadow p-3 mb-5 bg-body rounded border-top d-flex justify-content-between  align-items-center"
-      >
+        className="shadow p-3 mb-5 bg-body rounded border-top d-flex justify-content-between align-items-center d-none d-md-flex">
         <div style={{ height: "60px", display: "flex", alignItems: "center" }}>
           <div style={{ marginLeft: "7%" }}>
             <img
@@ -334,8 +342,7 @@ function OffCanvasExample({ name, ...props }, prop) {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-            }}
-          >
+            }}>
             <p style={{ marginBottom: "5px" }}>
               <strong>
                 {myProfile.name} {myProfile.surname}

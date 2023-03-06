@@ -22,7 +22,7 @@
 }
 a#navbarScrollingDropdown {
   display: flex;
-  flex-direction: column;
+
   align-items: center;
 }
 .dropdown-toggle::after {
@@ -62,9 +62,6 @@ a#navbarScrollingDropdown {
   border: 2px solid black;
 }
 
-.dropdown-toggle:after {
-  margin-top: 35px;
-}
 .nav-link {
   padding: 0;
 }
