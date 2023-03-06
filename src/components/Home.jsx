@@ -3,13 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProfile, reversed } from "../redux/actions";
 import { Container, Row, Col } from "react-bootstrap";
 import { MdOutlinePostAdd, MdPhotoSizeSelectActual } from "react-icons/md";
-import {
-  BsFillPlayBtnFill,
-  BsCalendarDay,
-  BsHandThumbsUp,
-  BsSkipEndFill,
-  BsFillHandThumbsUpFill,
-} from "react-icons/bs";
+import { BsFillPlayBtnFill, BsCalendarDay, BsHandThumbsUp, BsHandThumbsUpFill, BsSkipEndFill } from "react-icons/bs";
 import { MdArticle } from "react-icons/md";
 import HomeProfile from "./HomeProfile";
 import { Link, useParams } from "react-router-dom";
@@ -21,11 +15,10 @@ import { GiEarthAmerica } from "react-icons/gi";
 import { BsDot } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiMessageRoundedDetail } from "react-icons/bi";
-import { likeToggle } from "../redux/actions/";
-import LikeButton from "./LikeButton";
+import Comments from "./Comments";
 
 const Home = () => {
-  const userKey = `${process.env.REACT_APP_API_KEY}`;
+  const userKey =  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs` 
 
   const [showPhoto, setShowPhoto] = useState(false);
   const handleClosePhoto = () => setShowPhoto(false);
@@ -39,19 +32,13 @@ const Home = () => {
   const loading = useSelector((state) => state.profile.loading);
   const post = useSelector((state) => state.profile.post);
   const myProfile = useSelector((state) => state.profile.profile);
+  console.log("ooooooooooooooooooooooooooooooooo", loading);
   // profile fetch
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProfile(userKey));
   }, []);
 
-  // const likeMe = useSelector((state) => state.profile.likeMe);
-  // useEffect(
-  //   () => {
-  //     dispatch(likeSwitch());
-  //   },
-  //   [likeSwitch]
-  // );
   // post fetch
   const [rendered, setRendered] = useState(false);
   function check() {
@@ -71,7 +58,7 @@ const Home = () => {
         <Container>
           <Row className="d-flex flex-column flex-md-row">
             <Col xs={12} lg={4}>
-              <HomeProfile myProfile={myProfile} key={myProfile._id} />
+              <HomeProfile myProfile={myProfile} />
             </Col>
             <Col xs={12} lg={8}>
               <div className="bg-light rounded-3 position-relative proCard my-4 me-0 p3-0">
@@ -109,6 +96,7 @@ const Home = () => {
                     showPhoto={showPhoto}
                     handleClosePhoto={handleClosePhoto}
                     check={check}
+
                     // ternaryCheck={false} <--- perchè non funzion :(
                   />
 
@@ -127,7 +115,8 @@ const Home = () => {
                 </div>
               </div>
               {post &&
-                post.slice(0, 50).map((singPost, i) => {
+                post.slice(0, 10).map((singPost, i) => {
+                  console.log("poste", singPost)
                   return (
                     <>
                       <div
@@ -163,18 +152,28 @@ const Home = () => {
                               </div>
                             </div>
                           </div>
+                          <div className="proNormal proBlue">
+                            <AiOutlinePlus /> Follow
+                          </div>
                         </div>
                         <div className="my-2 mx-1">
                           <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
-                          {singPost.image && <img className="mt-3 mb-1 w-100" src={singPost.image} alt="activity" />}
+                          {singPost.image ? (
+                            <img className="mt-3 mb-1 w-100" src={singPost.image} alt="activity" />
+                          ) : (
+                            <></>
+                          )}
                         </div>
                         <div className="mb-1 mx-3 proGrey proSmall d-flex align-items-center">
-                          <BsFillHandThumbsUpFill className="reverseChar likeHover fs-4 me-2" />
+                          <BsHandThumbsUp className="likeHover fs-4 me-2" />
                           {Math.floor(Math.random() * 100)}
                         </div>
                         <hr className="my-1 mx-3" />
                         <div className="d-flex justify-content-evenly text-secondary">
-                          <LikeButton indexButton={i} />
+                          <div className="greyHover rounded-2 me-2 px-4 py-3">
+                            <BsHandThumbsUp className="fs-4 me-2" />
+                            Like
+                          </div>
                           <div className="greyHover rounded-2 me-2 px-4 py-3">
                             <BiMessageRoundedDetail className="fs-4 me-2" />
                             Comment
@@ -188,6 +187,7 @@ const Home = () => {
                             Send
                           </div>
                         </div>
+                        <Comments singlePostId={singPost._id}/>
                         {singPost.user._id === `${myProfile._id}` ? (
                           <>
                             <div className="proSmall proLight ms-3 mb-1">edited: {singPost.updatedAt.slice(0, 10)}</div>
@@ -196,9 +196,10 @@ const Home = () => {
                               id={singPost._id}
                               // ternaryCheck={true} <--- perchè non funzion :(
                             />
+                            {console.log("eccolo id POST", singPost._id)}
                           </>
                         ) : (
-                          <div className="proSmall proLight mx-4 my-2">edited: {singPost.updatedAt.slice(0, 10)}</div>
+                          <div className="proSmall proLight mx-4 my-2"> edited: {singPost.updatedAt.slice(0, 10)}</div>
                         )}
                       </div>
                     </>
