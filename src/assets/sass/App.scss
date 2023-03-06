@@ -70,7 +70,7 @@ body {
   background-color: #59A2ED;
   padding: 5px;
   border-radius: 50%;
-  color: Black;
+  color: white;
 }
 
 .likeHover:hover {
@@ -78,6 +78,15 @@ body {
   text-decoration: underline;
   padding: 5px;
   border-radius: 50%;
+}
+
+.likeActive {
+  background: #59A2ED!important;
+  color: white!important;
+}
+
+.reverseChar {
+  transform: rotateY(180deg);
 }
 
 .matita {

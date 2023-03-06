@@ -11,6 +11,8 @@ const NewPersonExperience = ({ myProfile }) => {
 
   const [experiencesToRender, setExperiencesToRender] = useState([]);
 
+  console.log("cosa cavolo è myProfile", myProfile);
+  
   async function getExperience(id, key) {
     const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/${id}/experiences`;
     try {
