@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
+import { BiPencil, BiSearch } from "react-icons/bi";
+import ModaleComment from "./ModaleComment";
 
 export default function Comments({ singlePostId }) {
   const [commentsArray, setCommentArray] = useState([]);
-  const [rendered, setRendered] = useState(false);
+
   const [input, setInput] = useState(null);
   const [putInput, setPutInput] = useState(null);
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [showPost, setShowPost] = useState(false);
+  const handleClosePost = () => setShowPost(false);
+  const handleShowPost = () => setShowPost(true);
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -26,10 +28,6 @@ export default function Comments({ singlePostId }) {
     elementId: singlePostId,
   };
 
-  function check() {
-    setRendered((prevState) => !prevState);
-  }
-
   const fetchComments = async () => {
     try {
       const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${singlePostId}`, {
@@ -41,7 +39,7 @@ export default function Comments({ singlePostId }) {
       if (response.ok) {
         let postComment = await response.json();
         console.log("response comment", postComment);
-        setCommentArray(postComment);
+        setCommentArray(postComment.reverse());
       }
     } catch (error) {
       alert("comment", error);
@@ -50,23 +48,7 @@ export default function Comments({ singlePostId }) {
 
   useEffect(() => {
     fetchComments();
-  }, [rendered]);
-
-  async function deleteComment(id) {
-    try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${id}`, {
-        method: "DELETE",
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
-        },
-      });
-      if (response.ok) {
-      }
-    } catch (error) {
-      alert("comment", error);
-    }
-  }
+  }, []);
 
   const fetchPostComments = async () => {
     try {
@@ -91,6 +73,22 @@ export default function Comments({ singlePostId }) {
     comment: putInput,
   };
 
+  const deleteComments = async () => {
+    try {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${singlePostId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
+        },
+      });
+      if (response.ok) {
+      }
+    } catch (error) {
+      alert("comment", error);
+    }
+  };
+
   const putComments = async (id) => {
     try {
       const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${id}`, {
@@ -113,54 +111,33 @@ export default function Comments({ singlePostId }) {
   console.log("commentsArray", commentsArray);
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          fetchPostComments();
+          fetchComments();
+        }}
+      >
+        <input
+          type="text"
+          placeholder="Start a post"
+          className="d-inline-block proMore proGrey position-relative postModBar me-3"
+          onChange={handleChange}
+        />
+      </form>
+
       {commentsArray.map((el, i) => (
         <>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              fetchPostComments();
-            }}
-          >
-            <label for="fname">POST:</label>
-            <input type="text" onChange={handleChange} />
-          </form>
-          <div>
-            <h3 key={i}>{el.comment}</h3>
-            <label for="fname">PUT:</label>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                putComments(el._id);
-              }}
-            >
-              <input type="text" onChange={handlePutChange} />
-            </form>
-          </div>
-          <button
-            onClick={() => {
-              deleteComment(el._id);
-              check();
-            }}
-          >
-            X
-          </button>
+          <di key={i}>
+            <div className="d-flex justify-content-between">
+              {el.author} Author
+              <div>
+                {el.createdAt}
+                <ModaleComment delete={deleteComments} put={putComments} get={fetchComments} id={el._id} />
+              </div>
+            </div>
+            <div>{el.comment}</div>
+          </di>
         </>
       ))}
     </>
