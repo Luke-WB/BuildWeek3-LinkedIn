@@ -9,10 +9,11 @@ import { BiSearch, BiPencil } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import Experience from "./Experience";
 import ModalePut from "./ModalPut";
+import AddObj from "./AddObj";
+
 
 const Profile = () => {
-  let userKey =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs";
+  const userKey =  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs` 
   /* MODALE*/
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -23,6 +24,7 @@ const Profile = () => {
   const [modified, setModified] = useState({});
   const [fetched, setFetched] = useState(false);
   const post = useSelector((state) => state.profile.post);
+
 
   const obj = {
     name: "",
@@ -36,7 +38,8 @@ const Profile = () => {
   function check() {
     setFetched((prevState) => !prevState);
   }
-  async function ipipipip(id, expid) {
+  
+  async function ipipipip() {
     const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/`;
     try {
       const res = await fetch(urlToFetch, {
@@ -52,7 +55,7 @@ const Profile = () => {
       } else {
       }
     } catch (error) {
-      alert(error);
+      alert("ipipipip", error);
     }
   }
   useEffect(() => {
@@ -222,7 +225,11 @@ const Profile = () => {
                   <Form.Label className="mb-1">Link</Form.Label>
                   <Form.Control type="text" />
                 </Form.Group>
+                <Form.Group>
+                </Form.Group>
               </Form>
+              <h5> Change Profile Picture</h5>
+                <AddObj idAdd={myProfile._id}/>
             </Modal.Body>
             <Modal.Footer>
               <Button variant="primary" className="rounded-5" onClick={handleClose}>
@@ -314,7 +321,8 @@ const Profile = () => {
                             </h3>
                             <div className="my-2 me-5 mx-4">
                               <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
-                              <img className="my-3 ms-4 me-3 rounded-2 w-100" src={singPost.image} alt="postedImg" />
+                              {singPost.image?  <img className="my-3 ms-4 me-3 rounded-2 w-100" src={singPost.image} alt="postedImg" /> : <></>}
+                             
                             </div>
                           </div>
                         </div>

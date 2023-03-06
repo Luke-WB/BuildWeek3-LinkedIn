@@ -3,10 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProfile, reversed } from "../redux/actions";
 import { Container, Row, Col } from "react-bootstrap";
 import { MdOutlinePostAdd, MdPhotoSizeSelectActual } from "react-icons/md";
-import { BsFillPlayBtnFill, BsCalendarDay, BsHandThumbsUp, BsHandThumbsUpFill, BsSkipEndFill } from "react-icons/bs";
+import {
+  BsFillPlayBtnFill,
+  BsCalendarDay,
+  BsHandThumbsUp,
+  BsSkipEndFill,
+  BsFillHandThumbsUpFill,
+} from "react-icons/bs";
 import { MdArticle } from "react-icons/md";
 import HomeProfile from "./HomeProfile";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Loading from "./Loading";
 import ModalePost from "./ModalePost";
 import ModalPut from "./ModalPut";
@@ -15,10 +21,11 @@ import { GiEarthAmerica } from "react-icons/gi";
 import { BsDot } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiMessageRoundedDetail } from "react-icons/bi";
+import { likeToggle } from "../redux/actions/";
+import LikeButton from "./LikeButton";
 
 const Home = () => {
-  let userKey =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs";
+  const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`;
 
   const [showPhoto, setShowPhoto] = useState(false);
   const handleClosePhoto = () => setShowPhoto(false);
@@ -32,13 +39,19 @@ const Home = () => {
   const loading = useSelector((state) => state.profile.loading);
   const post = useSelector((state) => state.profile.post);
   const myProfile = useSelector((state) => state.profile.profile);
-  console.log("ooooooooooooooooooooooooooooooooo", loading);
   // profile fetch
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProfile(userKey));
   }, []);
 
+  // const likeMe = useSelector((state) => state.profile.likeMe);
+  // useEffect(
+  //   () => {
+  //     dispatch(likeSwitch());
+  //   },
+  //   [likeSwitch]
+  // );
   // post fetch
   const [rendered, setRendered] = useState(false);
   function check() {
@@ -96,8 +109,10 @@ const Home = () => {
                     showPhoto={showPhoto}
                     handleClosePhoto={handleClosePhoto}
                     check={check}
+
                     // ternaryCheck={false} <--- perchè non funzion :(
                   />
+
                   <div className="greyHover rounded-2 me-2 px-2 py-3">
                     <BsFillPlayBtnFill className="fs-4 text-success me-2" />
                     Video
@@ -113,109 +128,83 @@ const Home = () => {
                 </div>
               </div>
               {post &&
-                post
-                  /* .filter((postUnfilt) => postUnfilt.text.length > 10) */
-                  .slice(0, 50)
-                  .map((singPost, i) => {
-                    return (
-                      <>
-                        <div
-                          key={i}
-                          className="d-flex flex-column align-items-e bg-light rounded-3 position-relative proCard my-4"
-                        >
-                          <div className="d-flex flex-row justify-content-between align-items-center me-4">
-                            <div>
-                              <div className="d-flex flex-row align-items-center">
-                                {myProfile._id === singPost.user._id ? (
-                                  <img
-                                    className="my-3 ms-4 me-3 rounded-2"
-                                    style={{ height: "55px", width: "55px" }}
-                                    src={myProfile.image}
-                                    alt="portrait author"
-                                  />
-                                ) : (
-                                  <img
-                                    className="my-3 ms-4 me-3 rounded-2"
-                                    style={{ height: "55px", width: "55px" }}
-                                    src={singPost.user.image}
-                                    alt="portrait author"
-                                  />
-                                )}
-                                <div className="proBlack my-2">
-                                  <Link to={`/user/${singPost.user?._id}`} className="link-fix">
-                                    <div className="proBlack proNormal proGreyHBlue link-fix">
-                                      {singPost.user?.name}
-                                    </div>
-                                  </Link>
-                                  <div className="proGrey proVerySmall">
-                                    {Math.floor(Math.random() * 100)} followers
-                                  </div>
-                                  <div className="proGrey proVerySmall">
-                                    {Math.floor(Math.random() * 12)} <BsDot /> <GiEarthAmerica />
-                                  </div>
+                post.slice(0, 50).map((singPost, i) => {
+                  return (
+                    <>
+                      <div
+                        key={i}
+                        className="d-flex flex-column align-items-e bg-light rounded-3 position-relative proCard my-4"
+                      >
+                        <div className="d-flex flex-row justify-content-between align-items-center me-4">
+                          <div>
+                            <div className="d-flex flex-row align-items-center">
+                              {myProfile._id === singPost.user._id ? (
+                                <img
+                                  className="my-3 ms-4 me-3 rounded-2"
+                                  style={{ height: "55px", width: "55px" }}
+                                  src={myProfile.image}
+                                  alt="portrait author"
+                                />
+                              ) : (
+                                <img
+                                  className="my-3 ms-4 me-3 rounded-2"
+                                  style={{ height: "55px", width: "55px" }}
+                                  src={singPost.user.image}
+                                  alt="portrait author"
+                                />
+                              )}
+                              <div className="proBlack my-2">
+                                <Link to={`/user/${singPost.user?._id}`} className="link-fix">
+                                  <div className="proBlack proNormal proGreyHBlue link-fix">{singPost.user?.name}</div>
+                                </Link>
+                                <div className="proGrey proVerySmall">{Math.floor(Math.random() * 100)} followers</div>
+                                <div className="proGrey proVerySmall">
+                                  {Math.floor(Math.random() * 12)} <BsDot /> <GiEarthAmerica />
                                 </div>
                               </div>
                             </div>
-                            <div className="proNormal proBlue">
-                              <AiOutlinePlus /> Follow
-                            </div>
                           </div>
-                          <div className="my-2 mx-1">
-                            <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
-                            {singPost.image ? (
-                              <img className="mt-3 mb-1 w-100" src={singPost.image} alt="activity" />
-                            ) : (
-                              <></>
-                            )}
-                          </div>
-                          <div className="mb-1 mx-3 proGrey proSmall d-flex align-items-center">
-                            <BsHandThumbsUp className="likeHover fs-4 me-2" />
-                            {Math.floor(Math.random() * 100)}
-                          </div>
-                          <hr className="my-1 mx-3" />
-                          <div className="d-flex justify-content-evenly text-secondary">
-                            <div className="greyHover rounded-2 me-2 px-4 py-3">
-                              <BsHandThumbsUp className="fs-4 me-2" />
-                              Like
-                            </div>
-                            <ModalePhoto
-                              showPhoto={showPhoto}
-                              handleClosePhoto={handleClosePhoto}
-                              check={check}
-                              // ternaryCheck={false} <--- perchè non funzion :(
-                            />
-                            <div className="greyHover rounded-2 me-2 px-4 py-3">
-                              <BiMessageRoundedDetail className="fs-4 me-2" />
-                              Comment
-                            </div>
-                            <div className="greyHover rounded-2 me-2 px-4 py-3">
-                              <MdOutlinePostAdd className="fs-4 me-2" />
-                              Repost
-                            </div>
-                            <div className="greyHover rounded-2 me-2 px-4 py-3">
-                              <BsSkipEndFill className="fs-4 me-2" />
-                              Send
-                            </div>
-                          </div>
-                          {singPost.user._id === `63fc6fa3f193e60013807f59` ? (
-                            <>
-                              <div className="proSmall proLight ms-3 mb-1">
-                                edited: {singPost.updatedAt.slice(0, 10)}
-                              </div>
-                              <ModalPut
-                                check={check}
-                                id={singPost._id}
-                                // ternaryCheck={true} <--- perchè non funzion :(
-                              />
-                              {console.log("eccolo id POST", singPost._id)}
-                            </>
-                          ) : (
-                            <div className="proSmall proLight mx-4 my-2">edited: {singPost.updatedAt.slice(0, 10)}</div>
-                          )}
                         </div>
-                      </>
-                    );
-                  })}
+                        <div className="my-2 mx-1">
+                          <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
+                          {singPost.image && <img className="mt-3 mb-1 w-100" src={singPost.image} alt="activity" />}
+                        </div>
+                        <div className="mb-1 mx-3 proGrey proSmall d-flex align-items-center">
+                          <BsFillHandThumbsUpFill className="reverseChar likeHover fs-4 me-2" />
+                          {Math.floor(Math.random() * 100)}
+                        </div>
+                        <hr className="my-1 mx-3" />
+                        <div className="d-flex justify-content-evenly text-secondary">
+                          <LikeButton indexButton={i} />
+                          <div className="greyHover rounded-2 me-2 px-4 py-3">
+                            <BiMessageRoundedDetail className="fs-4 me-2" />
+                            Comment
+                          </div>
+                          <div className="greyHover rounded-2 me-2 px-4 py-3">
+                            <MdOutlinePostAdd className="fs-4 me-2" />
+                            Repost
+                          </div>
+                          <div className="greyHover rounded-2 me-2 px-4 py-3">
+                            <BsSkipEndFill className="fs-4 me-2" />
+                            Send
+                          </div>
+                        </div>
+                        {singPost.user._id === `${myProfile._id}` ? (
+                          <>
+                            <div className="proSmall proLight ms-3 mb-1">edited: {singPost.updatedAt.slice(0, 10)}</div>
+                            <ModalPut
+                              check={check}
+                              id={singPost._id}
+                              // ternaryCheck={true} <--- perchè non funzion :(
+                            />
+                          </>
+                        ) : (
+                          <div className="proSmall proLight mx-4 my-2">edited: {singPost.updatedAt.slice(0, 10)}</div>
+                        )}
+                      </div>
+                    </>
+                  );
+                })}
             </Col>
           </Row>
         </Container>

@@ -10,9 +10,11 @@ import { Link } from "react-router-dom";
 function HomeProfile({ myProfile }) {
   const token = useSelector((state) => state.profile.token);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchProfile(token));
   }, []);
+  
   return (
     <>
       <Card className="my-4 mx-0">

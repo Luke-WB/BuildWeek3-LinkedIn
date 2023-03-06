@@ -9,6 +9,10 @@ import { BiMessageRoundedDetail } from "react-icons/bi";
 import { useSelector } from "react-redux";
 
 const ModalePut = ({ show, handleClose, check, id }) => {
+
+  const userKey =  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs` 
+
+
   const addPost = {
     text: "",
   };
@@ -30,7 +34,7 @@ const ModalePut = ({ show, handleClose, check, id }) => {
       const res = await fetch(urlToFetch, {
         method: "PUT",
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+          Authorization: userKey,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(objPost),
@@ -53,7 +57,7 @@ const ModalePut = ({ show, handleClose, check, id }) => {
       await fetch(urlToFetch, {
         method: "DELETE",
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+          Authorization: userKey,
         },
       });
     } catch (error) {
@@ -79,7 +83,7 @@ const ModalePut = ({ show, handleClose, check, id }) => {
         </Button>
       </div>
 
-      <Modal show={showPut} onHide={handleClose}>
+      <Modal show={showPut} onHide={handleClosePut}>
         <Modal.Header closeButton>
           <Modal.Title className="modalColor modalTitle">Create a post</Modal.Title>
         </Modal.Header>

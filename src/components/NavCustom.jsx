@@ -13,6 +13,10 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../assets/sass/_navBar.scss";
 
 function OffCanvasExample({ name, ...props }, prop) {
+
+  const userKey =  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs` 
+
+
   const myProfile = useSelector((state) => state.profile.profile);
 
   const [show, setShow] = useState(false);
@@ -55,7 +59,7 @@ function OffCanvasExample({ name, ...props }, prop) {
       try {
         const response = await fetch(profili_utente, {
           headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjN2Y3MWYxOTNlNjAwMTM4MDdmNjAiLCJpYXQiOjE2Nzc0OTIwODEsImV4cCI6MTY3ODcwMTY4MX0.VsSZ2d0tCDoaQSZpm1CGnM4ctkdFFFZhAu36PvkG-hU`,
+            Authorization: userKey,
           },
         });
         if (response.ok) {

@@ -4,6 +4,10 @@ import Modal from "react-bootstrap/Modal"
 import { Link } from "react-router-dom"
 
 function ModaleAdd(props) {
+
+  const userKey =  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs` 
+
+
   const addExperience = {
     role: "",
     company: "",
@@ -22,13 +26,13 @@ function ModaleAdd(props) {
     setObjExp((prev) => ({ ...prev, [field]: value }))
   }
 
-  async function postExperience() {
-    const urlToFetch = "https://striveschool-api.herokuapp.com/api/profile/63fe5220579c6300137cf956/experiences"
+  async function postExperience(id) {
+    const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/${id}/experiences`
     try {
       const res = await fetch(urlToFetch, {
         method: "POST",
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+          Authorization: userKey,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(objExp),
@@ -184,8 +188,8 @@ function ModaleAdd(props) {
         <Button
           className="proOpenTo"
           onClick={() => {
-            postExperience()
-            props.render()
+            postExperience(props.idUser)
+            props.render(props.idUser, userKey)
             props.onHide()
             props.checking()
           }}
