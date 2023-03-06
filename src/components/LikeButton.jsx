@@ -9,10 +9,6 @@ const LikeButton = ({ indexButton }) => {
     cssClass+= " likeActive";
   }
 
-  const handleClick = () => {
-    setLikeSwitch(!likeSwitch)
-  }
-
   return (    
       <div onClick={() => setLikeSwitch(!likeSwitch)} className={cssClass}>
         <BsHandThumbsUp className="fs-4 me-2 reverseChar" />
