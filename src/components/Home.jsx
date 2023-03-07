@@ -31,7 +31,6 @@ const Home = () => {
   const loading = useSelector((state) => state.profile.loading);
   const post = useSelector((state) => state.profile.post);
   const myProfile = useSelector((state) => state.profile.profile);
-  console.log("ooooooooooooooooooooooooooooooooo", loading);
 
   // profile fetch
   const dispatch = useDispatch();
