@@ -11,6 +11,17 @@ const AddPersonButton = ({ personInfo }) => {
   const consollogga = () => {
     console.log("friend: ", friend)
   }
+  let cssClass = "proMore mb-3 m-0 text-danger"
+  const [likeSwitch, setLikeSwitch] = useState(true)
+
+  for (let i = 0; i < friend.length; i++) {
+    if (personInfo._id.includes(friend[i])) {
+      cssClass = "proOpenTo"
+    } else {
+      cssClass = " mb-3 m-0 text-danger "
+    }
+  }
+
   return (
     <>
       <Button
@@ -18,7 +29,7 @@ const AddPersonButton = ({ personInfo }) => {
           dispatch(addFriend(personInfo._id))
           consollogga()
         }}
-        className="proMore mb-3 m-0 text-danger"
+        className={cssClass}
         variant="outline"
       >
         <BsPersonPlusFill /> Connect
