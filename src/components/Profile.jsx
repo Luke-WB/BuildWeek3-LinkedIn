@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import Experience from "./Experience";
 import ModalePut from "./ModalPut";
 import AddObj from "./AddObj";
+import AddObjModale from "./AddObjModale";
 
 const Profile = () => {
   const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`;
@@ -222,7 +223,7 @@ const Profile = () => {
                 <Form.Group></Form.Group>
               </Form>
               <h5> Change Profile Picture</h5>
-              <AddObj idAdd={myProfile._id} img={myProfile.image} />
+              <AddObjModale idAdd={myProfile._id} img={myProfile.image} />
             </Modal.Body>
             <Modal.Footer>
               <Button variant="primary" className="rounded-5" onClick={handleClose}>
