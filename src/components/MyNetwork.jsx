@@ -279,7 +279,7 @@ const MyNetwork = () => {
           {/* d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4 */}
           <Container>
             <Row>
-              <Col xs={12} className="bg-light rounded-3 position-relative proCard w-100 p-2">
+              <Col xs={12} className="bg-light rounded-3 position-relative proCard  p-2">
                 <div className="d-flex justify-content-between align-items-center">
                   <span className="proSmall">Invitations</span>
                   <div className="proIgnore">
@@ -291,7 +291,7 @@ const MyNetwork = () => {
                   <div className="d-flex align-items-center">
                     <img
                       className=" rounded-circle"
-                      style={{ height: "55px", width: "55px", objectFit: "cover" }}
+                      style={{ height: "55px", width: "55px" }}
                       src={post[randomNumArr[0]].user.image}
                       alt="person you may know"
                     />
@@ -378,7 +378,7 @@ const MyNetwork = () => {
                     peopleToRender.map((el) => {
                       return (
                         <Col xs={4}>
-                          <Card className="m-0 p-0 my-2 ombra" style={{ height: "300px" }}>
+                          <Card className="m-0 p-0 my-2 ombra" style={{ height: "255px" }}>
                             <div
                               className="chiusura rounded-circle"
                               style={{ backgroundColor: "black", opacity: "0.60" }}
@@ -401,14 +401,11 @@ const MyNetwork = () => {
                                 <Card.Text className="m-0 proGrey proVerySmall">
                                   {el.bio.length < 50 ? `${el.bio}` : `${el.bio.substring(0, 50)}...`}
                                 </Card.Text>
-                                <Card.Text className="m-0 proGrey proVerySmall">
-                                  Talks about #media, #unity, #impact, #1billionstands, and...
-                                </Card.Text>
                                 <Card.Text className="m-0 mt-1 proGrey proVerySmall" style={{ fontSize: "10px" }}>
                                   {Math.floor(Math.random() * 3000)} <i>Followers</i>
                                 </Card.Text>
                               </div>
-                              <Button className="proModProfile my-3 mx-3" variant="outline-primary">
+                              <Button className="proModProfile mb-3 mx-3" variant="outline-primary">
                                 Follower
                               </Button>
                             </Card.Body>
