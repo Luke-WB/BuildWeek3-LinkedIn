@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Form, Modal } from "react-bootstrap";
 import { BiPencil } from "react-icons/bi";
 
 const ModaleComment = (props) => {
@@ -7,15 +7,10 @@ const ModaleComment = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [putInput, setPutInput] = useState(null);
+  const [putInput, setPutInput] = useState({});
 
-  const handlePutChange = (e) => {
-    setPutInput(e.target.value);
-    console.log(e);
-  };
-
-  let putCommentsObj = {
-    comment: putInput,
+  const handleChange = (field, value) => {
+    setPutInput((prev) => ({ ...prev, [field]: value }));
   };
 
   const putComments = async (id) => {
@@ -27,10 +22,9 @@ const ModaleComment = (props) => {
             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(putCommentsObj),
+        body: JSON.stringify(putInput),
       });
       if (response.ok) {
-        console.log("testComment", response);
       }
     } catch (error) {
       alert("testComment", error);
@@ -58,27 +52,34 @@ const ModaleComment = (props) => {
       <BiPencil className="proGrey proIcon me-2" onClick={handleShow} />
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Modify your comment</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <input type={"text"} onChange={handlePutChange} />
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Control
+              as="textarea"
+              placeholder="Write here..."
+              rows={3}
+              onChange={(e) => handleChange("comment", e.target.value)}
+            />
+          </Form.Group>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer className="d-flex justify-content-between">
           <Button
             variant="danger"
             onClick={() => {
               deleteComments(props.id);
-              props.get();
+              props.check();
               handleClose();
             }}
           >
-            Delete
+            Delete Comment
           </Button>
           <Button
             variant="primary"
             onClick={() => {
               putComments(props.id);
-              props.get();
+              props.check();
               handleClose();
             }}
           >

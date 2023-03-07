@@ -9,9 +9,7 @@ import { BiMessageRoundedDetail } from "react-icons/bi";
 import { useSelector } from "react-redux";
 
 const ModalePut = ({ show, handleClose, check, id }) => {
-
-  const userKey =  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs` 
-
+  const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`;
 
   const addPost = {
     text: "",
@@ -67,10 +65,7 @@ const ModalePut = ({ show, handleClose, check, id }) => {
 
   return (
     <>
-      <div className="d-flex mx-4">
-        <Button className="proModProfile me-3 my-3" variant="outline-primary" onClick={handleShowPut}>
-          Add
-        </Button>
+      <div className="d-flex justify-content-between mx-4">
         <Button
           className="proDelete me-3 my-3"
           variant="danger"
@@ -80,6 +75,9 @@ const ModalePut = ({ show, handleClose, check, id }) => {
           }}
         >
           Delete
+        </Button>
+        <Button className="proModProfile me-3 my-3" variant="outline-primary" onClick={handleShowPut}>
+          Modify
         </Button>
       </div>
 
@@ -151,7 +149,7 @@ const ModalePut = ({ show, handleClose, check, id }) => {
                   handleClosePut();
                 }}
               >
-                Modifica
+                Save
               </Button>
             </div>
           </Form.Group>
