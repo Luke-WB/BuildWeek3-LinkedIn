@@ -132,10 +132,6 @@ function OffCanvasExample({ name, ...props }, prop) {
               </Form>
             </div>
 
-            {/* <Link className={`nav-link ${location.pathname === "/" ? "active" : ""}`} to="/">
-              Home
-            </Link>*/}
-
             <Nav className=" my-2 my-lg-0 align-items-start ms-5 ms-lg-0 " style={{ maxHeight: "100px" }} navbarScroll>
               <Link className={`px-2 nav-link ${location.pathname === "/" ? "active" : ""}`} to="/">
                 <Navbar className="icon-word ">
@@ -143,7 +139,6 @@ function OffCanvasExample({ name, ...props }, prop) {
                   <span className="d-none d-lg-block ">Home</span>
                 </Navbar>
               </Link>
-
               <Link to={"/mynetwork"} className="link-fix text-secondary px-1">
                 <Navbar className="icon-word">
                   <FaUserFriends className="icon" />

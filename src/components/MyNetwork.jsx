@@ -253,7 +253,11 @@ const MyNetwork = () => {
                 </span>
                 <div className="mt-2" style={{ fontSize: "12px" }}>
                   <div className="d-flex justify-content-center align-items-center ">
-                    <img src="../assets/Linkedin-Logo-2003.png" alt="pic-logo" style={{ width: "23%" }} />
+                    <img
+                      src="https://logos-download.com/wp-content/uploads/2016/03/LinkedIn_Logo_2019.png"
+                      alt="pic-logo"
+                      style={{ width: "23%" }}
+                    />
                     <span>Linkedin Corporation ©</span>
                     <span className="d-flex justify-content-center">
                       <i>2023</i>
@@ -380,7 +384,7 @@ const MyNetwork = () => {
                               src={el.image}
                               className="rounded-circle imgDueNetwork mb-0 pb-0"
                               style={{ objectFit: "cover" }}
-                              alt="..."
+                              alt="Immagine profilo"
                             />
                             <Card.Body className="m-0 p-0 d-flex flex-column justify-content-between">
                               <div className="ms-3 mb-0">
