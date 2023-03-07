@@ -6,20 +6,17 @@ import { addFriend } from "../redux/actions";
 
 const AddPersonButton = ({ personInfo }) => {
   const friendProfileList = useSelector((state) => state.profile.friend);
-  const [toggle, setToggle] = useState(false);
-  const dispatch = useDispatch();
-  const swap = () => setToggle(true);
-  useEffect(() => {
-    dispatch(addFriend(personInfo));
-  }, [toggle]);
-  const consologga = () => console.log("friendProfileList", friendProfileList);
-
+  const dispatch = useDispatch()
+  const friend = useSelector((state) => state.profile.friend)
+  const consollogga = () => {
+    console.log("friend: ",friend)
+  }
   return (
     <>
       <Button
         onClick={() => {
-          swap();
-          consologga();
+          dispatch(addFriend(personInfo))
+          consollogga()
         }}
         className="proMore mb-3 m-0 text-danger"
         variant="outline"
