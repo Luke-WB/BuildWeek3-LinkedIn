@@ -15,7 +15,10 @@ import { GiEarthAmerica } from "react-icons/gi";
 import { BsDot } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import CollapseComment from "./CollapseComment";
+<<<<<<< HEAD
 import People from "./People";
+=======
+>>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
 
 const Home = () => {
   const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`;

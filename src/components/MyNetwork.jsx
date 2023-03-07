@@ -1,20 +1,6 @@
-import { useEffect, useState } from "react"
-import { Row, Col, Card, Button, Container, NavDropdown, CloseButton } from "react-bootstrap"
-import { MdGroups } from "react-icons/md"
-import { BsPlusLg } from "react-icons/bs"
-import logo from "../assets/Linkedin-Logo-2003.png"
-import { useSelector } from "react-redux"
-import { Link } from "react-router-dom"
-import {
-  BsPeopleFill,
-  BsChevronCompactUp,
-  BsChevronCompactDown,
-  BsFillPersonFill,
-  BsFillCalendarDateFill,
-} from "react-icons/bs"
-import { RiContactsBookFill, RiPagesFill, RiNewspaperFill, RiHashtag } from "react-icons/ri"
-import { Spinner } from "react-bootstrap"
+import { Row, Col } from "react-bootstrap"
 
+<<<<<<< HEAD
 // let personas = document.getElementById("persone")
 // if (personas) {
 
@@ -423,5 +409,8 @@ const MyNetwork = () => {
     </Container>
   )
 }
+=======
+const MyNetwork = () => {}
+>>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
 
 export default MyNetwork
