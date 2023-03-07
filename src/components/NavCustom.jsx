@@ -13,9 +13,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../assets/sass/_navBar.scss";
 
 function OffCanvasExample({ name, ...props }, prop) {
-
-  const userKey =  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs` 
-
+  const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`;
 
   const myProfile = useSelector((state) => state.profile.profile);
 
@@ -96,7 +94,8 @@ function OffCanvasExample({ name, ...props }, prop) {
         bg="white"
         expand="lg"
         className="sticky-top mb"
-        style={{ height: "70px", display: "flex", alignItems: "center" }}>
+        style={{ height: "70px", display: "flex", alignItems: "center" }}
+      >
         <Container className="container d-flex justify-content-between align-items-center">
           <Link to={"/"}>
             <Navbar.Brand href="#home" className="m-0">
@@ -144,7 +143,7 @@ function OffCanvasExample({ name, ...props }, prop) {
                   <span className="d-none d-lg-block ">Home</span>
                 </Navbar>
               </Link>
-              <Link to={"/mynetwork"} className="link-fix">
+              <Link to={"/mynetwork"} className="link-fix text-secondary px-1">
                 <Nav.Link href="#action1" className="icon-word">
                   <FaUserFriends className="icon" /> My Network
                 </Nav.Link>
@@ -168,41 +167,44 @@ function OffCanvasExample({ name, ...props }, prop) {
                 </Navbar>
               </Link>
 
-              {myProfile && <NavDropdown
-                title={
-                  <div className="icon-word ">
-                    <img src={myProfile?.image} className="rounded-circle" alt="pic-user" style={{ width: "29px" }} />
-                    <span className="d-none d-lg-block">Me </span>
+              {myProfile && (
+                <NavDropdown
+                  title={
+                    <div className="icon-word ">
+                      <img src={myProfile?.image} className="rounded-circle" alt="pic-user" style={{ width: "29px" }} />
+                      <span className="d-none d-lg-block">Me </span>
+                    </div>
+                  }
+                  id="navbarScrollingDropdown"
+                  style={{ borderRight: "1px solid lightgray", paddingRight: "15px", paddingTop: "0.5rem" }}
+                  className="icon-word "
+                >
+                  <div className="text-center d-flex justify-content-center">
+                    <Button variant="green w-100 py-0" id="bottoncino">
+                      <Link to={"/user/me"} className="link-fix">
+                        View Profile
+                      </Link>
+                    </Button>
                   </div>
-                }
-                id="navbarScrollingDropdown"
-                style={{ borderRight: "1px solid lightgray", paddingRight: "15px", paddingTop: "0.5rem" }}
-                className="icon-word ">
-                <div className="text-center d-flex justify-content-center">
-                  <Button variant="green w-100 py-0" id="bottoncino">
-                    <Link to={"/user/me"} className="link-fix">
-                      View Profile
-                    </Link>
-                  </Button>
-                </div>
 
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action3">
-                  <strong>Account</strong>
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action3">Try Premium for free</NavDropdown.Item>
-                <NavDropdown.Item href="#action3">Settings & Privacy</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">Help</NavDropdown.Item>
-                <NavDropdown.Item href="#action3">Language</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">
-                  <strong>Manage</strong>
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action5">Posts & Activity</NavDropdown.Item>
-                <NavDropdown.Item href="#action5">Job Posting Account</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5"> Sign Out</NavDropdown.Item>
-              </NavDropdown>}
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action3">
+                    <strong>Account</strong>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action3">Try Premium for free</NavDropdown.Item>
+                  <NavDropdown.Item href="#action3">Settings & Privacy</NavDropdown.Item>
+                  <NavDropdown.Item href="#action4">Help</NavDropdown.Item>
+                  <NavDropdown.Item href="#action3">Language</NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action5">
+                    <strong>Manage</strong>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action5">Posts & Activity</NavDropdown.Item>
+                  <NavDropdown.Item href="#action5">Job Posting Account</NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action5"> Sign Out</NavDropdown.Item>
+                </NavDropdown>
+              )}
 
               <NavDropdown
                 title={
@@ -325,7 +327,8 @@ function OffCanvasExample({ name, ...props }, prop) {
 
       <div
         id="scroolDiv"
-        className="shadow p-3 mb-5 bg-body rounded border-top d-flex justify-content-between align-items-center d-none d-md-flex">
+        className="shadow p-3 mb-5 bg-body rounded border-top d-flex justify-content-between align-items-center d-none d-md-flex"
+      >
         <div style={{ height: "60px", display: "flex", alignItems: "center" }}>
           <div style={{ marginLeft: "7%" }}>
             <img
@@ -344,12 +347,15 @@ function OffCanvasExample({ name, ...props }, prop) {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-            }}>
-            {myProfile && <p style={{ marginBottom: "5px" }}>
-              <strong>
-                {myProfile.name} {myProfile.surname}
-              </strong>
-            </p>}
+            }}
+          >
+            {myProfile && (
+              <p style={{ marginBottom: "5px" }}>
+                <strong>
+                  {myProfile.name} {myProfile.surname}
+                </strong>
+              </p>
+            )}
             {myProfile && <p style={{ marginBottom: "0px" }}>{myProfile.title}</p>}
           </div>
         </div>
