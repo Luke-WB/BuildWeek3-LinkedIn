@@ -66,7 +66,7 @@ const ModaleComment = (props) => {
         </Modal.Body>
         <Modal.Footer className="d-flex justify-content-between">
           <Button
-            variant="danger"
+            variant="outline-danger"
             onClick={() => {
               deleteComments(props.id);
               props.check();

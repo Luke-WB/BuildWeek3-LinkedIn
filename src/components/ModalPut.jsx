@@ -68,7 +68,6 @@ const ModalePut = ({ show, handleClose, check, id }) => {
       <div className="d-flex justify-content-between mx-4">
         <Button
           className="proDelete me-3 my-3"
-          variant="danger"
           onClick={() => {
             deletePost();
             check();
