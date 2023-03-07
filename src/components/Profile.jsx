@@ -84,7 +84,6 @@ const Profile = () => {
           <div className="matita position-absolute" onClick={handleShow}>
             <BiPencil />
           </div>
-
           <h2 className="mt-2 mb-0">
             {myProfile.name} {myProfile.surname}
           </h2>
@@ -211,7 +210,6 @@ const Profile = () => {
                 </Form.Group>
                 <h5 className="mt-4"> Informazioni di contatto</h5>
                 <p style={{ fontSize: "14px" }}> Aggiungi o modifica il tuo profilo URL, indirizzo email e altro</p>
-
                 <p className="text-primary fw-bold mt-4 mb-5">Modifica le informazioni di contatto </p>
                 <h5> Sito Web</h5>
                 <Form.Text className="text-muted">
@@ -224,7 +222,7 @@ const Profile = () => {
                 <Form.Group></Form.Group>
               </Form>
               <h5> Change Profile Picture</h5>
-              <AddObj idAdd={myProfile._id} />
+              <AddObj idAdd={myProfile._id} img={myProfile.image} />
             </Modal.Body>
             <Modal.Footer>
               <Button variant="primary" className="rounded-5" onClick={handleClose}>
