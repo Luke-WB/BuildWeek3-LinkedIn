@@ -10,7 +10,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NewPerson from "./components/NewPerson";
 import Home from "./components/Home";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import MyNetwork from "./components/MyNetwork";
+=======
+>>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
 =======
 >>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
 
@@ -30,11 +33,16 @@ function App() {
               </Routes>
             </Col>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <Col xs={12} lg={3} className="people">
               <Routes>
                 <Route path="/" element={<People />} />
                 <Route path="/user/me" element={<People />} />
               </Routes>
+=======
+            <Col xs={12} lg={3}>
+              <People />
+>>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
 =======
             <Col xs={12} lg={3}>
               <People />

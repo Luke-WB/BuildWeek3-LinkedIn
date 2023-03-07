@@ -16,7 +16,10 @@ import { BsDot } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import CollapseComment from "./CollapseComment";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import People from "./People";
+=======
+>>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
 =======
 >>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
 

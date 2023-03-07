@@ -1,6 +1,7 @@
 import { Row, Col } from "react-bootstrap"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // let personas = document.getElementById("persone")
 // if (personas) {
 
@@ -409,6 +410,9 @@ const MyNetwork = () => {
     </Container>
   )
 }
+=======
+const MyNetwork = () => {}
+>>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
 =======
 const MyNetwork = () => {}
 >>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)

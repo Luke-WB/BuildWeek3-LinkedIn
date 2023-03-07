@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Button, Col, Form, Modal, Row } from "react-bootstrap";
+=======
+import { Button, Form, Modal } from "react-bootstrap";
+>>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
 =======
 import { Button, Form, Modal } from "react-bootstrap";
 >>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
@@ -9,7 +13,11 @@ import { HiUsers } from "react-icons/hi";
 import { AiFillEye } from "react-icons/ai";
 import { BsFillInfoSquareFill } from "react-icons/bs";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { fetchProfile, reversed } from "../redux/actions";
+=======
+import { fetchIdProfile, fetchProfile, reversed, showModalExp } from "../redux/actions";
+>>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
 =======
 import { fetchIdProfile, fetchProfile, reversed, showModalExp } from "../redux/actions";
 >>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
@@ -20,7 +28,10 @@ import ModalePut from "./ModalPut";
 import AddObj from "./AddObj";
 import AddObjModale from "./AddObjModale";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import People from "./People";
+=======
+>>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
 =======
 >>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
 
@@ -112,6 +123,7 @@ const Profile = () => {
               <span className="proBlue">Contact info</span>
             </Link>
           </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
           <AddObj idAdd={myProfile?._id} img={myProfile?.image} />
           <div className="mt-5 mx-4">
@@ -251,6 +263,8 @@ const Profile = () => {
                   <p className="text-primary fw-bold mt-4 mb-5">Modifica le informazioni di contatto </p>
                   <h5> Sito Web</h5>
 =======
+=======
+>>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
           <Link className="link-fix">
             <div className="proBlue mt-2 mb-3">{Math.floor(Math.random() * 100)} connection</div>
           </Link>
@@ -303,6 +317,7 @@ const Profile = () => {
                 <Form.Group className="mb-3 text-secondary" style={{ fontSize: "14px" }}>
                   <Form.Label className="mb-1">Inserisci pronomi personalizzati</Form.Label>
                   <Form.Control type="text" />
+<<<<<<< HEAD
 >>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
                   <Form.Text className="text-muted">
                     Indica i pronomi di genere che vuoi che gli altri usino per riferirsi a te
@@ -356,6 +371,11 @@ const Profile = () => {
                   <br />
                   <span className="proGrey proLight proSmall">Discover who's viewed your profile.</span>
 =======
+=======
+                  <Form.Text className="text-muted">
+                    Indica i pronomi di genere che vuoi che gli altri usino per riferirsi a te
+                  </Form.Text>
+>>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
                   <p> Scopri di più sui pronomi di genere</p>
                 </Form.Group>
                 <Form.Group className="mb-3 text-secondary" style={{ fontSize: "14px" }}>
@@ -374,6 +394,9 @@ const Profile = () => {
                 <div className="d-flex">
                   <Form.Check aria-label="option 1" />
                   <p>Mostra l'azienda attuale nella mia presentazione</p>
+<<<<<<< HEAD
+>>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
+=======
 >>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
                 </div>
                 <Form.Group className="mb-3 text-secondary" style={{ fontSize: "14px" }}>
@@ -448,17 +471,23 @@ const Profile = () => {
       </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
           <div className="my-4 mx-4">
             <h2 className="my-0">About</h2>
             <div className="proBlack prosmall proLight mt-2">{myProfile?.bio}</div>
 =======
+=======
+>>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
       <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-2 mx-4">
           <h2 className="mt-2 mb-0">Analitics</h2>
           <div className="proGrey proLight proSmall my-0">
             <AiFillEye className="proIcon me-2" />
             private to you
+<<<<<<< HEAD
+>>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
+=======
 >>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
           </div>
           <div className="d-flex my-3">
@@ -474,6 +503,7 @@ const Profile = () => {
                 <span className="proGrey proLight proSmall">Discover who's viewed your profile.</span>
               </div>
             </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
             <div className="proBlack prosmall proLight mt-2">
               {post &&
@@ -505,6 +535,8 @@ const Profile = () => {
                                 )}
                               </div>
 =======
+=======
+>>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
             <div className="proGrey proNormal me-5 d-flex">
               <Link className="link-fix">
                 <BiSearch className="proGrey proIcon me-2" />
@@ -560,12 +592,16 @@ const Profile = () => {
                               ) : (
                                 <></>
                               )}
+<<<<<<< HEAD
+>>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
+=======
 >>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
                             </div>
                           </div>
                         </div>
                         <div className="proSmall proLight mx-4">edited: {singPost.updatedAt.slice(0, 10)}</div>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
                           <ModalePut
                             check={check}
@@ -582,6 +618,8 @@ const Profile = () => {
                 })}
             </div>
 =======
+=======
+>>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
                         <ModalePut
                           check={check}
                           id={singPost._id}
@@ -595,11 +633,15 @@ const Profile = () => {
                   </>
                 );
               })}
+<<<<<<< HEAD
+>>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
+=======
 >>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
           </div>
         </div>
       </div>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
           <div className="my-4 mx-4">
@@ -607,10 +649,15 @@ const Profile = () => {
             <div className="proBlack prosmall proLight mt-2">{myProfile?.bio}</div>
           </div>
 =======
+=======
+>>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
       <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
           <h2 className="my-0">Interest</h2>
           <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
+<<<<<<< HEAD
+>>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
+=======
 >>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
         </div>
       </div>
@@ -619,11 +666,16 @@ const Profile = () => {
           <Experience myProfile={myProfile} />
         </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
       </Col>
       <Col xs={12} md={3}>
         <People />
       </Col>
     </Row>
+=======
+      </div>
+    </>
+>>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
 =======
       </div>
     </>
