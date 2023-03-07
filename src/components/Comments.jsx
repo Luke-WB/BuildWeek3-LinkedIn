@@ -70,7 +70,7 @@ export default function Comments({ singlePostId }) {
   return (
     <>
       <Form>
-        <Row className="align-items-center mx-3">
+        <Row className="align-items-center mt-2 mx-3">
           <Col className="col-10">
             <Form.Control
               type="text"
