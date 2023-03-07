@@ -1,36 +1,36 @@
-import { useEffect, useState } from "react";
-import { Row, Col, Card, Button, Container, NavDropdown, CloseButton } from "react-bootstrap";
-import { MdGroups } from "react-icons/md";
-import { BsPlusLg } from "react-icons/bs";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react"
+import { Row, Col, Card, Button, Container, NavDropdown, CloseButton } from "react-bootstrap"
+import { MdGroups } from "react-icons/md"
+import { BsPlusLg } from "react-icons/bs"
+import { useSelector } from "react-redux"
+import { Link } from "react-router-dom"
 import {
   BsPeopleFill,
   BsChevronCompactUp,
   BsChevronCompactDown,
   BsFillPersonFill,
   BsFillCalendarDateFill,
-} from "react-icons/bs";
-import { RiContactsBookFill, RiPagesFill, RiNewspaperFill, RiHashtag } from "react-icons/ri";
-import { Spinner } from "react-bootstrap";
+} from "react-icons/bs"
+import { RiContactsBookFill, RiPagesFill, RiNewspaperFill, RiHashtag } from "react-icons/ri"
+import { Spinner } from "react-bootstrap"
 
 const MyNetwork = () => {
-  const [isTrue, setIsTrue] = useState(false);
-  const [peopleFetched, setPeopleFetched] = useState([]);
-  const [peopleToRender, setPeopleToRender] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [isTrue, setIsTrue] = useState(false)
+  const [peopleFetched, setPeopleFetched] = useState([])
+  const [peopleToRender, setPeopleToRender] = useState([])
+  const [loading, setLoading] = useState(true)
 
-  const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/";
+  const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/"
 
   // inizio implementate da antonio
-  const post = useSelector((state) => state.profile.post);
-  const randomNumArr = [];
+  const post = useSelector((state) => state.profile.post)
+  const randomNumArr = []
   for (let i = 0; i < 10; i++) {
-    randomNumArr[i] = Math.floor(Math.random() * 500);
+    randomNumArr[i] = Math.floor(Math.random() * 500)
   }
   useEffect(() => {
-    setPeopleToRender(peopleFetched.filter((random) => Math.floor(Math.random() * 2)).slice(0, 12));
-  }, [peopleFetched]);
+    setPeopleToRender(peopleFetched.filter((random) => Math.floor(Math.random() * 2)).slice(0, 12))
+  }, [peopleFetched])
   // fine implementate da antonio
 
   useEffect(() => {
@@ -40,22 +40,22 @@ const MyNetwork = () => {
           headers: {
             Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjN2Y3MWYxOTNlNjAwMTM4MDdmNjAiLCJpYXQiOjE2Nzc0OTIwODEsImV4cCI6MTY3ODcwMTY4MX0.VsSZ2d0tCDoaQSZpm1CGnM4ctkdFFFZhAu36PvkG-hU`,
           },
-        });
+        })
         if (response.ok) {
-          let data = await response.json();
-          console.log("arrayPeople", data);
-          setPeopleFetched(data.reverse());
-          setLoading(false);
+          let data = await response.json()
+          console.log("arrayPeople", data)
+          setPeopleFetched(data.reverse())
+          setLoading(false)
         }
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
-    };
+    }
 
-    fetchUser_Profile();
-  }, []);
+    fetchUser_Profile()
+  }, [])
 
-  console.log("people", peopleToRender);
+  console.log("people", peopleToRender)
   return (
     <Container>
       <Row className="mt-4">
@@ -75,7 +75,7 @@ const MyNetwork = () => {
             <div
               style={{ width: "100%", textAlign: "center", cursor: "pointer" }}
               onClick={() => {
-                isTrue ? setIsTrue(false) : setIsTrue(true);
+                isTrue ? setIsTrue(false) : setIsTrue(true)
               }}
             >
               <b>
@@ -405,7 +405,7 @@ const MyNetwork = () => {
                             </Card.Body>
                           </Card>
                         </Col>
-                      );
+                      )
                     })
                   )}
                 </Row>
@@ -415,7 +415,7 @@ const MyNetwork = () => {
         </Col>
       </Row>
     </Container>
-  );
-};
+  )
+}
 
-export default MyNetwork;
+export default MyNetwork

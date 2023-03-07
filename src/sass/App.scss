@@ -1,0 +1,161 @@
+// font setting section
+
+@import "fontSetting";
+
+// Modal section
+@import "modal";
+
+// Navbar section
+@import "navBar";
+
+// button section
+
+@import "button";
+
+// myNetwork section
+
+@import "myNetwork";
+
+body {
+  background-color: #f3f2ef;
+}
+
+.link-fix {
+  text-decoration: none;
+}
+
+.singolaPersona :last-child {
+  border-bottom: none !important;
+}
+
+.proCard {
+  overflow: hidden;
+  border: solid 1px #e0dfdc;
+}
+
+.proIcon {
+  font-size: 25px !important;
+  font-weight: 500 !important;
+}
+
+.proImgBarSetting {
+  height: 200px;
+  width: 100%;
+}
+
+.proAbsolute {
+  width: 150px;
+  height: 150px;
+  top: 100px;
+  left: 25px;
+  border: solid 4px white;
+}
+
+.postModBar {
+  height: 55px;
+  width: 100%;
+  border-radius: 60px;
+}
+
+.postModText {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.greyHover:hover {
+  background-color: #ebebeb;
+}
+
+.matita {
+  right: 5%;
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
+  color: #5e5e5e;
+  padding: 2px 10px 5px;
+}
+
+.matita:hover {
+  background-color: #ebebeb;
+  border-radius: 50%;
+  color: #5e5e5e;
+}
+
+.matita:active {
+  color: black;
+}
+
+.plus {
+  left: 92%;
+  font-size: 25px;
+}
+
+.eccolo {
+  top: -50px;
+}
+
+#photo {
+  width: 75px;
+  height: 75px;
+  // padding: 3px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.topCard {
+  border-bottom: 1px solid black;
+}
+
+.square {
+  width: 15px;
+  height: 15px;
+  background: rgb(248, 199, 126);
+  background: -moz-linear-gradient(52deg, rgba(248, 199, 126, 1) 50%, rgba(255, 224, 179, 1) 50%);
+  background: -webkit-linear-gradient(52deg, rgba(248, 199, 126, 1) 50%, rgba(255, 224, 179, 1) 50%);
+  background: linear-gradient(52deg, rgba(248, 199, 126, 1) 50%, rgba(255, 224, 179, 1) 50%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f8c77e",endColorstr="#ffe0b3",GradientType=1);
+  margin-right: 3px;
+  border-radius: 10%;
+}
+
+.copert {
+  height: 100px;
+  object-fit: cover;
+}
+
+.tratto {
+  margin: 0px 0px 16px;
+}
+
+.grigio:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+.divPost {
+  height: 55px;
+  width: 100%;
+  background-color: lightgray;
+}
+
+[contentEditable="true"]:empty:not(:focus):before {
+  content: attr(data-placeholder);
+  color: #bababa;
+}
+
+.imgNetwork {
+  height: 70px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.imgDueNetwork {
+  width: 72px;
+  height: 72px;
+  position: absolute;
+  top: 23px;
+  left: 4%;
+}
