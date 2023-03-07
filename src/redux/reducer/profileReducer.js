@@ -17,9 +17,14 @@ const initialState = {
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_FRIEND:
+      const dataid = action.payload
+      let newArray = [...state.friend]
+      if (!newArray.includes(dataid)) {
+        newArray.push(action.payload)
+      }
       return {
         ...state,
-        friend: [...state.friend, action.payload],
+        friend: newArray,
       }
     case CARICA_FETCH:
       return {
