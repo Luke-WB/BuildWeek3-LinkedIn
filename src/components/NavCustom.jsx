@@ -144,7 +144,7 @@ function OffCanvasExample({ name, ...props }, prop) {
                 </Navbar>
               </Link>
 
-              <Link to={"/"} className="link-fix text-secondary px-1">
+              <Link to={"/mynetwork"} className="link-fix text-secondary px-1">
                 <Navbar className="icon-word">
                   <FaUserFriends className="icon" />
 

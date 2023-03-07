@@ -15,6 +15,7 @@ import { GiEarthAmerica } from "react-icons/gi";
 import { BsDot } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import CollapseComment from "./CollapseComment";
+import People from "./People";
 
 const Home = () => {
   const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`;
@@ -57,10 +58,10 @@ const Home = () => {
       ) : (
         <Container>
           <Row className="d-flex flex-column flex-md-row">
-            <Col xs={12} lg={4}>
+            <Col xs={12} lg={3}>
               <HomeProfile myProfile={myProfile} />
             </Col>
-            <Col xs={12} lg={8}>
+            <Col xs={12} lg={6}>
               <div className="bg-light rounded-3 position-relative proCard my-4 me-0 p3-0">
                 <div className="d-flex align-items-center">
                   <div className="d-inline-block">
@@ -187,6 +188,9 @@ const Home = () => {
                     </>
                   );
                 })}
+            </Col>
+            <Col xs={12} lg={3}>
+              <People />
             </Col>
           </Row>
         </Container>

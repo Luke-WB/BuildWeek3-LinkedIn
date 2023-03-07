@@ -1,13 +1,24 @@
-import { Row, Col, Button, Card, CloseButton, Spinner, Container } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { Row, Col, Card, Button, Container, NavDropdown, CloseButton } from "react-bootstrap";
+import { MdGroups } from "react-icons/md";
+import { BsPlusLg } from "react-icons/bs";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import {
+  BsPeopleFill,
+  BsChevronCompactUp,
+  BsChevronCompactDown,
+  BsFillPersonFill,
+  BsFillCalendarDateFill,
+} from "react-icons/bs";
+import { RiContactsBookFill, RiPagesFill, RiNewspaperFill, RiHashtag } from "react-icons/ri";
+import { Spinner } from "react-bootstrap";
 
 const MyNetwork = () => {
   const [isTrue, setIsTrue] = useState(false);
   const [peopleFetched, setPeopleFetched] = useState([]);
   const [peopleToRender, setPeopleToRender] = useState([]);
   const [loading, setLoading] = useState(true);
-  // useEffect(() => {        <==== SE VUOI RIMETTERE ATTIVA QUESTO USEEFFECT E DISATTIVA IL MIO CODICE RIGA 33-40
-  //   setPeopleToRender(peopleFetched.slice(0, 9));
-  // }, [peopleFetched]);
 
   const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/";
 
@@ -126,7 +137,6 @@ const MyNetwork = () => {
                         Hashtags
                       </div>
                     </Card.Text>
-
                     <p className="greyHover ms-2 mb-0 text-secondary d-flex justify-content-start">
                       Show less
                       <span className="ms-2">
@@ -243,7 +253,7 @@ const MyNetwork = () => {
                 </span>
                 <div className="mt-2" style={{ fontSize: "12px" }}>
                   <div className="d-flex justify-content-center align-items-center ">
-                    <img src={...} alt="pic-logo" style={{ width: "23%" }} />
+                    <img src="../assets/Linkedin-Logo-2003.png" alt="pic-logo" style={{ width: "23%" }} />
                     <span>Linkedin Corporation ©</span>
                     <span className="d-flex justify-content-center">
                       <i>2023</i>
