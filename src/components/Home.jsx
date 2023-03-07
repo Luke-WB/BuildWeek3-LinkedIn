@@ -68,7 +68,7 @@ const Home = () => {
                       <img
                         className="my-3 ms-4 me-3 rounded-circle"
                         style={{ height: "55px" }}
-                        src={myProfile.image}
+                        src={myProfile?.image}
                         alt="profile"
                       />
                     </Link>
@@ -126,11 +126,11 @@ const Home = () => {
                         <div className="d-flex flex-row justify-content-between align-items-center me-4">
                           <div>
                             <div className="d-flex flex-row align-items-center">
-                              {myProfile._id === singPost.user._id ? (
+                              {myProfile?._id === singPost.user._id ? (
                                 <img
                                   className="my-3 ms-4 me-3 rounded-2"
                                   style={{ height: "55px", width: "55px" }}
-                                  src={myProfile.image}
+                                  src={myProfile?.image}
                                   alt="portrait author"
                                 />
                               ) : (
@@ -170,7 +170,7 @@ const Home = () => {
                         </div>
                         <hr className="my-1 mx-3" />
                         <CollapseComment singlePostId={singPost._id} />
-                        {singPost.user._id === `${myProfile._id}` ? (
+                        {singPost.user._id === `${myProfile?._id}` ? (
                           <>
                             <div className="proSmall proLight ms-3 mb-1">edited: {singPost.updatedAt.slice(0, 10)}</div>
                             <ModalPut

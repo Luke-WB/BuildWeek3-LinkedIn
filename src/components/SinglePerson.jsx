@@ -1,6 +1,7 @@
 import { Button, Col } from "react-bootstrap"
 import { BsPersonPlusFill } from "react-icons/bs"
 import { Link, useNavigate } from "react-router-dom"
+import AddPersonButton from "./AddPersonButton"
 
 export default function SinglePerson({ personInfo, keyuser }) {
 
@@ -20,9 +21,7 @@ export default function SinglePerson({ personInfo, keyuser }) {
             </h5>
           </Link>
           <p className="text-secondary m-1">{personInfo.title}</p>
-          <Button className="proMore mb-3 m-0" variant="outline">
-            <BsPersonPlusFill /> Connect
-          </Button>
+          <AddPersonButton personInfo ={personInfo}/>
         </Col>
       </div>
     </Col>

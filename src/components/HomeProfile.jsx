@@ -23,11 +23,11 @@ function HomeProfile({ myProfile }) {
           <div className="d-flex flex-column justify-content-center align-items-center topCard position-relative">
             <div className="position-absolute eccolo">
               <Link to={"/user/me"} className="link-fix">
-                <img src={myProfile.image} alt="pic-profile " id="photo" />
+                <img src={myProfile?.image} alt="pic-profile " id="photo" />
               </Link>
             </div>
-            <Card.Title className="mt-5">Welcome, {myProfile.name}</Card.Title>
-            <p className="mx-3 text-center proLight">{myProfile.email}</p>
+            <Card.Title className="mt-5">Welcome, {myProfile?.name}</Card.Title>
+            <p className="mx-3 text-center proLight">{myProfile?.email}</p>
             <Link to={"/user/me"} className="mb-2 proBlue link-fix">
               Add a photo
             </Link>

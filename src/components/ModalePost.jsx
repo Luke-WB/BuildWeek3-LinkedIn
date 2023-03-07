@@ -96,14 +96,14 @@ const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
             <img
               className="my-3 ms-4 me-3 rounded-circle"
               style={{ height: "55px" }}
-              src={myProfile.image}
+              src={myProfile?.image}
               alt="portrait"
             />
           </div>
           <div>
             <div className="proNormal">
-              <span className="me-2">{myProfile.name}</span>
-              <span>{myProfile.surname}</span>
+              <span className="me-2">{myProfile?.name}</span>
+              <span>{myProfile?.surname}</span>
             </div>
             <Button className="proMore mt-1" variant="outline-primary">
               Anyone <BsCaretDownFill />

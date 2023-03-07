@@ -3,6 +3,7 @@ import { Col, Row } from "react-bootstrap";
 import SinglePerson from "./SinglePerson";
 import Spinner from "react-bootstrap/Spinner";
 import { BsChevronCompactDown, BsChevronCompactUp } from "react-icons/bs";
+import { useSelector } from "react-redux";
 
 export default function People() {
 
@@ -15,6 +16,8 @@ export default function People() {
   const [loading, setLoading] = useState(true);
 
   const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/";
+  const friendProfileList = useSelector((state) => state.profile.friend)
+  console.log(friendProfileList)
 
   useEffect(() => {
     const fetchUser_Profile = async () => {

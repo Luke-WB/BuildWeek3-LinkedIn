@@ -170,10 +170,10 @@ function OffCanvasExample({ name, ...props }, prop) {
                 </Navbar>
               </Link>
 
-              <NavDropdown
+              {myProfile && <NavDropdown
                 title={
                   <div className="icon-word ">
-                    <img src={myProfile.image} className="rounded-circle" alt="pic-user" style={{ width: "29px" }} />
+                    <img src={myProfile?.image} className="rounded-circle" alt="pic-user" style={{ width: "29px" }} />
                     <span className="d-none d-lg-block">Me </span>
                   </div>
                 }
@@ -204,7 +204,7 @@ function OffCanvasExample({ name, ...props }, prop) {
                 <NavDropdown.Item href="#action5">Job Posting Account</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action5"> Sign Out</NavDropdown.Item>
-              </NavDropdown>
+              </NavDropdown>}
 
               <NavDropdown
                 title={
@@ -347,12 +347,12 @@ function OffCanvasExample({ name, ...props }, prop) {
               flexDirection: "column",
               justifyContent: "center",
             }}>
-            <p style={{ marginBottom: "5px" }}>
+            {myProfile && <p style={{ marginBottom: "5px" }}>
               <strong>
                 {myProfile.name} {myProfile.surname}
               </strong>
-            </p>
-            <p style={{ marginBottom: "0px" }}>{myProfile.title}</p>
+            </p>}
+            {myProfile && <p style={{ marginBottom: "0px" }}>{myProfile.title}</p>}
           </div>
         </div>
         <div>
