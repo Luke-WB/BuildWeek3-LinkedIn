@@ -12,14 +12,16 @@
 
 @import "fontSetting";
 
+@import "myNetwork";
+
 // font import
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 body {
   background-color: #f3f2ef;
-  font-family:Arial, Helvetica, sans-serif;
-  font-family: 'Roboto';
+  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Roboto";
 }
 
 .link-fix {
@@ -73,22 +75,22 @@ body {
 }
 
 .likeHover {
-  background-color: #59A2ED;
+  background-color: #59a2ed;
   padding: 5px;
   border-radius: 50%;
   color: white;
 }
 
 .likeHover:hover {
-  background-color: #59A2ED;
+  background-color: #59a2ed;
   text-decoration: underline;
   padding: 5px;
   border-radius: 50%;
 }
 
 .likeActive {
-  background: #59A2ED!important;
-  color: white!important;
+  background: #59a2ed !important;
+  color: white !important;
 }
 
 .reverseChar {
@@ -169,4 +171,22 @@ body {
 [contentEditable="true"]:empty:not(:focus):before {
   content: attr(data-placeholder);
   color: #bababa;
+}
+
+.imgNetwork {
+  height: 70px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.imgDueNetwork {
+  width: 72px;
+  height: 72px;
+  position: absolute;
+  top: 23px;
+  left: 4%;
+}
+
+.people:active {
+  display: none;
 }
