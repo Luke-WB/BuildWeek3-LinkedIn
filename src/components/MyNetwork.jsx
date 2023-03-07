@@ -1,32 +1,25 @@
-import { Row, Col } from "react-bootstrap"
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-// let personas = document.getElementById("persone")
-// if (personas) {
-
-// }
+import { Row, Col, Button, Card, CloseButton, Spinner, Container } from "react-bootstrap";
 
 const MyNetwork = () => {
-  const [isTrue, setIsTrue] = useState(false)
-  const [peopleFetched, setPeopleFetched] = useState([])
-  const [peopleToRender, setPeopleToRender] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [isTrue, setIsTrue] = useState(false);
+  const [peopleFetched, setPeopleFetched] = useState([]);
+  const [peopleToRender, setPeopleToRender] = useState([]);
+  const [loading, setLoading] = useState(true);
   // useEffect(() => {        <==== SE VUOI RIMETTERE ATTIVA QUESTO USEEFFECT E DISATTIVA IL MIO CODICE RIGA 33-40
   //   setPeopleToRender(peopleFetched.slice(0, 9));
   // }, [peopleFetched]);
 
-  const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/"
+  const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/";
 
   // inizio implementate da antonio
-  const post = useSelector((state) => state.profile.post)
-  const randomNumArr = []
+  const post = useSelector((state) => state.profile.post);
+  const randomNumArr = [];
   for (let i = 0; i < 10; i++) {
-    randomNumArr[i] = Math.floor(Math.random() * 500)
+    randomNumArr[i] = Math.floor(Math.random() * 500);
   }
   useEffect(() => {
-    setPeopleToRender(peopleFetched.filter((random) => Math.floor(Math.random() * 2)).slice(0, 12))
-  }, [peopleFetched])
+    setPeopleToRender(peopleFetched.filter((random) => Math.floor(Math.random() * 2)).slice(0, 12));
+  }, [peopleFetched]);
   // fine implementate da antonio
 
   useEffect(() => {
@@ -36,22 +29,22 @@ const MyNetwork = () => {
           headers: {
             Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjN2Y3MWYxOTNlNjAwMTM4MDdmNjAiLCJpYXQiOjE2Nzc0OTIwODEsImV4cCI6MTY3ODcwMTY4MX0.VsSZ2d0tCDoaQSZpm1CGnM4ctkdFFFZhAu36PvkG-hU`,
           },
-        })
+        });
         if (response.ok) {
-          let data = await response.json()
-          console.log("arrayPeople", data)
-          setPeopleFetched(data.reverse())
-          setLoading(false)
+          let data = await response.json();
+          console.log("arrayPeople", data);
+          setPeopleFetched(data.reverse());
+          setLoading(false);
         }
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
+    };
 
-    fetchUser_Profile()
-  }, [])
+    fetchUser_Profile();
+  }, []);
 
-  console.log("people", peopleToRender)
+  console.log("people", peopleToRender);
   return (
     <Container>
       <Row className="mt-4">
@@ -71,7 +64,7 @@ const MyNetwork = () => {
             <div
               style={{ width: "100%", textAlign: "center", cursor: "pointer" }}
               onClick={() => {
-                isTrue ? setIsTrue(false) : setIsTrue(true)
+                isTrue ? setIsTrue(false) : setIsTrue(true);
               }}
             >
               <b>
@@ -250,7 +243,7 @@ const MyNetwork = () => {
                 </span>
                 <div className="mt-2" style={{ fontSize: "12px" }}>
                   <div className="d-flex justify-content-center align-items-center ">
-                    <img src={logo} alt="pic-logo" style={{ width: "23%" }} />
+                    <img src={...} alt="pic-logo" style={{ width: "23%" }} />
                     <span>Linkedin Corporation ©</span>
                     <span className="d-flex justify-content-center">
                       <i>2023</i>
@@ -398,7 +391,7 @@ const MyNetwork = () => {
                             </Card.Body>
                           </Card>
                         </Col>
-                      )
+                      );
                     })
                   )}
                 </Row>
@@ -408,13 +401,7 @@ const MyNetwork = () => {
         </Col>
       </Row>
     </Container>
-  )
-}
-=======
-const MyNetwork = () => {}
->>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
-=======
-const MyNetwork = () => {}
->>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
+  );
+};
 
-export default MyNetwork
+export default MyNetwork;

@@ -133,13 +133,6 @@ const Profile = () => {
             <div className="proGrey proLight proGreyHBlue mt-2">{myProfile.email}</div>
           </Link>
           <div className="mt-2">
-=======
-<<<<<<< HEAD
-    <Row>
-      <Col xs={12} md={9}>
-        <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
-          <div className="proImgBarSetting">
->>>>>>> parent of 7376e07 (Primo revert - fix)
             <Link className="link-fix">
               <span className="proGrey proLight proGreyHBlue">{myProfile.area}</span>
             </Link>
@@ -147,8 +140,6 @@ const Profile = () => {
               <span className="proBlue">Contact info</span>
             </Link>
           </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
           <AddObj idAdd={myProfile?._id} img={myProfile?.image} />
           <div className="mt-5 mx-4">
             <div className="matita position-absolute" onClick={handleShow}>
@@ -286,9 +277,7 @@ const Profile = () => {
                   <p style={{ fontSize: "14px" }}> Aggiungi o modifica il tuo profilo URL, indirizzo email e altro</p>
                   <p className="text-primary fw-bold mt-4 mb-5">Modifica le informazioni di contatto </p>
                   <h5> Sito Web</h5>
-=======
-=======
->>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
+
           <Link className="link-fix">
             <div className="proBlue mt-2 mb-3">{Math.floor(Math.random() * 100)} connection</div>
           </Link>
@@ -338,20 +327,15 @@ const Profile = () => {
                 <p style={{ fontSize: "14px", color: "#535454" }}>
                   <BsFillInfoSquareFill /> Può essere aggiunta solo usando la nostra app per dispositivi mobili
                 </p>
-                <Form.Group className="mb-3 text-secondary" style={{ fontSize: "14px" }}>
+                <Form className="mb-3 text-secondary" style={{ fontSize: "14px" }}>
                   <Form.Label className="mb-1">Inserisci pronomi personalizzati</Form.Label>
                   <Form.Control type="text" />
-<<<<<<< HEAD
->>>>>>> parent of 9d76391 (Merge branch 'linkedin' into develop)
-                  <Form.Text className="text-muted">
-                    Indica i pronomi di genere che vuoi che gli altri usino per riferirsi a te
-                  </Form.Text>
-<<<<<<< HEAD
+
                   <Form.Group className="mb-3 text-secondary" style={{ fontSize: "14px" }}>
                     <Form.Label className="mb-1">Link</Form.Label>
                     <Form.Control type="text" />
                   </Form.Group>
-                  <Form.Group></Form.Group>
+ 
                 </Form>
                 <h5> Change Profile Picture</h5>
                 <AddObjModale idAdd={myProfile?._id} img={myProfile?.image} />
