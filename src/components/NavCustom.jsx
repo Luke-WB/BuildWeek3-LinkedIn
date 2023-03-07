@@ -144,12 +144,10 @@ function OffCanvasExample({ name, ...props }, prop) {
                   <span className="d-none d-lg-block ">Home</span>
                 </Navbar>
               </Link>
-              <Link to={"/"} className="link-fix text-secondary px-1">
-                <Navbar className="icon-word">
-                  <FaUserFriends className="icon" />
-
-                  <span className="d-none d-lg-block"> My Network</span>
-                </Navbar>
+              <Link to={"/mynetwork"} className="link-fix">
+                <Nav.Link href="#action1" className="icon-word">
+                  <FaUserFriends className="icon" /> My Network
+                </Nav.Link>
               </Link>
               <Link to={"/"} className="link-fix text-secondary px-1">
                 <Navbar className="icon-word">

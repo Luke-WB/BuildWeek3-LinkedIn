@@ -1,54 +1,55 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProfile, reversed } from "../redux/actions";
-import { Container, Row, Col } from "react-bootstrap";
-import { MdPhotoSizeSelectActual } from "react-icons/md";
-import { BsFillPlayBtnFill, BsCalendarDay, BsHandThumbsUp } from "react-icons/bs";
-import { MdArticle } from "react-icons/md";
-import HomeProfile from "./HomeProfile";
-import { Link, useParams } from "react-router-dom";
-import Loading from "./Loading";
-import ModalePost from "./ModalePost";
-import ModalPut from "./ModalPut";
-import ModalePhoto from "./ModalePhoto";
-import { GiEarthAmerica } from "react-icons/gi";
-import { BsDot } from "react-icons/bs";
-import { AiOutlinePlus } from "react-icons/ai";
-import CollapseComment from "./CollapseComment";
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchProfile, reversed } from "../redux/actions"
+import { Container, Row, Col } from "react-bootstrap"
+import { MdPhotoSizeSelectActual } from "react-icons/md"
+import { BsFillPlayBtnFill, BsCalendarDay, BsHandThumbsUp } from "react-icons/bs"
+import { MdArticle } from "react-icons/md"
+import HomeProfile from "./HomeProfile"
+import { Link, useParams } from "react-router-dom"
+import Loading from "./Loading"
+import ModalePost from "./ModalePost"
+import ModalPut from "./ModalPut"
+import ModalePhoto from "./ModalePhoto"
+import { GiEarthAmerica } from "react-icons/gi"
+import { BsDot } from "react-icons/bs"
+import { AiOutlinePlus } from "react-icons/ai"
+import CollapseComment from "./CollapseComment"
+import People from "./People"
 
 const Home = () => {
-  const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`;
+  const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`
 
-  const [showPhoto, setShowPhoto] = useState(false);
-  const handleClosePhoto = () => setShowPhoto(false);
-  const handleShowPhoto = () => setShowPhoto(true);
+  const [showPhoto, setShowPhoto] = useState(false)
+  const handleClosePhoto = () => setShowPhoto(false)
+  const handleShowPhoto = () => setShowPhoto(true)
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
-  const token = useSelector((state) => state.profile.token);
-  const loading = useSelector((state) => state.profile.loading);
-  const post = useSelector((state) => state.profile.post);
-  const myProfile = useSelector((state) => state.profile.profile);
-  console.log("ooooooooooooooooooooooooooooooooo", loading);
+  const token = useSelector((state) => state.profile.token)
+  const loading = useSelector((state) => state.profile.loading)
+  const post = useSelector((state) => state.profile.post)
+  const myProfile = useSelector((state) => state.profile.profile)
+  console.log("ooooooooooooooooooooooooooooooooo", loading)
 
   // profile fetch
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchProfile(userKey));
-  }, []);
+    dispatch(fetchProfile(userKey))
+  }, [])
 
   // post fetch
-  const [rendered, setRendered] = useState(false);
+  const [rendered, setRendered] = useState(false)
   function check() {
-    setRendered((prevState) => !prevState);
-    console.log(check);
+    setRendered((prevState) => !prevState)
+    console.log(check)
   }
   useEffect(() => {
-    dispatch(reversed(userKey));
-    console.log(reversed);
-  }, [rendered]);
+    dispatch(reversed(userKey))
+    console.log(reversed)
+  }, [rendered])
 
   return (
     <>
@@ -57,10 +58,10 @@ const Home = () => {
       ) : (
         <Container>
           <Row className="d-flex flex-column flex-md-row">
-            <Col xs={12} lg={4}>
+            <Col xs={12} lg={3}>
               <HomeProfile myProfile={myProfile} />
             </Col>
-            <Col xs={12} lg={8}>
+            <Col xs={12} lg={6}>
               <div className="bg-light rounded-3 position-relative proCard my-4 me-0 p3-0">
                 <div className="d-flex align-items-center">
                   <div className="d-inline-block">
@@ -116,7 +117,7 @@ const Home = () => {
               </div>
               {post &&
                 post.slice(0, 10).map((singPost, i) => {
-                  console.log("poste", singPost);
+                  console.log("poste", singPost)
                   return (
                     <>
                       <div
@@ -185,14 +186,17 @@ const Home = () => {
                         )}
                       </div>
                     </>
-                  );
+                  )
                 })}
+            </Col>
+            <Col xs={12} md={3}>
+              <People />
             </Col>
           </Row>
         </Container>
       )}
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
