@@ -82,21 +82,21 @@ const Profile = () => {
               />
             </Link>
           </div>
-          <AddObj idAdd={myProfile._id} img={myProfile.image} />
+          <AddObj idAdd={myProfile?._id} img={myProfile?.image} />
           <div className="mt-5 mx-4">
             <div className="matita position-absolute" onClick={handleShow}>
               <BiPencil />
             </div>
             <h2 className="mt-2 mb-0">
-              {myProfile.name} {myProfile.surname}
+              {myProfile?.name} {myProfile?.surname}
             </h2>
-            <div className="proBlack proMedium proLight">{myProfile.title}</div>
+            <div className="proBlack proMedium proLight">{myProfile?.title}</div>
             <Link className="link-fix">
-              <div className="proGrey proLight proGreyHBlue mt-2">{myProfile.email}</div>
+              <div className="proGrey proLight proGreyHBlue mt-2">{myProfile?.email}</div>
             </Link>
             <div className="mt-2">
               <Link className="link-fix">
-                <span className="proGrey proLight proGreyHBlue">{myProfile.area}</span>
+                <span className="proGrey proLight proGreyHBlue">{myProfile?.area}</span>
               </Link>
               <Link className="link-fix">
                 <span className="proBlue">Contact info</span>
@@ -130,7 +130,7 @@ const Profile = () => {
                     <Form.Label className="mb-1">Nome*</Form.Label>
                     <Form.Control
                       type="text"
-                      defaultValue={myProfile.name}
+                      defaultValue={myProfile?.name}
                       onChange={(e) => (obj.name = e.target.value)}
                     />
                   </Form.Group>
@@ -138,7 +138,7 @@ const Profile = () => {
                     <Form.Label className="mb-1">Cognome*</Form.Label>
                     <Form.Control
                       type="text"
-                      defaultValue={myProfile.surname}
+                      defaultValue={myProfile?.surname}
                       onChange={(e) => (obj.surname = e.target.value)}
                     />
                   </Form.Group>
@@ -167,7 +167,7 @@ const Profile = () => {
                     <Form.Label className="mb-1">Posizione lavorativa*</Form.Label>
                     <Form.Control
                       type="text"
-                      defaultValue={myProfile.title}
+                      defaultValue={myProfile?.title}
                       onChange={(e) => (obj.title = e.target.value)}
                     />
                   </Form.Group>
@@ -179,7 +179,7 @@ const Profile = () => {
                     <Form.Label className="mb-1">Settore*</Form.Label>
                     <Form.Control
                       type="text"
-                      defaultValue={myProfile.area}
+                      defaultValue={myProfile?.area}
                       onChange={(e) => (obj.area = e.target.value)}
                     />
                     <p> Scopri di più sulle opzioni relative al settore</p>
@@ -189,7 +189,7 @@ const Profile = () => {
                     <Form.Label className="mb-1">Formazione*</Form.Label>
                     <Form.Control
                       type="text"
-                      defaultValue={myProfile.bio}
+                      defaultValue={myProfile?.bio}
                       onChange={(e) => (obj.bio = e.target.value)}
                     />
                   </Form.Group>
@@ -202,7 +202,7 @@ const Profile = () => {
                     <Form.Label className="mb-1">Paese/Area geografica*</Form.Label>
                     <Form.Control
                       type="text"
-                      defaultValue={myProfile.area}
+                      defaultValue={myProfile?.area}
                       onChange={(e) => (obj.area = e.target.value)}
                     />
                   </Form.Group>
@@ -210,7 +210,7 @@ const Profile = () => {
                     <Form.Label className="mb-1">Città</Form.Label>
                     <Form.Control
                       type="text"
-                      defaultValue={myProfile.area}
+                      defaultValue={myProfile?.area}
                       onChange={(e) => (obj.area = e.target.value)}
                     />
                   </Form.Group>
@@ -228,7 +228,7 @@ const Profile = () => {
                   <Form.Group></Form.Group>
                 </Form>
                 <h5> Change Profile Picture</h5>
-                <AddObjModale idAdd={myProfile._id} img={myProfile.image} />
+                <AddObjModale idAdd={myProfile?._id} img={myProfile?.image} />
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="primary" className="rounded-5" onClick={handleClose}>
@@ -289,7 +289,7 @@ const Profile = () => {
         <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
           <div className="my-4 mx-4">
             <h2 className="my-0">About</h2>
-            <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
+            <div className="proBlack prosmall proLight mt-2">{myProfile?.bio}</div>
           </div>
         </div>
 
@@ -306,7 +306,7 @@ const Profile = () => {
                 post.slice(0, 50).map((singPost, i) => {
                   return (
                     <>
-                      {singPost.user._id === `${myProfile._id}` ? (
+                      {singPost.user._id === `${myProfile?._id}` ? (
                         <>
                           <div
                             key={i}
@@ -354,7 +354,7 @@ const Profile = () => {
         <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
           <div className="my-4 mx-4">
             <h2 className="my-0">Interest</h2>
-            <div className="proBlack prosmall proLight mt-2">{myProfile.bio}</div>
+            <div className="proBlack prosmall proLight mt-2">{myProfile?.bio}</div>
           </div>
         </div>
         <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">

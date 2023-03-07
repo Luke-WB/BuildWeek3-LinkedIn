@@ -352,11 +352,11 @@ function OffCanvasExample({ name, ...props }, prop) {
             {myProfile && (
               <p style={{ marginBottom: "5px" }}>
                 <strong>
-                  {myProfile.name} {myProfile.surname}
+                  {myProfile?.name} {myProfile?.surname}
                 </strong>
               </p>
             )}
-            {myProfile && <p style={{ marginBottom: "0px" }}>{myProfile.title}</p>}
+            {myProfile && <p style={{ marginBottom: "0px" }}>{myProfile?.title}</p>}
           </div>
         </div>
         <div>
