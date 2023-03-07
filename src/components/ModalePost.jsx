@@ -27,10 +27,10 @@ const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
   };
 
   const myProfile = useSelector((state) => state.profile.profile);
-  const [fd, setFd] = useState(new FormData()); //FormData e' una classe usata per raccogliere dati non stringa dai form
+  const [fd, setFd] = useState(new FormData());
 
   let enabled = objPost.text.length > 0;
-  //da fare in action
+
   async function postPost() {
     const urlToFetch = "https://striveschool-api.herokuapp.com/api/posts/";
     try {
@@ -48,11 +48,9 @@ const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
         if (fileSelected === true) {
           console.log("ID", addPost._id);
           let res = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${addPost._id}`, {
-            //qui l'id andra' sostituito con un id DINAMICO!!!!!
             method: "POST",
-            body: fd, //non serve JSON.stringify
+            body: fd,
             headers: {
-              //NON serve ContentType :)
               Authorization:
                 "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs",
             },
@@ -69,9 +67,8 @@ const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
   const handleFile = (ev) => {
     setFileSelected(true);
     setFd((prev) => {
-      //per cambiare i formData, bisogna "appendere" una nuova coppia chiave/valore, usando il metodo .append()
-      prev.delete("post"); //ricordatevi di svuotare il FormData prima :)
-      prev.append("post", ev.target.files[0]); //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
+      prev.delete("post");
+      prev.append("post", ev.target.files[0]);
       return prev;
     });
   };
@@ -117,7 +114,12 @@ const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
             <div className="d-inline-block modalHGrey" onClick={handleShowPhoto}>
               <MdPhotoSizeSelectActual className="proIcon mx-2" />
             </div>
-            <ModalePhoto showPhoto={showPhoto} handleClosePhoto={handleClosePhoto} check={check} />
+            <ModalePhoto
+              showPhoto={showPhoto}
+              handleClosePhoto={handleClosePhoto}
+              check={check}
+              handleFile={handleFile}
+            />
             <div className="d-inline-block modalHGrey">
               <BsFillPlayBtnFill className="proIcon mx-2" />
             </div>
@@ -131,10 +133,8 @@ const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
             <div className="d-inline-block modalHGrey">
               <BiMessageRoundedDetail className="ms-3 me-1 messageTrans" />
             </div>
-
             <span className="proVerySmall proMiddle modalHoverText">Anyone</span>
           </div>
-          <input type="file" onChange={handleFile} />
           <div>
             <div className="d-inline-block modalHGrey">
               <HiOutlineClock className="proIcon mx-2" />
