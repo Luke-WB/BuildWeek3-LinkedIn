@@ -371,7 +371,7 @@ const MyNetwork = () => {
                   ) : (
                     peopleToRender.map((el) => {
                       return (
-                        <Col xs={4}>
+                        <Col xl={4} md={6} sm={12}>
                           <Card className="m-0 p-0 my-2 ombra" style={{ height: "255px" }}>
                             <div
                               className="chiusura rounded-circle"
