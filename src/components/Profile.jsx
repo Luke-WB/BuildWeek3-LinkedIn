@@ -11,9 +11,8 @@ import Experience from "./Experience";
 import ModalePut from "./ModalPut";
 import AddObj from "./AddObj";
 
-
 const Profile = () => {
-  const userKey =  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs` 
+  const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`;
   /* MODALE*/
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -24,7 +23,6 @@ const Profile = () => {
   const [modified, setModified] = useState({});
   const [fetched, setFetched] = useState(false);
   const post = useSelector((state) => state.profile.post);
-
 
   const obj = {
     name: "",
@@ -38,7 +36,7 @@ const Profile = () => {
   function check() {
     setFetched((prevState) => !prevState);
   }
-  
+
   async function ipipipip() {
     const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/`;
     try {
@@ -77,12 +75,11 @@ const Profile = () => {
               style={{ objectFit: "cover", objectPosition: "top" }}
               src={"https://www.media.inaf.it/wp-content/uploads/2020/03/meteorite-1280x720.jpg"}
               alt="immagine background"
+              onClick={handleShow}
             />
           </Link>
         </div>
-        <Link className="link-fix">
-          <img className="rounded-circle position-absolute proAbsolute" src={myProfile.image} alt="immagine profilo" />
-        </Link>
+        <AddObj idAdd={myProfile._id} img={myProfile.image} />
         <div className="mt-5 mx-4">
           <div className="matita position-absolute" onClick={handleShow}>
             <BiPencil />
@@ -99,7 +96,6 @@ const Profile = () => {
             <Link className="link-fix">
               <span className="proGrey proLight proGreyHBlue">{myProfile.area}</span>
             </Link>
-
             <Link className="link-fix">
               <span className="proBlue">Contact info</span>
             </Link>
@@ -225,11 +221,10 @@ const Profile = () => {
                   <Form.Label className="mb-1">Link</Form.Label>
                   <Form.Control type="text" />
                 </Form.Group>
-                <Form.Group>
-                </Form.Group>
+                <Form.Group></Form.Group>
               </Form>
               <h5> Change Profile Picture</h5>
-                <AddObj idAdd={myProfile._id}/>
+              <AddObj idAdd={myProfile._id} />
             </Modal.Body>
             <Modal.Footer>
               <Button variant="primary" className="rounded-5" onClick={handleClose}>
@@ -321,8 +316,11 @@ const Profile = () => {
                             </h3>
                             <div className="my-2 me-5 mx-4">
                               <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
-                              {singPost.image?  <img className="my-3 ms-4 me-3 rounded-2 w-100" src={singPost.image} alt="postedImg" /> : <></>}
-                             
+                              {singPost.image ? (
+                                <img className="my-3 ms-4 me-3 rounded-2 w-100" src={singPost.image} alt="postedImg" />
+                              ) : (
+                                <></>
+                              )}
                             </div>
                           </div>
                         </div>

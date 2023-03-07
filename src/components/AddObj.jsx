@@ -1,19 +1,19 @@
-//Component.jsx
-
 import { useState } from "react";
+import { Button, Form, Modal } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-//ChangeEvent e FormEvent sono i tipi degli eventi onChange e onSubmit
-export default function AddObj({ idAdd }) {
-  const [fd, setFd] = useState(new FormData()); //FormData e' una classe usata per raccogliere dati non stringa dai form
-  //E' formata da coppie chiave/valore => ["post", File], ["exp", File]
+export default function AddObj({ idAdd, img }) {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [fd, setFd] = useState(new FormData());
   const handleSubmit = async (ev) => {
     ev.preventDefault();
     let res = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${idAdd}/picture`, {
-      //qui l'id andra' sostituito con un id DINAMICO!!!!!
       method: "POST",
-      body: fd, //non serve JSON.stringify
+      body: fd,
       headers: {
-        //NON serve ContentType :)
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs",
       },
@@ -21,18 +21,61 @@ export default function AddObj({ idAdd }) {
   };
   const handleFile = (ev) => {
     setFd((prev) => {
-      //per cambiare i formData, bisogna "appendere" una nuova coppia chiave/valore, usando il metodo .append()
-      prev.delete("profile"); //ricordatevi di svuotare il FormData prima :)
-      prev.append("profile", ev.target.files[0]); //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
+      prev.delete("profile");
+      prev.append("profile", ev.target.files[0]);
       return prev;
     });
   };
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input type="file" onChange={handleFile} />
-        <button>SEND</button>
-      </form>
+      <Link className="link-fix">
+        <img
+          className="rounded-circle position-absolute proAbsolute"
+          src={img}
+          alt="immagine profilo"
+          onClick={handleShow}
+        />
+      </Link>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title className="modalColor modalTitle">Add your photo</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="d-flex flex-column">
+          <Form.Control
+            encType="multipart/form-data"
+            className="modalFile pt-2 pb-3"
+            placeholder="Select images to share"
+            as="input"
+            rows={1}
+            type="file"
+            accept=".jpg"
+            onChange={handleFile}
+          />
+          <Form.Group className="d-flex justify-content-between align-items-center modalIcon">
+            <div className="mt-3">
+              <Button
+                className="proOpenTo modalButtonGrey ms-2"
+                variant="outline-primary"
+                onClick={() => {
+                  handleClose();
+                }}
+              >
+                Cancel
+              </Button>
+              <Button
+                className="proOpenTo modalButtonGrey ms-2"
+                variant="primary"
+                onClick={(ev) => {
+                  handleSubmit(ev);
+                  handleClose();
+                }}
+              >
+                Done
+              </Button>
+            </div>
+          </Form.Group>
+        </Modal.Body>
+      </Modal>
     </>
   );
 }
