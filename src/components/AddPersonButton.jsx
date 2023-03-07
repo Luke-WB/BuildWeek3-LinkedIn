@@ -11,8 +11,8 @@ const AddPersonButton = ({ personInfo }) => {
   const swap = () => setToggle(true);
   useEffect(() => {
     dispatch(addFriend(personInfo));
-  }, []);
-  const consologga = () => console.log("friendProfileList",friendProfileList);
+  }, [toggle]);
+  const consologga = () => console.log("friendProfileList", friendProfileList);
 
   return (
     <>
