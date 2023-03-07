@@ -19,7 +19,7 @@ const profileReducer = (state = initialState, action) => {
     case ADD_FRIEND:
       return {
         ...state,
-        friend: [...state.friend, action.payload]
+        friend: [...state.friend, action.payload],
       };
     case CARICA_FETCH:
       return {
