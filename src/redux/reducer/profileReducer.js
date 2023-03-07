@@ -1,5 +1,7 @@
-import { CARICA_FETCH, HOME_FETCH, IS_LOADING, REVERSE } from "../actions";
-import { SET_SHOW_EXP } from "../actions";
+import { CARICA_FETCH, HOME_FETCH, IS_LOADING, REVERSE } from "../actions"
+import { SET_SHOW_EXP } from "../actions"
+import { SWITCH_COLOR } from "../actions"
+import { ADD_FRIEND } from "../actions"
 
 const initialState = {
   profile: {},
@@ -8,33 +10,45 @@ const initialState = {
   showExp: false,
   post: [],
   loading: true,
-};
+  likeMe: false,
+  friend: [],
+}
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
+    case ADD_FRIEND:
+      return {
+        ...state,
+        friend: [...state.friend, action.payload],
+      }
     case CARICA_FETCH:
       return {
         ...state,
         profile: action.payload,
-      };
+      }
     case SET_SHOW_EXP:
       return {
         ...state,
         showExp: action.payload,
-      };
+      }
     case HOME_FETCH:
       return {
         ...state,
         post: action.payload,
-      };
+      }
     case IS_LOADING:
       return {
         ...state,
-        IS_LOADING: false,
-      };
+        loading: false,
+      }
+    case SWITCH_COLOR:
+      return {
+        ...state,
+        likeMe: !action.payload,
+      }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default profileReducer;
+export default profileReducer

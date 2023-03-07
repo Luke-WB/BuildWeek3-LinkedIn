@@ -1,3 +1,7 @@
+// font setting section
+
+@import "fontSetting";
+
 // Modal section
 @import "modal";
 
@@ -8,20 +12,12 @@
 
 @import "button";
 
-// font setting profile component
-
-@import "fontSetting";
+// myNetwork section
 
 @import "myNetwork";
 
-// font import
-
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-
 body {
   background-color: #f3f2ef;
-  font-family: Arial, Helvetica, sans-serif;
-  font-family: "Roboto";
 }
 
 .link-fix {
@@ -72,29 +68,6 @@ body {
 
 .greyHover:hover {
   background-color: #ebebeb;
-}
-
-.likeHover {
-  background-color: #59a2ed;
-  padding: 5px;
-  border-radius: 50%;
-  color: white;
-}
-
-.likeHover:hover {
-  background-color: #59a2ed;
-  text-decoration: underline;
-  padding: 5px;
-  border-radius: 50%;
-}
-
-.likeActive {
-  background: #59a2ed !important;
-  color: white !important;
-}
-
-.reverseChar {
-  transform: rotateY(180deg);
 }
 
 .matita {
@@ -185,8 +158,4 @@ body {
   position: absolute;
   top: 23px;
   left: 4%;
-}
-
-.people:active {
-  display: none;
 }

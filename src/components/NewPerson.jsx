@@ -6,6 +6,8 @@ import { HiUsers } from "react-icons/hi"
 import { AiFillEye } from "react-icons/ai"
 import { BiSearch } from "react-icons/bi"
 import { Button, Form } from "react-bootstrap"
+import Experience from "./Experience"
+import NewPersonExperience from "./NewPersonExperience"
 
 export default function NewPerson() {
   const params = useParams()
@@ -149,7 +151,7 @@ export default function NewPerson() {
                               <div className="my-2 me-5 mx-4">
                                 <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
                               </div>
-                              <img className="my-3 mx-4 rounded-2" src={singPost.image} alt="imgPerson" />
+                              {singPost.image?  <img className="my-3 ms-4 me-3 rounded-2 w-100" src={singPost.image} alt="postedImg" /> : <></>}
                             </div>
                             <div className="proSmall proLight mx-4">edited: {singPost.updatedAt.slice(0, 10)}</div>
                           </div>
@@ -171,10 +173,9 @@ export default function NewPerson() {
           <div className="proBlack prosmall proLight mt-2">{selProfile.bio}</div>
         </div>
       </div>
-      <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
+      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
-          <h2 className="my-0">Education</h2>
-          <div className="proBlack prosmall proLight mt-2">{selProfile.bio}</div>
+          <NewPersonExperience myProfile={selProfile} />
         </div>
       </div>
     </>

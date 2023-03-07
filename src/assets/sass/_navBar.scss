@@ -1,8 +1,10 @@
 .container {
   .icon-word {
     display: flex;
-
+    flex-direction: column;
     align-items: center;
+    margin-left: 3px;
+    margin-right: 3px;
   }
   .icon {
     font-size: 30px;
@@ -20,7 +22,7 @@
 }
 a#navbarScrollingDropdown {
   display: flex;
-  flex-direction: column;
+
   align-items: center;
 }
 
@@ -40,7 +42,8 @@ a#navbarScrollingDropdown {
   font-size: 12px;
 }
 
-/*SEARCHBAR IN CUSTOMNAV*/
+/* SEARCHBAR IN CUSTOMNAV */
+
 .form-control.searchFormNav:focus {
   border-color: #eef3f8;
   box-shadow: none;
@@ -56,6 +59,6 @@ a#navbarScrollingDropdown {
   border: 2px solid black;
 }
 
-.dropdown-toggle:after {
-  margin-top: 35px;
+.nav-link {
+  padding: 0;
 }

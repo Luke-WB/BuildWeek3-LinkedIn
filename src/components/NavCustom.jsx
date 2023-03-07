@@ -9,9 +9,12 @@ import { RiSuitcaseFill, RiAdvertisementLine, RiMessage3Line } from "react-icons
 import { MdGroups } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
 import { AiOutlinePlus } from "react-icons/ai";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import "../assets/sass/_navBar.scss";
 
 function OffCanvasExample({ name, ...props }, prop) {
+  const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`;
+
   const myProfile = useSelector((state) => state.profile.profile);
 
   const [show, setShow] = useState(false);
@@ -22,20 +25,25 @@ function OffCanvasExample({ name, ...props }, prop) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    window.removeEventListener("scroll", listenToScroll);
-    return () => window.addEventListener("scroll", listenToScroll);
+    window.addEventListener("scroll", (listenToScroll) => {
+      console.log("scroll");
+    });
+    let listenToScroll = 0;
+
+    listenToScroll = () => {
+      if (windowScroll > heightToShowDiv) {
+        isVisible && setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    //window.removeEventListener("scroll", listenToScroll);
+    //return () => window.addEventListener("scroll", listenToScroll);
   }, []);
 
-  const listenToScroll = () => {
-    let heightToShowDiv = 10;
-    const windowScroll = document.body.scrollTop || document.documentElement.scrollTop;
-
-    if (windowScroll > heightToShowDiv) {
-      isVisible && setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
-  };
+  let heightToShowDiv = 40;
+  const windowScroll = document.body.scrollTop || document.documentElement.scrollTop;
 
   const [peopleFetched, setPeopleFetched] = useState([]);
   const [word, setWord] = useState("");
@@ -49,7 +57,7 @@ function OffCanvasExample({ name, ...props }, prop) {
       try {
         const response = await fetch(profili_utente, {
           headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjN2Y3MWYxOTNlNjAwMTM4MDdmNjAiLCJpYXQiOjE2Nzc0OTIwODEsImV4cCI6MTY3ODcwMTY4MX0.VsSZ2d0tCDoaQSZpm1CGnM4ctkdFFFZhAu36PvkG-hU`,
+            Authorization: userKey,
           },
         });
         if (response.ok) {
@@ -79,30 +87,33 @@ function OffCanvasExample({ name, ...props }, prop) {
   const searchName = async () => {
     navigate(`user/${nameSearch.id}`);
   };
-
+  const location = useLocation();
   return (
     <>
       <Navbar
         bg="white"
         expand="lg"
-        className="sticky-top mb "
+        className="sticky-top mb"
         style={{ height: "70px", display: "flex", alignItems: "center" }}
       >
-        <Container className="container d-flex justify-content-between align-items-center" style={{ padding: "2px" }}>
-          <Navbar.Brand href="#home" className="m-0">
-            <img
-              src={logo}
-              width="35"
-              height="35"
-              className="d-inline-block align-top me-0"
-              alt="React Bootstrap logo"
-            />
-          </Navbar.Brand>
+        <Container className="container d-flex justify-content-between align-items-center">
+          <Link to={"/"}>
+            <Navbar.Brand href="#home" className="m-0">
+              <img
+                src={logo}
+                width="35"
+                height="35"
+                className="d-inline-block align-top me-0"
+                alt="React Bootstrap logo"
+              />
+            </Navbar.Brand>
+          </Link>
+
           <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll" className="bg-white">
-            <div className="d-flex align-items-center">
+          <Navbar.Collapse id="navbarScroll" className="bg-white justify-content-end">
+            <div className="d-flex align-items-center me-auto mt-4 mt-lg-0 ">
               <FaSearch className="position-relative" style={{ right: "-31px", top: "1px", color: "#4a4a4a" }} />
-              <Form className="d-flex" onSubmit={() => searchName()}>
+              <Form className="d-flex " onSubmit={() => searchName()}>
                 <Form.Control
                   type="search"
                   placeholder="Search"
@@ -121,83 +132,88 @@ function OffCanvasExample({ name, ...props }, prop) {
               </Form>
             </div>
 
-            <Nav className=" my-2 my-lg-0 align-items-start  ms-5 ms-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
-              <Link to={"/"} className="link-fix text-dark">
-                <Navbar className="icon-word">
+            <Nav className=" my-2 my-lg-0 align-items-start ms-5 ms-lg-0 " style={{ maxHeight: "100px" }} navbarScroll>
+              <Link className={`px-2 nav-link ${location.pathname === "/" ? "active" : ""}`} to="/">
+                <Navbar className="icon-word ">
                   <FaHome className="icon" />
-                  <span className="d-none d-lg-block">Home</span>
+                  <span className="d-none d-lg-block ">Home</span>
                 </Navbar>
               </Link>
-              <Link to={"/"} className="link-fix text-dark">
+              <Link to={"/mynetwork"} className="link-fix text-secondary px-1">
                 <Navbar className="icon-word">
-                  <FaUserFriends className="icon" /> <span className="d-none d-lg-block">My Network</span>
+                  <FaUserFriends className="icon" />
+
+                  <span className="d-none d-lg-block"> My Network</span>
                 </Navbar>
               </Link>
-              <Link to={"/"} className="link-fix text-dark">
+              <Link to={"/"} className="link-fix text-secondary px-1">
                 <Navbar className="icon-word">
                   <BsBriefcaseFill className="icon" />
                   <span className="d-none d-lg-block"> Jobs</span>
                 </Navbar>
               </Link>
-              <Link to={"/"} className="link-fix text-dark">
+              <Link to={"/"} className="link-fix text-secondary px-1">
                 <Navbar className="icon-word">
                   <RiMessage3Line className="icon" />
                   <span className="d-none d-lg-block">Messaging</span>
                 </Navbar>
               </Link>
-              <Link to={"/"} className="link-fix text-dark">
+              <Link to={"/"} className="link-fix text-secondary px-1">
                 <Navbar className="icon-word">
                   <FaBell className="icon" />
                   <span className="d-none d-lg-block">Notifications </span>
                 </Navbar>
               </Link>
 
-              <NavDropdown
-                title={
-                  <div className="icon-word ">
-                    <img src={myProfile.image} className="rounded-circle" alt="pic-user" style={{ width: "29px" }} />
-                    <span className="d-none d-lg-block">Me </span>
+              {myProfile && (
+                <NavDropdown
+                  title={
+                    <div className="icon-word ">
+                      <img src={myProfile?.image} className="rounded-circle" alt="pic-user" style={{ width: "29px" }} />
+                      <span className="d-none d-lg-block">Me </span>
+                    </div>
+                  }
+                  id="navbarScrollingDropdown"
+                  style={{ borderRight: "1px solid lightgray", paddingRight: "15px", paddingTop: "0.5rem" }}
+                  className="icon-word "
+                >
+                  <div className="text-center d-flex justify-content-center">
+                    <Button variant="green w-100 py-0" id="bottoncino">
+                      <Link to={"/user/me"} className="link-fix">
+                        View Profile
+                      </Link>
+                    </Button>
                   </div>
-                }
-                id="navbarScrollingDropdown"
-                style={{ borderRight: "1px solid lightgray", paddingRight: "15px" }}
-                className="icon-word "
-              >
-                <div className="text-center d-flex justify-content-center">
-                  <Button variant="green w-100 py-0" id="bottoncino">
-                    <Link to={"/user/me"} className="link-fix">
-                      View Profile
-                    </Link>
-                  </Button>
-                </div>
 
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action3">
-                  <strong>Account</strong>
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action3">Try Premium for free</NavDropdown.Item>
-                <NavDropdown.Item href="#action3">Settings & Privacy</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">Help</NavDropdown.Item>
-                <NavDropdown.Item href="#action3">Language</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">
-                  <strong>Manage</strong>
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action5">Posts & Activity</NavDropdown.Item>
-                <NavDropdown.Item href="#action5">Job Posting Account</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5"> Sign Out</NavDropdown.Item>
-              </NavDropdown>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action3">
+                    <strong>Account</strong>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action3">Try Premium for free</NavDropdown.Item>
+                  <NavDropdown.Item href="#action3">Settings & Privacy</NavDropdown.Item>
+                  <NavDropdown.Item href="#action4">Help</NavDropdown.Item>
+                  <NavDropdown.Item href="#action3">Language</NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action5">
+                    <strong>Manage</strong>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action5">Posts & Activity</NavDropdown.Item>
+                  <NavDropdown.Item href="#action5">Job Posting Account</NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action5"> Sign Out</NavDropdown.Item>
+                </NavDropdown>
+              )}
 
               <NavDropdown
                 title={
-                  <div className="icon-word">
+                  <div className="icon-word" s>
                     <BsGrid3X3GapFill className="icon" />
                     <span className="d-none d-lg-block"> Work </span>
                   </div>
                 }
                 id="navbarScrollingDropdown"
                 className="icon-word "
+                style={{ paddingTop: "0.5rem" }}
                 onClick={handleShow}
               />
               <Offcanvas show={show} onHide={handleClose} {...props}>
@@ -305,11 +321,11 @@ function OffCanvasExample({ name, ...props }, prop) {
         </Container>
       </Navbar>
 
-      {/*DIV CHE COMPARE ALLO SCROLL*/}
+      {/*DIV CHE COMPARE ALLO SCROLL */}
 
       <div
         id="scroolDiv"
-        className="shadow p-3 mb-5 bg-body rounded border-top d-flex justify-content-between  align-items-center"
+        className="shadow p-3 mb-5 bg-body rounded border-top d-flex justify-content-between align-items-center d-none d-md-flex"
       >
         <div style={{ height: "60px", display: "flex", alignItems: "center" }}>
           <div style={{ marginLeft: "7%" }}>
@@ -331,12 +347,14 @@ function OffCanvasExample({ name, ...props }, prop) {
               justifyContent: "center",
             }}
           >
-            <p style={{ marginBottom: "5px" }}>
-              <strong>
-                {myProfile.name} {myProfile.surname}
-              </strong>
-            </p>
-            <p style={{ marginBottom: "0px" }}>{myProfile.title}</p>
+            {myProfile && (
+              <p style={{ marginBottom: "5px" }}>
+                <strong>
+                  {myProfile?.name} {myProfile?.surname}
+                </strong>
+              </p>
+            )}
+            {myProfile && <p style={{ marginBottom: "0px" }}>{myProfile?.title}</p>}
           </div>
         </div>
         <div>

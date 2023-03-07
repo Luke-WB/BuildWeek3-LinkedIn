@@ -3,21 +3,28 @@ import { Col, Row } from "react-bootstrap";
 import SinglePerson from "./SinglePerson";
 import Spinner from "react-bootstrap/Spinner";
 import { BsChevronCompactDown, BsChevronCompactUp } from "react-icons/bs";
+import { useSelector } from "react-redux";
 
 export default function People() {
+
+  const userKey =  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs` 
+
+
   const [isTrue, setIsTrue] = useState(false);
   const [peopleFetched, setPeopleFetched] = useState([]);
   const [peopleToRender, setPeopleToRender] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/";
+  const friendProfileList = useSelector((state) => state.profile.friend)
+  console.log(friendProfileList)
 
   useEffect(() => {
     const fetchUser_Profile = async () => {
       try {
         const response = await fetch(profili_utente, {
           headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjN2Y3MWYxOTNlNjAwMTM4MDdmNjAiLCJpYXQiOjE2Nzc0OTIwODEsImV4cCI6MTY3ODcwMTY4MX0.VsSZ2d0tCDoaQSZpm1CGnM4ctkdFFFZhAu36PvkG-hU`,
+            Authorization: userKey,
           },
         });
         if (response.ok) {
@@ -56,7 +63,7 @@ export default function People() {
         {loading ? (
           <Spinner animation="border" variant="primary" className="m-auto my-5" />
         ) : (
-          peopleToRender.map((el, i) => <SinglePerson personInfo={el} key={i} />)
+          peopleToRender.map((el, i) => <SinglePerson personInfo={el} keyuser={i} />)
         )}
       </Col>
       <Row>

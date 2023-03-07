@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { HiOutlineClock, HiDocumentText } from "react-icons/hi";
@@ -7,11 +7,19 @@ import { BsFillPlayBtnFill, BsCaretDownFill, BsThreeDots } from "react-icons/bs"
 import { VscSmiley } from "react-icons/vsc";
 import { BiMessageRoundedDetail } from "react-icons/bi";
 import { useSelector } from "react-redux";
+import ModalePhoto from "./ModalePhoto";
 
 const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
+  const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`;
+
   const addPost = {
     text: "",
   };
+
+  const [showPhoto, setShowPhoto] = useState(false);
+  const handleClosePhoto = () => setShowPhoto(false);
+  const handleShowPhoto = () => setShowPhoto(true);
+  const [fileSelected, setFileSelected] = useState(false);
 
   const [objPost, setObjPost] = useState(addPost);
   const handleChange = (field, value) => {
@@ -19,10 +27,9 @@ const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
   };
 
   const myProfile = useSelector((state) => state.profile.profile);
+  const [fd, setFd] = useState(new FormData());
 
   let enabled = objPost.text.length > 0;
-
-  const [newPost, setPost] = useState([]);
 
   async function postPost() {
     const urlToFetch = "https://striveschool-api.herokuapp.com/api/posts/";
@@ -30,7 +37,7 @@ const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
       const res = await fetch(urlToFetch, {
         method: "POST",
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+          Authorization: userKey,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(objPost),
@@ -38,14 +45,33 @@ const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
       if (res.ok) {
         const addPost = await res.json();
         console.log("testPOST", addPost);
-        setPost(addPost);
-      } else {
-        console.log("error");
+        if (fileSelected === true) {
+          console.log("ID", addPost._id);
+          let res = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${addPost._id}`, {
+            method: "POST",
+            body: fd,
+            headers: {
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs",
+            },
+          });
+        } else {
+          console.log("error");
+        }
       }
     } catch (error) {
-      alert(error);
+      alert("img", error);
     }
   }
+
+  const handleFile = (ev) => {
+    setFileSelected(true);
+    setFd((prev) => {
+      prev.delete("post");
+      prev.append("post", ev.target.files[0]);
+      return prev;
+    });
+  };
 
   return (
     <Modal show={show} onHide={handleClose}>
@@ -58,14 +84,14 @@ const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
             <img
               className="my-3 ms-4 me-3 rounded-circle"
               style={{ height: "55px" }}
-              src={myProfile.image}
+              src={myProfile?.image}
               alt="portrait"
             />
           </div>
           <div>
             <div className="proNormal">
-              <span className="me-2">{myProfile.name}</span>
-              <span>{myProfile.surname}</span>
+              <span className="me-2">{myProfile?.name}</span>
+              <span>{myProfile?.surname}</span>
             </div>
             <Button className="proMore mt-1" variant="outline-primary">
               Anyone <BsCaretDownFill />
@@ -85,9 +111,15 @@ const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
         </div>
         <Form.Group className="d-flex justify-content-between align-items-center modalIcon">
           <div>
-            <div className="d-inline-block modalHGrey">
+            <div className="d-inline-block modalHGrey" onClick={handleShowPhoto}>
               <MdPhotoSizeSelectActual className="proIcon mx-2" />
             </div>
+            <ModalePhoto
+              showPhoto={showPhoto}
+              handleClosePhoto={handleClosePhoto}
+              check={check}
+              handleFile={handleFile}
+            />
             <div className="d-inline-block modalHGrey">
               <BsFillPlayBtnFill className="proIcon mx-2" />
             </div>
@@ -101,7 +133,6 @@ const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
             <div className="d-inline-block modalHGrey">
               <BiMessageRoundedDetail className="ms-3 me-1 messageTrans" />
             </div>
-
             <span className="proVerySmall proMiddle modalHoverText">Anyone</span>
           </div>
           <div>
@@ -118,7 +149,7 @@ const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
                 check();
               }}
             >
-              Aggiungi
+              Send
             </Button>
             {/* {ternaryCheck !== true ? (
               <>

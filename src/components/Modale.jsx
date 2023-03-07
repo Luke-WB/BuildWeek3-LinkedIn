@@ -1,57 +1,60 @@
-import { useState } from "react"
-import { Button, Form } from "react-bootstrap"
-import Modal from "react-bootstrap/Modal"
-import { BiPencil } from "react-icons/bi"
-import { Link } from "react-router-dom"
+import { useState } from "react";
+import { Button, Form } from "react-bootstrap";
+import Modal from "react-bootstrap/Modal";
+import { BiPencil } from "react-icons/bi";
+import { Link } from "react-router-dom";
+import AddObjTest from "./AddObjTest";
 
 function Modale(props) {
-  const [modalShow, setModalShow] = useState(false)
-  const [isDeleted, setISDeleted] = useState(true)
-  const [newState, setNewState] = useState({})
+  const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`;
+
+  const [modalShow, setModalShow] = useState(false);
+  const [isDeleted, setISDeleted] = useState(true);
+  const [newState, setNewState] = useState({});
 
   const handleChange = (field, value) => {
-    setNewState((prev) => ({ ...prev, [field]: value }))
-  }
+    setNewState((prev) => ({ ...prev, [field]: value }));
+  };
 
   async function deleteExperience() {
-    const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences/${props.id}`
+    const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/${props.idUser}/experiences/${props.id}`;
     try {
       await fetch(
         urlToFetch,
         {
           method: "DELETE",
           headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+            Authorization: userKey,
           },
         },
         setISDeleted(false),
         console.log("DELETE", isDeleted)
-      )
+      );
     } catch (error) {
-      console.log("delete", error)
+      console.log("delete", error);
     }
   }
 
   async function putExperience() {
-    const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/63fc6fa3f193e60013807f59/experiences/${props.id}`
+    const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/${props.idUser}/experiences/${props.id}`;
     try {
-      console.log(newState)
+      console.log(newState);
       const res = await fetch(urlToFetch, {
         method: "PUT",
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+          Authorization: userKey,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(newState),
-      })
+      });
       if (res.ok) {
-        let modifica = await res.json()
-        console.log("PUT", modifica)
+        let modifica = await res.json();
+        console.log("PUT", modifica);
       } else {
-        console.log("error")
+        console.log("error");
       }
     } catch (error) {
-      alert(error)
+      alert(error);
     }
   }
 
@@ -201,18 +204,16 @@ function Modale(props) {
                 media file types supported
               </Link>
             </p>
-            <Button className="proModProfile" variant="outline-primary">
-              + Add media
-            </Button>
+            <AddObjTest idAdd={props.midUser} idExperience={props.id} />
           </div>
         </Modal.Body>
         <Modal.Footer className="d-flex justify-content-between">
           <Button
             onClick={() => {
-              deleteExperience()
-              props.render()
-              setModalShow(false)
-              props.checking()
+              deleteExperience();
+              props.render(props.idUser, userKey);
+              setModalShow(false);
+              props.checking();
             }}
             variant="outline-danger"
           >
@@ -221,10 +222,10 @@ function Modale(props) {
           <Button
             className="proOpenTo"
             onClick={() => {
-              putExperience()
-              setModalShow(false)
-              props.render()
-              props.checking()
+              putExperience();
+              setModalShow(false);
+              props.render(props.idUser, userKey);
+              props.checking();
             }}
           >
             Save
@@ -232,7 +233,7 @@ function Modale(props) {
         </Modal.Footer>
       </Modal>
     </>
-  )
+  );
 }
 
-export default Modale
+export default Modale;
