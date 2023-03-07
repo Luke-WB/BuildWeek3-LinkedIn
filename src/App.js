@@ -1,15 +1,15 @@
-import "bootstrap/dist/css/bootstrap.min.css"
-import { Container, Row, Col } from "react-bootstrap"
-import Profile from "./components/Profile"
-import "./sass/App.scss"
-import NavCustom from "./components/NavCustom"
-import FooterProfilePage from "./components/FooterProfilePage"
-import People from "./components/People"
-import TestFetch from "./components/TestFetch"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import NewPerson from "./components/NewPerson"
-import Home from "./components/Home"
-import MyNetwork from "./components/MyNetwork"
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container, Row, Col } from "react-bootstrap";
+import Profile from "./components/Profile";
+import "./assets/sass/App.scss";
+import NavCustom from "./components/NavCustom";
+import FooterProfilePage from "./components/FooterProfilePage";
+import People from "./components/People";
+import TestFetch from "./components/TestFetch";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import NewPerson from "./components/NewPerson";
+import Home from "./components/Home";
+import MyNetwork from "./components/MyNetwork";
 
 function App() {
   return (
@@ -32,7 +32,7 @@ function App() {
         </Container>
       </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
