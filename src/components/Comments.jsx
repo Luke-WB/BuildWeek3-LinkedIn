@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
+import { BsHandThumbsUp } from "react-icons/bs";
 import ModaleComment from "./ModaleComment";
 
 export default function Comments({ singlePostId }) {
@@ -23,12 +24,15 @@ export default function Comments({ singlePostId }) {
 
   const fetchComments = async () => {
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${singlePostId}`, {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
-        },
-      });
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/comments/${singlePostId}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
+          },
+        }
+      );
       if (response.ok) {
         const postComment = await response.json();
         setCommentArray(postComment.reverse());
@@ -40,15 +44,18 @@ export default function Comments({ singlePostId }) {
 
   const fetchPostComments = async () => {
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments`, {
-        method: "POST",
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(input),
-      });
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/comments`,
+        {
+          method: "POST",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(input),
+        }
+      );
       if (response.ok) {
       }
     } catch (error) {
@@ -63,7 +70,7 @@ export default function Comments({ singlePostId }) {
   return (
     <>
       <Form>
-        <Row className="align-items-center">
+        <Row className="align-items-center mx-3">
           <Col className="col-10">
             <Form.Control
               type="text"
@@ -91,15 +98,23 @@ export default function Comments({ singlePostId }) {
 
       {commentsArray.map((el, i) => (
         <>
-          <div key={i}>
+          <div
+            className="m-3 p-2"
+            style={{ backgroundColor: "#F2F2F2", borderRadius: "10px" }}
+            key={i}
+          >
             <div className="d-flex justify-content-between">
-              {el.author} Author
+              {el.author} Author #F2F2F2
               <div>
                 {el.createdAt}
                 <ModaleComment check={check} id={el._id} />
               </div>
             </div>
             <div>{el.comment}</div>
+            <div className="mb-1 mx-3 proGrey proSmall d-flex align-items-center">
+              <BsHandThumbsUp className="likeHover fs-4 me-2" />
+              {Math.ceil(Math.random() * 5)}
+            </div>
           </div>
         </>
       ))}

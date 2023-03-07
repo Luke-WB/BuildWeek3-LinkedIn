@@ -49,7 +49,7 @@ const ModaleComment = (props) => {
 
   return (
     <>
-      <BiPencil className="proGrey proIcon me-2" onClick={handleShow} />
+      <BiPencil className="proGrey proIcon mx-2" onClick={handleShow} />
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Modify your comment</Modal.Title>
