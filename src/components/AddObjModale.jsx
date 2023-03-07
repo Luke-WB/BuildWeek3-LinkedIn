@@ -28,14 +28,9 @@ export default function AddObj({ idAdd, img }) {
   };
   return (
     <>
-      <Link className="link-fix">
-        <img
-          className="rounded-circle position-absolute proAbsolute"
-          src={img}
-          alt="immagine profilo"
-          onClick={handleShow}
-        />
-      </Link>
+      <Button className="proModProfile" variant="outline-primary" onClick={handleShow}>
+        + Add media
+      </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

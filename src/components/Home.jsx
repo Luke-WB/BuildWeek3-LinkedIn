@@ -6,7 +6,7 @@ import { MdPhotoSizeSelectActual } from "react-icons/md";
 import { BsFillPlayBtnFill, BsCalendarDay, BsHandThumbsUp } from "react-icons/bs";
 import { MdArticle } from "react-icons/md";
 import HomeProfile from "./HomeProfile";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Loading from "./Loading";
 import ModalePost from "./ModalePost";
 import ModalPut from "./ModalPut";
@@ -31,7 +31,6 @@ const Home = () => {
   const loading = useSelector((state) => state.profile.loading);
   const post = useSelector((state) => state.profile.post);
   const myProfile = useSelector((state) => state.profile.profile);
-  console.log("ooooooooooooooooooooooooooooooooo", loading);
 
   // profile fetch
   const dispatch = useDispatch();
@@ -43,11 +42,9 @@ const Home = () => {
   const [rendered, setRendered] = useState(false);
   function check() {
     setRendered((prevState) => !prevState);
-    console.log(check);
   }
   useEffect(() => {
     dispatch(reversed(userKey));
-    console.log(reversed);
   }, [rendered]);
 
   return (
@@ -116,7 +113,6 @@ const Home = () => {
               </div>
               {post &&
                 post.slice(0, 10).map((singPost, i) => {
-                  console.log("poste", singPost);
                   return (
                     <>
                       <div

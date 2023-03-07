@@ -6,7 +6,7 @@ import { MdOutlinePostAdd } from "react-icons/md";
 
 import Comments from "./Comments";
 
-function Example(props) {
+const CollapseComment = (props) => {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -24,7 +24,6 @@ function Example(props) {
           <BiMessageRoundedDetail className="fs-4 me-2" />
           Comment
         </div>
-
         <div className="greyHover rounded-2 me-2 px-4 py-3">
           <MdOutlinePostAdd className="fs-4 me-2" />
           Repost
@@ -41,6 +40,6 @@ function Example(props) {
       </Collapse>
     </>
   );
-}
+};
 
-export default Example;
+export default CollapseComment;
