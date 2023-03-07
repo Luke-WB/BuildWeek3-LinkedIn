@@ -103,15 +103,15 @@ export default function Comments({ singlePostId }) {
             style={{ backgroundColor: "#F2F2F2", borderRadius: "10px" }}
             key={i}
           >
-            <div className="d-flex justify-content-between">
-              {el.author} Author #F2F2F2
+            <div className="d-flex justify-content-between proNormal fw-bolder">
+            {el.author} 
               <div>
                 {el.createdAt}
                 <ModaleComment check={check} id={el._id} />
               </div>
             </div>
             <div>{el.comment}</div>
-            <div className="mb-1 mx-3 proGrey proSmall d-flex align-items-center">
+            <div className="mb-1 me-3 proGrey proSmall d-flex align-items-center">
               <BsHandThumbsUp className="likeHover fs-4 me-2" />
               {Math.ceil(Math.random() * 5)}
             </div>
