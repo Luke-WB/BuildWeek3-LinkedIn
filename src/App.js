@@ -19,7 +19,7 @@ function App() {
         <TestFetch />
         <Container>
           <Row className="d-flex flex-column flex-md-row">
-            <Col xs={12} lg={9}>
+            <Col xs={12} lg={12}>
               <Routes>
                 <Route path="/user/me" element={<Profile />} />
                 <Route path="user/:userID" element={<NewPerson />} />
@@ -27,14 +27,7 @@ function App() {
                 <Route path="/" element={<Home />} />
               </Routes>
             </Col>
-            <Col xs={12} lg={3} className="people">
-              <Routes>
-                <Route path="/" element={<People />} />
-                <Route path="/user/me" element={<People />} />
-              </Routes>
-            </Col>
           </Row>
-
           <FooterProfilePage />
         </Container>
       </BrowserRouter>
