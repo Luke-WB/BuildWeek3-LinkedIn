@@ -1,41 +1,42 @@
-import { useEffect, useState } from "react"
-import { Button } from "react-bootstrap"
-import { BsPersonPlusFill } from "react-icons/bs"
-import { useDispatch, useSelector } from "react-redux"
-import { addFriend } from "../redux/actions"
+import { Button } from "react-bootstrap";
+import { BsPersonPlusFill } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
+import { addFriend, removeFriend } from "../redux/actions";
 
-const AddPersonButton = ({ personInfo }) => {
-  const friendProfileList = useSelector((state) => state.profile.friend)
-  const dispatch = useDispatch()
-  const friend = useSelector((state) => state.profile.friend)
+const AddPersonButton = ({ personInfo, keyuser }) => {
+  const dispatch = useDispatch();
+  const friend = useSelector((state) => state.profile.friend);
   const consollogga = () => {
-    console.log("friend: ", friend)
-  }
-  let cssClass = "proMore mb-3 m-0 text-danger"
-  const [likeSwitch, setLikeSwitch] = useState(true)
-
-  for (let i = 0; i < friend.length; i++) {
-    if (personInfo._id.includes(friend[i])) {
-      cssClass = "proOpenTo"
-    } else {
-      cssClass = " mb-3 m-0 text-danger "
-    }
-  }
+    console.log("friend: ", friend);
+  };
 
   return (
     <>
-      <Button
-        onClick={() => {
-          dispatch(addFriend(personInfo._id))
-          consollogga()
-        }}
-        className={cssClass}
-        variant="outline"
-      >
-        <BsPersonPlusFill /> Connect
-      </Button>
+      {friend.includes(personInfo._id) ? (
+        <Button
+          onClick={() => {
+            dispatch(removeFriend(personInfo._id));
+            consollogga();
+          }}
+          className="text-success"
+          variant="outline"
+        >
+          <BsPersonPlusFill /> Connect
+        </Button>
+      ) : (
+        <Button
+          onClick={() => {
+            dispatch(addFriend(personInfo._id));
+            consollogga();
+          }}
+          className="text-danger"
+          variant="outline"
+        >
+          <BsPersonPlusFill /> Disconnect
+        </Button>
+      )}
     </>
-  )
-}
+  );
+};
 
-export default AddPersonButton
+export default AddPersonButton;
