@@ -3,7 +3,7 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import { BsHandThumbsUp } from "react-icons/bs";
 import ModaleComment from "./ModaleComment";
 
-export default function Comments({ singlePostId, updateCount}) {
+export default function Comments({ singlePostId }) {
   let body = {
     comment: "",
     rate: "3",
@@ -13,11 +13,6 @@ export default function Comments({ singlePostId, updateCount}) {
   const [commentsArray, setCommentArray] = useState([]);
   const [input, setInput] = useState(body);
   const [rendered, setRendered] = useState(false);
-  const [commentCounter, setCommentCounter] = useState(null)
-
-
-  updateCount(commentCounter) 
-
 
   const handleChange = (field, value) => {
     setInput((prev) => ({ ...prev, [field]: value }));
@@ -41,7 +36,6 @@ export default function Comments({ singlePostId, updateCount}) {
       if (response.ok) {
         const postComment = await response.json();
         setCommentArray(postComment.reverse());
-        setCommentCounter(postComment.length)
       }
     } catch (error) {
       alert("comment", error);
@@ -101,6 +95,7 @@ export default function Comments({ singlePostId, updateCount}) {
           </Col>
         </Row>
       </Form>
+
       {commentsArray.map((el, i) => (
         <>
           <div
