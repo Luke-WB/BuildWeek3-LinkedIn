@@ -5,7 +5,7 @@ import AddPersonButton from "./AddPersonButton";
 
 export default function SinglePerson({ personInfo, keyuser }) {
   return (
-    <Col style={{ borderBottom: "solid 0.5px rgba(176, 176, 176, 0.5)" }} className="mt-2 mb-0" key={keyuser}>
+    <Col style={{ borderBottom: "solid 0.5px rgba(176, 176, 176, 0.5)" }} className="mt-2 " key={keyuser} id="colonna">
       <div className="d-flex mt-3">
         <img
           src={personInfo.image}

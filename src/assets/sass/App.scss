@@ -31,6 +31,15 @@ body {
 .singolaPersona :last-child {
   border-bottom: none !important;
 }
+/* .buttonPeople:hover {
+  border: solid 1px aqua;
+} */
+.buttonPeople:hover span {
+  display: none;
+}
+.buttonPeople:hover:before {
+  content: "Unfollow";
+}
 
 .proCard {
   overflow: hidden;

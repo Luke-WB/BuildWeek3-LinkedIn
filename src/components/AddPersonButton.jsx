@@ -18,10 +18,13 @@ const AddPersonButton = ({ personInfo, keyuser }) => {
             dispatch(removeFriend(personInfo._id));
             consollogga();
           }}
-          className="text-success"
+          className="text-success buttonPeople"
           variant="outline"
         >
-          <BsPersonPlusFill /> Connect
+          <span>
+            <BsPersonPlusFill className="me-1" />
+            Following
+          </span>
         </Button>
       ) : (
         <Button
@@ -32,7 +35,7 @@ const AddPersonButton = ({ personInfo, keyuser }) => {
           className="text-danger"
           variant="outline"
         >
-          <BsPersonPlusFill /> Disconnect
+          <BsPersonPlusFill /> Follow
         </Button>
       )}
     </>
