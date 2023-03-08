@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { BsHandThumbsUp } from "react-icons/bs";
 import ModaleComment from "./ModaleComment";
+import { FaTelegramPlane } from "react-icons/fa";
+import SendButton from "./SendButton";
 
 export default function Comments({ singlePostId, updateCount }) {
   let body = {
@@ -28,12 +30,15 @@ export default function Comments({ singlePostId, updateCount }) {
 
   const fetchComments = async () => {
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${singlePostId}`, {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
-        },
-      });
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/comments/${singlePostId}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
+          },
+        }
+      );
       if (response.ok) {
         const postComment = await response.json();
         setCommentArray(postComment.reverse());
@@ -46,15 +51,18 @@ export default function Comments({ singlePostId, updateCount }) {
 
   const fetchPostComments = async () => {
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments`, {
-        method: "POST",
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(input),
-      });
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/comments`,
+        {
+          method: "POST",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(input),
+        }
+      );
       if (response.ok) {
       }
     } catch (error) {
@@ -79,7 +87,22 @@ export default function Comments({ singlePostId, updateCount }) {
             />
           </Col>
           <Col className="col-2">
-            <Button
+            <SendButton fetchPostComments={fetchPostComments} check={check}/>
+            {/* <div
+              className="greyHover rounded-2 px-2 py-3 proGreyDark d-flex"
+              type="submit"
+              onClick={(e) => {
+                e.preventDefault();
+                fetchPostComments();
+                check();
+              }}
+            >
+              <span style={{ color: "#59a2ed" }}>
+                <FaTelegramPlane />
+              </span>
+              Send
+            </div> */}
+            {/* <Button
               variant="primary"
               type="submit"
               onClick={(e) => {
@@ -89,15 +112,20 @@ export default function Comments({ singlePostId, updateCount }) {
               }}
             >
               Send
-              {/* AGGIUNGERE ICONA D'INVIO */}
-            </Button>
+              COPIA DI SICUREZZA
+
+            </Button> */}
           </Col>
         </Row>
       </Form>
 
       {commentsArray.map((el, i) => (
         <>
-          <div className="m-3 p-2" style={{ backgroundColor: "#F2F2F2", borderRadius: "10px" }} key={i}>
+          <div
+            className="m-3 p-2"
+            style={{ backgroundColor: "#F2F2F2", borderRadius: "10px" }}
+            key={i}
+          >
             <div className="d-flex justify-content-between proNormal fw-bolder">
               {el.author}
               <div>

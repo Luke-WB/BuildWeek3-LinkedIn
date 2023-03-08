@@ -18,12 +18,12 @@ const AddPersonButton = ({ personInfo, keyuser }) => {
             dispatch(removeFriend(personInfo._id));
             consollogga();
           }}
-          className="text-success buttonPeople"
-          variant="outline"
+          className="proOpenTo d-flex align-items-center"
+          variant="danger"
         >
+            <BsPersonPlusFill className="me-2" />
           <span>
-            <BsPersonPlusFill className="me-1" />
-            Following
+            Unfollow
           </span>
         </Button>
       ) : (
@@ -32,7 +32,7 @@ const AddPersonButton = ({ personInfo, keyuser }) => {
             dispatch(addFriend(personInfo._id));
             consollogga();
           }}
-          className="text-danger"
+          className=" proMore align-items-center"
           variant="outline"
         >
           <BsPersonPlusFill /> Follow
