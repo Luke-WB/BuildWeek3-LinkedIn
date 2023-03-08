@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Collapse } from "react-bootstrap";
+import { Badge, Collapse } from "react-bootstrap";
 import { BiMessageRoundedDetail } from "react-icons/bi";
 import { BsHandThumbsUp, BsSkipEndFill } from "react-icons/bs";
 import { MdOutlinePostAdd } from "react-icons/md";
@@ -8,6 +8,12 @@ import Comments from "./Comments";
 
 const CollapseComment = (props) => {
   const [open, setOpen] = useState(false);
+
+  const [counter, setCounter] = useState(null);
+  function updateCounter(counter) {
+    setCounter(counter);
+  }
+
   return (
     <>
       <div className="d-flex justify-content-evenly text-secondary">
@@ -22,7 +28,8 @@ const CollapseComment = (props) => {
           aria-expanded={open}
         >
           <BiMessageRoundedDetail className="fs-4 me-2" />
-          Comment
+          Comments
+          <Badge bg="danger ms-1">{counter}</Badge>
         </div>
         <div className="greyHover rounded-2 me-2 px-4 py-3">
           <MdOutlinePostAdd className="fs-4 me-2" />
@@ -35,7 +42,7 @@ const CollapseComment = (props) => {
       </div>
       <Collapse in={open}>
         <div id="example-collapse-text">
-          <Comments singlePostId={props.singlePostId} />
+          <Comments singlePostId={props.singlePostId} updateCount={updateCounter} />
         </div>
       </Collapse>
     </>
