@@ -25,7 +25,6 @@ import { addPrefeJobs, removePrefeJobs } from "../redux/actions";
 function JobPage() {
   const [open, setOpen] = useState(false);
   const prefe = useSelector((state) => state.profile.prefe);
-  const prefeJob = prefe.map((el) => el._id);
   const dispatch = useDispatch();
   return (
     <Row>
