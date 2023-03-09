@@ -112,7 +112,7 @@ function OffCanvasExample({ name, ...props }, prop) {
           <Navbar.Collapse id="navbarScroll" className="bg-white justify-content-end">
             <div className="d-flex align-items-center me-auto mt-4 mt-lg-0 ">
               <FaSearch className="position-relative" style={{ right: "-31px", top: "1px", color: "#4a4a4a" }} />
-              <Form className="d-flex ">
+              <Form className="d-flex" onSubmit={(ev) => ev.preventDefault()}>
                 <Form.Control
                   type="search"
                   placeholder="Search"
