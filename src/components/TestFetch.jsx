@@ -67,7 +67,9 @@
 //     //  }
 // }
 // ipipipip()
-import { useEffect, useState } from "react" //ChangeEvent e FormEvent sono i tipi degli eventi onChange e onSubmit
+import { useEffect, useState } from "react"; //ChangeEvent e FormEvent sono i tipi degli eventi onChange e onSubmit
+import { Card, Col, Row } from "react-bootstrap";
+import { BsFillBookmarkFill } from "react-icons/bs";
 // export default function Component() {
 //   const [fd, setFd] = useState(new FormData()) //FormData e' una classe usata per raccogliere dati non stringa dai form
 //   //E' formata da coppie chiave/valore => ["post", File], ["exp", File]
@@ -184,29 +186,82 @@ export default function POSPOSPSOPSOSOSP() {
   const example = {
     comment: "test comment",
     rate: "3",
-    elementId: "6405c9f102cacd00132f1a2e"
-  }
+    elementId: "6405c9f102cacd00132f1a2e",
+  };
   const fetchComments = async () => {
     try {
-        const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments`, {
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/comments`,
+        {
           method: "POST",
           headers: {
-            Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
-            'Content-Type': 'application/json',  
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(example),
-        })
-        if (response.ok) {
-            console.log("testComment", response); 
         }
-        
+      );
+      if (response.ok) {
+        console.log("testComment", response);
+      }
     } catch (error) {
-        alert("testComment", error)
+      alert("testComment", error);
     }
+  };
+
+  useEffect(() => {
+    fetchComments();
+  }, []);
 }
 
-useEffect(() => {
-fetchComments()
-}, [])
-
+export function JobPage() {
+  return (
+    <Row>
+      <Col xs={12} md={8}>
+        <Col xs={12} md={1}>
+          <Card>
+            <Card.Body>
+              <Card.Text>
+                <BsFillBookmarkFill />
+                <span className="proGreyDark ms-2">My jobs</span>
+              </Card.Text>
+              <Card.Text>
+                <BsFillBookmarkFill />
+                <span className="proGreyDark ms-2">Job alerts</span>
+              </Card.Text>
+              <Card.Text>
+                <BsFillBookmarkFill />
+                <span className="proGreyDark ms-2">Demonstrate skills</span>
+              </Card.Text>
+              <Card.Text>
+                <BsFillBookmarkFill />
+                <span className="proGreyDark ms-2">Interview prep</span>
+              </Card.Text>
+              <Card.Text>
+                <BsFillBookmarkFill />
+                <span className="proGreyDark ms-2">Resume builder</span>
+              </Card.Text>
+              <Card.Text>
+                <BsFillBookmarkFill />
+                <span className="proGreyDark ms-2">Job seeker guidance</span>
+              </Card.Text>
+              <Card.Text>
+                <BsFillBookmarkFill />
+                <span className="proGreyDark ms-2">Application setting</span>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col xs={12} md={1}>
+          <div style={{ background: "red", height: "100vh" }}></div>
+        </Col>
+      </Col>
+      <Col xs={12} md={3}>
+        <Card>
+          <Card.Body>This is some text within a card body.</Card.Body>
+        </Card>
+      </Col>
+    </Row>
+  );
 }

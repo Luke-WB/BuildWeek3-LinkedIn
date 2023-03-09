@@ -18,6 +18,8 @@ import AddObj from "./AddObj";
 import AddObjModale from "./AddObjModale";
 import People from "./People";
 import Banner from "./Banner";
+import SearchBjJoy from "./jobPage/SearchByJob";
+import { JobPage } from "./TestFetch";
 
 const Profile = () => {
   const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`;
@@ -471,6 +473,8 @@ const Profile = () => {
                 <Experience myProfile={myProfile} />
               </div>
             </div>
+            <SearchBjJoy />
+            <JobPage />
           </Col>
           <Col xs={12} lg={3}>
             <People />
