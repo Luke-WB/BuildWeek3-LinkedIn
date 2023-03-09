@@ -54,7 +54,7 @@ https://strive-benchmark.herokuapp.com/api/jobs?category=writing&limit=10 //FETC
               <div key={job._id}>
                 <div className="d-flex justify-content-between align-items-center m-0 p-0">
                   <div className="proBlack proNormal proLight mb-2 proBlue">{job.title}</div>
-                  <FiBookmark className="omino-icona" />
+                  <FiBookmark style={{ fontSize: "25px" }} />
                 </div>
                 <div className="proBlack proSmall proLight mb-2 proGrey proGreyHBlue">{job.category}</div>
                 <div className="proBlack proSmall proLight mb-2 proGrey proGreyHBlue">{job.company_name}</div>
