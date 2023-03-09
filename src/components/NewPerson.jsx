@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link, useParams } from "react-router-dom"
 import { fetchIdProfile } from "../redux/actions"
 import { HiUsers } from "react-icons/hi"
-import { AiFillEye } from "react-icons/ai"
+import { AiFillEye, AiOutlinePlus } from "react-icons/ai"
 import { BiSearch } from "react-icons/bi"
 import { Button, Col, Container, Form, Row } from "react-bootstrap"
 import Experience from "./Experience"
@@ -11,6 +11,9 @@ import NewPersonExperience from "./NewPersonExperience"
 import People from "./People"
 import AddPersonButton from "./AddPersonButton"
 import AddPersonButtonProfile from "./AddPersonButtonProfile"
+import CollapseComment from "./CollapseComment"
+import { BsDot, BsHandThumbsUp } from "react-icons/bs"
+import { GiEarthAmerica } from "react-icons/gi"
 
 export default function NewPerson() {
   const params = useParams()
@@ -71,16 +74,6 @@ export default function NewPerson() {
 
       <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
         <div className="my-4 mx-4">
-          <h2 className="my-0">Experience</h2>
-          <Link className="link-fix">
-            <div className="proBlue my-0">{Math.floor(Math.random() * 100)} connection</div>
-          </Link>
-          <div className="proBlack prosmall proLight mt-2">{selProfile.bio}</div>
-        </div>
-      </div>
-
-      <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
-        <div className="my-4 mx-4">
           <h2 className="my-0">Activity</h2>
           <Link className="link-fix">
             <div className="proBlue my-0">{Math.floor(Math.random() * 100)} connection</div>
@@ -95,24 +88,61 @@ export default function NewPerson() {
                     <>
                       {singPost.user._id === `${params.userID}` ? (
                         <>
-                          <div
-                            key={i}
-                            className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4"
-                          >
-                            <div className="my-2">
-                              <h3 className="proBlack my-2 mx-4">
-                                writted by{" "}
-                                <Link to={`/user/${singPost.user?._id}`} className="link-fix">
-                                  <span className="proBlack proGreyHBlue">{singPost.user?.name}</span>
+                      <div
+                        key={i}
+                        className="d-flex flex-column align-items-e bg-light rounded-3 position-relative proCard my-4"
+                      >
+                        <div className="d-flex flex-row justify-content-between align-items-center me-4">
+                          <div>
+                            <div className="d-flex flex-row align-items-center">
+                            <img
+                                  className="my-3 ms-4 me-3 rounded-2"
+                                  style={{ height: "55px", width: "55px" }}
+                                  src={singPost?.user?.image}
+                                  alt="portrait author"
+                                />
+                              <div className="proBlack my-2">
+                                <Link
+                                  to={`/user/${singPost?.user?._id}`}
+                                  className="link-fix"
+                                >
+                                  <div className="proBlack proNormal proGreyHBlue link-fix">
+                                    {singPost?.user?.name}
+                                  </div>
                                 </Link>
-                              </h3>
-                              <div className="my-2 me-5 mx-4">
-                                <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
+                                <div className="proGrey proVerySmall">
+                                  {Math.floor(Math.random() * 100)} followers
+                                </div>
+                                <div className="proGrey proVerySmall">
+                                  {Math.floor(Math.random() * 12)} <BsDot />{" "}
+                                  <GiEarthAmerica />
+                                </div>
                               </div>
-                              {singPost.image?  <img className="my-3 ms-4 me-3 rounded-2 w-100" src={singPost.image} alt="postedImg" /> : <></>}
                             </div>
-                            <div className="proSmall proLight mx-4">edited: {singPost.updatedAt.slice(0, 10)}</div>
                           </div>
+                        </div>
+                        <div className="my-2 mx-1">
+                          <span className="proGrey proBlack proLight proSmall proNormal">
+                            {singPost.text}
+                          </span>
+                          {singPost.image ? (
+                            <img
+                              className="mt-3 mb-1 w-100"
+                              src={singPost.image}
+                              alt="activity"
+                            />
+                          ) : (
+                            <></>
+                          )}
+                        </div>
+                        <div className="mb-1 mx-3 proGrey proSmall d-flex align-items-center">
+                          <BsHandThumbsUp className="likeHover fs-4 me-2" />
+                          {Math.floor(Math.random() * 100)}
+                        </div>
+                        <hr className="my-1 mx-3" />
+                        <CollapseComment singlePostId={singPost._id} />
+                        
+                      </div>
                         </>
                       ) : (
                         <></>
