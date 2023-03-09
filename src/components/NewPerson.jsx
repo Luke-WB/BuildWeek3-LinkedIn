@@ -5,9 +5,12 @@ import { fetchIdProfile } from "../redux/actions"
 import { HiUsers } from "react-icons/hi"
 import { AiFillEye } from "react-icons/ai"
 import { BiSearch } from "react-icons/bi"
-import { Button, Form } from "react-bootstrap"
+import { Button, Col, Container, Form, Row } from "react-bootstrap"
 import Experience from "./Experience"
 import NewPersonExperience from "./NewPersonExperience"
+import People from "./People"
+import AddPersonButton from "./AddPersonButton"
+import AddPersonButtonProfile from "./AddPersonButtonProfile"
 
 export default function NewPerson() {
   const params = useParams()
@@ -20,7 +23,9 @@ export default function NewPerson() {
   }, [params])
 
   return (
-    <>
+    <Container>
+      <Row className="d-flex flex-column flex-md-row">
+          <Col xs={12} lg={9}>
       <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
         <div className="proImgBarSetting">
           <Link>
@@ -54,56 +59,9 @@ export default function NewPerson() {
           <Link className="link-fix">
             <div className="proBlue mt-2 mb-3">{Math.floor(Math.random() * 100)} connection</div>
           </Link>
-          <Form className="mb-4">
-            <Button className="proOpenTo me-3" variant="primary">
-              Open to
-            </Button>
-            <Button className="proModProfile me-3" variant="outline-primary">
-              Add profile section
-            </Button>
-            <Button className="proMore me-3" variant="outline-primary">
-              Add profile section
-            </Button>
-          </Form>
+          <AddPersonButtonProfile personInfo={params.userID}/>
         </div>
       </div>
-
-      <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
-        <div className="my-2 mx-4">
-          <h2 className="mt-2 mb-0">Analitics</h2>
-          <div className="proGrey proLight proSmall my-0">
-            <AiFillEye className="proIcon me-2" />
-            private to you
-          </div>
-          <div className="d-flex my-3">
-            <div className="proGrey proNormal me-5 d-flex">
-              <Link className="link-fix">
-                <HiUsers className="proGrey proIcon me-2" />
-              </Link>
-              <div>
-                <Link className="link-fix">
-                  <span className="proGrey proGreyHBlue">{Math.floor(Math.random() * 100)} profile views </span>
-                </Link>
-                <br />
-                <span className="proGrey proLight proSmall">Discover who's viewed your profile.</span>
-              </div>
-            </div>
-            <div className="proGrey proNormal me-5 d-flex">
-              <Link className="link-fix">
-                <BiSearch className="proGrey proIcon me-2" />
-              </Link>
-              <div>
-                <Link className="link-fix">
-                  <span className="proGrey proGreyHBlue">{Math.floor(Math.random() * 100)} search appearance</span>
-                </Link>
-                <br />
-                <span className="proGrey proLight proSmall">See how often you appear in search results</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
         <div className="my-4 mx-4">
           <h2 className="my-0">About</h2>
@@ -178,6 +136,11 @@ export default function NewPerson() {
           <NewPersonExperience myProfile={selProfile} />
         </div>
       </div>
-    </>
+      </Col>
+          <Col xs={12} lg={3}>
+            <People />
+          </Col>
+        </Row>
+    </Container>
   )
 }

@@ -3,7 +3,7 @@ import { BsPersonPlusFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { addFriend, removeFriend } from "../redux/actions";
 
-const AddPersonButton = ({ personInfo, keyuser }) => {
+const AddPersonButtonProfile = ({ personInfo, keyuser }) => {
   const dispatch = useDispatch();
   const friend = useSelector((state) => state.profile.friend);
   const consollogga = () => {
@@ -12,10 +12,10 @@ const AddPersonButton = ({ personInfo, keyuser }) => {
 
   return (
     <>
-      {friend.includes(personInfo._id) ? (
+      {friend.includes(personInfo) ? (
         <Button
           onClick={() => {
-            dispatch(removeFriend(personInfo._id));
+            dispatch(removeFriend(personInfo));
             consollogga();
           }}
           className="proOpenTo d-flex align-items-center"
@@ -29,7 +29,7 @@ const AddPersonButton = ({ personInfo, keyuser }) => {
       ) : (
         <Button
           onClick={() => {
-            dispatch(addFriend(personInfo._id));
+            dispatch(addFriend(personInfo));
             consollogga();
           }}
           className=" proMore align-items-center"
@@ -42,4 +42,4 @@ const AddPersonButton = ({ personInfo, keyuser }) => {
   );
 };
 
-export default AddPersonButton;
+export default AddPersonButtonProfile;
