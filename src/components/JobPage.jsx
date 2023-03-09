@@ -60,7 +60,9 @@ function JobPage() {
               </small>
             </Card.Text>
             <Card.Text>
-              <div>Show recruiters you’re open to new job opportunities</div>
+              <div style={{ background: "rgb(249, 249, 249)" }}>
+                <span className="fs-5">Show recruiters you’re open to new job opportunities</span>
+              </div>
             </Card.Text>
           </Card.Body>
         </Card>
