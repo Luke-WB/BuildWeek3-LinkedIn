@@ -1,15 +1,16 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import Offcanvas from "react-bootstrap/Offcanvas";
+
+import { FiBookmark } from "react-icons/fi";
 
 function SearchJob() {
   const [jobs, setJobs] = useState([]);
   const [jobsFetch, setJobFetch] = useState([]);
+
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
   async function getJobs(query) {
     const urlToFetch = `https://strive-benchmark.herokuapp.com/api/jobs?search=${query}`;
@@ -39,22 +40,34 @@ https://strive-benchmark.herokuapp.com/api/jobs?category=writing&limit=10 //FETC
 
   return (
     <>
-      <Form className="d-flex">
-        <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" onChange={handleChange} />
-        <Button variant="outline-success" onClick={() => getJobs(jobs)}>
-          Search
-        </Button>
-      </Form>
-      <div>
-        {jobsFetch.map((el) => (
-          <>
-            <div className="bg-primary my-3 text-light">
-              <div className="me-2">{el.title}</div>
-              <div className="me-2">{el.company_name}</div>
-              <div className="me-2">{el.category}</div>
-            </div>
-          </>
-        ))}
+      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
+        <Form className="d-flex">
+          <Form.Control
+            type="search"
+            placeholder="Search"
+            className="me-2"
+            aria-label="Search"
+            onChange={handleChange}
+          />
+          <Button variant="outline-success" onClick={() => getJobs(jobs)}>
+            Search
+          </Button>
+        </Form>
+        <div className="my-4 mx-4">
+          <h2 className="my-0">{capitalizeFirstLetter("Prova")}</h2>
+          {jobsFetch.slice(0, 5).map((job) => {
+            return (
+              <div className="d-flex justify-content-between w-100">
+                <div key={job._id}>
+                  <div className="proBlack proNormal proLight mt-2 proBlue">{job.title}</div>
+                  <div className="proBlack proSmall proLight mt-2 proGrey proGreyHBlue">{job.category}</div>
+                  <div className="proBlack proSmall proLight mt-2 proGrey proGreyHBlue">{job.company_name}</div>
+                </div>
+                <FiBookmark />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </>
   );
