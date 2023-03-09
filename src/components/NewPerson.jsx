@@ -14,6 +14,7 @@ import AddPersonButtonProfile from "./AddPersonButtonProfile"
 import CollapseComment from "./CollapseComment"
 import { BsDot, BsHandThumbsUp } from "react-icons/bs"
 import { GiEarthAmerica } from "react-icons/gi"
+import Banner from "./Banner"
 
 export default function NewPerson() {
   const params = useParams()
@@ -32,12 +33,7 @@ export default function NewPerson() {
       <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
         <div className="proImgBarSetting">
           <Link>
-            <img
-              className="proImgBarSetting"
-              style={{ objectFit: "cover", objectPosition: "top" }}
-              src={"https://www.media.inaf.it/wp-content/uploads/2020/03/meteorite-1280x720.jpg"}
-              alt="immagine background"
-            />
+            <Banner />
           </Link>
         </div>
         <Link className="link-fix">
