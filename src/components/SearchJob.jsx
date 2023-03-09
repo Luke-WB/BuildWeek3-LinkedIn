@@ -40,24 +40,27 @@ https://strive-benchmark.herokuapp.com/api/jobs?category=writing&limit=10 //FETC
 
   return (
     <>
-      <Form className="d-flex">
+      <Form className="d-flex" onSubmit={(e) => e.preventDefault()}>
         <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" onChange={handleChange} />
         <Button variant="outline-success" onClick={() => getJobs(jobs)}>
           Search
         </Button>
       </Form>
-      <div className="d-flex flex-column align-items-start bg-light rounded-3 position-relative proCard my-4">
+      <div className="d-flex flex-column align-items-between bg-light rounded-3 position-relative proCard my-4">
         <div className="my-4 mx-4">
-          <h2 className="my-0">{capitalizeFirstLetter("Prova")}</h2>
+          <h2 className="mb-3">{capitalizeFirstLetter("Prova")}</h2>
           {jobsFetch.slice(0, 5).map((job) => {
             return (
-              <div className="d-flex justify-content-between w-100">
-                <div key={job._id}>
-                  <div className="proBlack proNormal proLight mt-2 proBlue">{job.title}</div>
-                  <div className="proBlack proSmall proLight mt-2 proGrey proGreyHBlue">{job.category}</div>
-                  <div className="proBlack proSmall proLight mt-2 proGrey proGreyHBlue">{job.company_name}</div>
+              <div key={job._id}>
+                <div className="d-flex justify-content-between align-items-center m-0 p-0">
+                  <div className="proBlack proNormal proLight mb-2 proBlue">{job.title}</div>
+                  <FiBookmark className="omino-icona" />
                 </div>
-                <FiBookmark />
+                <div className="proBlack proSmall proLight mb-2 proGrey proGreyHBlue">{job.category}</div>
+                <div className="proBlack proSmall proLight mb-2 proGrey proGreyHBlue">{job.company_name}</div>
+                <div className="proBlack proSmall proLight mb-2 proGrey proGreyHBlue">
+                  {job.publication_date.slice(0, 10)}
+                </div>
               </div>
             );
           })}
