@@ -1,13 +1,14 @@
 .omino {
   width: 21%;
   z-index: 2;
+  position: relative;
 }
 
 .ominoIcona {
-  font-size: 49px;
+  font-size: 41px;
   position: absolute;
-  right: 7%;
-  top: 29%;
+  right: 8%;
+  top: 25%;
   color: darkgreen;
   z-index: 0;
 }
