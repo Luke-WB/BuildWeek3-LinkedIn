@@ -12,7 +12,6 @@ import {
   BsFillCalendarDateFill,
 } from "react-icons/bs"
 import { RiContactsBookFill, RiPagesFill, RiNewspaperFill, RiHashtag } from "react-icons/ri"
-import { Spinner } from "react-bootstrap"
 import { allProfile } from "../redux/actions"
 import AddPersonButton from "./AddPersonButton"
 
@@ -21,7 +20,6 @@ const MyNetwork = () => {
   const [isTrue, setIsTrue] = useState(false)
   const [peopleFetched, setPeopleFetched] = useState([])
   const [peopleToRender, setPeopleToRender] = useState([])
-  const [loading, setLoading] = useState(true)
 
   const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/"
 
@@ -40,9 +38,9 @@ const MyNetwork = () => {
   let myProfile = useSelector((state) => state.profile.myProfile)
   let arrProfile = useSelector((state) => state.profile.arrProfile)
   let friend = useSelector((state) => state.profile.friend)
-  let dioPorco = arrProfile?.slice(0)
-  let madonna = dioPorco?.reverse().slice(0, 50)
-  let maiala = madonna?.filter((el) => {
+  let arProfileCopy = arrProfile?.slice(0)
+  let recent = arProfileCopy?.reverse().slice(0, 50)
+  let unfollowProfile = recent?.filter((el) => {
     return !friend.includes(el._id)
   })
 
@@ -53,8 +51,8 @@ const MyNetwork = () => {
 
   console.log("friend", friend)
   console.log("arrProfile", arrProfile)
-  console.log("madonna", madonna)
-  console.log("maiala", maiala)
+  console.log("recent", recent)
+  console.log("unfollowProfile", unfollowProfile)
 
   console.log("people", peopleToRender)
   return (
@@ -372,7 +370,7 @@ const MyNetwork = () => {
                   </div>
                 </div>
                 <Row>
-                  {maiala?.slice(0, 12).map((el) => {
+                  {unfollowProfile?.slice(0, 12).map((el) => {
                     return (
                       <Col xl={4} md={6} sm={12}>
                         <Card className="m-0 p-0 my-2 ombra" style={{ height: "255px" }}>
