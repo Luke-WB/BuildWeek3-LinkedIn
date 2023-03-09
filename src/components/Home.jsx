@@ -1,65 +1,65 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProfile, reversed } from "../redux/actions";
-import { Container, Row, Col, Button } from "react-bootstrap";
-import { MdPhotoSizeSelectActual } from "react-icons/md";
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchProfile, reversed } from "../redux/actions"
+import { Container, Row, Col, Button } from "react-bootstrap"
+import { MdPhotoSizeSelectActual } from "react-icons/md"
 import {
   BsFillPlayBtnFill,
   BsCalendarDay,
   BsHandThumbsUp,
   BsChevronCompactUp,
   BsChevronCompactDown,
-} from "react-icons/bs";
-import { MdArticle } from "react-icons/md";
-import HomeProfile from "./HomeProfile";
-import { Link, useParams } from "react-router-dom";
-import Loading from "./Loading";
-import ModalePost from "./ModalePost";
-import ModalPut from "./ModalPut";
-import ModalePhoto from "./ModalePhoto";
-import { GiEarthAmerica } from "react-icons/gi";
-import { BsDot } from "react-icons/bs";
-import { AiOutlinePlus } from "react-icons/ai";
-import CollapseComment from "./CollapseComment";
-import People from "./People";
+} from "react-icons/bs"
+import { MdArticle } from "react-icons/md"
+import HomeProfile from "./HomeProfile"
+import { Link, useParams } from "react-router-dom"
+import Loading from "./Loading"
+import ModalePost from "./ModalePost"
+import ModalPut from "./ModalPut"
+import ModalePhoto from "./ModalePhoto"
+import { GiEarthAmerica } from "react-icons/gi"
+import { BsDot } from "react-icons/bs"
+import { AiOutlinePlus } from "react-icons/ai"
+import CollapseComment from "./CollapseComment"
+import People from "./People"
 
 const Home = () => {
-  const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`;
+  const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`
 
-  const [showPhoto, setShowPhoto] = useState(false);
-  const handleClosePhoto = () => setShowPhoto(false);
-  const handleShowPhoto = () => setShowPhoto(true);
+  const [showPhoto, setShowPhoto] = useState(false)
+  const handleClosePhoto = () => setShowPhoto(false)
+  const handleShowPhoto = () => setShowPhoto(true)
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
-  const [counter, setCounter] = useState(10);
+  const [counter, setCounter] = useState(10)
 
-  const token = useSelector((state) => state.profile.token);
-  const friend = useSelector((state) => state.profile.friend);
-  const loading = useSelector((state) => state.profile.loading);
-  const post = useSelector((state) => state.profile.post);
-  const myProfile = useSelector((state) => state.profile.profile);
-  console.log("ooooooooooooooooooooooooooooooooo", loading);
+  const token = useSelector((state) => state.profile.token)
+  const friend = useSelector((state) => state.profile.friend)
+  const loading = useSelector((state) => state.profile.loading)
+  const post = useSelector((state) => state.profile.post)
+  const myProfile = useSelector((state) => state.profile.profile)
+  console.log("ooooooooooooooooooooooooooooooooo", loading)
 
   // profile fetch
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchProfile(userKey));
-  }, []);
+    dispatch(fetchProfile(userKey))
+  }, [])
 
   // post fetch
-  const [rendered, setRendered] = useState(false);
+  const [rendered, setRendered] = useState(false)
   function check() {
-    setRendered((prevState) => !prevState);
-    console.log(check);
+    setRendered((prevState) => !prevState)
+    console.log(check)
   }
 
   useEffect(() => {
-    dispatch(reversed(userKey));
-    console.log(reversed);
-  }, [rendered]);
+    dispatch(reversed(userKey))
+    console.log(reversed)
+  }, [rendered])
 
   return (
     <>
@@ -99,10 +99,7 @@ const Home = () => {
                   />
                 </div>
                 <div className="d-flex justify-content-evenly my-2 mx-4">
-                  <div
-                    onClick={handleShowPhoto}
-                    className="greyHover rounded-2 me-2 px-2 py-3"
-                  >
+                  <div onClick={handleShowPhoto} className="greyHover rounded-2 me-2 px-2 py-3">
                     <MdPhotoSizeSelectActual className="fs-4 text-primary me-2" />
                     Photo
                   </div>
@@ -130,11 +127,11 @@ const Home = () => {
 
               {post
                 .filter((el) => {
-                  return friend.includes(el.user?._id);
+                  return friend.includes(el.user?._id)
                 })
                 .slice(0, counter)
                 .map((singPost, i) => {
-                  console.log("friend", friend);
+                  console.log("friend", friend)
                   return (
                     <>
                       <div
@@ -160,38 +157,24 @@ const Home = () => {
                                 />
                               )}
                               <div className="proBlack my-2">
-                                <Link
-                                  to={`/user/${singPost?.user?._id}`}
-                                  className="link-fix"
-                                >
-                                  <div className="proBlack proNormal proGreyHBlue link-fix">
-                                    {singPost?.user?.name}
-                                  </div>
+                                <Link to={`/user/${singPost?.user?._id}`} className="link-fix">
+                                  <div className="proBlack proNormal proGreyHBlue link-fix">{singPost?.user?.name}</div>
                                 </Link>
+                                <div className="proGrey proVerySmall">{Math.floor(Math.random() * 100)} followers</div>
                                 <div className="proGrey proVerySmall">
-                                  {Math.floor(Math.random() * 100)} followers
-                                </div>
-                                <div className="proGrey proVerySmall">
-                                  {Math.floor(Math.random() * 12)} <BsDot />{" "}
-                                  <GiEarthAmerica />
+                                  {Math.floor(Math.random() * 12)} <BsDot /> <GiEarthAmerica />
                                 </div>
                               </div>
                             </div>
                           </div>
-                          <div className="proNormal proBlue">
+                          <div className="proNormal proBlue" style={{ cursor: "pointer" }}>
                             <AiOutlinePlus /> Follow
                           </div>
                         </div>
                         <div className="my-2 mx-1">
-                          <span className="proGrey proBlack proLight proSmall proNormal">
-                            {singPost.text}
-                          </span>
+                          <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
                           {singPost.image ? (
-                            <img
-                              className="mt-3 mb-1 w-100"
-                              src={singPost.image}
-                              alt="activity"
-                            />
+                            <img className="mt-3 mb-1 w-100" src={singPost.image} alt="activity" />
                           ) : (
                             <></>
                           )}
@@ -204,9 +187,7 @@ const Home = () => {
                         <CollapseComment singlePostId={singPost._id} />
                         {singPost?.user?._id === `${myProfile?._id}` ? (
                           <>
-                            <div className="proSmall proLight ms-3 mb-1">
-                              edited: {singPost.updatedAt.slice(0, 10)}
-                            </div>
+                            <div className="proSmall proLight ms-3 mb-1">edited: {singPost.updatedAt.slice(0, 10)}</div>
                             <ModalPut
                               check={check}
                               id={singPost._id}
@@ -215,13 +196,11 @@ const Home = () => {
                             {console.log("eccolo id POST", singPost._id)}
                           </>
                         ) : (
-                          <div className="proSmall proLight mx-4 my-2">
-                            edited: {singPost.updatedAt.slice(0, 10)}
-                          </div>
+                          <div className="proSmall proLight mx-4 my-2">edited: {singPost.updatedAt.slice(0, 10)}</div>
                         )}
                       </div>
                     </>
-                  );
+                  )
                 })}
               <Row>
                 <div
@@ -252,7 +231,7 @@ const Home = () => {
         </Container>
       )}
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
