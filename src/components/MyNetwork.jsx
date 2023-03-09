@@ -12,7 +12,6 @@ import {
   BsFillCalendarDateFill,
 } from "react-icons/bs"
 import { RiContactsBookFill, RiPagesFill, RiNewspaperFill, RiHashtag } from "react-icons/ri"
-import { Spinner } from "react-bootstrap"
 import { allProfile } from "../redux/actions"
 import AddPersonButton from "./AddPersonButton"
 
@@ -21,11 +20,10 @@ const MyNetwork = () => {
   const [isTrue, setIsTrue] = useState(false)
   const [peopleFetched, setPeopleFetched] = useState([])
   const [peopleToRender, setPeopleToRender] = useState([])
-  const [loading, setLoading] = useState(true)
 
   const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/"
 
-  // inizio implementate da antonio
+  // inizio implementate
   const post = useSelector((state) => state.profile.post)
   const randomNumArr = []
   for (let i = 0; i < 10; i++) {
@@ -34,25 +32,17 @@ const MyNetwork = () => {
   useEffect(() => {
     setPeopleToRender(peopleFetched.filter((random) => Math.floor(Math.random() * 2)).slice(0, 12))
   }, [peopleFetched])
-  // fine implementate da antonio
+  // fine implementate
 
   // start unfollow arrProfile filter
   let myProfile = useSelector((state) => state.profile.myProfile)
   let arrProfile = useSelector((state) => state.profile.arrProfile)
   let friend = useSelector((state) => state.profile.friend)
-  let dioPorco = arrProfile?.slice(0)
-  let madonna = dioPorco?.reverse().slice(0, 50)
-  let maiala = madonna?.filter((el) => {
+  let arProfileCopy = arrProfile?.slice(0)
+  let recent = arProfileCopy?.reverse().slice(0, 50)
+  let unfollowProfile = recent?.filter((el) => {
     return !friend.includes(el._id)
   })
-  //   for (let i = 0; i < friend.length; i++) {
-  //     if (!el._id.includes(friend[i])) {
-  //       return false;
-  //     } else if (el._id.includes(friend[i])) {
-  //       return true;
-  //     }
-  //   }
-  // });
 
   let useKey = process.env.REACT_APP_API_KEY
   useEffect(() => {
@@ -61,38 +51,15 @@ const MyNetwork = () => {
 
   console.log("friend", friend)
   console.log("arrProfile", arrProfile)
-  console.log("madonna", madonna)
-  console.log("maiala", maiala)
-
-  // old fetch used in local version
-  // useEffect(() => {
-  //   const fetchUser_Profile = async () => {
-  //     try {
-  //       const response = await fetch(profili_utente, {
-  //         headers: {
-  //           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjN2Y3MWYxOTNlNjAwMTM4MDdmNjAiLCJpYXQiOjE2Nzc0OTIwODEsImV4cCI6MTY3ODcwMTY4MX0.VsSZ2d0tCDoaQSZpm1CGnM4ctkdFFFZhAu36PvkG-hU`,
-  //         },
-  //       });
-  //       if (response.ok) {
-  //         let data = await response.json();
-  //         console.log("arrayPeople", data);
-  //         setPeopleFetched(data.reverse());
-  //         setLoading(false);
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-
-  //   fetchUser_Profile();
-  // }, []);
+  console.log("recent", recent)
+  console.log("unfollowProfile", unfollowProfile)
 
   console.log("people", peopleToRender)
   return (
     <Container>
       <Row className="mt-4">
         <Col xs={12} md={3}>
-          <Card>
+          <Card className="posizione">
             <Card.Body className="pb-0">
               <Card.Text className="proMiddle proGrey">Manage my network</Card.Text>
               <Card.Text>
@@ -317,19 +284,22 @@ const MyNetwork = () => {
                   <div className="d-flex align-items-center">
                     <img
                       className=" rounded-circle"
-                      style={{ height: "55px", width: "55px" }}
+                      style={{ height: "55px", width: "55px", objectFit: "cover" }}
                       src={post[randomNumArr[0]].user.image}
                       alt="person you may know"
                     />
                     <div className="ms-3">
-                      <div className="proBlack proBold">
-                        {post[randomNumArr[0]].user.name} {post[randomNumArr[0]].user.surname}
-                      </div>
+                      <Link to={`/user/${post[randomNumArr[0]].user._id}`} style={{ textDecoration: "none" }}>
+                        <div className="proBlack proBold">
+                          {post[randomNumArr[0]].user.name} {post[randomNumArr[0]].user.surname}
+                        </div>
+                      </Link>
+
                       <div className="proGrey proSmall">{post[randomNumArr[0]].user.title}</div>
                     </div>
                   </div>
                   <div>
-                    <Button className="proMedium proIgnore me-3" variant="outline-primary">
+                    <Button className="proMore me-3" variant="outline-primary">
                       Ignore
                     </Button>
                     <Button className="proModProfile proMedium" variant="outline-primary">
@@ -342,19 +312,21 @@ const MyNetwork = () => {
                   <div className="d-flex align-items-center">
                     <img
                       className=" rounded-circle"
-                      style={{ height: "55px", width: "55px" }}
+                      style={{ height: "55px", width: "55px", objectFit: "cover" }}
                       src={post[randomNumArr[1]].user.image}
                       alt="person you may know"
                     />
                     <div className="ms-3">
-                      <div className="proBlack proBold">
-                        {post[randomNumArr[1]].user.name} {post[randomNumArr[1]].user.surname}
-                      </div>
+                      <Link to={`/user/${post[randomNumArr[1]].user._id}`} style={{ textDecoration: "none" }}>
+                        <div className="proBlack proBold">
+                          {post[randomNumArr[1]].user.name} {post[randomNumArr[1]].user.surname}
+                        </div>
+                      </Link>
                       <div className="proGrey proSmall">{post[randomNumArr[1]].user.title}</div>
                     </div>
                   </div>
                   <div>
-                    <Button className="proMedium proIgnore me-3" variant="outline-primary">
+                    <Button className="proMore me-3" variant="outline-primary">
                       Ignore
                     </Button>
                     <Button className="proModProfile proMedium" variant="outline-primary">
@@ -367,19 +339,21 @@ const MyNetwork = () => {
                   <div className="d-flex align-items-center">
                     <img
                       className=" rounded-circle"
-                      style={{ height: "55px", width: "55px" }}
+                      style={{ height: "55px", width: "55px", objectFit: "cover" }}
                       src={post[randomNumArr[2]].user.image}
                       alt="person you may know"
                     />
                     <div className="ms-3">
-                      <div className="proBlack proBold">
-                        {post[randomNumArr[2]].user.name} {post[randomNumArr[2]].user.surname}
-                      </div>
+                      <Link to={`/user/${post[randomNumArr[2]].user._id}`} style={{ textDecoration: "none" }}>
+                        <div className="proBlack proBold">
+                          {post[randomNumArr[2]].user.name} {post[randomNumArr[2]].user.surname}
+                        </div>
+                      </Link>
                       <div className="proGrey proSmall">{post[randomNumArr[2]].user.title}</div>
                     </div>
                   </div>
                   <div>
-                    <Button className="proMedium proIgnore me-3" variant="outline-primary">
+                    <Button className="proMore me-3" variant="outline-primary">
                       Ignore
                     </Button>
                     <Button className="proModProfile proMedium" variant="outline-primary">
@@ -396,7 +370,7 @@ const MyNetwork = () => {
                   </div>
                 </div>
                 <Row>
-                  {maiala?.slice(0, 12).map((el) => {
+                  {unfollowProfile?.slice(0, 12).map((el) => {
                     return (
                       <Col xl={4} md={6} sm={12}>
                         <Card className="m-0 p-0 my-2 ombra" style={{ height: "255px" }}>
@@ -418,7 +392,7 @@ const MyNetwork = () => {
                           />
                           <Card.Body className="m-0 p-0 d-flex flex-column justify-content-between">
                             <div className="ms-3 mb-0">
-                              <Link to={`/user/${el._id}`}>
+                              <Link to={`/user/${el._id}`} style={{ textDecoration: "none" }}>
                                 <Card.Text className="mt-4 mb-0 proBlack proBold">
                                   {el.name} {el.surname}
                                 </Card.Text>
