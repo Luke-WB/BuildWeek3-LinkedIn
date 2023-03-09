@@ -6,6 +6,8 @@ export const REVERSE = "REVERSE";
 export const SWITCH_COLOR = "SWITCH_COLOR";
 export const ADD_FRIEND = "ADD_FRIEND";
 export const REMOVE_FRIEND = "REMOVE_FRIEND";
+export const ARR_PROFILE = "ARR_PROFILE";
+
 
 export const fetchProfile = (key) => {
   return async (dispatch) => {
@@ -18,7 +20,6 @@ export const fetchProfile = (key) => {
       });
       if (res.ok) {
         let profile = await res.json();
-        console.log(profile);
         dispatch({
           type: CARICA_FETCH,
           payload: profile,
@@ -45,7 +46,6 @@ export function fetchIdProfile(id) {
       console.log(fetch.toString);
       if (response.ok) {
         const data = await response.json();
-        console.log("azzzzzzz", data);
         dispatch({ type: "SET_PROFILE", payload: data });
       } else {
         alert("Error fetching results");
@@ -84,6 +84,32 @@ export const reversed = (userKey) => {
       }
     } catch (error) {
       alert("reversed", error);
+    }
+  };
+};
+
+export const allProfile = (key) => {
+  return async (dispatch) => {
+    const urlToFetch = "https://striveschool-api.herokuapp.com/api/profile/";
+    try {
+      const res = await fetch(urlToFetch, {
+        headers: {
+          Authorization: key,
+        },
+      });
+      if (res.ok) {
+        let arrProfile = await res.json();
+        dispatch({
+          type: ARR_PROFILE,
+          payload: arrProfile
+        });
+      } else {
+        dispatch({
+          type: IS_LOADING,
+        });
+      }
+    } catch (error) {
+      alert("fetchProfile", error);
     }
   };
 };

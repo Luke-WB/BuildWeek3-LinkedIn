@@ -2,6 +2,7 @@ import { CARICA_FETCH, HOME_FETCH, IS_LOADING, REMOVE_FRIEND, REVERSE } from "..
 import { SET_SHOW_EXP } from "../actions";
 import { SWITCH_COLOR } from "../actions";
 import { ADD_FRIEND } from "../actions";
+import { ARR_PROFILE } from "../actions";
 
 const initialState = {
   profile: {},
@@ -12,6 +13,8 @@ const initialState = {
   loading: true,
   likeMe: false,
   friend: [],
+  arrProfile: [],
+  arrNotFriend: [],
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -26,6 +29,11 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         friend: newArray,
       };
+    case ARR_PROFILE:
+      return {
+        ...state,
+        arrProfile: action.payload, 
+      }
     case REMOVE_FRIEND:
       const dataid2 = action.payload;
       let newArray2 = [...state.friend];

@@ -99,7 +99,10 @@ const Home = () => {
                   />
                 </div>
                 <div className="d-flex justify-content-evenly my-2 mx-4">
-                  <div onClick={handleShowPhoto} className="greyHover rounded-2 me-2 px-2 py-3">
+                  <div
+                    onClick={handleShowPhoto}
+                    className="greyHover rounded-2 me-2 px-2 py-3"
+                  >
                     <MdPhotoSizeSelectActual className="fs-4 text-primary me-2" />
                     Photo
                   </div>
@@ -157,12 +160,20 @@ const Home = () => {
                                 />
                               )}
                               <div className="proBlack my-2">
-                                <Link to={`/user/${singPost?.user?._id}`} className="link-fix">
-                                  <div className="proBlack proNormal proGreyHBlue link-fix">{singPost?.user?.name}</div>
+                                <Link
+                                  to={`/user/${singPost?.user?._id}`}
+                                  className="link-fix"
+                                >
+                                  <div className="proBlack proNormal proGreyHBlue link-fix">
+                                    {singPost?.user?.name}
+                                  </div>
                                 </Link>
-                                <div className="proGrey proVerySmall">{Math.floor(Math.random() * 100)} followers</div>
                                 <div className="proGrey proVerySmall">
-                                  {Math.floor(Math.random() * 12)} <BsDot /> <GiEarthAmerica />
+                                  {Math.floor(Math.random() * 100)} followers
+                                </div>
+                                <div className="proGrey proVerySmall">
+                                  {Math.floor(Math.random() * 12)} <BsDot />{" "}
+                                  <GiEarthAmerica />
                                 </div>
                               </div>
                             </div>
@@ -172,9 +183,15 @@ const Home = () => {
                           </div>
                         </div>
                         <div className="my-2 mx-1">
-                          <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
+                          <span className="proGrey proBlack proLight proSmall proNormal">
+                            {singPost.text}
+                          </span>
                           {singPost.image ? (
-                            <img className="mt-3 mb-1 w-100" src={singPost.image} alt="activity" />
+                            <img
+                              className="mt-3 mb-1 w-100"
+                              src={singPost.image}
+                              alt="activity"
+                            />
                           ) : (
                             <></>
                           )}
@@ -187,7 +204,9 @@ const Home = () => {
                         <CollapseComment singlePostId={singPost._id} />
                         {singPost?.user?._id === `${myProfile?._id}` ? (
                           <>
-                            <div className="proSmall proLight ms-3 mb-1">edited: {singPost.updatedAt.slice(0, 10)}</div>
+                            <div className="proSmall proLight ms-3 mb-1">
+                              edited: {singPost.updatedAt.slice(0, 10)}
+                            </div>
                             <ModalPut
                               check={check}
                               id={singPost._id}
@@ -196,7 +215,9 @@ const Home = () => {
                             {console.log("eccolo id POST", singPost._id)}
                           </>
                         ) : (
-                          <div className="proSmall proLight mx-4 my-2">edited: {singPost.updatedAt.slice(0, 10)}</div>
+                          <div className="proSmall proLight mx-4 my-2">
+                            edited: {singPost.updatedAt.slice(0, 10)}
+                          </div>
                         )}
                       </div>
                     </>
@@ -204,13 +225,19 @@ const Home = () => {
                 })}
               <Row>
                 <div
-                  style={{ width: "100%", textAlign: "center", cursor: "pointer" }}
+                  style={{
+                    width: "100%",
+                    textAlign: "center",
+                    cursor: "pointer",
+                  }}
                   onClick={() => setCounter(counter + 10)}
                 >
                   <b>
                     <p
                       className="greyHover m-0 pb-2 text-secondary"
-                      style={{ borderTop: "solid 1px rgba(176, 176, 176, 0.5)" }}
+                      style={{
+                        borderTop: "solid 1px rgba(176, 176, 176, 0.5)",
+                      }}
                     >
                       Show more <BsChevronCompactDown />
                     </p>
