@@ -1,16 +1,17 @@
-import { Col, Row } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
-import { BsFillBookmarkFill, BsBellFill, BsFillPlayBtnFill } from "react-icons/bs";
-import { TiTick } from "react-icons/ti";
-import { RiPagesLine } from "react-icons/ri";
-import { SiPagekit } from "react-icons/si";
-import { IoSettingsSharp } from "react-icons/io5";
-import SearchJob from "./SearchJob";
+import { Col, Row } from "react-bootstrap"
+import Card from "react-bootstrap/Card"
+import { BsFillBookmarkFill, BsBellFill, BsFillPlayBtnFill, BsArrowRight } from "react-icons/bs"
+import { TiTick } from "react-icons/ti"
+import { RiPagesLine } from "react-icons/ri"
+import { SiPagekit } from "react-icons/si"
+import { IoSettingsSharp } from "react-icons/io5"
+import SearchJob from "./SearchJob"
+import logo from "../assets/omino.png"
 
 function JobPage() {
   return (
     <Row>
-      <Col xs={12} md={9}>
+      <Col xs={12} md={8}>
         <Row>
           <Col xs={12} md={3}>
             <Card>
@@ -51,7 +52,7 @@ function JobPage() {
           </Col>
         </Row>
       </Col>
-      <Col xs={12} md={3}>
+      <Col xs={12} md={4}>
         <Card>
           <Card.Body>
             <Card.Text>
@@ -61,15 +62,26 @@ function JobPage() {
               </small>
             </Card.Text>
             <Card.Text>
-              <div style={{ background: "rgb(249, 249, 249)" }}>
-                <span className="fs-5">Show recruiters you’re open to new job opportunities</span>
-              </div>
+              <dv>
+                <div style={{ background: "rgb(249, 249, 249)" }}>
+                  <div className="d-flex">
+                    <span className="">Show recruiters you’re open to new job opportunities</span>
+                    <img src={logo} class="rounded-circle omino" alt="..."></img>
+                  </div>
+                </div>
+                <p className="mt-3">
+                  Get more InMails from recruiters when you are #OpenToWork - you control who sees this
+                </p>
+                <strong className="proGrey">
+                  Get started <BsArrowRight />
+                </strong>
+              </dv>
             </Card.Text>
           </Card.Body>
         </Card>
       </Col>
     </Row>
-  );
+  )
 }
 
-export default JobPage;
+export default JobPage
