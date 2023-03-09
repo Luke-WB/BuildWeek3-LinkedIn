@@ -6,6 +6,7 @@ import copertina from "../assets/user.jpg";
 import { BsFillPersonPlusFill, BsBookmarkFill } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import Banner from "./Banner";
 
 function HomeProfile({ myProfile }) {
   const token = useSelector((state) => state.profile.token);
@@ -14,7 +15,7 @@ function HomeProfile({ myProfile }) {
   useEffect(() => {
     dispatch(fetchProfile(token));
   }, []);
-  
+
   return (
     <>
       <Card className="my-4 mx-0">
@@ -41,11 +42,18 @@ function HomeProfile({ myProfile }) {
                 </Link>
                 <div className="d-flex align-items-center">
                   <BsFillPersonPlusFill />
-                  <span className="proBlue ms-3"> {Math.floor(Math.random() * 100)}</span>
+                  <span className="proBlue ms-3">
+                    {" "}
+                    {Math.floor(Math.random() * 100)}
+                  </span>
                 </div>
               </div>
               <div>
-                <Link to="/" className="m-0 link-fix" style={{ color: "black" }}>
+                <Link
+                  to="/"
+                  className="m-0 link-fix"
+                  style={{ color: "black" }}
+                >
                   Grow your network
                 </Link>
               </div>
@@ -63,7 +71,10 @@ function HomeProfile({ myProfile }) {
             </ListGroup.Item>
             <ListGroup.Item className="grigio">
               <div className="d-flex align-items-center">
-                <BsBookmarkFill className="d-flex  me-1" style={{ color: "grey", cursor: "pointer" }} />
+                <BsBookmarkFill
+                  className="d-flex  me-1"
+                  style={{ color: "grey", cursor: "pointer" }}
+                />
                 <div style={{ cursor: "pointer" }}>My items</div>
               </div>
             </ListGroup.Item>
