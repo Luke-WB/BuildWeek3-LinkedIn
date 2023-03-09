@@ -1,56 +1,56 @@
-import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas, Card, ListGroup } from "react-bootstrap";
-import logo from "../assets/LinkedIn_logo_initials.png";
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { FaSearch, FaHome, FaUserFriends, FaBell, FaCompass } from "react-icons/fa";
-import { BsBriefcaseFill, BsGrid3X3GapFill, BsPlayBtnFill } from "react-icons/bs";
-import { CgInsights } from "react-icons/cg";
-import { RiSuitcaseFill, RiAdvertisementLine, RiMessage3Line } from "react-icons/ri";
-import { MdGroups } from "react-icons/md";
-import { TiTick } from "react-icons/ti";
-import { AiOutlinePlus } from "react-icons/ai";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import "../assets/sass/_navBar.scss";
+import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas, Card, ListGroup } from "react-bootstrap"
+import logo from "../assets/LinkedIn_logo_initials.png"
+import React, { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
+import { FaSearch, FaHome, FaUserFriends, FaBell, FaCompass } from "react-icons/fa"
+import { BsBriefcaseFill, BsGrid3X3GapFill, BsPlayBtnFill } from "react-icons/bs"
+import { CgInsights } from "react-icons/cg"
+import { RiSuitcaseFill, RiAdvertisementLine, RiMessage3Line } from "react-icons/ri"
+import { MdGroups } from "react-icons/md"
+import { TiTick } from "react-icons/ti"
+import { AiOutlinePlus } from "react-icons/ai"
+import { Link, useNavigate, useLocation } from "react-router-dom"
+import "../assets/sass/_navBar.scss"
 
 function OffCanvasExample({ name, ...props }, prop) {
-  const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`;
+  const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`
 
-  const myProfile = useSelector((state) => state.profile.profile);
+  const myProfile = useSelector((state) => state.profile.profile)
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   /* scoll */
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
     window.addEventListener("scroll", (listenToScroll) => {
-      console.log("scroll");
-    });
-    let listenToScroll = 0;
+      console.log("scroll")
+    })
+    let listenToScroll = 0
 
     listenToScroll = () => {
       if (windowScroll > heightToShowDiv) {
-        isVisible && setIsVisible(true);
+        isVisible && setIsVisible(true)
       } else {
-        setIsVisible(false);
+        setIsVisible(false)
       }
-    };
+    }
 
     //window.removeEventListener("scroll", listenToScroll);
     //return () => window.addEventListener("scroll", listenToScroll);
-  }, []);
+  }, [])
 
-  let heightToShowDiv = 40;
-  const windowScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  let heightToShowDiv = 40
+  const windowScroll = document.body.scrollTop || document.documentElement.scrollTop
 
-  const [peopleFetched, setPeopleFetched] = useState([]);
-  const [word, setWord] = useState("");
-  const [nameSearch, setNameSearch] = useState();
-  const navigate = useNavigate();
+  const [peopleFetched, setPeopleFetched] = useState([])
+  const [word, setWord] = useState("")
+  const [nameSearch, setNameSearch] = useState()
+  const navigate = useNavigate()
 
-  const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/";
+  const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/"
 
   useEffect(() => {
     const fetchUser_Profile = async () => {
@@ -59,35 +59,35 @@ function OffCanvasExample({ name, ...props }, prop) {
           headers: {
             Authorization: userKey,
           },
-        });
+        })
         if (response.ok) {
-          let data = await response.json();
-          console.log("arrayPeople", data);
-          setPeopleFetched(data);
+          let data = await response.json()
+          console.log("arrayPeople", data)
+          setPeopleFetched(data)
         }
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
-    };
-    fetchUser_Profile();
-  }, []);
+    }
+    fetchUser_Profile()
+  }, [])
 
-  let newData = [];
+  let newData = []
 
   for (let i = 0; i < peopleFetched.length; i++) {
-    newData.push({ name: peopleFetched[i].name, id: peopleFetched[i]._id });
+    newData.push({ name: peopleFetched[i].name, id: peopleFetched[i]._id })
   }
 
   useEffect(() => {
-    setNameSearch(newData.find((el) => el.name.toLowerCase().includes(word.toLowerCase())));
-    console.log(word);
-    console.log("nenene", nameSearch);
-  }, [word]);
+    setNameSearch(newData.find((el) => el.name.toLowerCase().includes(word.toLowerCase())))
+    console.log(word)
+    console.log("nenene", nameSearch)
+  }, [word])
 
   const searchName = async () => {
-    navigate(`user/${nameSearch.id}`);
-  };
-  const location = useLocation();
+    navigate(`user/${nameSearch.id}`)
+  }
+  const location = useLocation()
   return (
     <>
       <Navbar
@@ -146,7 +146,7 @@ function OffCanvasExample({ name, ...props }, prop) {
                   <span className="d-none d-lg-block"> My Network</span>
                 </Navbar>
               </Link>
-              <Link to={"/"} className="link-fix text-secondary px-1">
+              <Link to={"/job"} className="link-fix text-secondary px-1">
                 <Navbar className="icon-word">
                   <BsBriefcaseFill className="icon" />
                   <span className="d-none d-lg-block"> Jobs</span>
@@ -372,7 +372,7 @@ function OffCanvasExample({ name, ...props }, prop) {
         </div>
       </div>
     </>
-  );
+  )
 }
 function Example() {
   return (
@@ -381,7 +381,7 @@ function Example() {
         <OffCanvasExample key={idx} placement={placement} name={placement} />
       ))}
     </>
-  );
+  )
 }
 
-export default Example;
+export default Example
