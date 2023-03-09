@@ -1,6 +1,6 @@
 import { Col, Row, NavDropdown, Button, Container } from "react-bootstrap"
 import Card from "react-bootstrap/Card"
-import { BsFillBookmarkFill, BsBellFill, BsFillPlayBtnFill, BsPlusLg } from "react-icons/bs"
+import { BsFillBookmarkFill, BsBellFill, BsFillPlayBtnFill, BsPlusLg, BsPencilSquare } from "react-icons/bs"
 import { TiTick } from "react-icons/ti"
 import { FaArrowRight, FaUserAlt } from "react-icons/fa"
 import { RiPagesLine } from "react-icons/ri"
@@ -18,42 +18,72 @@ function JobPage() {
         <Row>
           <Col xs={12} md={4}>
             <Container>
-              <Card>
-                <Card.Body>
+              <Card className="rounded-4">
+                <Card.Body style={{ lineHeight: "35px" }}>
                   <Card.Text>
-                    <BsFillBookmarkFill />
-                    <span className="proGreyDark ms-2">My jobs</span>
+                    <span className="iconass">
+                      <BsFillBookmarkFill />
+                    </span>
+                    <span className="proGreyDark ms-2" style={{ cursor: "pointer" }}>
+                      My jobs
+                    </span>
                   </Card.Text>
                   <Card.Text>
-                    <BsBellFill />
-                    <span className="proGreyDark ms-2">Job alerts</span>
+                    <span className="iconass">
+                      <BsBellFill />
+                    </span>
+                    <span className="proGreyDark ms-2" style={{ cursor: "pointer" }}>
+                      Job alerts
+                    </span>
                   </Card.Text>
                   <Card.Text>
-                    <TiTick />
-                    <span className="proGreyDark ms-2">Demonstrate skills</span>
+                    <span className="iconass">
+                      <TiTick />
+                    </span>
+                    <span className="proGreyDark ms-2" style={{ cursor: "pointer" }}>
+                      Demonstrate skills
+                    </span>
                   </Card.Text>
                   <Card.Text>
-                    <RiPagesLine />
-                    <span className="proGreyDark ms-2">Interview prep</span>
+                    <span className="iconass">
+                      <RiPagesLine />
+                    </span>
+                    <span className="proGreyDark ms-2" style={{ cursor: "pointer" }}>
+                      Interview prep
+                    </span>
                   </Card.Text>
                   <Card.Text>
-                    <SiPagekit />
-                    <span className="proGreyDark ms-2">Resume builder</span>
+                    <span className="iconass">
+                      <SiPagekit />
+                    </span>
+                    <span className="proGreyDark ms-2" style={{ cursor: "pointer" }}>
+                      Resume builder
+                    </span>
                   </Card.Text>
                   <Card.Text>
-                    <BsFillPlayBtnFill />
-                    <span className="proGreyDark ms-2 ">Job seeker guidance</span>
+                    <span className="iconass">
+                      <BsFillPlayBtnFill />
+                    </span>
+                    <span className="proGreyDark ms-2" style={{ cursor: "pointer" }}>
+                      Job seeker guidance
+                    </span>
                   </Card.Text>
                   <Card.Text>
-                    <IoSettingsSharp />
-                    <span className="proGreyDark ms-2">Application setting</span>
+                    <span className="iconass">
+                      <IoSettingsSharp />
+                    </span>
+                    <span className="proGreyDark ms-2" style={{ cursor: "pointer" }}>
+                      Application setting
+                    </span>
                   </Card.Text>
                 </Card.Body>
               </Card>
               <Button className="proModProfile w-100 mt-3 " variant="outline-primary">
                 <div className="d-flex align-items-center justify-content-center">
                   <span className="me-3">
-                    <TfiWrite />
+                    <span className="iconass">
+                      <BsPencilSquare />
+                    </span>
                   </span>
                   Post a free job
                 </div>
@@ -80,7 +110,7 @@ function JobPage() {
                 <div style={{ background: "rgb(249, 249, 249)" }}>
                   <div className="d-flex align-items-center">
                     <span className="">Show recruiters you’re open to new job opportunities</span>
-                    <img src={logo} class="rounded-circle omino" alt="..."></img>
+                    <img src={logo} class="rounded-circle omino ms-2" alt="..."></img>
                     <span className="ominoIcona">
                       <FaUserAlt />
                     </span>
