@@ -14,6 +14,7 @@ import AddPersonButtonProfile from "./AddPersonButtonProfile"
 import CollapseComment from "./CollapseComment"
 import { BsDot, BsHandThumbsUp } from "react-icons/bs"
 import { GiEarthAmerica } from "react-icons/gi"
+import Banner from "./Banner"
 
 export default function NewPerson() {
   const params = useParams()
@@ -28,18 +29,25 @@ export default function NewPerson() {
   return (
     <Container>
       <Row className="d-flex flex-column flex-md-row">
-        <Col xs={12} lg={9}>
-          <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
-            <div className="proImgBarSetting">
-              <Link>
-                <img
-                  className="proImgBarSetting"
-                  style={{ objectFit: "cover", objectPosition: "top" }}
-                  src={"https://www.media.inaf.it/wp-content/uploads/2020/03/meteorite-1280x720.jpg"}
-                  alt="immagine background"
-                />
-              </Link>
-            </div>
+          <Col xs={12} lg={9}>
+      <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
+        <div className="proImgBarSetting">
+          <Link>
+            <Banner />
+          </Link>
+        </div>
+        <Link className="link-fix">
+          <img className="rounded-circle position-absolute proAbsolute" src={selProfile.image} alt="immagine profilo" />
+        </Link>
+        <div className="mt-5 mx-4">
+          <h2 className="mt-2 mb-0">
+            {selProfile.name} {selProfile.surname}
+          </h2>
+          <div className="proBlack proMedium proLight">{selProfile.title}</div>
+          <Link className="link-fix">
+            <div className="proGrey proLight proGreyHBlue mt-2">{selProfile.email}</div>
+          </Link>
+          <div className="mt-2">
             <Link className="link-fix">
               <img
                 className="rounded-circle position-absolute proAbsolute"
