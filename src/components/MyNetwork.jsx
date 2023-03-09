@@ -59,7 +59,7 @@ const MyNetwork = () => {
     <Container>
       <Row className="mt-4">
         <Col xs={12} md={3}>
-          <Card>
+          <Card className="posizione">
             <Card.Body className="pb-0">
               <Card.Text className="proMiddle proGrey">Manage my network</Card.Text>
               <Card.Text>

@@ -17,7 +17,7 @@ function JobPage() {
       <Col xs={12} md={9}>
         <Row>
           <Col xs={12} md={4}>
-            <Container>
+            <Container className="posizione">
               <Card className="rounded-4">
                 <Card.Body style={{ lineHeight: "35px" }}>
                   <Card.Text>
