@@ -14,7 +14,7 @@ function JobPage() {
     <Row>
       <Col xs={12} md={8}>
         <Row>
-          <Col xs={12} md={3}>
+          <Col xs={12} md={4}>
             <Card>
               <Card.Body>
                 <Card.Text>
@@ -48,7 +48,7 @@ function JobPage() {
               </Card.Body>
             </Card>
           </Col>
-          <Col xs={12} md={9}>
+          <Col xs={12} md={8}>
             <SearchJob />
           </Col>
         </Row>
