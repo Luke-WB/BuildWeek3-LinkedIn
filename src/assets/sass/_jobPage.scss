@@ -5,15 +5,15 @@
 }
 
 .ominoIcona {
-  font-size: 40px;
+  font-size: 41px;
   position: absolute;
   right: 8%;
-  top: 26%;
+  top: 25%;
   color: darkgreen;
   z-index: 0;
 }
 
-@media only screen and (max-width: 1600px) {
+@media screen and (min-width: 1800px) {
   .omino {
     width: 21%;
     z-index: 2;
