@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { FiBookmark } from "react-icons/fi";
+import { useDispatch } from "react-redux";
+import { addPrefeJobs } from "../redux/actions";
 import ModaleJobs from "./ModaleJobs";
 import Example from "./ModaleJobs";
+import SingleJob from "./SingleJob";
 
 function SearchJob() {
   const [jobs, setJobs] = useState("developer");
   const [jobsFetch, setJobFetch] = useState([]);
   const [titlePage, setTitlePage] = useState("Developer");
+
+  const dispatch = useDispatch();
+
   function capitalizeFirstLetter(string) {
     setTitlePage(string.charAt(0).toUpperCase() + string.slice(1));
   }
@@ -39,9 +45,6 @@ function SearchJob() {
     getJobs("developer");
   }, []);
 
-  /*   https://strive-benchmark.herokuapp.com/api/jobs?company=Olla //FETCH IN BASE AL NOME DELL AZIENDA
-https://strive-benchmark.herokuapp.com/api/jobs?category=writing&limit=10 //FETCH PER CATEGORIA */
-
   return (
     <>
       <Form className="d-flex" onSubmit={(e) => e.preventDefault()}>
@@ -65,7 +68,7 @@ https://strive-benchmark.herokuapp.com/api/jobs?category=writing&limit=10 //FETC
               <div key={job._id}>
                 <div className="d-flex justify-content-between align-items-center m-0 p-0">
                   <ModaleJobs title={job.title} company={job.company_name} />
-                  <FiBookmark style={{ fontSize: "25px" }} />
+                  <SingleJob job={job} />
                 </div>
                 <div className="proBlack proSmall proLight mb-2 proGrey proGreyHBlue">{job.category}</div>
                 <div className="proBlack proSmall proLight mb-2 proGrey proGreyHBlue">{job.company_name}</div>

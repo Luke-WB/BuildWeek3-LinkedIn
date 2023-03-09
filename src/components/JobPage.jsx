@@ -1,17 +1,32 @@
-import { Col, Row, NavDropdown, Button, Container } from "react-bootstrap"
-import Card from "react-bootstrap/Card"
-import { BsFillBookmarkFill, BsBellFill, BsFillPlayBtnFill, BsPlusLg, BsPencilSquare } from "react-icons/bs"
-import { TiTick } from "react-icons/ti"
-import { FaArrowRight, FaUserAlt } from "react-icons/fa"
-import { RiPagesLine } from "react-icons/ri"
-import { SiPagekit } from "react-icons/si"
-import { IoSettingsSharp } from "react-icons/io5"
-import { TfiWrite } from "react-icons/tfi"
-import SearchJob from "./SearchJob"
-import logo from "../assets/omino.png"
-import logoDue from "../assets/paginasquare.gif"
+import { Col, Row, NavDropdown, Button, Container, ListGroup } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+import {
+  BsFillBookmarkFill,
+  BsBellFill,
+  BsFillPlayBtnFill,
+  BsPlusLg,
+  BsPencilSquare,
+  BsFillBookmarkCheckFill,
+} from "react-icons/bs";
+import { TiTick } from "react-icons/ti";
+import { FaArrowRight, FaUserAlt } from "react-icons/fa";
+import { RiPagesLine } from "react-icons/ri";
+import { SiPagekit } from "react-icons/si";
+import { IoSettingsSharp } from "react-icons/io5";
+import SearchJob from "./SearchJob";
+import logo from "../assets/omino.png";
+import logoDue from "../assets/paginasquare.gif";
+import React, { useState } from "react";
+import Collapse from "react-bootstrap/Collapse";
+import { useDispatch, useSelector } from "react-redux";
+import { FiBookmark } from "react-icons/fi";
+import { addPrefeJobs, removePrefeJobs } from "../redux/actions";
 
 function JobPage() {
+  const [open, setOpen] = useState(false);
+  const prefe = useSelector((state) => state.profile.prefe);
+  const prefeJob = prefe.map((el) => el._id);
+  const dispatch = useDispatch();
   return (
     <Row>
       <Col xs={12} md={9}>
@@ -24,9 +39,35 @@ function JobPage() {
                     <span className="iconass">
                       <BsFillBookmarkFill />
                     </span>
-                    <span className="proGreyDark ms-2" style={{ cursor: "pointer" }}>
+                    <span
+                      className="proGreyDark ms-2"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => setOpen(!open)}
+                      aria-controls="example-collapse-text"
+                      aria-expanded={open}
+                    >
                       My jobs
                     </span>
+                    <Collapse in={open}>
+                      <div id="example-collapse-text">
+                        <ListGroup>
+                          {prefe.map((el) => (
+                            <ListGroup.Item>
+                              <div className="d-flex justify-content-between align-items-center">
+                                {el.title}
+                                <BsFillBookmarkCheckFill
+                                  style={{ fontSize: "25px" }}
+                                  onClick={() => {
+                                    dispatch(removePrefeJobs(el));
+                                  }}
+                                />
+                              </div>
+                              <div>{el.company_name}</div>
+                            </ListGroup.Item>
+                          ))}
+                        </ListGroup>
+                      </div>
+                    </Collapse>
                   </Card.Text>
                   <Card.Text>
                     <span className="iconass">
@@ -265,7 +306,7 @@ function JobPage() {
         </Card.Text>
       </Col>
     </Row>
-  )
+  );
 }
 
-export default JobPage
+export default JobPage;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-function ModaleJobs(props) {
+function Example(props) {
   const [companyFetch, setCompanyFetch] = useState([]);
 
   const [show, setShow] = useState(false);
@@ -52,4 +52,4 @@ function ModaleJobs(props) {
   );
 }
 
-export default ModaleJobs;
+export default Example;

@@ -7,7 +7,8 @@ export const SWITCH_COLOR = "SWITCH_COLOR";
 export const ADD_FRIEND = "ADD_FRIEND";
 export const REMOVE_FRIEND = "REMOVE_FRIEND";
 export const ARR_PROFILE = "ARR_PROFILE";
-
+export const ADD_PREFE_JOBS = "ADD_PREFE_JOBS";
+export const REMOVE_PREFE_JOBS = "REMOVE_PREFE_JOBS";
 
 export const fetchProfile = (key) => {
   return async (dispatch) => {
@@ -101,7 +102,7 @@ export const allProfile = (key) => {
         let arrProfile = await res.json();
         dispatch({
           type: ARR_PROFILE,
-          payload: arrProfile
+          payload: arrProfile,
         });
       } else {
         dispatch({
@@ -132,6 +133,20 @@ export const addFriend = (param) => {
 export const removeFriend = (param) => {
   return {
     type: REMOVE_FRIEND,
+    payload: param,
+  };
+};
+
+export const addPrefeJobs = (param) => {
+  return {
+    type: ADD_PREFE_JOBS,
+    payload: param,
+  };
+};
+
+export const removePrefeJobs = (param) => {
+  return {
+    type: REMOVE_PREFE_JOBS,
     payload: param,
   };
 };

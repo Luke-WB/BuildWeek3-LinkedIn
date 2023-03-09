@@ -1,4 +1,12 @@
-import { CARICA_FETCH, HOME_FETCH, IS_LOADING, REMOVE_FRIEND, REVERSE } from "../actions";
+import {
+  ADD_PREFE_JOBS,
+  CARICA_FETCH,
+  HOME_FETCH,
+  IS_LOADING,
+  REMOVE_FRIEND,
+  REMOVE_PREFE_JOBS,
+  REVERSE,
+} from "../actions";
 import { SET_SHOW_EXP } from "../actions";
 import { SWITCH_COLOR } from "../actions";
 import { ADD_FRIEND } from "../actions";
@@ -15,6 +23,7 @@ const initialState = {
   friend: [],
   arrProfile: [],
   arrNotFriend: [],
+  prefe: [],
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -29,11 +38,6 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         friend: newArray,
       };
-    case ARR_PROFILE:
-      return {
-        ...state,
-        arrProfile: action.payload, 
-      }
     case REMOVE_FRIEND:
       const dataid2 = action.payload;
       let newArray2 = [...state.friend];
@@ -45,6 +49,37 @@ const profileReducer = (state = initialState, action) => {
       return {
         ...state,
         friend: newArray2,
+      };
+    case ADD_PREFE_JOBS:
+      const jobId = action.payload;
+      let arrJob = [...state.prefe];
+      let arrJobFilter = arrJob.map((el) => el._id);
+      console.log("oooooo", arrJob);
+      if (!arrJobFilter.includes(jobId._id)) {
+        arrJob.push(action.payload);
+      }
+      return {
+        ...state,
+        prefe: arrJob,
+      };
+    case REMOVE_PREFE_JOBS:
+      const jobId2 = action.payload;
+      let arrJob2 = [...state.prefe];
+      let arrJob2Filter = arrJob2.map((el) => el._id);
+      console.log("oooooo", arrJob2);
+      for (let i = 0; i < arrJob2Filter.length; i++) {
+        if (arrJob2Filter[i]?.includes(jobId2._id)) {
+          arrJob2.splice(i, 1);
+        }
+      }
+      return {
+        ...state,
+        prefe: arrJob2,
+      };
+    case ARR_PROFILE:
+      return {
+        ...state,
+        arrProfile: action.payload,
       };
     case CARICA_FETCH:
       return {
