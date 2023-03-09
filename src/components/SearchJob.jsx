@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { FiBookmark } from "react-icons/fi";
-import Example from "./ProvaModale";
+import ModaleJobs from "./ModaleJobs";
+import Example from "./ModaleJobs";
 
 function SearchJob() {
   const [jobs, setJobs] = useState("developer");
@@ -63,7 +64,7 @@ https://strive-benchmark.herokuapp.com/api/jobs?category=writing&limit=10 //FETC
             return (
               <div key={job._id}>
                 <div className="d-flex justify-content-between align-items-center m-0 p-0">
-                  <Example title={job.title} company={job.company_name} />
+                  <ModaleJobs title={job.title} company={job.company_name} />
                   <FiBookmark style={{ fontSize: "25px" }} />
                 </div>
                 <div className="proBlack proSmall proLight mb-2 proGrey proGreyHBlue">{job.category}</div>
