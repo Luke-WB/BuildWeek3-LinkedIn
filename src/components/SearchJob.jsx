@@ -7,7 +7,7 @@ import { FiBookmark } from "react-icons/fi";
 function SearchJob() {
   const [jobs, setJobs] = useState("developer");
   const [jobsFetch, setJobFetch] = useState([]);
-  const [titlePage, setTitlePage] = useState("developer");
+  const [titlePage, setTitlePage] = useState("Developer");
   function capitalizeFirstLetter(string) {
     setTitlePage(string.charAt(0).toUpperCase() + string.slice(1));
   }
@@ -45,13 +45,7 @@ https://strive-benchmark.herokuapp.com/api/jobs?category=writing&limit=10 //FETC
   return (
     <>
       <Form className="d-flex" onSubmit={(e) => e.preventDefault()}>
-        <Form.Control
-          type="search"
-          placeholder="Search"
-          className="me-2"
-          aria-label="Search"
-          onChange={handleChange}
-        />
+        <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" onChange={handleChange} />
         <Button
           variant="outline-success"
           onClick={() => {
@@ -69,17 +63,11 @@ https://strive-benchmark.herokuapp.com/api/jobs?category=writing&limit=10 //FETC
             return (
               <div key={job._id}>
                 <div className="d-flex justify-content-between align-items-center m-0 p-0">
-                  <div className="proBlack proNormal proLight mb-2 proBlue">
-                    {job.title}
-                  </div>
+                  <div className="proBlack proNormal proLight mb-2 proBlue">{job.title}</div>
                   <FiBookmark style={{ fontSize: "25px" }} />
                 </div>
-                <div className="proBlack proSmall proLight mb-2 proGrey proGreyHBlue">
-                  {job.category}
-                </div>
-                <div className="proBlack proSmall proLight mb-2 proGrey proGreyHBlue">
-                  {job.company_name}
-                </div>
+                <div className="proBlack proSmall proLight mb-2 proGrey proGreyHBlue">{job.category}</div>
+                <div className="proBlack proSmall proLight mb-2 proGrey proGreyHBlue">{job.company_name}</div>
                 <div className="proBlack proSmall proLight mb-2 proGrey proGreyHBlue">
                   {job.publication_date.slice(0, 10)}
                 </div>
