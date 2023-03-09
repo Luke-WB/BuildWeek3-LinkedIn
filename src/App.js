@@ -9,12 +9,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NewPerson from "./components/NewPerson";
 import Home from "./components/Home";
 import MyNetwork from "./components/MyNetwork";
+import SearchJob from "./components/SearchJob";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <NavCustom />
+        <SearchJob />
         <TestFetch />
         <Container>
           <Row className="d-flex flex-column flex-md-row">
