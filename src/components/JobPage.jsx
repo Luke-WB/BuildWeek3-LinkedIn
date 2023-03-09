@@ -1,7 +1,8 @@
 import { Col, Row } from "react-bootstrap"
 import Card from "react-bootstrap/Card"
-import { BsFillBookmarkFill, BsBellFill, BsFillPlayBtnFill, BsArrowRight } from "react-icons/bs"
+import { BsFillBookmarkFill, BsBellFill, BsFillPlayBtnFill } from "react-icons/bs"
 import { TiTick } from "react-icons/ti"
+import { FaArrowRight, FaUserAlt } from "react-icons/fa"
 import { RiPagesLine } from "react-icons/ri"
 import { SiPagekit } from "react-icons/si"
 import { IoSettingsSharp } from "react-icons/io5"
@@ -64,16 +65,21 @@ function JobPage() {
             <Card.Text>
               <dv>
                 <div style={{ background: "rgb(249, 249, 249)" }}>
-                  <div className="d-flex">
+                  <div className="d-flex align-items-center">
                     <span className="">Show recruiters you’re open to new job opportunities</span>
                     <img src={logo} class="rounded-circle omino" alt="..."></img>
+                    <span className="ominoIcona">
+                      <FaUserAlt />
+                    </span>
                   </div>
                 </div>
                 <p className="mt-3">
                   Get more InMails from recruiters when you are #OpenToWork - you control who sees this
                 </p>
-                <strong className="proGrey">
-                  Get started <BsArrowRight />
+                <strong className="proGrey proGreyHBlue">
+                  <p style={{ cursor: "pointer" }}>
+                    Get started <FaArrowRight />
+                  </p>
                 </strong>
               </dv>
             </Card.Text>
