@@ -75,17 +75,16 @@ function OffCanvasExample({ name, ...props }, prop) {
   let newData = []
 
   for (let i = 0; i < peopleFetched.length; i++) {
-    newData.push({ name: peopleFetched[i].name, id: peopleFetched[i]._id })
+    newData.push({ name: peopleFetched[i].name, surname: peopleFetched[i].surname, id: peopleFetched[i]._id })
   }
 
   useEffect(() => {
-    setNameSearch(newData.find((el) => el.name.toLowerCase().includes(word.toLowerCase())))
-    console.log(word)
+    setNameSearch(newData.filter((el) => el.name.toLowerCase().includes(word.toLowerCase())))
     console.log("nenene", nameSearch)
   }, [word])
 
-  const searchName = async () => {
-    navigate(`user/${nameSearch.id}`)
+  const searchName = async (id) => {
+    navigate(`user/${id}`)
   }
   const location = useLocation()
   return (
@@ -113,7 +112,7 @@ function OffCanvasExample({ name, ...props }, prop) {
           <Navbar.Collapse id="navbarScroll" className="bg-white justify-content-end">
             <div className="d-flex align-items-center me-auto mt-4 mt-lg-0 ">
               <FaSearch className="position-relative" style={{ right: "-31px", top: "1px", color: "#4a4a4a" }} />
-              <Form className="d-flex " onSubmit={() => searchName()}>
+              <Form className="d-flex ">
                 <Form.Control
                   type="search"
                   placeholder="Search"
@@ -130,8 +129,12 @@ function OffCanvasExample({ name, ...props }, prop) {
                   onChange={(e) => setWord(e.target.value)}
                 />
               </Form>
+              {word.length > 1 ? <ListGroup className="position-absolute" style={{top: "55px" , width: "200px"}}>
+              <ul>
+              {nameSearch? nameSearch.map((el) => <ListGroup.Item as="li" style={{cursor: "pointer" }} onClick={() => {return searchName(el.id), setWord("")}}>{el.name} {el.surname}</ListGroup.Item>) : <></>}
+              </ul>
+            </ListGroup> : <></>}
             </div>
-
             <Nav className=" my-2 my-lg-0 align-items-start ms-5 ms-lg-0 " style={{ maxHeight: "100px" }} navbarScroll>
               <Link className={`px-2 nav-link ${location.pathname === "/" ? "active" : ""}`} to="/">
                 <Navbar className="icon-word ">
