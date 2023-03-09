@@ -317,14 +317,17 @@ const MyNetwork = () => {
                   <div className="d-flex align-items-center">
                     <img
                       className=" rounded-circle"
-                      style={{ height: "55px", width: "55px" }}
+                      style={{ height: "55px", width: "55px", objectFit: "cover" }}
                       src={post[randomNumArr[0]].user.image}
                       alt="person you may know"
                     />
                     <div className="ms-3">
-                      <div className="proBlack proBold">
-                        {post[randomNumArr[0]].user.name} {post[randomNumArr[0]].user.surname}
-                      </div>
+                      <Link to={`/user/${post[randomNumArr[0]].user._id}`} style={{ textDecoration: "none" }}>
+                        <div className="proBlack proBold">
+                          {post[randomNumArr[0]].user.name} {post[randomNumArr[0]].user.surname}
+                        </div>
+                      </Link>
+
                       <div className="proGrey proSmall">{post[randomNumArr[0]].user.title}</div>
                     </div>
                   </div>
@@ -342,14 +345,16 @@ const MyNetwork = () => {
                   <div className="d-flex align-items-center">
                     <img
                       className=" rounded-circle"
-                      style={{ height: "55px", width: "55px" }}
+                      style={{ height: "55px", width: "55px", objectFit: "cover" }}
                       src={post[randomNumArr[1]].user.image}
                       alt="person you may know"
                     />
                     <div className="ms-3">
-                      <div className="proBlack proBold">
-                        {post[randomNumArr[1]].user.name} {post[randomNumArr[1]].user.surname}
-                      </div>
+                      <Link to={`/user/${post[randomNumArr[1]].user._id}`} style={{ textDecoration: "none" }}>
+                        <div className="proBlack proBold">
+                          {post[randomNumArr[1]].user.name} {post[randomNumArr[1]].user.surname}
+                        </div>
+                      </Link>
                       <div className="proGrey proSmall">{post[randomNumArr[1]].user.title}</div>
                     </div>
                   </div>
@@ -367,14 +372,16 @@ const MyNetwork = () => {
                   <div className="d-flex align-items-center">
                     <img
                       className=" rounded-circle"
-                      style={{ height: "55px", width: "55px" }}
+                      style={{ height: "55px", width: "55px", objectFit: "cover" }}
                       src={post[randomNumArr[2]].user.image}
                       alt="person you may know"
                     />
                     <div className="ms-3">
-                      <div className="proBlack proBold">
-                        {post[randomNumArr[2]].user.name} {post[randomNumArr[2]].user.surname}
-                      </div>
+                      <Link to={`/user/${post[randomNumArr[2]].user._id}`} style={{ textDecoration: "none" }}>
+                        <div className="proBlack proBold">
+                          {post[randomNumArr[2]].user.name} {post[randomNumArr[2]].user.surname}
+                        </div>
+                      </Link>
                       <div className="proGrey proSmall">{post[randomNumArr[2]].user.title}</div>
                     </div>
                   </div>
@@ -418,7 +425,7 @@ const MyNetwork = () => {
                           />
                           <Card.Body className="m-0 p-0 d-flex flex-column justify-content-between">
                             <div className="ms-3 mb-0">
-                              <Link to={`/user/${el._id}`}>
+                              <Link to={`/user/${el._id}`} style={{ textDecoration: "none" }}>
                                 <Card.Text className="mt-4 mb-0 proBlack proBold">
                                   {el.name} {el.surname}
                                 </Card.Text>
