@@ -129,7 +129,7 @@ function OffCanvasExample({ name, ...props }, prop) {
                   onChange={(e) => setWord(e.target.value)}
                 />
               </Form>
-              {word.length > 1 ? <ListGroup className="position-absolute" style={{top: "55px" , width: "200px"}}>
+              {word.length > 1 ? <ListGroup className="position-absolute" style={{top: "55px" , width: "300px"}}>
               <ul>
               {nameSearch? nameSearch.map((el) => <ListGroup.Item as="li" style={{cursor: "pointer" }} onClick={() => {return searchName(el.id), setWord("")}}>{el.name} {el.surname}</ListGroup.Item>) : <></>}
               </ul>
