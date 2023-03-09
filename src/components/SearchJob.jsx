@@ -47,7 +47,8 @@ https://strive-benchmark.herokuapp.com/api/jobs?category=writing&limit=10 //FETC
       <Form className="d-flex" onSubmit={(e) => e.preventDefault()}>
         <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" onChange={handleChange} />
         <Button
-          variant="outline-success"
+          variant="primary"
+          className="proOpenTo"
           onClick={() => {
             getJobs(jobs);
             capitalizeFirstLetter(jobs);

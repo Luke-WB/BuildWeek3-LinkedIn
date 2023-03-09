@@ -38,7 +38,7 @@ const profileReducer = (state = initialState, action) => {
       const dataid2 = action.payload;
       let newArray2 = [...state.friend];
       for (let i = 0; i < newArray2.length; i++) {
-        if (newArray2[i].includes(dataid2)) {
+        if (newArray2[i]?.includes(dataid2)) {
           newArray2.splice(i, 1);
         }
       }
