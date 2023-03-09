@@ -9,50 +9,60 @@ import { IoSettingsSharp } from "react-icons/io5"
 function JobPage() {
   return (
     <Row>
+      <Col xs={12} md={9}>
+        <Row>
+          <Col xs={12} md={3}>
+            <Card>
+              <Card.Body>
+                <Card.Text>
+                  <BsFillBookmarkFill />
+                  <span className="proGreyDark ms-2">My jobs</span>
+                </Card.Text>
+                <Card.Text>
+                  <BsBellFill />
+                  <span className="proGreyDark ms-2">Job alerts</span>
+                </Card.Text>
+                <Card.Text>
+                  <TiTick />
+                  <span className="proGreyDark ms-2">Demonstrate skills</span>
+                </Card.Text>
+                <Card.Text>
+                  <RiPagesLine />
+                  <span className="proGreyDark ms-2">Interview prep</span>
+                </Card.Text>
+                <Card.Text>
+                  <SiPagekit />
+                  <span className="proGreyDark ms-2">Resume builder</span>
+                </Card.Text>
+                <Card.Text>
+                  <BsFillPlayBtnFill />
+                  <span className="proGreyDark ms-2 ">Job seeker guidance</span>
+                </Card.Text>
+                <Card.Text>
+                  <IoSettingsSharp />
+                  <span className="proGreyDark ms-2">Application setting</span>
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col xs={12} md={9}>
+            <div style={{ background: "red", height: "100vh" }}></div>
+          </Col>
+        </Row>
+      </Col>
       <Col xs={12} md={3}>
         <Card>
           <Card.Body>
             <Card.Text>
-              <BsFillBookmarkFill />
-              <span className="proGreyDark ms-2">My jobs</span>
+              <strong className="proGreyDark d-block">Open to work</strong>
+              <small className="proGrey" style={{ fontSize: "65%" }}>
+                Recommended based on your activity
+              </small>
             </Card.Text>
             <Card.Text>
-              <BsBellFill />
-              <span className="proGreyDark ms-2">Job alerts</span>
-            </Card.Text>
-            <Card.Text>
-              <TiTick />
-              <span className="proGreyDark ms-2">Demonstrate skills</span>
-            </Card.Text>
-            <Card.Text>
-              <RiPagesLine />
-              <span className="proGreyDark ms-2">Interview prep</span>
-            </Card.Text>
-            <Card.Text>
-              <SiPagekit />
-              <span className="proGreyDark ms-2">Resume builder</span>
-            </Card.Text>
-            <Card.Text>
-              <BsFillPlayBtnFill />
-              <span className="proGreyDark ms-2">Job seeker guidance</span>
-            </Card.Text>
-            <Card.Text>
-              <IoSettingsSharp />
-              <span className="proGreyDark ms-2">Application setting</span>
+              <div>Show recruiters you’re open to new job opportunities</div>
             </Card.Text>
           </Card.Body>
-        </Card>
-      </Col>
-      <Col xs={12} md={6}>
-        {" "}
-        <Card>
-          <Card.Body>This is some text within a card body.</Card.Body>
-        </Card>
-      </Col>
-      <Col xs={12} md={3}>
-        {" "}
-        <Card>
-          <Card.Body>This is some text within a card body.</Card.Body>
         </Card>
       </Col>
     </Row>
