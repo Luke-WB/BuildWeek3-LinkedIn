@@ -12,20 +12,3 @@
   color: darkgreen;
   z-index: 0;
 }
-
-@media only screen and (min-width: 1800px) {
-  .omino {
-    width: 50%;
-    z-index: 2;
-    position: relative;
-  }
-
-  .ominoIcona {
-    font-size: 49px;
-    position: absolute;
-    right: 9%;
-    top: 25%;
-    color: darkgreen;
-    z-index: 0;
-  }
-}
