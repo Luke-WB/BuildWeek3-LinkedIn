@@ -33,6 +33,10 @@ function SearchJob() {
   const handleChange = (e) => {
     setJobs(e.target.value);
   };
+
+  /*   https://strive-benchmark.herokuapp.com/api/jobs?company=Olla //FETCH IN BASE AL NOME DELL AZIENDA
+https://strive-benchmark.herokuapp.com/api/jobs?category=writing&limit=10 //FETCH PER CATEGORIA */
+
   return (
     <>
       <Form className="d-flex">
@@ -41,7 +45,17 @@ function SearchJob() {
           Search
         </Button>
       </Form>
-      <div>{jobsFetch.map((el) => el.title)}</div>
+      <div>
+        {jobsFetch.map((el) => (
+          <>
+            <div className="bg-primary my-3 text-light">
+              <div className="me-2">{el.title}</div>
+              <div className="me-2">{el.company_name}</div>
+              <div className="me-2">{el.category}</div>
+            </div>
+          </>
+        ))}
+      </div>
     </>
   );
 }
