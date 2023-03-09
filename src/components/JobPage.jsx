@@ -8,11 +8,12 @@ import { SiPagekit } from "react-icons/si"
 import { IoSettingsSharp } from "react-icons/io5"
 import SearchJob from "./SearchJob"
 import logo from "../assets/omino.png"
+import logoDue from "../assets/paginasquare.gif"
 
 function JobPage() {
   return (
     <Row>
-      <Col xs={12} md={8}>
+      <Col xs={12} md={9}>
         <Row>
           <Col xs={12} md={4}>
             <Card>
@@ -53,12 +54,12 @@ function JobPage() {
           </Col>
         </Row>
       </Col>
-      <Col xs={12} md={4}>
+      <Col xs={12} md={3}>
         <Card>
           <Card.Body>
             <Card.Text>
               <strong className="proGreyDark d-block">Open to work</strong>
-              <small className="proGrey" style={{ fontSize: "65%" }}>
+              <small className="proGrey" style={{ fontSize: "90%" }}>
                 Recommended based on your activity
               </small>
             </Card.Text>
@@ -79,6 +80,36 @@ function JobPage() {
                 <strong className="proGrey proGreyHBlue">
                   <p style={{ cursor: "pointer" }}>
                     Get started <FaArrowRight />
+                  </p>
+                </strong>
+              </dv>
+            </Card.Text>
+          </Card.Body>
+        </Card>
+        {/* SECONDA CARD */}
+        <Card className="mt-4">
+          <Card.Body>
+            <Card.Text>
+              <strong className="proGreyDark d-block">Job seeker guidance</strong>
+              <small className="proGrey" style={{ fontSize: "90%" }}>
+                Recommended based on your activity
+              </small>
+            </Card.Text>
+            <Card.Text>
+              <dv>
+                <div style={{ background: "rgb(249, 249, 249)" }}>
+                  <div className="d-flex align-items-center justify-content-between">
+                    <span className="ms-2">I want to improve my resume</span>
+                    <img src={logoDue} style={{ width: "28%" }} alt="..."></img>
+                  </div>
+                </div>
+                <p className="mt-3">
+                  Explore our curated guide of expert-led courses, such as how to improve your resume and grow your
+                  network, to help you land your next opportunity.
+                </p>
+                <strong className="proGrey proGreyHBlue">
+                  <p style={{ cursor: "pointer" }}>
+                    Show more <FaArrowRight />
                   </p>
                 </strong>
               </dv>
