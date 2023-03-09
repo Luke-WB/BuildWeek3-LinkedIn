@@ -1,10 +1,11 @@
-import { Col, Row } from "react-bootstrap"
-import Card from "react-bootstrap/Card"
-import { BsFillBookmarkFill, BsBellFill, BsFillPlayBtnFill } from "react-icons/bs"
-import { TiTick } from "react-icons/ti"
-import { RiPagesLine } from "react-icons/ri"
-import { SiPagekit } from "react-icons/si"
-import { IoSettingsSharp } from "react-icons/io5"
+import { Col, Row } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+import { BsFillBookmarkFill, BsBellFill, BsFillPlayBtnFill } from "react-icons/bs";
+import { TiTick } from "react-icons/ti";
+import { RiPagesLine } from "react-icons/ri";
+import { SiPagekit } from "react-icons/si";
+import { IoSettingsSharp } from "react-icons/io5";
+import SearchJob from "./SearchJob";
 
 function JobPage() {
   return (
@@ -46,7 +47,7 @@ function JobPage() {
             </Card>
           </Col>
           <Col xs={12} md={9}>
-            <div style={{ background: "red", height: "100vh" }}></div>
+            <SearchJob />
           </Col>
         </Row>
       </Col>
@@ -68,7 +69,7 @@ function JobPage() {
         </Card>
       </Col>
     </Row>
-  )
+  );
 }
 
-export default JobPage
+export default JobPage;
