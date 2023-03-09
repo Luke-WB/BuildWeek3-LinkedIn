@@ -25,7 +25,7 @@ const MyNetwork = () => {
 
   const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/"
 
-  // inizio implementate da antonio
+  // inizio implementate
   const post = useSelector((state) => state.profile.post)
   const randomNumArr = []
   for (let i = 0; i < 10; i++) {
@@ -34,7 +34,7 @@ const MyNetwork = () => {
   useEffect(() => {
     setPeopleToRender(peopleFetched.filter((random) => Math.floor(Math.random() * 2)).slice(0, 12))
   }, [peopleFetched])
-  // fine implementate da antonio
+  // fine implementate
 
   // start unfollow arrProfile filter
   let myProfile = useSelector((state) => state.profile.myProfile)
@@ -45,14 +45,6 @@ const MyNetwork = () => {
   let maiala = madonna?.filter((el) => {
     return !friend.includes(el._id)
   })
-  //   for (let i = 0; i < friend.length; i++) {
-  //     if (!el._id.includes(friend[i])) {
-  //       return false;
-  //     } else if (el._id.includes(friend[i])) {
-  //       return true;
-  //     }
-  //   }
-  // });
 
   let useKey = process.env.REACT_APP_API_KEY
   useEffect(() => {
@@ -63,29 +55,6 @@ const MyNetwork = () => {
   console.log("arrProfile", arrProfile)
   console.log("madonna", madonna)
   console.log("maiala", maiala)
-
-  // old fetch used in local version
-  // useEffect(() => {
-  //   const fetchUser_Profile = async () => {
-  //     try {
-  //       const response = await fetch(profili_utente, {
-  //         headers: {
-  //           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjN2Y3MWYxOTNlNjAwMTM4MDdmNjAiLCJpYXQiOjE2Nzc0OTIwODEsImV4cCI6MTY3ODcwMTY4MX0.VsSZ2d0tCDoaQSZpm1CGnM4ctkdFFFZhAu36PvkG-hU`,
-  //         },
-  //       });
-  //       if (response.ok) {
-  //         let data = await response.json();
-  //         console.log("arrayPeople", data);
-  //         setPeopleFetched(data.reverse());
-  //         setLoading(false);
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-
-  //   fetchUser_Profile();
-  // }, []);
 
   console.log("people", peopleToRender)
   return (
@@ -332,7 +301,7 @@ const MyNetwork = () => {
                     </div>
                   </div>
                   <div>
-                    <Button className="proMedium proIgnore me-3" variant="outline-primary">
+                    <Button className="proMore me-3" variant="outline-primary">
                       Ignore
                     </Button>
                     <Button className="proModProfile proMedium" variant="outline-primary">
@@ -359,7 +328,7 @@ const MyNetwork = () => {
                     </div>
                   </div>
                   <div>
-                    <Button className="proMedium proIgnore me-3" variant="outline-primary">
+                    <Button className="proMore me-3" variant="outline-primary">
                       Ignore
                     </Button>
                     <Button className="proModProfile proMedium" variant="outline-primary">
@@ -386,7 +355,7 @@ const MyNetwork = () => {
                     </div>
                   </div>
                   <div>
-                    <Button className="proMedium proIgnore me-3" variant="outline-primary">
+                    <Button className="proMore me-3" variant="outline-primary">
                       Ignore
                     </Button>
                     <Button className="proModProfile proMedium" variant="outline-primary">
