@@ -13,6 +13,18 @@ export default function People() {
   const [peopleToRender, setPeopleToRender] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // shuffle friend, lack conditional check about input/output
+  const randomizator = (param) => {
+    let copyVersion = param.slice(0)
+    for (let i = copyVersion.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      let temp = copyVersion[i];
+      copyVersion[i] = copyVersion[j];
+      copyVersion[j] = temp;
+  }
+    return copyVersion
+  }
+
   const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/";
   const friendProfileList = useSelector((state) => state.profile.friend);
   console.log(friendProfileList);
@@ -27,8 +39,10 @@ export default function People() {
         });
         if (response.ok) {
           let data = await response.json();
-          console.log("arrayPeople", data);
-          setPeopleFetched(data.reverse());
+          // console.log("arrayPeople", data);
+          let ourClass = data.reverse().slice(0, 50)
+          let shuffledClass = randomizator(ourClass)
+          setPeopleFetched(shuffledClass);
           setLoading(false);
         }
       } catch (error) {
