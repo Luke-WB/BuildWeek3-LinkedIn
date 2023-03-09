@@ -203,6 +203,14 @@ body {
   left: 4%;
 }
 
-.people:active {
-  display: none;
+.coccole {
+  overflow-y: initial !important;
+}
+div.fade.modal.show {
+  overflow-y: hidden;
+}
+
+.posizione {
+  position: sticky;
+  top: 10%;
 }
