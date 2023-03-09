@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { BsHandThumbsUp } from "react-icons/bs";
 import ModaleComment from "./ModaleComment";
+import { FaTelegramPlane } from "react-icons/fa";
+import SendButton from "./SendButton";
 
-export default function Comments({ singlePostId }) {
+export default function Comments({ singlePostId, updateCount }) {
   let body = {
     comment: "",
     rate: "3",
@@ -13,6 +15,10 @@ export default function Comments({ singlePostId }) {
   const [commentsArray, setCommentArray] = useState([]);
   const [input, setInput] = useState(body);
   const [rendered, setRendered] = useState(false);
+
+  const [commentCounter, setCommentCounter] = useState(null);
+
+  updateCount(commentCounter);
 
   const handleChange = (field, value) => {
     setInput((prev) => ({ ...prev, [field]: value }));
@@ -36,6 +42,7 @@ export default function Comments({ singlePostId }) {
       if (response.ok) {
         const postComment = await response.json();
         setCommentArray(postComment.reverse());
+        setCommentCounter(postComment.length);
       }
     } catch (error) {
       alert("comment", error);
@@ -80,7 +87,22 @@ export default function Comments({ singlePostId }) {
             />
           </Col>
           <Col className="col-2">
-            <Button
+            <SendButton fetchPostComments={fetchPostComments} check={check}/>
+            {/* <div
+              className="greyHover rounded-2 px-2 py-3 proGreyDark d-flex"
+              type="submit"
+              onClick={(e) => {
+                e.preventDefault();
+                fetchPostComments();
+                check();
+              }}
+            >
+              <span style={{ color: "#59a2ed" }}>
+                <FaTelegramPlane />
+              </span>
+              Send
+            </div> */}
+            {/* <Button
               variant="primary"
               type="submit"
               onClick={(e) => {
@@ -90,8 +112,9 @@ export default function Comments({ singlePostId }) {
               }}
             >
               Send
-              {/* AGGIUNGERE ICONA D'INVIO */}
-            </Button>
+              COPIA DI SICUREZZA
+
+            </Button> */}
           </Col>
         </Row>
       </Form>
@@ -104,7 +127,7 @@ export default function Comments({ singlePostId }) {
             key={i}
           >
             <div className="d-flex justify-content-between proNormal fw-bolder">
-            {el.author} 
+              {el.author}
               <div>
                 {el.createdAt}
                 <ModaleComment check={check} id={el._id} />

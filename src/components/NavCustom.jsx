@@ -332,7 +332,7 @@ function OffCanvasExample({ name, ...props }, prop) {
             <img
               className="rounded-circle"
               style={{ width: "50px" }}
-              src={"https://i.pinimg.com/736x/65/91/a0/6591a0cdc097b089c2b329d1feddee54.jpg"}
+              src={myProfile?.image}
               alt="immagine profilo"
             />
           </div>

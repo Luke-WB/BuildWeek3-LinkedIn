@@ -28,8 +28,19 @@ body {
   text-decoration: none;
 }
 
-.singolaPersona :last-child {
+.singolaPersona Col :last-child {
   border-bottom: none !important;
+}
+
+/* .buttonPeople:hover {
+  border: solid 1px aqua;
+} */
+
+.buttonPeople:hover span {
+  display: none;
+}
+.buttonPeople:hover:before {
+  content: "Unfollow";
 }
 
 .proCard {
@@ -89,8 +100,8 @@ body {
 }
 
 .likeActive {
-  background: #59a2ed !important;
-  color: white !important;
+  // // background: #59a2ed !important;
+  // color: white !important;
 }
 
 .reverseChar {

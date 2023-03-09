@@ -13,7 +13,7 @@
 }
 
 .proOpenTo:hover {
-  background-color: #004182 !important;
+  background-color: rgb(141, 11, 11) !important;
 }
 
 .proModProfile {
@@ -54,4 +54,9 @@
   box-sizing: border-box;
   color: white !important;
   background-color: #c70c12 !important;
+}
+
+.sendButton:active {
+  background-color: #59a2ed!important;
+  color: white!important;
 }
