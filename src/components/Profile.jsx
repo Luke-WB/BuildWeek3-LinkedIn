@@ -116,7 +116,7 @@ const Profile = () => {
                     </span>
                   </Link>
                   <Link className="link-fix">
-                    <span className="proBlue">Contact info</span>
+                    <span className="proBlue ms-2">Contact info</span>
                   </Link>
                 </div>
                 <Link className="link-fix">
