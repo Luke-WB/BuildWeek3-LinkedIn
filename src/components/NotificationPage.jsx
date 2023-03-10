@@ -1,7 +1,7 @@
-import { Col, NavDropdown, Row } from "react-bootstrap"
-import Card from "react-bootstrap/Card"
-import { BsPlusLg } from "react-icons/bs"
-import { Link } from "react-router-dom"
+import { Col, NavDropdown, Row } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+import { BsPlusLg } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 function NotificationsPage() {
   return (
@@ -16,29 +16,44 @@ function NotificationsPage() {
       </Col>
       <Col xs={12} md={7}>
         <Card>
-          <Card.Body>
+          <Card.Body className="d-flex align-items-center">
             <img
+              className="me-2"
               src="https://uploads.turbologo.com/uploads/design/hq_preview_image/400982/draw_svg20210814-32701-1gcghjs.svg.png"
-              alt="..."
+              alt="Logo aziende"
               style={{ width: "100px", height: "100px" }}
             />
-            <p></p>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio quibusdam rerum inventore nam. Ex
+              consequuntur nobis reiciendis necessitatibus quae modi, architecto eos perferendis, a rerum libero quam
+              quisquam incidunt nulla?
+            </p>
           </Card.Body>
-          <Card.Body>
+          <Card.Body className="d-flex aling-items-center">
             <img
+              className="me-2"
               src="https://s.tmimgcdn.com/scr/1200x750/195100/modello-di-logo-quadrato-di-sviluppo_195120-original.jpg"
-              alt="..."
+              alt="Logo aziende"
               style={{ width: "100px", height: "100px" }}
             />
-            <p></p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam ea delectus, similique ad iste dicta
+              autem maiores earum, iure possimus quasi. Atque veniam maiores temporibus ducimus necessitatibus maxime
+              esse nam?
+            </p>
           </Card.Body>
-          <Card.Body>
+          <Card.Body className="d-flex aling-items-center">
             <img
+              className="me-2"
               src="https://s.tmimgcdn.com/scr/1200x750/68400/evolcom-moving-e-letter-logo-template_68473-original.jpg"
-              alt="..."
+              alt="Logo aziende"
               style={{ width: "100px", height: "100px" }}
             />
-            <p></p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, tenetur doloremque? Molestias deserunt
+              expedita nemo possimus libero asperiores commodi. Reiciendis officia aliquid veniam natus, quo error in!
+              Debitis, tempore cum?
+            </p>
           </Card.Body>
         </Card>
       </Col>
@@ -150,7 +165,7 @@ function NotificationsPage() {
         </Card.Text>
       </Col>
     </Row>
-  )
+  );
 }
 
-export default NotificationsPage
+export default NotificationsPage;
