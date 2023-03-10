@@ -183,7 +183,7 @@ function OffCanvasExample({ name, ...props }, prop) {
                   <span className="d-none d-lg-block">Messaging</span>
                 </Navbar>
               </Link>
-              <Link to={"/"} className="link-fix text-secondary px-1">
+              <Link to={"/notifications"} className="link-fix text-secondary px-1">
                 <Navbar className="icon-word">
                   <FaBell className="icon" />
                   <span className="d-none d-lg-block">Notifications </span>
