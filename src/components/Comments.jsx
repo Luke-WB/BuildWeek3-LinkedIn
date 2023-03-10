@@ -87,7 +87,7 @@ export default function Comments({ singlePostId, updateCount }) {
             />
           </Col>
           <Col className="col-2">
-            <SendButton fetchPostComments={fetchPostComments} check={check}/>
+            <SendButton fetchPostComments={fetchPostComments} check={check} />
             {/* <div
               className="greyHover rounded-2 px-2 py-3 proGreyDark d-flex"
               type="submit"

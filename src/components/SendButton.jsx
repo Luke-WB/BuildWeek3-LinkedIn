@@ -2,10 +2,11 @@ import { useState } from "react";
 import { BsHandThumbsUp } from "react-icons/bs";
 import { FaTelegramPlane } from "react-icons/fa";
 
-const SendButton = ({ fetchPostComments, check }) => {  
-  let cl = "greyHover rounded-2 px-2 py-3 proGreyDark d-flex align-items-center";
+const SendButton = ({ fetchPostComments, check }) => {
+  let cl =
+    "greyHover rounded-2 px-2 py-3 proGreyDark d-flex align-items-center";
   const [likeSwitch, setLikeSwitch] = useState(false);
-  if (likeSwitch) {    
+  if (likeSwitch) {
     cl += " sendButton";
   }
 
@@ -17,8 +18,8 @@ const SendButton = ({ fetchPostComments, check }) => {
         e.preventDefault();
         fetchPostComments();
         check();
-        setLikeSwitch(!likeSwitch)
-    }}
+        setLikeSwitch(!likeSwitch);
+      }}
     >
       <span className="me-1">
         <FaTelegramPlane />

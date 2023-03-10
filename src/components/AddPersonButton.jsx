@@ -1,22 +1,22 @@
-import { Button } from "react-bootstrap"
-import { BsPersonPlusFill } from "react-icons/bs"
-import { useDispatch, useSelector } from "react-redux"
-import { addFriend, removeFriend } from "../redux/actions"
+import { Button } from "react-bootstrap";
+import { BsPersonPlusFill } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
+import { addFriend, removeFriend } from "../redux/actions";
 
 const AddPersonButton = ({ personInfo, keyuser, stile }) => {
-  const dispatch = useDispatch()
-  const friend = useSelector((state) => state.profile.friend)
+  const dispatch = useDispatch();
+  const friend = useSelector((state) => state.profile.friend);
   const consollogga = () => {
-    console.log("friend: ", personInfo)
-  }
+    console.log("friend: ", personInfo);
+  };
 
   return (
     <>
       {friend.includes(personInfo._id) ? (
         <Button
           onClick={() => {
-            dispatch(removeFriend(personInfo._id))
-            consollogga()
+            dispatch(removeFriend(personInfo._id));
+            consollogga();
           }}
           className="proOpenTo d-flex align-items-center"
           style={stile}
@@ -28,8 +28,8 @@ const AddPersonButton = ({ personInfo, keyuser, stile }) => {
       ) : (
         <Button
           onClick={() => {
-            dispatch(addFriend(personInfo._id))
-            consollogga()
+            dispatch(addFriend(personInfo._id));
+            consollogga();
           }}
           className=" proMore align-items-center "
           style={stile}
@@ -39,7 +39,7 @@ const AddPersonButton = ({ personInfo, keyuser, stile }) => {
         </Button>
       )}
     </>
-  )
-}
+  );
+};
 
-export default AddPersonButton
+export default AddPersonButton;

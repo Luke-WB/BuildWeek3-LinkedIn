@@ -46,7 +46,9 @@ function Example(props) {
         <Modal.Header closeButton>
           <Modal.Title>{companyFetch.company_name}</Modal.Title>
         </Modal.Header>
-        <Modal.Body dangerouslySetInnerHTML={{ __html: companyFetch.description }}></Modal.Body>
+        <Modal.Body
+          dangerouslySetInnerHTML={{ __html: companyFetch.description }}
+        ></Modal.Body>
       </Modal>
     </>
   );

@@ -31,12 +31,18 @@ export default function AddObjTest({ idAdd, idExperience }) {
   };
   return (
     <>
-      <Button className="proModProfile" variant="outline-primary" onClick={handleShow}>
+      <Button
+        className="proModProfile"
+        variant="outline-primary"
+        onClick={handleShow}
+      >
         + Add media
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title className="modalColor modalTitle">Add your photo</Modal.Title>
+          <Modal.Title className="modalColor modalTitle">
+            Add your photo
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body className="d-flex flex-column">
           <Form.Control

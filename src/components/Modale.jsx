@@ -60,7 +60,10 @@ function Modale(props) {
 
   return (
     <>
-      <div className="position-absolute matita" onClick={() => setModalShow(true)}>
+      <div
+        className="position-absolute matita"
+        onClick={() => setModalShow(true)}
+      >
         <BiPencil />
       </div>
       <Modal
@@ -71,7 +74,9 @@ function Modale(props) {
         centered
       >
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">Edit Education</Modal.Title>
+          <Modal.Title id="contained-modal-title-vcenter">
+            Edit Education
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -123,14 +128,24 @@ function Modale(props) {
               <option value="2">Hybrid</option>
               <option value="3">Remote</option>
             </Form.Select>
-            <Form.Text className="text-muted">Pick a location type (ex: remote)</Form.Text>
-            <Form.Group className="my-4 d-flex align-items-center" controlId="formBasicCheckbox">
+            <Form.Text className="text-muted">
+              Pick a location type (ex: remote)
+            </Form.Text>
+            <Form.Group
+              className="my-4 d-flex align-items-center"
+              controlId="formBasicCheckbox"
+            >
               <Form.Check type="checkbox" />
-              <Form.Text className="text-muted ms-3">I am currently working in this role</Form.Text>
+              <Form.Text className="text-muted ms-3">
+                I am currently working in this role
+              </Form.Text>
             </Form.Group>
             <Form.Text className="text-muted">Start date*</Form.Text>
             <div className="d-flex gap-2 mb-4">
-              <Form.Select aria-label="Mounth" onChange={(e) => handleChange("startDate", e.target.value)}>
+              <Form.Select
+                aria-label="Mounth"
+                onChange={(e) => handleChange("startDate", e.target.value)}
+              >
                 <option>Mounth</option>
                 <option value="1">Gennaio</option>
                 <option value="2">Febbraio</option>
@@ -157,7 +172,10 @@ function Modale(props) {
             </div>
             <Form.Text className="text-muted">End date*</Form.Text>
             <div className="d-flex gap-2">
-              <Form.Select aria-label="Mounth" onChange={(e) => handleChange("endDate", e.target.value)}>
+              <Form.Select
+                aria-label="Mounth"
+                onChange={(e) => handleChange("endDate", e.target.value)}
+              >
                 <option>Mounth</option>
                 <option value="1">Gennaio</option>
                 <option value="2">Febbraio</option>
@@ -182,8 +200,14 @@ function Modale(props) {
                 <option value="2021">2021</option>
               </Form.Select>
             </div>
-            <Form.Group className="my-4" controlId="exampleForm.ControlTextarea1">
-              <Form.Text className="text-muted" onChange={(e) => handleChange("description", e.target.value)}>
+            <Form.Group
+              className="my-4"
+              controlId="exampleForm.ControlTextarea1"
+            >
+              <Form.Text
+                className="text-muted"
+                onChange={(e) => handleChange("description", e.target.value)}
+              >
                 Description
               </Form.Text>
               <Form.Control as="textarea" rows={3} />
@@ -191,7 +215,11 @@ function Modale(props) {
           </Form>
           <div>
             <h5>Skills</h5>
-            <p> We recommend adding your top 5 used in this role. They’ll also appear in your Skills section.</p>
+            <p>
+              {" "}
+              We recommend adding your top 5 used in this role. They’ll also
+              appear in your Skills section.
+            </p>
             <Button className="proModProfile" variant="outline-primary">
               + Add skill
             </Button>
@@ -199,7 +227,8 @@ function Modale(props) {
           <div>
             <h5>Media</h5>
             <p>
-              Add or link to external documents, photos, sites, videos, and presentations. Learn more about{" "}
+              Add or link to external documents, photos, sites, videos, and
+              presentations. Learn more about{" "}
               <Link to="/" className="link-fix">
                 media file types supported
               </Link>

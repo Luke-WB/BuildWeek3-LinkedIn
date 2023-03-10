@@ -8,7 +8,7 @@ const Banner = ({ handleShow }) => {
       style={{
         objectFit: "cover",
         objectPosition: "top",
-        overflow:"hidden",
+        overflow: "hidden",
       }}
       alt="immagine background"
       onClick={handleShow}
@@ -29,12 +29,12 @@ const Banner = ({ handleShow }) => {
         <div
           style={{
             height: "100%",
-            aspectRatio:"1/1",
+            aspectRatio: "1/1",
             position: "absolute",
             left: "0",
             background: "#A0B4B7",
             borderRadius: "50%",
-            overflow:"hidden",
+            overflow: "hidden",
             transformOrigin: "left",
             transform: "translateX(-50%) scale(2)",
           }}

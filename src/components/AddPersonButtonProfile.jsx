@@ -21,10 +21,8 @@ const AddPersonButtonProfile = ({ personInfo, keyuser }) => {
           className="proOpenTo d-flex align-items-center"
           variant="danger"
         >
-            <BsPersonPlusFill className="me-2" />
-          <span>
-            Unfollow
-          </span>
+          <BsPersonPlusFill className="me-2" />
+          <span>Unfollow</span>
         </Button>
       ) : (
         <Button

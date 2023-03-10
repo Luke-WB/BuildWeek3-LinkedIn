@@ -1,100 +1,99 @@
 .modalTitle {
-    font-size: 20px;
-    font-weight: 400;
-  }
-  
-  .modalColor {
-    color: #404040;
-  }
-  
-  .modalIcon {
-    color: #666666;
-  }
-  
-  .modaltextArea {
-    border: 0px !important;
-    resize: none;
-  }
-  
-  .modaltextArea:focus {
-    box-shadow: none !important;
-    resize: none;
-  }
-  
-  
-  .modaltextArea:hover{
-    background-color: #E2F0FE;
-    text-decoration: none;
-  }
-  
-  .modalFile {
-    color: #0a77d2;
-    text-decoration: none;
-    border: transparent  
-  }
-  
-  .modalFile::placeholder {
-    color: #0a77d2;
-    text-decoration: none;  
-  }
-  
-  .modalOrrBar {
-    border-left: 1px rgb(220, 220, 220) solid;
-    height: 100%;
-    width: 1px;
-    margin: 5px;
-  }
-  .messageTrans {
-  transform: translate(-5px,0);
-  }
-  
-  .iconSmile {
-    padding: 8px 0px 8px 0px;
-    font-size: 40px !important;
-    font-weight: 500 !important;
-    color: #666666;
-  }
-  
-  .iconSmile:hover {
-    border-radius: 50%;
-    background-color: #ebebeb;
-    padding: 8px 0px 8px 0px;
-  }
-  
-  .modalHGrey {
-    padding: 8px 0px 8px 0px;
-  }
-  
-  .modalHGrey:hover {
-    border-radius: 50%;
-    background-color: #ebebeb;
-    padding: 8px 0px 8px 0px;
-  }
-  
-  .modalHoverText {
-    border-radius: 30px !important;
-    padding: 8px 15px !important;
-  }
-  
-  .modalHoverText:hover {
-    background-color: #ebebeb !important;
-    border-radius: 30px !important;
-    padding: 8px 15px !important;
-  }
-  
-  .proOpenTo:disabled  {
-    background-color: #ebebeb;
-    color: #666666;
-    border: transparent;
-  }
-  
-  .homeModalH {
-    padding: 8px 12px 8px 12px;
-  }
-  
-  .homeModalH:hover {
-    border-radius: 50%;
-    background-color: #ebebeb;
-    padding: 8px 12px 8px 12px;
-  }
-  
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.modalColor {
+  color: #404040;
+}
+
+.modalIcon {
+  color: #666666;
+}
+
+.modaltextArea {
+  border: 0px !important;
+  resize: none;
+}
+
+.modaltextArea:focus {
+  box-shadow: none !important;
+  resize: none;
+}
+
+.modaltextArea:hover {
+  background-color: #e2f0fe;
+  text-decoration: none;
+}
+
+.modalFile {
+  color: #0a77d2;
+  text-decoration: none;
+  border: transparent;
+}
+
+.modalFile::placeholder {
+  color: #0a77d2;
+  text-decoration: none;
+}
+
+.modalOrrBar {
+  border-left: 1px rgb(220, 220, 220) solid;
+  height: 100%;
+  width: 1px;
+  margin: 5px;
+}
+
+.messageTrans {
+  transform: translate(-5px, 0);
+}
+
+.iconSmile {
+  padding: 8px 0px 8px 0px;
+  font-size: 40px !important;
+  font-weight: 500 !important;
+  color: #666666;
+}
+
+.iconSmile:hover {
+  border-radius: 50%;
+  background-color: #ebebeb;
+  padding: 8px 0px 8px 0px;
+}
+
+.modalHGrey {
+  padding: 8px 0px 8px 0px;
+}
+
+.modalHGrey:hover {
+  border-radius: 50%;
+  background-color: #ebebeb;
+  padding: 8px 0px 8px 0px;
+}
+
+.modalHoverText {
+  border-radius: 30px !important;
+  padding: 8px 15px !important;
+}
+
+.modalHoverText:hover {
+  background-color: #ebebeb !important;
+  border-radius: 30px !important;
+  padding: 8px 15px !important;
+}
+
+.proOpenTo:disabled {
+  background-color: #ebebeb;
+  color: #666666;
+  border: transparent;
+}
+
+.homeModalH {
+  padding: 8px 12px 8px 12px;
+}
+
+.homeModalH:hover {
+  border-radius: 50%;
+  background-color: #ebebeb;
+  padding: 8px 12px 8px 12px;
+}

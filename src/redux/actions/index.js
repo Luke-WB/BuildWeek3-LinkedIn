@@ -39,11 +39,14 @@ export const fetchProfile = (key) => {
 export function fetchIdProfile(id) {
   return async (dispatch) => {
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${id}`, {
-        headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
-        },
-      });
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`,
+          },
+        }
+      );
       console.log(fetch.toString);
       if (response.ok) {
         const data = await response.json();
@@ -67,11 +70,14 @@ export const showModalExp = (toggleState) => {
 export const reversed = (userKey) => {
   return async (dispatch, getState) => {
     try {
-      const res = await fetch("https://striveschool-api.herokuapp.com/api/posts/", {
-        headers: {
-          Authorization: userKey,
-        },
-      });
+      const res = await fetch(
+        "https://striveschool-api.herokuapp.com/api/posts/",
+        {
+          headers: {
+            Authorization: userKey,
+          },
+        }
+      );
       if (res.ok) {
         let post = await res.json();
         dispatch({

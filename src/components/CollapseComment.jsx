@@ -18,7 +18,7 @@ const CollapseComment = (props) => {
   return (
     <>
       <div className="d-flex justify-content-evenly text-secondary">
-        <LikeButton background= {"#59a2ed"} colorText = "white" />
+        <LikeButton background={"#59a2ed"} colorText="white" />
         {/* <div className="greyHover rounded-2 me-2 px-4 py-3">
           <BsHandThumbsUp className="fs-4 me-2" />
           Like
@@ -31,7 +31,12 @@ const CollapseComment = (props) => {
         >
           <BiMessageRoundedDetail className="fs-4 me-2" />
           Comments
-          <div style={{background:"#59a2ed", padding:"2px 6px"}} className="proVerySmall rounded-2 text-light ms-2">{counter}</div>
+          <div
+            style={{ background: "#59a2ed", padding: "2px 6px" }}
+            className="proVerySmall rounded-2 text-light ms-2"
+          >
+            {counter}
+          </div>
         </div>
         <div className="greyHover rounded-2 me-2 px-4 py-3">
           <MdOutlinePostAdd className="fs-4 me-2" />
@@ -44,7 +49,10 @@ const CollapseComment = (props) => {
       </div>
       <Collapse in={open}>
         <div id="example-collapse-text">
-          <Comments singlePostId={props.singlePostId} updateCount={updateCounter} />
+          <Comments
+            singlePostId={props.singlePostId}
+            updateCount={updateCounter}
+          />
         </div>
       </Collapse>
     </>

@@ -5,25 +5,33 @@ import { addPrefeJobs, removePrefeJobs } from "../redux/actions";
 
 function SingleJob(props) {
   const prefe = useSelector((state) => state.profile.prefe);
-  const prefeJob = prefe.map((el) => el._id);
+  const prefeJob = prefe?.map((el) => el._id);
   const dispatch = useDispatch();
 
   return (
     <>
-      {!prefeJob.includes(props.job._id) ? (
-        <FiBookmark
-          style={{ fontSize: "25px" }}
-          onClick={() => {
-            dispatch(addPrefeJobs(props.job));
-          }}
-        />
+      {!prefeJob?.includes(props.job._id) ? (
+        <span
+          className="greyHover proIcon"
+          style={{ borderRadius: "50%", padding: "5px 10px" }}
+        >
+          <FiBookmark
+            onClick={() => {
+              dispatch(addPrefeJobs(props.job));
+            }}
+          />
+        </span>
       ) : (
-        <BsFillBookmarkCheckFill
-          style={{ fontSize: "25px" }}
-          onClick={() => {
-            dispatch(removePrefeJobs(props.job));
-          }}
-        />
+        <span
+          className="greyHover proIcon"
+          style={{ borderRadius: "50%", padding: "0px, 150px" }}
+        >
+          <BsFillBookmarkCheckFill
+            onClick={() => {
+              dispatch(removePrefeJobs(props.job));
+            }}
+          />
+        </span>
       )}
     </>
   );

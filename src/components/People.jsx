@@ -15,15 +15,15 @@ export default function People() {
 
   // shuffle friend, lack conditional check about input/output
   const randomizator = (param) => {
-    let copyVersion = param.slice(0)
+    let copyVersion = param.slice(0);
     for (let i = copyVersion.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
       let temp = copyVersion[i];
       copyVersion[i] = copyVersion[j];
       copyVersion[j] = temp;
-  }
-    return copyVersion
-  }
+    }
+    return copyVersion;
+  };
 
   const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/";
   const friendProfileList = useSelector((state) => state.profile.friend);
@@ -40,8 +40,8 @@ export default function People() {
         if (response.ok) {
           let data = await response.json();
           // console.log("arrayPeople", data);
-          let ourClass = data.reverse().slice(0, 50)
-          let shuffledClass = randomizator(ourClass)
+          let ourClass = data.reverse().slice(0, 50);
+          let shuffledClass = randomizator(ourClass);
           setPeopleFetched(shuffledClass);
           setLoading(false);
         }
@@ -74,9 +74,15 @@ export default function People() {
       </h5>
       <Col className="mx-4 singolaPersona">
         {loading ? (
-          <Spinner animation="border" variant="primary" className="m-auto my-5" />
+          <Spinner
+            animation="border"
+            variant="primary"
+            className="m-auto my-5"
+          />
         ) : (
-          peopleToRender.map((el, i) => <SinglePerson personInfo={el} keyuser={i} />)
+          peopleToRender.map((el, i) => (
+            <SinglePerson personInfo={el} keyuser={i} />
+          ))
         )}
       </Col>
       <Row>

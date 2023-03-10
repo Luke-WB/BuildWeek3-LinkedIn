@@ -4,7 +4,6 @@ import { FiBookmark } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { addPrefeJobs } from "../redux/actions";
 import ModaleJobs from "./ModaleJobs";
-import Example from "./ModaleJobs";
 import SingleJob from "./SingleJob";
 
 function SearchJob() {
@@ -48,7 +47,13 @@ function SearchJob() {
   return (
     <>
       <Form className="d-flex" onSubmit={(e) => e.preventDefault()}>
-        <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" onChange={handleChange} />
+        <Form.Control
+          type="search"
+          placeholder="Search"
+          className="me-2"
+          aria-label="Search"
+          onChange={handleChange}
+        />
         <Button
           variant="primary"
           className="proOpenTo"
@@ -70,8 +75,12 @@ function SearchJob() {
                   <ModaleJobs title={job.title} company={job.company_name} />
                   <SingleJob job={job} />
                 </div>
-                <div className="proBlack proSmall proLight mb-2 proGrey proGreyHBlue">{job.category}</div>
-                <div className="proBlack proSmall proLight mb-2 proGrey proGreyHBlue">{job.company_name}</div>
+                <div className="proBlack proSmall proLight mb-2 proGrey proGreyHBlue">
+                  {job.category}
+                </div>
+                <div className="proBlack proSmall proLight mb-2 proGrey proGreyHBlue">
+                  {job.company_name}
+                </div>
                 <div className="proBlack proSmall proLight mb-2 proGrey proGreyHBlue">
                   {job.publication_date.slice(0, 10)}
                 </div>

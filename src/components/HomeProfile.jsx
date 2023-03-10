@@ -1,20 +1,20 @@
-import { useEffect } from "react"
-import { Card, ListGroup } from "react-bootstrap/"
-import { useSelector, useDispatch } from "react-redux"
-import { fetchProfile } from "../redux/actions"
-import copertina from "../assets/user.jpg"
-import { BsFillPersonPlusFill, BsBookmarkFill } from "react-icons/bs"
-import { AiOutlinePlus } from "react-icons/ai"
-import { Link } from "react-router-dom"
-import Banner from "./Banner"
+import { useEffect } from "react";
+import { Card, ListGroup } from "react-bootstrap/";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchProfile } from "../redux/actions";
+import copertina from "../assets/user.jpg";
+import { BsFillPersonPlusFill, BsBookmarkFill } from "react-icons/bs";
+import { AiOutlinePlus } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import Banner from "./Banner";
 
 function HomeProfile({ myProfile }) {
-  const token = useSelector((state) => state.profile.token)
-  const dispatch = useDispatch()
+  const token = useSelector((state) => state.profile.token);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchProfile(token))
-  }, [])
+    dispatch(fetchProfile(token));
+  }, []);
 
   return (
     <>
@@ -42,11 +42,18 @@ function HomeProfile({ myProfile }) {
                 </Link>
                 <div className="d-flex align-items-center">
                   <BsFillPersonPlusFill />
-                  <span className="proBlue ms-3"> {Math.floor(Math.random() * 100)}</span>
+                  <span className="proBlue ms-3">
+                    {" "}
+                    {Math.floor(Math.random() * 100)}
+                  </span>
                 </div>
               </div>
               <div>
-                <Link to="/" className="m-0 link-fix" style={{ color: "black" }}>
+                <Link
+                  to="/"
+                  className="m-0 link-fix"
+                  style={{ color: "black" }}
+                >
                   Grow your network
                 </Link>
               </div>
@@ -64,7 +71,10 @@ function HomeProfile({ myProfile }) {
             </ListGroup.Item>
             <ListGroup.Item className="grigio">
               <div className="d-flex align-items-center">
-                <BsBookmarkFill className="d-flex  me-1" style={{ color: "grey", cursor: "pointer" }} />
+                <BsBookmarkFill
+                  className="d-flex  me-1"
+                  style={{ color: "grey", cursor: "pointer" }}
+                />
                 <div style={{ cursor: "pointer" }}>My items</div>
               </div>
             </ListGroup.Item>
@@ -93,7 +103,7 @@ function HomeProfile({ myProfile }) {
         </ListGroup>
       </Card>
     </>
-  )
+  );
 }
 
-export default HomeProfile
+export default HomeProfile;

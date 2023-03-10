@@ -50,7 +50,7 @@ function JobPage() {
                     <Collapse in={open}>
                       <div id="example-collapse-text">
                         <ListGroup>
-                          {prefe.map((el) => (
+                          {prefe && prefe?.map((el) => (
                             <ListGroup.Item>
                               <div className="d-flex justify-content-between align-items-center">
                                 {el.title}

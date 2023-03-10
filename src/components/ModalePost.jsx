@@ -3,7 +3,11 @@ import { Button, Form } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { HiOutlineClock, HiDocumentText } from "react-icons/hi";
 import { MdPhotoSizeSelectActual } from "react-icons/md";
-import { BsFillPlayBtnFill, BsCaretDownFill, BsThreeDots } from "react-icons/bs";
+import {
+  BsFillPlayBtnFill,
+  BsCaretDownFill,
+  BsThreeDots,
+} from "react-icons/bs";
 import { VscSmiley } from "react-icons/vsc";
 import { BiMessageRoundedDetail } from "react-icons/bi";
 import { useSelector } from "react-redux";
@@ -47,14 +51,17 @@ const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
         console.log("testPOST", addPost);
         if (fileSelected === true) {
           console.log("ID", addPost._id);
-          let res = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${addPost._id}`, {
-            method: "POST",
-            body: fd,
-            headers: {
-              Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs",
-            },
-          });
+          let res = await fetch(
+            `https://striveschool-api.herokuapp.com/api/posts/${addPost._id}`,
+            {
+              method: "POST",
+              body: fd,
+              headers: {
+                Authorization:
+                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs",
+              },
+            }
+          );
         } else {
           console.log("error");
         }
@@ -76,7 +83,9 @@ const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title className="modalColor modalTitle">Create a post</Modal.Title>
+        <Modal.Title className="modalColor modalTitle">
+          Create a post
+        </Modal.Title>
       </Modal.Header>
       <Modal.Body className="d-flex flex-column">
         <div className="d-flex">
@@ -111,7 +120,10 @@ const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
         </div>
         <Form.Group className="d-flex justify-content-between align-items-center modalIcon">
           <div>
-            <div className="d-inline-block modalHGrey" onClick={handleShowPhoto}>
+            <div
+              className="d-inline-block modalHGrey"
+              onClick={handleShowPhoto}
+            >
               <MdPhotoSizeSelectActual className="proIcon mx-2" />
             </div>
             <ModalePhoto
@@ -133,7 +145,9 @@ const ModalePost = ({ show, handleClose, check, ternaryCheck }) => {
             <div className="d-inline-block modalHGrey">
               <BiMessageRoundedDetail className="ms-3 me-1 messageTrans" />
             </div>
-            <span className="proVerySmall proMiddle modalHoverText">Anyone</span>
+            <span className="proVerySmall proMiddle modalHoverText">
+              Anyone
+            </span>
           </div>
           <div>
             <div className="d-inline-block modalHGrey">

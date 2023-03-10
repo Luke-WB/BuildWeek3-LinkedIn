@@ -1,56 +1,81 @@
-import { Button, Container, Form, Nav, Navbar, NavDropdown, Offcanvas, Card, ListGroup } from "react-bootstrap"
-import logo from "../assets/LinkedIn_logo_initials.png"
-import React, { useState, useEffect } from "react"
-import { useSelector } from "react-redux"
-import { FaSearch, FaHome, FaUserFriends, FaBell, FaCompass } from "react-icons/fa"
-import { BsBriefcaseFill, BsGrid3X3GapFill, BsPlayBtnFill } from "react-icons/bs"
-import { CgInsights } from "react-icons/cg"
-import { RiSuitcaseFill, RiAdvertisementLine, RiMessage3Line } from "react-icons/ri"
-import { MdGroups } from "react-icons/md"
-import { TiTick } from "react-icons/ti"
-import { AiOutlinePlus } from "react-icons/ai"
-import { Link, useNavigate, useLocation } from "react-router-dom"
-import "../assets/sass/_navBar.scss"
+import {
+  Button,
+  Container,
+  Form,
+  Nav,
+  Navbar,
+  NavDropdown,
+  Offcanvas,
+  Card,
+  ListGroup,
+} from "react-bootstrap";
+import logo from "../assets/LinkedIn_logo_initials.png";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import {
+  FaSearch,
+  FaHome,
+  FaUserFriends,
+  FaBell,
+  FaCompass,
+} from "react-icons/fa";
+import {
+  BsBriefcaseFill,
+  BsGrid3X3GapFill,
+  BsPlayBtnFill,
+} from "react-icons/bs";
+import { CgInsights } from "react-icons/cg";
+import {
+  RiSuitcaseFill,
+  RiAdvertisementLine,
+  RiMessage3Line,
+} from "react-icons/ri";
+import { MdGroups } from "react-icons/md";
+import { TiTick } from "react-icons/ti";
+import { AiOutlinePlus } from "react-icons/ai";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import "../assets/sass/_navBar.scss";
 
 function OffCanvasExample({ name, ...props }, prop) {
-  const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`
+  const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`;
 
-  const myProfile = useSelector((state) => state.profile.profile)
+  const myProfile = useSelector((state) => state.profile.profile);
 
-  const [show, setShow] = useState(false)
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   /* scoll */
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     window.addEventListener("scroll", (listenToScroll) => {
-      console.log("scroll")
-    })
-    let listenToScroll = 0
+      console.log("scroll");
+    });
+    let listenToScroll = 0;
 
     listenToScroll = () => {
       if (windowScroll > heightToShowDiv) {
-        isVisible && setIsVisible(true)
+        isVisible && setIsVisible(true);
       } else {
-        setIsVisible(false)
+        setIsVisible(false);
       }
-    }
+    };
 
     //window.removeEventListener("scroll", listenToScroll);
     //return () => window.addEventListener("scroll", listenToScroll);
-  }, [])
+  }, []);
 
-  let heightToShowDiv = 40
-  const windowScroll = document.body.scrollTop || document.documentElement.scrollTop
+  let heightToShowDiv = 40;
+  const windowScroll =
+    document.body.scrollTop || document.documentElement.scrollTop;
 
-  const [peopleFetched, setPeopleFetched] = useState([])
-  const [word, setWord] = useState("")
-  const [nameSearch, setNameSearch] = useState()
-  const navigate = useNavigate()
+  const [peopleFetched, setPeopleFetched] = useState([]);
+  const [word, setWord] = useState("");
+  const [nameSearch, setNameSearch] = useState();
+  const navigate = useNavigate();
 
-  const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/"
+  const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/";
 
   useEffect(() => {
     const fetchUser_Profile = async () => {
@@ -59,34 +84,40 @@ function OffCanvasExample({ name, ...props }, prop) {
           headers: {
             Authorization: userKey,
           },
-        })
+        });
         if (response.ok) {
-          let data = await response.json()
-          console.log("arrayPeople", data)
-          setPeopleFetched(data)
+          let data = await response.json();
+          console.log("arrayPeople", data);
+          setPeopleFetched(data);
         }
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
-    fetchUser_Profile()
-  }, [])
+    };
+    fetchUser_Profile();
+  }, []);
 
-  let newData = []
+  let newData = [];
 
   for (let i = 0; i < peopleFetched.length; i++) {
-    newData.push({ name: peopleFetched[i].name, surname: peopleFetched[i].surname, id: peopleFetched[i]._id })
+    newData.push({
+      name: peopleFetched[i].name,
+      surname: peopleFetched[i].surname,
+      id: peopleFetched[i]._id,
+    });
   }
 
   useEffect(() => {
-    setNameSearch(newData.filter((el) => el.name.toLowerCase().includes(word.toLowerCase())))
-    console.log("nenene", nameSearch)
-  }, [word])
+    setNameSearch(
+      newData.filter((el) => el.name.toLowerCase().includes(word.toLowerCase()))
+    );
+    console.log("nenene", nameSearch);
+  }, [word]);
 
   const searchName = async (id) => {
-    navigate(`user/${id}`)
-  }
-  const location = useLocation()
+    navigate(`user/${id}`);
+  };
+  const location = useLocation();
   return (
     <>
       <Navbar
@@ -109,9 +140,15 @@ function OffCanvasExample({ name, ...props }, prop) {
           </Link>
 
           <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll" className="bg-white justify-content-end">
+          <Navbar.Collapse
+            id="navbarScroll"
+            className="bg-white justify-content-end"
+          >
             <div className="d-flex align-items-center me-auto mt-4 mt-lg-0 ">
-              <FaSearch className="position-relative" style={{ right: "-31px", top: "1px", color: "#4a4a4a" }} />
+              <FaSearch
+                className="position-relative"
+                style={{ right: "-31px", top: "1px", color: "#4a4a4a" }}
+              />
               <Form className="d-flex" onSubmit={(ev) => ev.preventDefault()}>
                 <Form.Control
                   type="search"
@@ -129,14 +166,44 @@ function OffCanvasExample({ name, ...props }, prop) {
                   onChange={(e) => setWord(e.target.value)}
                 />
               </Form>
-              {word.length > 1 ? <ListGroup className="position-absolute" style={{top: "55px" , width: "300px"}}>
-              <ul>
-              {nameSearch? nameSearch.map((el) => <ListGroup.Item as="li" style={{cursor: "pointer" }} onClick={() => {return searchName(el.id), setWord("")}}>{el.name} {el.surname}</ListGroup.Item>) : <></>}
-              </ul>
-            </ListGroup> : <></>}
+              {word.length > 1 ? (
+                <ListGroup
+                  className="position-absolute"
+                  style={{ top: "55px", width: "300px" }}
+                >
+                  <ul>
+                    {nameSearch ? (
+                      nameSearch.map((el) => (
+                        <ListGroup.Item
+                          as="li"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => {
+                            return searchName(el.id), setWord("");
+                          }}
+                        >
+                          {el.name} {el.surname}
+                        </ListGroup.Item>
+                      ))
+                    ) : (
+                      <></>
+                    )}
+                  </ul>
+                </ListGroup>
+              ) : (
+                <></>
+              )}
             </div>
-            <Nav className=" my-2 my-lg-0 align-items-start ms-5 ms-lg-0 " style={{ maxHeight: "100px" }} navbarScroll>
-              <Link className={`px-2 nav-link ${location.pathname === "/" ? "active" : ""}`} to="/">
+            <Nav
+              className=" my-2 my-lg-0 align-items-start ms-5 ms-lg-0 "
+              style={{ maxHeight: "100px" }}
+              navbarScroll
+            >
+              <Link
+                className={`px-2 nav-link ${
+                  location.pathname === "/" ? "active" : ""
+                }`}
+                to="/"
+              >
                 <Navbar className="icon-word ">
                   <FaHome className="icon" />
                   <span className="d-none d-lg-block ">Home</span>
@@ -172,12 +239,21 @@ function OffCanvasExample({ name, ...props }, prop) {
                 <NavDropdown
                   title={
                     <div className="icon-word ">
-                      <img src={myProfile?.image} className="rounded-circle" alt="pic-user" style={{ width: "29px" }} />
+                      <img
+                        src={myProfile?.image}
+                        className="rounded-circle"
+                        alt="pic-user"
+                        style={{ width: "29px" }}
+                      />
                       <span className="d-none d-lg-block">Me </span>
                     </div>
                   }
                   id="navbarScrollingDropdown"
-                  style={{ borderRight: "1px solid lightgray", paddingRight: "15px", paddingTop: "0.5rem" }}
+                  style={{
+                    borderRight: "1px solid lightgray",
+                    paddingRight: "15px",
+                    paddingTop: "0.5rem",
+                  }}
                   className="icon-word "
                 >
                   <div className="text-center d-flex justify-content-center">
@@ -192,16 +268,24 @@ function OffCanvasExample({ name, ...props }, prop) {
                   <NavDropdown.Item href="#action3">
                     <strong>Account</strong>
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="#action3">Try Premium for free</NavDropdown.Item>
-                  <NavDropdown.Item href="#action3">Settings & Privacy</NavDropdown.Item>
+                  <NavDropdown.Item href="#action3">
+                    Try Premium for free
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action3">
+                    Settings & Privacy
+                  </NavDropdown.Item>
                   <NavDropdown.Item href="#action4">Help</NavDropdown.Item>
                   <NavDropdown.Item href="#action3">Language</NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="#action5">
                     <strong>Manage</strong>
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="#action5">Posts & Activity</NavDropdown.Item>
-                  <NavDropdown.Item href="#action5">Job Posting Account</NavDropdown.Item>
+                  <NavDropdown.Item href="#action5">
+                    Posts & Activity
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action5">
+                    Job Posting Account
+                  </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="#action5"> Sign Out</NavDropdown.Item>
                 </NavDropdown>
@@ -283,7 +367,10 @@ function OffCanvasExample({ name, ...props }, prop) {
                       </ListGroup.Item>
                       <ListGroup.Item>
                         <div>
-                          <strong>Talent Solutions</strong> <p className="mia">Find, attract and recruit talent</p>
+                          <strong>Talent Solutions</strong>{" "}
+                          <p className="mia">
+                            Find, attract and recruit talent
+                          </p>
                         </div>
                         <div>
                           <strong>Sales Solutions</strong>
@@ -291,15 +378,21 @@ function OffCanvasExample({ name, ...props }, prop) {
                         </div>
                         <div>
                           <strong>Post a job for free</strong>
-                          <p className="mia">Get your job in front of quality candidates</p>
+                          <p className="mia">
+                            Get your job in front of quality candidates
+                          </p>
                         </div>
                         <div>
                           <strong>Marketing Solutions</strong>
-                          <p className="mia">Acquire customers and grow your business</p>
+                          <p className="mia">
+                            Acquire customers and grow your business
+                          </p>
                         </div>
                         <div>
                           <strong>Learning Solutions</strong>
-                          <p className="mia">Develop talent across your organization</p>
+                          <p className="mia">
+                            Develop talent across your organization
+                          </p>
                         </div>
                       </ListGroup.Item>
                       <ListGroup.Item>
@@ -316,7 +409,10 @@ function OffCanvasExample({ name, ...props }, prop) {
               </Offcanvas>
             </Nav>
             <Navbar.Text>
-              <Link to="/" className="gold  d-flex flex-nowrap link-fix d-none d-lg-block ">
+              <Link
+                to="/"
+                className="gold  d-flex flex-nowrap link-fix d-none d-lg-block "
+              >
                 Try Premium for free
               </Link>
             </Navbar.Text>
@@ -357,7 +453,9 @@ function OffCanvasExample({ name, ...props }, prop) {
                 </strong>
               </p>
             )}
-            {myProfile && <p style={{ marginBottom: "0px" }}>{myProfile?.title}</p>}
+            {myProfile && (
+              <p style={{ marginBottom: "0px" }}>{myProfile?.title}</p>
+            )}
           </div>
         </div>
         <div>
@@ -375,7 +473,7 @@ function OffCanvasExample({ name, ...props }, prop) {
         </div>
       </div>
     </>
-  )
+  );
 }
 function Example() {
   return (
@@ -384,7 +482,7 @@ function Example() {
         <OffCanvasExample key={idx} placement={placement} name={placement} />
       ))}
     </>
-  )
+  );
 }
 
-export default Example
+export default Example;

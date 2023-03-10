@@ -6,13 +6,12 @@ import logo from "../assets/management-suitcase-icon-outline-work-job-vector.jpg
 import Modale from "./Modale";
 
 const NewPersonExperience = ({ myProfile }) => {
-
-  const userKey =  `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs` 
+  const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`;
 
   const [experiencesToRender, setExperiencesToRender] = useState([]);
 
   console.log("cosa cavolo è myProfile", myProfile);
-  
+
   async function getExperience(id, key) {
     const urlToFetch = `https://striveschool-api.herokuapp.com/api/profile/${id}/experiences`;
     try {
@@ -33,7 +32,7 @@ const NewPersonExperience = ({ myProfile }) => {
       console.log(error);
     }
   }
-  
+
   useEffect(() => {
     getExperience(myProfile._id, userKey);
   }, [myProfile]);
@@ -48,7 +47,11 @@ const NewPersonExperience = ({ myProfile }) => {
           <Row>
             <Col ms={6} md={3}>
               <div className="parteUno rounded-2">
-                <img src={el.image ? el.image : logo} alt="pic-job" style={{ height: "75px", width: "75px" }} />
+                <img
+                  src={el.image ? el.image : logo}
+                  alt="pic-job"
+                  style={{ height: "75px", width: "75px" }}
+                />
               </div>
             </Col>
             <Col ms={6} md={9}>

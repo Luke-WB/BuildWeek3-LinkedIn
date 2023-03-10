@@ -15,15 +15,18 @@ const ModaleComment = (props) => {
 
   const putComments = async (id) => {
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${id}`, {
-        method: "PUT",
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(putInput),
-      });
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/comments/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(putInput),
+        }
+      );
       if (response.ok) {
       }
     } catch (error) {
@@ -33,13 +36,16 @@ const ModaleComment = (props) => {
 
   const deleteComments = async (id) => {
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${id}`, {
-        method: "DELETE",
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
-        },
-      });
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/comments/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
+          },
+        }
+      );
       if (response.ok) {
       }
     } catch (error) {

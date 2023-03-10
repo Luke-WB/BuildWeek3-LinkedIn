@@ -44,7 +44,10 @@ const Experience = ({ myProfile }) => {
     <>
       <div className="d-flex">
         <h1 className="mt-2">Experience</h1>
-        <div className="matita position-absolute" onClick={() => setModalShowPlus(true)}>
+        <div
+          className="matita position-absolute"
+          onClick={() => setModalShowPlus(true)}
+        >
           <BsPlusLg />
         </div>
         <ModaleAdd
@@ -65,14 +68,18 @@ const Experience = ({ myProfile }) => {
             idAdd={myProfile._id}
             idExperience={el._id}
           />
-          <Row>
+          <Row className="my-3 align-items-center">
             <Col ms={6} md={3}>
-              <div className="parteUno rounded-2">
-                <img src={el.image ? el.image : logo} alt="pic-job" style={{ height: "75px", width: "75px" }} />
+              <div className="rounded-2">
+                <img
+                  src={el.image ? el.image : logo}
+                  alt="pic-job"
+                  style={{ height: "75px", width: "75px" }}
+                />
               </div>
             </Col>
             <Col ms={6} md={9}>
-              <div className="parteDue">
+              <div className="ms-3">
                 <p className="titolo m-0">{el.role}</p>
                 <p className="m-0">{el.company}</p>
                 <p className="m-0">

@@ -10,14 +10,17 @@ export default function AddObj({ idAdd, img }) {
   const [fd, setFd] = useState(new FormData());
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    let res = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${idAdd}/picture`, {
-      method: "POST",
-      body: fd,
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs",
-      },
-    });
+    let res = await fetch(
+      `https://striveschool-api.herokuapp.com/api/profile/${idAdd}/picture`,
+      {
+        method: "POST",
+        body: fd,
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs",
+        },
+      }
+    );
   };
   const handleFile = (ev) => {
     setFd((prev) => {
@@ -28,13 +31,19 @@ export default function AddObj({ idAdd, img }) {
   };
   return (
     <>
-      <Button className="proModProfile" variant="outline-primary" onClick={handleShow}>
+      <Button
+        className="proModProfile"
+        variant="outline-primary"
+        onClick={handleShow}
+      >
         + Add media
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title className="modalColor modalTitle">Add your photo</Modal.Title>
+          <Modal.Title className="modalColor modalTitle">
+            Add your photo
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body className="d-flex flex-column">
           <Form.Control
