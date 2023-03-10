@@ -63,6 +63,7 @@ const ModaleComment = (props) => {
         <Modal.Body>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Control
+              className="modaltextArea"
               as="textarea"
               placeholder="Write here..."
               rows={3}
