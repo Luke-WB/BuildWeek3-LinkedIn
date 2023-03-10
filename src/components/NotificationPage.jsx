@@ -19,7 +19,7 @@ function NotificationsPage() {
           <Card.Body className="d-flex align-items-center">
             <img
               className="me-2"
-              src="https://uploads.turbologo.com/uploads/design/hq_preview_image/400982/draw_svg20210814-32701-1gcghjs.svg.png"
+              src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d90aeebc-e2bd-4323-9b81-e47c1984a5be/dbicdwx-3a0552e9-6608-4879-8106-4057073320a3.png/v1/fill/w_894,h_894,q_70,strp/woolmark_logo_inkscape_tutorial_by_iconocracia_dbicdwx-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAyNCIsInBhdGgiOiJcL2ZcL2Q5MGFlZWJjLWUyYmQtNDMyMy05YjgxLWU0N2MxOTg0YTViZVwvZGJpY2R3eC0zYTA1NTJlOS02NjA4LTQ4NzktODEwNi00MDU3MDczMzIwYTMucG5nIiwid2lkdGgiOiI8PTEwMjQifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.3TjHf8t0RMpD1-Lt8rI-MQwQrVz4Gf0mYnt9jwdYRg4"
               alt="Logo aziende"
               style={{ width: "100px", height: "100px" }}
             />
@@ -29,10 +29,10 @@ function NotificationsPage() {
               quisquam incidunt nulla?
             </p>
           </Card.Body>
-          <Card.Body className="d-flex aling-items-center">
+          <Card.Body className="d-flex align-items-center">
             <img
               className="me-2"
-              src="https://s.tmimgcdn.com/scr/1200x750/195100/modello-di-logo-quadrato-di-sviluppo_195120-original.jpg"
+              src="https://www.zarla.com/assets/images/logo-1-xl-it-20220110.png"
               alt="Logo aziende"
               style={{ width: "100px", height: "100px" }}
             />
@@ -42,17 +42,16 @@ function NotificationsPage() {
               esse nam?
             </p>
           </Card.Body>
-          <Card.Body className="d-flex aling-items-center">
+          <Card.Body className="d-flex align-items-center">
             <img
               className="me-2"
-              src="https://s.tmimgcdn.com/scr/1200x750/68400/evolcom-moving-e-letter-logo-template_68473-original.jpg"
+              src="https://michelemariatammaro.it/wp-content/uploads/2019/07/Logo-MMT.jpg"
               alt="Logo aziende"
               style={{ width: "100px", height: "100px" }}
             />
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, tenetur doloremque? Molestias deserunt
               expedita nemo possimus libero asperiores commodi. Reiciendis officia aliquid veniam natus, quo error in!
-              Debitis, tempore cum?
             </p>
           </Card.Body>
         </Card>
