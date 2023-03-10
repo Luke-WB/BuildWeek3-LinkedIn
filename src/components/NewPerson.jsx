@@ -1,30 +1,30 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
-import { fetchIdProfile } from "../redux/actions";
-import { HiUsers } from "react-icons/hi";
-import { AiFillEye, AiOutlinePlus } from "react-icons/ai";
-import { BiSearch } from "react-icons/bi";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import Experience from "./Experience";
-import NewPersonExperience from "./NewPersonExperience";
-import People from "./People";
-import AddPersonButton from "./AddPersonButton";
-import AddPersonButtonProfile from "./AddPersonButtonProfile";
-import CollapseComment from "./CollapseComment";
-import { BsDot, BsHandThumbsUp } from "react-icons/bs";
-import { GiEarthAmerica } from "react-icons/gi";
-import Banner from "./Banner";
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { Link, useParams } from "react-router-dom"
+import { fetchIdProfile } from "../redux/actions"
+import { HiUsers } from "react-icons/hi"
+import { AiFillEye, AiOutlinePlus } from "react-icons/ai"
+import { BiSearch } from "react-icons/bi"
+import { Button, Col, Container, Form, Row } from "react-bootstrap"
+import Experience from "./Experience"
+import NewPersonExperience from "./NewPersonExperience"
+import People from "./People"
+import AddPersonButton from "./AddPersonButton"
+import AddPersonButtonProfile from "./AddPersonButtonProfile"
+import CollapseComment from "./CollapseComment"
+import { BsDot, BsHandThumbsUp } from "react-icons/bs"
+import { GiEarthAmerica } from "react-icons/gi"
+import Banner from "./Banner"
 
 export default function NewPerson() {
-  const params = useParams();
-  const selProfile = useSelector((state) => state.selectedProfile.content);
-  const post = useSelector((state) => state.profile.post);
+  const params = useParams()
+  const selProfile = useSelector((state) => state.selectedProfile.content)
+  const post = useSelector((state) => state.profile.post)
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchIdProfile(params.userID));
-  }, [params]);
+    dispatch(fetchIdProfile(params.userID))
+  }, [params])
 
   return (
     <Container>
@@ -48,28 +48,20 @@ export default function NewPerson() {
               <h2 className="mt-2 mb-0">
                 {selProfile.name} {selProfile.surname}
               </h2>
-              <div className="proBlack proMedium proLight">
-                {selProfile.title}
-              </div>
+              <div className="proBlack proMedium proLight">{selProfile.title}</div>
               <Link className="link-fix">
-                <div className="proGrey proLight proGreyHBlue mt-2">
-                  {selProfile.email}
-                </div>
+                <div className="proGrey proLight proGreyHBlue mt-2">{selProfile.email}</div>
               </Link>
               <div className="mt-2">
                 <Link className="link-fix">
-                  <span className="proGrey proLight proGreyHBlue">
-                    {selProfile.area}
-                  </span>
+                  <span className="proGrey proLight proGreyHBlue">{selProfile.area}</span>
                 </Link>
                 <Link className="link-fix">
                   <span className="proBlue">Contact info</span>
                 </Link>
               </div>
               <Link className="link-fix">
-                <div className="proBlue mt-2 mb-3">
-                  {Math.floor(Math.random() * 100)} connection
-                </div>
+                <div className="proBlue mt-2 mb-3">{Math.floor(Math.random() * 100)} connection</div>
               </Link>
               <div className="my-3">
                 <AddPersonButtonProfile personInfo={params.userID} />
@@ -79,9 +71,7 @@ export default function NewPerson() {
           <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
             <div className="my-4 mx-4">
               <h2 className="my-0">About</h2>
-              <div className="proBlack prosmall proLight mt-2">
-                {selProfile.bio}
-              </div>
+              <div className="proBlack prosmall proLight mt-2">{selProfile.bio}</div>
             </div>
           </div>
 
@@ -89,9 +79,7 @@ export default function NewPerson() {
             <div className="my-4 mx-4 w-100 pe-5">
               <h2 className="my-0">Activity</h2>
               <Link className="link-fix">
-                <div className="proBlue my-0">
-                  {Math.floor(Math.random() * 100)} connection
-                </div>
+                <div className="proBlue my-0">{Math.floor(Math.random() * 100)} connection</div>
               </Link>
               <div className="proBlack prosmall proLight mt-2">
                 {post &&
@@ -120,36 +108,25 @@ export default function NewPerson() {
                                         alt="portrait author"
                                       />
                                       <div className="proBlack my-2">
-                                        <Link
-                                          to={`/user/${singPost?.user?._id}`}
-                                          className="link-fix"
-                                        >
+                                        <Link to={`/user/${singPost?.user?._id}`} className="link-fix">
                                           <div className="proBlack proNormal proGreyHBlue link-fix">
                                             {singPost?.user?.name}
                                           </div>
                                         </Link>
                                         <div className="proGrey proVerySmall">
-                                          {Math.floor(Math.random() * 100)}{" "}
-                                          followers
+                                          {Math.floor(Math.random() * 100)} followers
                                         </div>
                                         <div className="proGrey proVerySmall">
-                                          {Math.floor(Math.random() * 12)}{" "}
-                                          <BsDot /> <GiEarthAmerica />
+                                          {Math.floor(Math.random() * 12)} <BsDot /> <GiEarthAmerica />
                                         </div>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                                 <div className="my-2 mx-1">
-                                  <span className="proGrey proBlack proLight proSmall proNormal">
-                                    {singPost.text}
-                                  </span>
+                                  <span className="proGrey proBlack proLight proSmall proNormal">{singPost.text}</span>
                                   {singPost.image ? (
-                                    <img
-                                      className="mt-3 mb-1 w-100"
-                                      src={singPost.image}
-                                      alt="activity"
-                                    />
+                                    <img className="mt-3 mb-1 w-100" src={singPost.image} alt="activity" />
                                   ) : (
                                     <></>
                                   )}
@@ -159,14 +136,14 @@ export default function NewPerson() {
                                   {Math.floor(Math.random() * 100)}
                                 </div>
                                 <hr className="my-1 mx-3" />
-                                <CollapseComment singlePostId={singPost._id} />
+                                <CollapseComment singlePostId={singPost._id} key={i} />
                               </div>
                             </>
                           ) : (
                             <></>
                           )}
                         </>
-                      );
+                      )
                     })}
               </div>
             </div>
@@ -181,9 +158,7 @@ export default function NewPerson() {
           <div className="d-flex flex-column align-items-start bg-light rounded-4 position-relative proCard my-4">
             <div className="my-4 mx-4">
               <h2 className="my-0">Interest</h2>
-              <div className="proBlack prosmall proLight mt-2">
-                {selProfile.bio}
-              </div>
+              <div className="proBlack prosmall proLight mt-2">{selProfile.bio}</div>
             </div>
           </div>
         </Col>
@@ -193,5 +168,5 @@ export default function NewPerson() {
         </Col>
       </Row>
     </Container>
-  );
+  )
 }

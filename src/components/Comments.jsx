@@ -1,78 +1,72 @@
-import { useEffect, useState } from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
-import { BsHandThumbsUp } from "react-icons/bs";
-import ModaleComment from "./ModaleComment";
-import { FaTelegramPlane } from "react-icons/fa";
-import SendButton from "./SendButton";
+import { useEffect, useState } from "react"
+import { Button, Col, Form, Row } from "react-bootstrap"
+import { BsHandThumbsUp } from "react-icons/bs"
+import ModaleComment from "./ModaleComment"
+import { FaTelegramPlane } from "react-icons/fa"
+import SendButton from "./SendButton"
 
 export default function Comments({ singlePostId, updateCount }) {
   let body = {
     comment: "",
     rate: "3",
     elementId: singlePostId,
-  };
+  }
 
-  const [commentsArray, setCommentArray] = useState([]);
-  const [input, setInput] = useState(body);
-  const [rendered, setRendered] = useState(false);
+  const [commentsArray, setCommentArray] = useState([])
+  const [input, setInput] = useState(body)
+  const [rendered, setRendered] = useState(false)
 
-  const [commentCounter, setCommentCounter] = useState(null);
+  const [commentCounter, setCommentCounter] = useState(null)
 
-  updateCount(commentCounter);
+  updateCount(commentCounter)
 
   const handleChange = (field, value) => {
-    setInput((prev) => ({ ...prev, [field]: value }));
-  };
+    setInput((prev) => ({ ...prev, [field]: value }))
+  }
 
   function check() {
-    setRendered((prevState) => !prevState);
+    setRendered((prevState) => !prevState)
   }
 
   const fetchComments = async () => {
     try {
-      const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/comments/${singlePostId}`,
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
-          },
-        }
-      );
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${singlePostId}`, {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
+        },
+      })
       if (response.ok) {
-        const postComment = await response.json();
-        setCommentArray(postComment.reverse());
-        setCommentCounter(postComment.length);
+        const postComment = await response.json()
+        setCommentArray(postComment.reverse())
+        setCommentCounter(postComment.length)
       }
     } catch (error) {
-      alert("comment", error);
+      alert("comment", error)
     }
-  };
+  }
 
   const fetchPostComments = async () => {
     try {
-      const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/comments`,
-        {
-          method: "POST",
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(input),
-        }
-      );
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/comments`, {
+        method: "POST",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2U1MDg1NGEyNDc4ZDAwMTNhMDU4MmEiLCJpYXQiOjE2NzgwOTk1MzQsImV4cCI6MTY3OTMwOTEzNH0.yG08E3EemsiX1fgEV3PiV_BsChfcBV-6oQD5oZsl80o",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(input),
+      })
       if (response.ok) {
       }
     } catch (error) {
-      alert("testComment", error);
+      alert("testComment", error)
     }
-  };
+  }
 
   useEffect(() => {
-    fetchComments();
-  }, [rendered]);
+    fetchComments()
+  }, [rendered])
 
   return (
     <>
@@ -121,16 +115,12 @@ export default function Comments({ singlePostId, updateCount }) {
 
       {commentsArray.map((el, i) => (
         <>
-          <div
-            className="m-3 p-2"
-            style={{ backgroundColor: "#F2F2F2", borderRadius: "10px" }}
-            key={i}
-          >
+          <div className="m-3 p-2" style={{ backgroundColor: "#F2F2F2", borderRadius: "10px" }} key={i}>
             <div className="d-flex justify-content-between proNormal fw-bolder">
               {el.author}
               <div>
                 {el.createdAt}
-                <ModaleComment check={check} id={el._id} />
+                <ModaleComment check={check} id={el._id} key={i} />
               </div>
             </div>
             <div>{el.comment}</div>
@@ -142,5 +132,5 @@ export default function Comments({ singlePostId, updateCount }) {
         </>
       ))}
     </>
-  );
+  )
 }

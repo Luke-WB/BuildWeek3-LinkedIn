@@ -1,33 +1,33 @@
-import { useEffect, useState } from "react";
-import { Col, Row } from "react-bootstrap";
-import SinglePerson from "./SinglePerson";
-import Spinner from "react-bootstrap/Spinner";
-import { BsChevronCompactDown, BsChevronCompactUp } from "react-icons/bs";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react"
+import { Col, Row } from "react-bootstrap"
+import SinglePerson from "./SinglePerson"
+import Spinner from "react-bootstrap/Spinner"
+import { BsChevronCompactDown, BsChevronCompactUp } from "react-icons/bs"
+import { useSelector } from "react-redux"
 
 export default function People() {
-  const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`;
+  const userKey = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjNmZhM2YxOTNlNjAwMTM4MDdmNTkiLCJpYXQiOjE2Nzc0ODg4MTYsImV4cCI6MTY3ODY5ODQxNn0.aQD1NJmhLvpzQEKvINIXWvlSMDQG-S49TU3R9DM5PWs`
 
-  const [isTrue, setIsTrue] = useState(false);
-  const [peopleFetched, setPeopleFetched] = useState([]);
-  const [peopleToRender, setPeopleToRender] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [isTrue, setIsTrue] = useState(false)
+  const [peopleFetched, setPeopleFetched] = useState([])
+  const [peopleToRender, setPeopleToRender] = useState([])
+  const [loading, setLoading] = useState(true)
 
   // shuffle friend, lack conditional check about input/output
   const randomizator = (param) => {
-    let copyVersion = param.slice(0);
+    let copyVersion = param.slice(0)
     for (let i = copyVersion.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      let temp = copyVersion[i];
-      copyVersion[i] = copyVersion[j];
-      copyVersion[j] = temp;
+      let j = Math.floor(Math.random() * (i + 1))
+      let temp = copyVersion[i]
+      copyVersion[i] = copyVersion[j]
+      copyVersion[j] = temp
     }
-    return copyVersion;
-  };
+    return copyVersion
+  }
 
-  const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/";
-  const friendProfileList = useSelector((state) => state.profile.friend);
-  console.log(friendProfileList);
+  const profili_utente = "https://striveschool-api.herokuapp.com/api/profile/"
+  const friendProfileList = useSelector((state) => state.profile.friend)
+  console.log(friendProfileList)
 
   useEffect(() => {
     const fetchUser_Profile = async () => {
@@ -36,33 +36,33 @@ export default function People() {
           headers: {
             Authorization: userKey,
           },
-        });
+        })
         if (response.ok) {
-          let data = await response.json();
+          let data = await response.json()
           // console.log("arrayPeople", data);
-          let ourClass = data.reverse().slice(0, 50);
-          let shuffledClass = randomizator(ourClass);
-          setPeopleFetched(shuffledClass);
-          setLoading(false);
+          let ourClass = data.reverse().slice(0, 50)
+          let shuffledClass = randomizator(ourClass)
+          setPeopleFetched(shuffledClass)
+          setLoading(false)
         }
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
-    };
-    fetchUser_Profile();
-  }, []);
+    }
+    fetchUser_Profile()
+  }, [])
 
   useEffect(() => {
     if (!isTrue) {
-      setPeopleToRender(peopleFetched.slice(0, 5));
+      setPeopleToRender(peopleFetched.slice(0, 5))
     } else {
-      setPeopleToRender(peopleFetched.slice(0, 10));
+      setPeopleToRender(peopleFetched.slice(0, 10))
     }
-  }, [isTrue]);
+  }, [isTrue])
 
   useEffect(() => {
-    setPeopleToRender(peopleFetched.slice(0, 5));
-  }, [peopleFetched]);
+    setPeopleToRender(peopleFetched.slice(0, 5))
+  }, [peopleFetched])
 
   return (
     <div
@@ -74,22 +74,16 @@ export default function People() {
       </h5>
       <Col className="mx-4 singolaPersona">
         {loading ? (
-          <Spinner
-            animation="border"
-            variant="primary"
-            className="m-auto my-5"
-          />
+          <Spinner animation="border" variant="primary" className="m-auto my-5" />
         ) : (
-          peopleToRender.map((el, i) => (
-            <SinglePerson personInfo={el} keyuser={i} />
-          ))
+          peopleToRender.map((el, i) => <SinglePerson personInfo={el} key={i} />)
         )}
       </Col>
       <Row>
         <div
           style={{ width: "100%", textAlign: "center", cursor: "pointer" }}
           onClick={() => {
-            isTrue ? setIsTrue(false) : setIsTrue(true);
+            isTrue ? setIsTrue(false) : setIsTrue(true)
           }}
         >
           <b>
@@ -115,5 +109,5 @@ export default function People() {
         </div>
       </Row>
     </div>
-  );
+  )
 }

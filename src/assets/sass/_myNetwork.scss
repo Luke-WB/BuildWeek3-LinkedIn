@@ -93,3 +93,7 @@ a#navbarScrollingDropdown {
   right: 7px;
   top: 8px;
 }
+
+div.dropdown-menu.show {
+  z-index: 1;
+}
